@@ -22,11 +22,11 @@ namespace InternetBanking.Model
 
         [ForeignKey("Employees")]
         [Required]
-        public int? EmployeeId { get; set; }
+        public string? EmployeeId { get; set; }
 
         [ForeignKey("HelpRequestTypes")]
         [Required]
-        public int? RequestTypeId { get; set; }
+        public string? RequestTypeId { get; set; }
         
 
 

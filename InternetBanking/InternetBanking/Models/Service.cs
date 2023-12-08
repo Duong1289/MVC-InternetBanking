@@ -28,7 +28,7 @@ namespace InternetBanking.Model
 
         [ForeignKey("Employees")]
         [Required]
-        public int? EmployeeId { get; set; }
+        public string? EmployeeId { get; set; }
 
 
         [ForeignKey("Accounts")]

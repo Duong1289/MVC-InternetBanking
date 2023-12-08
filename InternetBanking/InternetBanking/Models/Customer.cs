@@ -12,7 +12,7 @@ namespace InternetBanking.Model
         [Required]
         [MaxLength(20)]
         
-        public int? PersonalId { get; set; }
+        public string? PersonalId { get; set; }
 
         [ForeignKey("AspNetUser")]
         public string? UserId { get; set; }
