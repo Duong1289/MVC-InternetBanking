@@ -7,7 +7,10 @@ namespace InternetBanking.Model
     {
         [Key]
         public string? Id { get; set; }
-        
+
+        [ForeignKey("AspNetUser")]
+        public string? EmpUserId { get; set; }
+
         [Required]
         [MaxLength(20)]
         public string? PersonalId { get; set; }
