@@ -8,7 +8,7 @@ namespace InternetBanking.Models
         [Key]
         public string? Id { get; set; }
 
-        [ForeignKey("AspNetUser")]
+        [ForeignKey("AspNetUsers")]
         public string? EmpUserId { get; set; }
 
         [Required]

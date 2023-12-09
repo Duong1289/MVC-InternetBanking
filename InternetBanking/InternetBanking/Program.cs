@@ -1,5 +1,9 @@
 using InternetBanking.Mail;
 using InternetBanking.Models;
+<<<<<<< Updated upstream
+=======
+using InternetBanking.Service;
+>>>>>>> Stashed changes
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
