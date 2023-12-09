@@ -32,7 +32,7 @@ namespace InternetBanking.Model
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime TransactionDate { get; set; }
 
-        public bool Validation { get; set; }
+        public bool Status { get; set; }
 
     }
 }
