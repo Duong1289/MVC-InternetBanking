@@ -98,14 +98,14 @@ namespace InternetBanking.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HelpRequestExists(helpRequest.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    //if (!HelpRequestExists(helpRequest))
+                    //{
+                    //    return NotFound();
+                    //}
+                    //else
+                    //{
+                    //    throw;
+                    //}
                 }
                 return RedirectToAction(nameof(Index));
             }
