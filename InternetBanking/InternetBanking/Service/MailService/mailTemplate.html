@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Transfer Bill</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .bill-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .bill-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .bill-table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+
+            .bill-table th, .bill-table td {
+                padding: 12px;
+                border: 1px solid #ddd;
+                text-align: left;
+            }
+
+        .bill-footer {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="bill-container">
+        <div class="bill-header">
+            <h1> NexBank's transaction Bill </h1>
+        </div>
+        <table class="table bill-table">
+            <tr>
+                <th>Transaction Id</th>
+                <td>{{Id}}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{Name}}</td>
+            </tr>
+            <tr>
+                <th>Receiver</th>
+                <td>{{Receiver}}</td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>${{Amount}}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{Content}}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{Date}}</td>
+            </tr>
+            <tr>
+                <th>Time</th>
+                <td>{{Time}}</td>
+            </tr>
+        </table>
+        <div class="bill-footer">
+            <p>Thank you for using our money transfer service!</p>
+        </div>
+    </div>
+</body>
+</html>

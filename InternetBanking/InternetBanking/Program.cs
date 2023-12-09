@@ -1,5 +1,6 @@
 using InternetBanking.Mail;
 using InternetBanking.Model;
+using InternetBanking.Service;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,8 @@ internal class Program
     private static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+
+       
 
         // Add services to the container.
         var connectionString = builder.Configuration.GetConnectionString("IdentityConnectionString") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -41,7 +44,8 @@ internal class Program
         var mailSettings = builder.Configuration.GetSection("MailSettings");
         builder.Services.Configure<MailSettings>(mailSettings);
 
-        builder.Services.AddTransient<IEmailSender, SendMailService>();
+        builder.Services.AddTransient<TransactionService>();
+        builder.Services.AddTransient<SendMailService>();
         builder.Services.AddAuthentication().AddGoogle(options =>
         {
             IConfigurationSection section = builder.Configuration.GetSection("Authentication:Google");

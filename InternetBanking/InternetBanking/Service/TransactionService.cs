@@ -1,4 +1,5 @@
-﻿using InternetBanking.Model;
+﻿using InternetBanking.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace InternetBanking.Service
@@ -53,6 +54,13 @@ namespace InternetBanking.Service
             receiver.Balance += amount;
             sender.Balance -= amount;
             return await ctx.SaveChangesAsync() > 0;
+        }
+
+        public async Task<string> SetStatusFalse(string transactionId)
+        {
+            var transaction = await ctx.Transactions!.SingleOrDefaultAsync(t => t.Id == transactionId);
+            transaction.Status = false;
+            return transactionId;
         }
 
 

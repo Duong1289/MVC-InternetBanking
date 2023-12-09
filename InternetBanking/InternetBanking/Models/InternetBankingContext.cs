@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace InternetBanking.Model
+namespace InternetBanking.Models
 {
     public class InternetBankingContext: IdentityDbContext
     {
