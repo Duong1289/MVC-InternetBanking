@@ -9,11 +9,11 @@ using InternetBanking.Models;
 
 namespace InternetBanking.Controllers
 {
-    public class HelpRequest : Controller
+    public class HelpRequestController : Controller
     {
         private readonly InternetBankingContext _context;
 
-        public HelpRequest(InternetBankingContext context)
+        public HelpRequestController(InternetBankingContext context)
         {
             _context = context;
         }
@@ -55,7 +55,7 @@ namespace InternetBanking.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AccountId,CustomerPersonalId,EmployeeId,RequestTypeId,Content,CreatedDate,Status")] HelpRequest helpRequest)
+        public async Task<IActionResult> Create([Bind("Id,AccountId,CustomerPersonalId,EmployeeId,RequestTypeId,Content,CreatedDate,Status")] HelpRequestController helpRequest)
         {
             if (ModelState.IsValid)
             {
@@ -98,14 +98,14 @@ namespace InternetBanking.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    //if (!HelpRequestExists(helpRequest))
-                    //{
-                    //    return NotFound();
-                    //}
-                    //else
-                    //{
-                    //    throw;
-                    //}
+                    if (!HelpRequestExists(helpRequest.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
                 return RedirectToAction(nameof(Index));
             }
