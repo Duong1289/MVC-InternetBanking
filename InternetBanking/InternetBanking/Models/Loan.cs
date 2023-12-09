@@ -8,29 +8,14 @@ namespace InternetBanking.Models
         [Key]
         public int Id { get; set; }
 
-<<<<<<< Updated upstream
-        
-=======
-
->>>>>>> Stashed changes
         [MaxLength(20)]
         [ForeignKey("Accounts")]
         public string? AccountId { get; set; }
 
-<<<<<<< Updated upstream
-        
-=======
->>>>>>> Stashed changes
         [MaxLength(20)]
         [ForeignKey("Customers")]
         public string? CustomerId { get; set; }
 
-
-<<<<<<< Updated upstream
-        
-=======
-
->>>>>>> Stashed changes
         [ForeignKey("Employees")]
         public string? EmployeeId { get; set; }
 
@@ -57,8 +42,6 @@ namespace InternetBanking.Models
         [Required]
         public DateTime? ExpireDate { get; set; }
 
-
-        //da tra no hay chua
         [Required]
         public bool? Status { get; set; }
     }
