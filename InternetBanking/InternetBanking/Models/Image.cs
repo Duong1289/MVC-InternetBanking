@@ -13,7 +13,6 @@ namespace InternetBanking.Models
         public string? CustomerId { get; set; }
 
         [ForeignKey("Employees")]
-        [MaxLength(20)]
         public string? EmployeeId { get; set; }
 
         [ForeignKey("HelpRequests")]

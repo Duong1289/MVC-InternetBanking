@@ -8,18 +8,18 @@ namespace InternetBanking.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        
         [MaxLength(20)]
         [ForeignKey("Accounts")]
         public string? AccountId { get; set; }
 
-        [Required]
+        
         [MaxLength(20)]
         [ForeignKey("Customers")]
         public string? CustomerId { get; set; }
 
-        [Required]
-        [MaxLength(20)]
+
+        
         [ForeignKey("Employees")]
         public string? EmployeeId { get; set; }
 
