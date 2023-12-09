@@ -4,6 +4,7 @@ using InternetBanking.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InternetBanking.Migrations
 {
     [DbContext(typeof(InternetBankingContext))]
-    partial class InternetBankingContextModelSnapshot : ModelSnapshot
+    [Migration("20231209145145_v10")]
+    partial class v10
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -621,7 +624,8 @@ namespace InternetBanking.Migrations
                     b.Property<string>("AccountNumber")
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<double>("Amount")
+                    b.Property<double?>("Amount")
+                        .IsRequired()
                         .HasColumnType("float");
 
                     b.Property<string>("Content")

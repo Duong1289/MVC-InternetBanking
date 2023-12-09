@@ -22,7 +22,7 @@ namespace InternetBanking.Models
         public string? ReceiverAccountNumber { get; set; }
 
         [Required]
-        public double? Amount { get; set;}
+        public double Amount { get; set;}
 
         [Required]
         [MaxLength(1000)]
