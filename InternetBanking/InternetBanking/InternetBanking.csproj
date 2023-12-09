@@ -26,7 +26,14 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\HelpRequest\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\HelpRequest\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\HelpRequest\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\HelpRequest\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\HelpRequest\Index.cshtml" />
   </ItemGroup>
 
 </Project>
