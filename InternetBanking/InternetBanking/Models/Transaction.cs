@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace InternetBanking.Model
+namespace InternetBanking.Models
 {
     public class Transaction
     {

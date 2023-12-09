@@ -1,5 +1,5 @@
 using InternetBanking.Mail;
-using InternetBanking.Model;
+using InternetBanking.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
