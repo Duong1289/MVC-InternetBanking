@@ -9,8 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="63a36561-732a-45d3-afb7-55125ac74dfb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/InternetBanking.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/InternetBanking.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Migrations/InternetBankingContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Migrations/InternetBankingContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Migrations/20231209073302_change-transaction-name.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Migrations/20231209073302_change-transaction-name.Designer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +76,7 @@
       <workItem from="1702086426800" duration="625000" />
       <workItem from="1702132991176" duration="470000" />
       <workItem from="1702133474163" duration="745000" />
+      <workItem from="1702134286259" duration="908000" />
     </task>
     <servers />
   </component>
