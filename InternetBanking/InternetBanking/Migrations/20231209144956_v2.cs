@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace InternetBanking.Migrations
 {
     /// <inheritdoc />
-    public partial class v4 : Migration
+    public partial class v2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -375,10 +375,10 @@ namespace InternetBanking.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AccountId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    CustomerPersonalId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RequestTypeId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AccountId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    CustomerPersonalId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    RequestTypeId = table.Column<int>(type: "int", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: true),
@@ -391,20 +391,17 @@ namespace InternetBanking.Migrations
                         name: "FK_HelpRequests_Accounts_AccountId",
                         column: x => x.AccountId,
                         principalTable: "Accounts",
-                        principalColumn: "AccountNumber",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "AccountNumber");
                     table.ForeignKey(
                         name: "FK_HelpRequests_Customers_CustomerPersonalId",
                         column: x => x.CustomerPersonalId,
                         principalTable: "Customers",
-                        principalColumn: "PersonalId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "PersonalId");
                     table.ForeignKey(
                         name: "FK_HelpRequests_Employees_EmployeeId",
                         column: x => x.EmployeeId,
                         principalTable: "Employees",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_HelpRequests_HelpRequestsTypes_HelpRequestTypeRequestTypeId",
                         column: x => x.HelpRequestTypeRequestTypeId,
@@ -418,9 +415,9 @@ namespace InternetBanking.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AccountId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    CustomerId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    EmployeeId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    AccountId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    CustomerId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     LoanTypeId = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false),
                     Interest = table.Column<double>(type: "float", nullable: false),
@@ -437,20 +434,17 @@ namespace InternetBanking.Migrations
                         name: "FK_Loans_Accounts_AccountId",
                         column: x => x.AccountId,
                         principalTable: "Accounts",
-                        principalColumn: "AccountNumber",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "AccountNumber");
                     table.ForeignKey(
                         name: "FK_Loans_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
-                        principalColumn: "PersonalId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "PersonalId");
                     table.ForeignKey(
                         name: "FK_Loans_Employees_EmployeeId",
                         column: x => x.EmployeeId,
                         principalTable: "Employees",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Loans_LoanTypes_LoanTypeId",
                         column: x => x.LoanTypeId,
@@ -532,7 +526,7 @@ namespace InternetBanking.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CustomerId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    EmployeeId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     RequestId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Path = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Type = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
