@@ -1,0 +1,45 @@
+@model System.Collections.Generic.List<InternetBanking.Models.Transaction>
+
+@{
+    ViewBag.Title = "Transaction Statements within Period";
+    Layout = "_Layout";
+}
+
+<h2>Transaction Statements within Period</h2>
+
+<p>Showing statements from @ViewBag.StartDate to @ViewBag.EndDate</p>
+
+<form method="post" action="ExportToXml">
+    <input type="hidden" name="startDate" value="@ViewBag.StartDate" />
+    <input type="hidden" name="endDate" value="@ViewBag.EndDate" />
+    <button type="submit" class="btn btn-primary">Export to XML</button>
+</form>
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Transaction ID</th>
+        <th>Sender Account</th>
+        <th>Receiver Account</th>
+        <th>Amount</th>
+        <th>Content</th>
+        <th>Transaction Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var transaction in Model)
+    {
+        <tr>
+            <td>@transaction.Id</td>
+            <td>@transaction.SenderAccountNumber</td>
+            <td>@transaction.ReceiverAccountNumber</td>
+            <td>@transaction.Amount</td>
+            <td>@transaction.Content</td>
+            <td>@transaction.TransactionDate</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<a href="ExportToXml"><button type="button" class="btn btn-primary">Export to XML</button></a>
+

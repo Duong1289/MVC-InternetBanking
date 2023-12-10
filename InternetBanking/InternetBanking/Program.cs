@@ -53,15 +53,15 @@ internal class Program
             options.ClientSecret = section["ClientSecret"];
             options.CallbackPath = "/dang-nhap-google";
         });
-        //builder.Services.AddAuthorization(options =>
-        //{
-        //    options.AddPolicy("Admin", policy =>
-        //    {
-        //        policy.RequireRole("admin");
-        //    });
-        //});
-        //builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
-        //   .AddEntityFrameworkStores<ApplicationDbContext>();
+        // builder.Services.AddAuthorization(options =>
+        // {
+        //     options.AddPolicy("Admin", policy =>
+        //     {
+        //         policy.RequireRole("admin");
+        //     });
+        // });
+        // builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+        //    .AddEntityFrameworkStores<ApplicationDbContext>();
         builder.Services.AddIdentity<IdentityUser, IdentityRole>()
             .AddEntityFrameworkStores<InternetBankingContext>()
             .AddDefaultTokenProviders();

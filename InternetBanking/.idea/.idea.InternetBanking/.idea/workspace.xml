@@ -8,8 +8,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63a36561-732a-45d3-afb7-55125ac74dfb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Statement/CreateStatement.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Statement/Index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Statement/StatementsWithinPeriod.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/TransactionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/TransactionController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/InternetBanking.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/InternetBanking.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Layout.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +29,9 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2ZHkWdNMmqlTgYbYZbcXYF3gmtF" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -78,7 +86,7 @@
       <workItem from="1702132991176" duration="470000" />
       <workItem from="1702133474163" duration="745000" />
       <workItem from="1702134286259" duration="908000" />
-      <workItem from="1702135653956" duration="8739000" />
+      <workItem from="1702135653956" duration="19813000" />
     </task>
     <servers />
   </component>
