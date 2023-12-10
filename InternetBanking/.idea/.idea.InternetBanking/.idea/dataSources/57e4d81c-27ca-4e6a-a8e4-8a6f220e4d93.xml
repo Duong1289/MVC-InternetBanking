@@ -16783,8 +16783,8 @@
 798625888|||2|execute|D
 814625945|||0|execute|G
 814625945|||2|execute|D</Grants>
-      <IntrospectionTimestamp>2023-12-10.05:56:35.967</IntrospectionTimestamp>
-      <LastIntrospectionLocalTimestamp>2023-12-09.15:56:35</LastIntrospectionLocalTimestamp>
+      <IntrospectionTimestamp>2023-12-10.05:57:50.537</IntrospectionTimestamp>
+      <LastIntrospectionLocalTimestamp>2023-12-09.15:57:50</LastIntrospectionLocalTimestamp>
       <ObjectId>1</ObjectId>
       <PermissionsCheckSum>18558235967</PermissionsCheckSum>
     </schema>
@@ -16874,7 +16874,199 @@ int</ExtendedProperties>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>1463</SourceTextLength>
     </routine>
-    <table id="5570" parent="5559" name="sysdiagrams">
+    <table id="5570" parent="5559" name="AccountTypes">
+      <CreatedTimestamp>2023-12-10.05:57:36.370</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:38.220</ModifiedTimestamp>
+      <ObjectId>921770341</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>0</LobDataSpaceId>
+    </table>
+    <table id="5571" parent="5559" name="Accounts">
+      <CreatedTimestamp>2023-12-10.05:57:38.217</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:38.840</ModifiedTimestamp>
+      <ObjectId>1625772849</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>0</LobDataSpaceId>
+    </table>
+    <table id="5572" parent="5559" name="AspNetRoleClaims">
+      <CreatedTimestamp>2023-12-10.05:57:37.677</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:38.900</ModifiedTimestamp>
+      <ObjectId>1209771367</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>1</LobDataSpaceId>
+    </table>
+    <table id="5573" parent="5559" name="AspNetRoles">
+      <CreatedTimestamp>2023-12-10.05:57:36.430</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:38.967</ModifiedTimestamp>
+      <ObjectId>953770455</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>1</LobDataSpaceId>
+    </table>
+    <table id="5574" parent="5559" name="AspNetUserClaims">
+      <CreatedTimestamp>2023-12-10.05:57:37.743</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:39.027</ModifiedTimestamp>
+      <ObjectId>1257771538</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>1</LobDataSpaceId>
+    </table>
+    <table id="5575" parent="5559" name="AspNetUserLogins">
+      <CreatedTimestamp>2023-12-10.05:57:37.820</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:39.087</ModifiedTimestamp>
+      <ObjectId>1305771709</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>1</LobDataSpaceId>
+    </table>
+    <table id="5576" parent="5559" name="AspNetUserRoles">
+      <CreatedTimestamp>2023-12-10.05:57:37.880</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:39.147</ModifiedTimestamp>
+      <ObjectId>1353771880</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>0</LobDataSpaceId>
+    </table>
+    <table id="5577" parent="5559" name="AspNetUserTokens">
+      <CreatedTimestamp>2023-12-10.05:57:37.947</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:37.947</ModifiedTimestamp>
+      <ObjectId>1417772108</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>1</LobDataSpaceId>
+    </table>
+    <table id="5578" parent="5559" name="AspNetUsers">
+      <CreatedTimestamp>2023-12-10.05:57:36.570</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:39.277</ModifiedTimestamp>
+      <ObjectId>985770569</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>1</LobDataSpaceId>
+    </table>
+    <table id="5579" parent="5559" name="Banks">
+      <CreatedTimestamp>2023-12-10.05:57:36.960</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:38.083</ModifiedTimestamp>
+      <ObjectId>1017770683</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>0</LobDataSpaceId>
+    </table>
+    <table id="5580" parent="5559" name="Branches">
+      <CreatedTimestamp>2023-12-10.05:57:37.320</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:38.083</ModifiedTimestamp>
+      <ObjectId>1049770797</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>0</LobDataSpaceId>
+    </table>
+    <table id="5581" parent="5559" name="Customers">
+      <CreatedTimestamp>2023-12-10.05:57:38.017</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:39.337</ModifiedTimestamp>
+      <ObjectId>1465772279</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>1</LobDataSpaceId>
+    </table>
+    <table id="5582" parent="5559" name="Employees">
+      <CreatedTimestamp>2023-12-10.05:57:38.080</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:39.467</ModifiedTimestamp>
+      <ObjectId>1513772450</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>1</LobDataSpaceId>
+    </table>
+    <table id="5583" parent="5559" name="FAQ">
+      <CreatedTimestamp>2023-12-10.05:57:38.140</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:39.527</ModifiedTimestamp>
+      <ObjectId>1577772678</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>0</LobDataSpaceId>
+    </table>
+    <table id="5584" parent="5559" name="FAQCategories">
+      <CreatedTimestamp>2023-12-10.05:57:37.407</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:38.143</ModifiedTimestamp>
+      <ObjectId>1081770911</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>0</LobDataSpaceId>
+    </table>
+    <table id="5585" parent="5559" name="HelpRequests">
+      <CreatedTimestamp>2023-12-10.05:57:38.360</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:39.777</ModifiedTimestamp>
+      <ObjectId>1689773077</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>0</LobDataSpaceId>
+    </table>
+    <table id="5586" parent="5559" name="HelpRequestsTypes">
+      <CreatedTimestamp>2023-12-10.05:57:37.467</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:38.370</ModifiedTimestamp>
+      <ObjectId>1113771025</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>0</LobDataSpaceId>
+    </table>
+    <table id="5587" parent="5559" name="Images">
+      <CreatedTimestamp>2023-12-10.05:57:38.717</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:39.967</ModifiedTimestamp>
+      <ObjectId>2025774274</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>0</LobDataSpaceId>
+    </table>
+    <table id="5588" parent="5559" name="LoanTypes">
+      <CreatedTimestamp>2023-12-10.05:57:37.547</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:38.433</ModifiedTimestamp>
+      <ObjectId>1145771139</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>0</LobDataSpaceId>
+    </table>
+    <table id="5589" parent="5559" name="Loans">
+      <CreatedTimestamp>2023-12-10.05:57:38.430</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:40.470</ModifiedTimestamp>
+      <ObjectId>1785773419</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>0</LobDataSpaceId>
+    </table>
+    <table id="5590" parent="5559" name="Services">
+      <CreatedTimestamp>2023-12-10.05:57:38.577</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:40.740</ModifiedTimestamp>
+      <ObjectId>1881773761</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>0</LobDataSpaceId>
+    </table>
+    <table id="5591" parent="5559" name="ServicesTypes">
+      <CreatedTimestamp>2023-12-10.05:57:37.617</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:38.583</ModifiedTimestamp>
+      <ObjectId>1177771253</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>0</LobDataSpaceId>
+    </table>
+    <table id="5592" parent="5559" name="Transactions">
+      <CreatedTimestamp>2023-12-10.05:57:38.640</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:40.817</ModifiedTimestamp>
+      <ObjectId>1977774103</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>0</LobDataSpaceId>
+    </table>
+    <table id="5593" parent="5559" name="__EFMigrationsHistory">
+      <CreatedTimestamp>2023-12-10.05:57:35.897</CreatedTimestamp>
+      <DataRetentionPeriod>-1</DataRetentionPeriod>
+      <ModifiedTimestamp>2023-12-10.05:57:35.897</ModifiedTimestamp>
+      <ObjectId>889770227</ObjectId>
+      <LedgerViewId>0</LedgerViewId>
+      <LobDataSpaceId>0</LobDataSpaceId>
+    </table>
+    <table id="5594" parent="5559" name="sysdiagrams">
       <CreatedTimestamp>2023-12-10.04:51:13.390</CreatedTimestamp>
       <DataRetentionPeriod>-1</DataRetentionPeriod>
       <ExtendedProperties>microsoft_database_tools_support
@@ -16885,110 +17077,1573 @@ int</ExtendedProperties>
       <LedgerViewId>0</LedgerViewId>
       <LobDataSpaceId>1</LobDataSpaceId>
     </table>
-    <argument id="5571" parent="5562">
+    <argument id="5595" parent="5562">
       <ArgumentDirection>R</ArgumentDirection>
       <DasType>int|0s</DasType>
     </argument>
-    <argument id="5572" parent="5563" name="@diagramname">
+    <argument id="5596" parent="5563" name="@diagramname">
       <DasType>sysname|0s</DasType>
       <Position>1</Position>
     </argument>
-    <argument id="5573" parent="5563" name="@owner_id">
+    <argument id="5597" parent="5563" name="@owner_id">
       <DasType>int|0s</DasType>
       <DefaultExpression>null</DefaultExpression>
       <Position>2</Position>
     </argument>
-    <argument id="5574" parent="5563" name="@version">
+    <argument id="5598" parent="5563" name="@version">
       <DasType>int|0s</DasType>
       <Position>3</Position>
     </argument>
-    <argument id="5575" parent="5563" name="@definition">
+    <argument id="5599" parent="5563" name="@definition">
       <DasType>varbinary(max)|0s</DasType>
       <Position>4</Position>
     </argument>
-    <argument id="5576" parent="5564" name="@diagramname">
+    <argument id="5600" parent="5564" name="@diagramname">
       <DasType>sysname|0s</DasType>
       <Position>1</Position>
     </argument>
-    <argument id="5577" parent="5564" name="@owner_id">
+    <argument id="5601" parent="5564" name="@owner_id">
       <DasType>int|0s</DasType>
       <DefaultExpression>null</DefaultExpression>
       <Position>2</Position>
     </argument>
-    <argument id="5578" parent="5564" name="@version">
+    <argument id="5602" parent="5564" name="@version">
       <DasType>int|0s</DasType>
       <Position>3</Position>
     </argument>
-    <argument id="5579" parent="5564" name="@definition">
+    <argument id="5603" parent="5564" name="@definition">
       <DasType>varbinary(max)|0s</DasType>
       <Position>4</Position>
     </argument>
-    <argument id="5580" parent="5565" name="@diagramname">
+    <argument id="5604" parent="5565" name="@diagramname">
       <DasType>sysname|0s</DasType>
       <Position>1</Position>
     </argument>
-    <argument id="5581" parent="5565" name="@owner_id">
+    <argument id="5605" parent="5565" name="@owner_id">
       <DasType>int|0s</DasType>
       <DefaultExpression>null</DefaultExpression>
       <Position>2</Position>
     </argument>
-    <argument id="5582" parent="5566" name="@diagramname">
+    <argument id="5606" parent="5566" name="@diagramname">
       <DasType>sysname|0s</DasType>
       <Position>1</Position>
     </argument>
-    <argument id="5583" parent="5566" name="@owner_id">
+    <argument id="5607" parent="5566" name="@owner_id">
       <DasType>int|0s</DasType>
       <DefaultExpression>null</DefaultExpression>
       <Position>2</Position>
     </argument>
-    <argument id="5584" parent="5567" name="@diagramname">
+    <argument id="5608" parent="5567" name="@diagramname">
       <DasType>sysname|0s</DasType>
       <DefaultExpression>NULL</DefaultExpression>
       <Position>1</Position>
     </argument>
-    <argument id="5585" parent="5567" name="@owner_id">
+    <argument id="5609" parent="5567" name="@owner_id">
       <DasType>int|0s</DasType>
       <DefaultExpression>NULL</DefaultExpression>
       <Position>2</Position>
     </argument>
-    <argument id="5586" parent="5568" name="@diagramname">
+    <argument id="5610" parent="5568" name="@diagramname">
       <DasType>sysname|0s</DasType>
       <Position>1</Position>
     </argument>
-    <argument id="5587" parent="5568" name="@owner_id">
+    <argument id="5611" parent="5568" name="@owner_id">
       <DasType>int|0s</DasType>
       <DefaultExpression>null</DefaultExpression>
       <Position>2</Position>
     </argument>
-    <argument id="5588" parent="5568" name="@new_diagramname">
+    <argument id="5612" parent="5568" name="@new_diagramname">
       <DasType>sysname|0s</DasType>
       <Position>3</Position>
     </argument>
-    <column id="5589" parent="5570" name="name">
-      <DasType>sysname|0s</DasType>
+    <column id="5613" parent="5570" name="Id">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="5614" parent="5570" name="AccTypeName">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="5615" parent="5570" name="Description">
+      <DasType>nvarchar(255 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <index id="5616" parent="5570" name="PK_AccountTypes">
+      <Clustering>1</Clustering>
+      <ColNames>Id</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5617" parent="5570" name="PK_AccountTypes">
+      <CreatedTimestamp>2023-12-10.05:57:36.370</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:36.370</ModifiedTimestamp>
+      <ObjectId>937770398</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_AccountTypes</UnderlyingIndexName>
+    </key>
+    <column id="5618" parent="5571" name="AccountNumber">
+      <DasType>nvarchar(20 char)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="5590" parent="5570" name="principal_id">
+    <column id="5619" parent="5571" name="Balance">
+      <DasType>float|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="5620" parent="5571" name="OpenDate">
+      <DasType>datetime2|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="5621" parent="5571" name="ExpireDate">
+      <DasType>datetime2|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="5622" parent="5571" name="Status">
+      <DasType>bit|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="5623" parent="5571" name="AccountTypeId">
+      <DasType>int|0s</DasType>
+      <Position>6</Position>
+    </column>
+    <column id="5624" parent="5571" name="CustomerPersonalId">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <foreign-key id="5625" parent="5571" name="FK_Accounts_AccountTypes_AccountTypeId">
+      <ColNames>AccountTypeId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.220</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.220</ModifiedTimestamp>
+      <ObjectId>1657772963</ObjectId>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>921770341</RefTableId>
+      <RefTableName>AccountTypes</RefTableName>
+    </foreign-key>
+    <foreign-key id="5626" parent="5571" name="FK_Accounts_Customers_CustomerPersonalId">
+      <ColNames>CustomerPersonalId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.220</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.220</ModifiedTimestamp>
+      <ObjectId>1673773020</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>PersonalId</RefColNames>
+      <RefTableId>1465772279</RefTableId>
+      <RefTableName>Customers</RefTableName>
+    </foreign-key>
+    <index id="5627" parent="5571" name="PK_Accounts">
+      <Clustering>1</Clustering>
+      <ColNames>AccountNumber</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5628" parent="5571" name="IX_Accounts_AccountTypeId">
+      <ColNames>AccountTypeId</ColNames>
+      <Position>2</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5629" parent="5571" name="IX_Accounts_CustomerPersonalId">
+      <ColNames>CustomerPersonalId</ColNames>
+      <Position>3</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5630" parent="5571" name="PK_Accounts">
+      <CreatedTimestamp>2023-12-10.05:57:38.220</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.220</ModifiedTimestamp>
+      <ObjectId>1641772906</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_Accounts</UnderlyingIndexName>
+    </key>
+    <column id="5631" parent="5572" name="Id">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="5632" parent="5572" name="RoleId">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="5633" parent="5572" name="ClaimType">
+      <DasType>nvarchar(max)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="5634" parent="5572" name="ClaimValue">
+      <DasType>nvarchar(max)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="5635" parent="5572" name="FK_AspNetRoleClaims_AspNetRoles_RoleId">
+      <ColNames>RoleId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:37.680</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:37.680</ModifiedTimestamp>
+      <ObjectId>1241771481</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>953770455</RefTableId>
+      <RefTableName>AspNetRoles</RefTableName>
+    </foreign-key>
+    <index id="5636" parent="5572" name="PK_AspNetRoleClaims">
+      <Clustering>1</Clustering>
+      <ColNames>Id</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5637" parent="5572" name="IX_AspNetRoleClaims_RoleId">
+      <ColNames>RoleId</ColNames>
+      <Position>2</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5638" parent="5572" name="PK_AspNetRoleClaims">
+      <CreatedTimestamp>2023-12-10.05:57:37.680</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:37.680</ModifiedTimestamp>
+      <ObjectId>1225771424</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_AspNetRoleClaims</UnderlyingIndexName>
+    </key>
+    <column id="5639" parent="5573" name="Id">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="5640" parent="5573" name="Name">
+      <DasType>nvarchar(256 char)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="5641" parent="5573" name="NormalizedName">
+      <DasType>nvarchar(256 char)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="5642" parent="5573" name="ConcurrencyStamp">
+      <DasType>nvarchar(max)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <index id="5643" parent="5573" name="PK_AspNetRoles">
+      <Clustering>1</Clustering>
+      <ColNames>Id</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5644" parent="5573" name="RoleNameIndex">
+      <ColNames>NormalizedName</ColNames>
+      <Condition>[NormalizedName] IS NOT NULL</Condition>
+      <Position>2</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5645" parent="5573" name="PK_AspNetRoles">
+      <CreatedTimestamp>2023-12-10.05:57:36.433</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:36.433</ModifiedTimestamp>
+      <ObjectId>969770512</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_AspNetRoles</UnderlyingIndexName>
+    </key>
+    <column id="5646" parent="5574" name="Id">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="5647" parent="5574" name="UserId">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="5648" parent="5574" name="ClaimType">
+      <DasType>nvarchar(max)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="5649" parent="5574" name="ClaimValue">
+      <DasType>nvarchar(max)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="5650" parent="5574" name="FK_AspNetUserClaims_AspNetUsers_UserId">
+      <ColNames>UserId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:37.747</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:37.747</ModifiedTimestamp>
+      <ObjectId>1289771652</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>985770569</RefTableId>
+      <RefTableName>AspNetUsers</RefTableName>
+    </foreign-key>
+    <index id="5651" parent="5574" name="PK_AspNetUserClaims">
+      <Clustering>1</Clustering>
+      <ColNames>Id</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5652" parent="5574" name="IX_AspNetUserClaims_UserId">
+      <ColNames>UserId</ColNames>
+      <Position>2</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5653" parent="5574" name="PK_AspNetUserClaims">
+      <CreatedTimestamp>2023-12-10.05:57:37.743</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:37.743</ModifiedTimestamp>
+      <ObjectId>1273771595</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_AspNetUserClaims</UnderlyingIndexName>
+    </key>
+    <column id="5654" parent="5575" name="LoginProvider">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="5655" parent="5575" name="ProviderKey">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="5656" parent="5575" name="ProviderDisplayName">
+      <DasType>nvarchar(max)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="5657" parent="5575" name="UserId">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="5658" parent="5575" name="FK_AspNetUserLogins_AspNetUsers_UserId">
+      <ColNames>UserId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:37.820</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:37.820</ModifiedTimestamp>
+      <ObjectId>1337771823</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>985770569</RefTableId>
+      <RefTableName>AspNetUsers</RefTableName>
+    </foreign-key>
+    <index id="5659" parent="5575" name="PK_AspNetUserLogins">
+      <Clustering>1</Clustering>
+      <ColNames>LoginProvider
+ProviderKey</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5660" parent="5575" name="IX_AspNetUserLogins_UserId">
+      <ColNames>UserId</ColNames>
+      <Position>2</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5661" parent="5575" name="PK_AspNetUserLogins">
+      <CreatedTimestamp>2023-12-10.05:57:37.820</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:37.820</ModifiedTimestamp>
+      <ObjectId>1321771766</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_AspNetUserLogins</UnderlyingIndexName>
+    </key>
+    <column id="5662" parent="5576" name="UserId">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="5663" parent="5576" name="RoleId">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <foreign-key id="5664" parent="5576" name="FK_AspNetUserRoles_AspNetUsers_UserId">
+      <ColNames>UserId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:37.887</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:37.887</ModifiedTimestamp>
+      <ObjectId>1401772051</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>985770569</RefTableId>
+      <RefTableName>AspNetUsers</RefTableName>
+    </foreign-key>
+    <foreign-key id="5665" parent="5576" name="FK_AspNetUserRoles_AspNetRoles_RoleId">
+      <ColNames>RoleId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:37.883</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:37.883</ModifiedTimestamp>
+      <ObjectId>1385771994</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>953770455</RefTableId>
+      <RefTableName>AspNetRoles</RefTableName>
+    </foreign-key>
+    <index id="5666" parent="5576" name="PK_AspNetUserRoles">
+      <Clustering>1</Clustering>
+      <ColNames>UserId
+RoleId</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5667" parent="5576" name="IX_AspNetUserRoles_RoleId">
+      <ColNames>RoleId</ColNames>
+      <Position>2</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5668" parent="5576" name="PK_AspNetUserRoles">
+      <CreatedTimestamp>2023-12-10.05:57:37.883</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:37.883</ModifiedTimestamp>
+      <ObjectId>1369771937</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_AspNetUserRoles</UnderlyingIndexName>
+    </key>
+    <column id="5669" parent="5577" name="UserId">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="5670" parent="5577" name="LoginProvider">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="5671" parent="5577" name="Name">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="5672" parent="5577" name="Value">
+      <DasType>nvarchar(max)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="5673" parent="5577" name="FK_AspNetUserTokens_AspNetUsers_UserId">
+      <ColNames>UserId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:37.947</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:37.947</ModifiedTimestamp>
+      <ObjectId>1449772222</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>985770569</RefTableId>
+      <RefTableName>AspNetUsers</RefTableName>
+    </foreign-key>
+    <index id="5674" parent="5577" name="PK_AspNetUserTokens">
+      <Clustering>1</Clustering>
+      <ColNames>UserId
+LoginProvider
+Name</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5675" parent="5577" name="PK_AspNetUserTokens">
+      <CreatedTimestamp>2023-12-10.05:57:37.947</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:37.947</ModifiedTimestamp>
+      <ObjectId>1433772165</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_AspNetUserTokens</UnderlyingIndexName>
+    </key>
+    <column id="5676" parent="5578" name="Id">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="5677" parent="5578" name="UserName">
+      <DasType>nvarchar(256 char)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="5678" parent="5578" name="NormalizedUserName">
+      <DasType>nvarchar(256 char)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="5679" parent="5578" name="Email">
+      <DasType>nvarchar(256 char)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="5680" parent="5578" name="NormalizedEmail">
+      <DasType>nvarchar(256 char)|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <column id="5681" parent="5578" name="EmailConfirmed">
+      <DasType>bit|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="5682" parent="5578" name="PasswordHash">
+      <DasType>nvarchar(max)|0s</DasType>
+      <Position>7</Position>
+    </column>
+    <column id="5683" parent="5578" name="SecurityStamp">
+      <DasType>nvarchar(max)|0s</DasType>
+      <Position>8</Position>
+    </column>
+    <column id="5684" parent="5578" name="ConcurrencyStamp">
+      <DasType>nvarchar(max)|0s</DasType>
+      <Position>9</Position>
+    </column>
+    <column id="5685" parent="5578" name="PhoneNumber">
+      <DasType>nvarchar(max)|0s</DasType>
+      <Position>10</Position>
+    </column>
+    <column id="5686" parent="5578" name="PhoneNumberConfirmed">
+      <DasType>bit|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>11</Position>
+    </column>
+    <column id="5687" parent="5578" name="TwoFactorEnabled">
+      <DasType>bit|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>12</Position>
+    </column>
+    <column id="5688" parent="5578" name="LockoutEnd">
+      <DasType>datetimeoffset|0s</DasType>
+      <Position>13</Position>
+    </column>
+    <column id="5689" parent="5578" name="LockoutEnabled">
+      <DasType>bit|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>14</Position>
+    </column>
+    <column id="5690" parent="5578" name="AccessFailedCount">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>15</Position>
+    </column>
+    <index id="5691" parent="5578" name="PK_AspNetUsers">
+      <Clustering>1</Clustering>
+      <ColNames>Id</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5692" parent="5578" name="EmailIndex">
+      <ColNames>NormalizedEmail</ColNames>
+      <Position>2</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5693" parent="5578" name="UserNameIndex">
+      <ColNames>NormalizedUserName</ColNames>
+      <Condition>[NormalizedUserName] IS NOT NULL</Condition>
+      <Position>3</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5694" parent="5578" name="PK_AspNetUsers">
+      <CreatedTimestamp>2023-12-10.05:57:36.573</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:36.573</ModifiedTimestamp>
+      <ObjectId>1001770626</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_AspNetUsers</UnderlyingIndexName>
+    </key>
+    <column id="5695" parent="5579" name="Id">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="5696" parent="5579" name="BankName">
+      <DasType>nvarchar(30 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="5697" parent="5579" name="Phone">
+      <DasType>nvarchar(15 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="5698" parent="5579" name="Email">
+      <DasType>nvarchar(200 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="5699" parent="5579" name="Address">
+      <DasType>nvarchar(250 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <index id="5700" parent="5579" name="PK_Banks">
+      <Clustering>1</Clustering>
+      <ColNames>Id</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5701" parent="5579" name="PK_Banks">
+      <CreatedTimestamp>2023-12-10.05:57:36.960</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:36.960</ModifiedTimestamp>
+      <ObjectId>1033770740</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_Banks</UnderlyingIndexName>
+    </key>
+    <column id="5702" parent="5580" name="Id">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="5703" parent="5580" name="BranchName">
+      <DasType>nvarchar(100 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="5704" parent="5580" name="Address">
+      <DasType>nvarchar(150 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="5705" parent="5580" name="Location">
+      <DasType>nvarchar(250 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="5706" parent="5580" name="Phone">
+      <DasType>nvarchar(15 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="5707" parent="5580" name="Email">
+      <DasType>nvarchar(200 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="5708" parent="5580" name="BankId">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <index id="5709" parent="5580" name="PK_Branches">
+      <Clustering>1</Clustering>
+      <ColNames>Id</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5710" parent="5580" name="PK_Branches">
+      <CreatedTimestamp>2023-12-10.05:57:37.323</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:37.323</ModifiedTimestamp>
+      <ObjectId>1065770854</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_Branches</UnderlyingIndexName>
+    </key>
+    <column id="5711" parent="5581" name="PersonalId">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="5712" parent="5581" name="UserId">
+      <DasType>nvarchar(max)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="5713" parent="5581" name="Username">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="5714" parent="5581" name="FirstName">
+      <DasType>nvarchar(50 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="5715" parent="5581" name="LastName">
+      <DasType>nvarchar(50 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="5716" parent="5581" name="Email">
+      <DasType>nvarchar(50 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="5717" parent="5581" name="Address">
+      <DasType>nvarchar(250 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="5718" parent="5581" name="OpenDate">
+      <DasType>datetime2|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+    </column>
+    <column id="5719" parent="5581" name="Status">
+      <DasType>bit|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>9</Position>
+    </column>
+    <column id="5720" parent="5581" name="Locked">
+      <DasType>bit|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>10</Position>
+    </column>
+    <column id="5721" parent="5581" name="BranchId">
+      <DasType>int|0s</DasType>
+      <Position>11</Position>
+    </column>
+    <column id="5722" parent="5581" name="BankId">
+      <DasType>int|0s</DasType>
+      <Position>12</Position>
+    </column>
+    <foreign-key id="5723" parent="5581" name="FK_Customers_Banks_BankId">
+      <ColNames>BankId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.020</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.020</ModifiedTimestamp>
+      <ObjectId>1497772393</ObjectId>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>1017770683</RefTableId>
+      <RefTableName>Banks</RefTableName>
+    </foreign-key>
+    <index id="5724" parent="5581" name="PK_Customers">
+      <Clustering>1</Clustering>
+      <ColNames>PersonalId</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5725" parent="5581" name="IX_Customers_BankId">
+      <ColNames>BankId</ColNames>
+      <Position>2</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5726" parent="5581" name="PK_Customers">
+      <CreatedTimestamp>2023-12-10.05:57:38.020</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.020</ModifiedTimestamp>
+      <ObjectId>1481772336</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_Customers</UnderlyingIndexName>
+    </key>
+    <column id="5727" parent="5582" name="Id">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="5728" parent="5582" name="EmpUserId">
+      <DasType>nvarchar(max)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="5729" parent="5582" name="PersonalId">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="5730" parent="5582" name="Username">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="5731" parent="5582" name="Password">
+      <DasType>nvarchar(max)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="5732" parent="5582" name="FirstName">
+      <DasType>nvarchar(50 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="5733" parent="5582" name="LastName">
+      <DasType>nvarchar(50 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="5734" parent="5582" name="Phone">
+      <DasType>nvarchar(15 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+    </column>
+    <column id="5735" parent="5582" name="Status">
+      <DasType>bit|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>9</Position>
+    </column>
+    <column id="5736" parent="5582" name="RoleId">
+      <DasType>nvarchar(5 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>10</Position>
+    </column>
+    <column id="5737" parent="5582" name="ManageBy">
+      <DasType>nvarchar(5 char)|0s</DasType>
+      <Position>11</Position>
+    </column>
+    <column id="5738" parent="5582" name="BranchId">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>12</Position>
+    </column>
+    <column id="5739" parent="5582" name="BankId">
+      <DasType>int|0s</DasType>
+      <Position>13</Position>
+    </column>
+    <foreign-key id="5740" parent="5582" name="FK_Employees_Branches_BranchId">
+      <ColNames>BranchId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.083</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.083</ModifiedTimestamp>
+      <ObjectId>1561772621</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>1049770797</RefTableId>
+      <RefTableName>Branches</RefTableName>
+    </foreign-key>
+    <foreign-key id="5741" parent="5582" name="FK_Employees_Banks_BankId">
+      <ColNames>BankId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.083</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.083</ModifiedTimestamp>
+      <ObjectId>1545772564</ObjectId>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>1017770683</RefTableId>
+      <RefTableName>Banks</RefTableName>
+    </foreign-key>
+    <index id="5742" parent="5582" name="PK_Employees">
+      <Clustering>1</Clustering>
+      <ColNames>Id</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5743" parent="5582" name="IX_Employees_BankId">
+      <ColNames>BankId</ColNames>
+      <Position>2</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5744" parent="5582" name="IX_Employees_BranchId">
+      <ColNames>BranchId</ColNames>
+      <Position>3</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5745" parent="5582" name="PK_Employees">
+      <CreatedTimestamp>2023-12-10.05:57:38.080</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.080</ModifiedTimestamp>
+      <ObjectId>1529772507</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_Employees</UnderlyingIndexName>
+    </key>
+    <column id="5746" parent="5583" name="Id">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="5747" parent="5583" name="Question">
+      <DasType>nvarchar(300 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="5748" parent="5583" name="Answer">
+      <DasType>nvarchar(1000 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="5749" parent="5583" name="FAQCategoryId">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="5750" parent="5583" name="FK_FAQ_FAQCategories_FAQCategoryId">
+      <ColNames>FAQCategoryId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.140</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.140</ModifiedTimestamp>
+      <ObjectId>1609772792</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>1081770911</RefTableId>
+      <RefTableName>FAQCategories</RefTableName>
+    </foreign-key>
+    <index id="5751" parent="5583" name="PK_FAQ">
+      <Clustering>1</Clustering>
+      <ColNames>Id</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5752" parent="5583" name="IX_FAQ_FAQCategoryId">
+      <ColNames>FAQCategoryId</ColNames>
+      <Position>2</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5753" parent="5583" name="PK_FAQ">
+      <CreatedTimestamp>2023-12-10.05:57:38.140</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.140</ModifiedTimestamp>
+      <ObjectId>1593772735</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_FAQ</UnderlyingIndexName>
+    </key>
+    <column id="5754" parent="5584" name="Id">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="5755" parent="5584" name="CategoryName">
+      <DasType>nvarchar(50 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <index id="5756" parent="5584" name="PK_FAQCategories">
+      <Clustering>1</Clustering>
+      <ColNames>Id</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5757" parent="5584" name="PK_FAQCategories">
+      <CreatedTimestamp>2023-12-10.05:57:37.407</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:37.407</ModifiedTimestamp>
+      <ObjectId>1097770968</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_FAQCategories</UnderlyingIndexName>
+    </key>
+    <column id="5758" parent="5585" name="Id">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="5759" parent="5585" name="AccountId">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="5760" parent="5585" name="CustomerPersonalId">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="5761" parent="5585" name="EmployeeId">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="5762" parent="5585" name="RequestTypeId">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="5763" parent="5585" name="Content">
+      <DasType>nvarchar(1000 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="5764" parent="5585" name="CreatedDate">
+      <DasType>datetime2|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="5765" parent="5585" name="Status">
+      <DasType>bit|0s</DasType>
+      <Position>8</Position>
+    </column>
+    <column id="5766" parent="5585" name="HelpRequestTypeRequestTypeId">
+      <DasType>int|0s</DasType>
+      <Position>9</Position>
+    </column>
+    <foreign-key id="5767" parent="5585" name="FK_HelpRequests_Accounts_AccountId">
+      <ColNames>AccountId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.363</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.363</ModifiedTimestamp>
+      <ObjectId>1721773191</ObjectId>
+      <RefColNames>AccountNumber</RefColNames>
+      <RefTableId>1625772849</RefTableId>
+      <RefTableName>Accounts</RefTableName>
+    </foreign-key>
+    <foreign-key id="5768" parent="5585" name="FK_HelpRequests_Customers_CustomerPersonalId">
+      <ColNames>CustomerPersonalId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.367</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.367</ModifiedTimestamp>
+      <ObjectId>1737773248</ObjectId>
+      <RefColNames>PersonalId</RefColNames>
+      <RefTableId>1465772279</RefTableId>
+      <RefTableName>Customers</RefTableName>
+    </foreign-key>
+    <foreign-key id="5769" parent="5585" name="FK_HelpRequests_Employees_EmployeeId">
+      <ColNames>EmployeeId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.367</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.367</ModifiedTimestamp>
+      <ObjectId>1753773305</ObjectId>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>1513772450</RefTableId>
+      <RefTableName>Employees</RefTableName>
+    </foreign-key>
+    <foreign-key id="5770" parent="5585" name="FK_HelpRequests_HelpRequestsTypes_HelpRequestTypeRequestTypeId">
+      <ColNames>HelpRequestTypeRequestTypeId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.370</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.370</ModifiedTimestamp>
+      <ObjectId>1769773362</ObjectId>
+      <RefColNames>RequestTypeId</RefColNames>
+      <RefTableId>1113771025</RefTableId>
+      <RefTableName>HelpRequestsTypes</RefTableName>
+    </foreign-key>
+    <index id="5771" parent="5585" name="PK_HelpRequests">
+      <Clustering>1</Clustering>
+      <ColNames>Id</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5772" parent="5585" name="IX_HelpRequests_AccountId">
+      <ColNames>AccountId</ColNames>
+      <Position>2</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5773" parent="5585" name="IX_HelpRequests_CustomerPersonalId">
+      <ColNames>CustomerPersonalId</ColNames>
+      <Position>3</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5774" parent="5585" name="IX_HelpRequests_EmployeeId">
+      <ColNames>EmployeeId</ColNames>
+      <Position>4</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5775" parent="5585" name="IX_HelpRequests_HelpRequestTypeRequestTypeId">
+      <ColNames>HelpRequestTypeRequestTypeId</ColNames>
+      <Position>5</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5776" parent="5585" name="PK_HelpRequests">
+      <CreatedTimestamp>2023-12-10.05:57:38.363</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.363</ModifiedTimestamp>
+      <ObjectId>1705773134</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_HelpRequests</UnderlyingIndexName>
+    </key>
+    <column id="5777" parent="5586" name="RequestTypeId">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="5778" parent="5586" name="ServiceName">
+      <DasType>nvarchar(50 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="5779" parent="5586" name="Description">
+      <DasType>nvarchar(500 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <index id="5780" parent="5586" name="PK_HelpRequestsTypes">
+      <Clustering>1</Clustering>
+      <ColNames>RequestTypeId</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5781" parent="5586" name="PK_HelpRequestsTypes">
+      <CreatedTimestamp>2023-12-10.05:57:37.470</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:37.470</ModifiedTimestamp>
+      <ObjectId>1129771082</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_HelpRequestsTypes</UnderlyingIndexName>
+    </key>
+    <column id="5782" parent="5587" name="Id">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="5783" parent="5587" name="CustomerId">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="5784" parent="5587" name="EmployeeId">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="5785" parent="5587" name="RequestId">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="5786" parent="5587" name="Path">
+      <DasType>nvarchar(1000 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="5787" parent="5587" name="Type">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="5788" parent="5587" name="HelpRequestId">
+      <DasType>int|0s</DasType>
+      <Position>7</Position>
+    </column>
+    <foreign-key id="5789" parent="5587" name="FK_Images_Customers_CustomerId">
+      <ColNames>CustomerId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.720</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.720</ModifiedTimestamp>
+      <ObjectId>2057774388</ObjectId>
+      <RefColNames>PersonalId</RefColNames>
+      <RefTableId>1465772279</RefTableId>
+      <RefTableName>Customers</RefTableName>
+    </foreign-key>
+    <foreign-key id="5790" parent="5587" name="FK_Images_Employees_EmployeeId">
+      <ColNames>EmployeeId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.720</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.720</ModifiedTimestamp>
+      <ObjectId>2073774445</ObjectId>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>1513772450</RefTableId>
+      <RefTableName>Employees</RefTableName>
+    </foreign-key>
+    <foreign-key id="5791" parent="5587" name="FK_Images_HelpRequests_HelpRequestId">
+      <ColNames>HelpRequestId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.720</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.720</ModifiedTimestamp>
+      <ObjectId>2089774502</ObjectId>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>1689773077</RefTableId>
+      <RefTableName>HelpRequests</RefTableName>
+    </foreign-key>
+    <index id="5792" parent="5587" name="PK_Images">
+      <Clustering>1</Clustering>
+      <ColNames>Id</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5793" parent="5587" name="IX_Images_CustomerId">
+      <ColNames>CustomerId</ColNames>
+      <Position>2</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5794" parent="5587" name="IX_Images_EmployeeId">
+      <ColNames>EmployeeId</ColNames>
+      <Position>3</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5795" parent="5587" name="IX_Images_HelpRequestId">
+      <ColNames>HelpRequestId</ColNames>
+      <Position>4</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5796" parent="5587" name="PK_Images">
+      <CreatedTimestamp>2023-12-10.05:57:38.717</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.717</ModifiedTimestamp>
+      <ObjectId>2041774331</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_Images</UnderlyingIndexName>
+    </key>
+    <column id="5797" parent="5588" name="Id">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="5798" parent="5588" name="Period">
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="5591" parent="5570" name="diagram_id">
+    <column id="5799" parent="5588" name="LoanName">
+      <DasType>nvarchar(200 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <index id="5800" parent="5588" name="PK_LoanTypes">
+      <Clustering>1</Clustering>
+      <ColNames>Id</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5801" parent="5588" name="PK_LoanTypes">
+      <CreatedTimestamp>2023-12-10.05:57:37.547</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:37.547</ModifiedTimestamp>
+      <ObjectId>1161771196</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_LoanTypes</UnderlyingIndexName>
+    </key>
+    <column id="5802" parent="5589" name="Id">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="5803" parent="5589" name="AccountId">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="5804" parent="5589" name="CustomerId">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="5805" parent="5589" name="EmployeeId">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="5806" parent="5589" name="LoanTypeId">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="5807" parent="5589" name="Amount">
+      <DasType>float|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="5808" parent="5589" name="Interest">
+      <DasType>float|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="5809" parent="5589" name="FineInterest">
+      <DasType>float|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+    </column>
+    <column id="5810" parent="5589" name="IssueDate">
+      <DasType>datetime2|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>9</Position>
+    </column>
+    <column id="5811" parent="5589" name="Period">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>10</Position>
+    </column>
+    <column id="5812" parent="5589" name="ExpireDate">
+      <DasType>datetime2|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>11</Position>
+    </column>
+    <column id="5813" parent="5589" name="Status">
+      <DasType>bit|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>12</Position>
+    </column>
+    <foreign-key id="5814" parent="5589" name="FK_Loans_Accounts_AccountId">
+      <ColNames>AccountId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.430</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.430</ModifiedTimestamp>
+      <ObjectId>1817773533</ObjectId>
+      <RefColNames>AccountNumber</RefColNames>
+      <RefTableId>1625772849</RefTableId>
+      <RefTableName>Accounts</RefTableName>
+    </foreign-key>
+    <foreign-key id="5815" parent="5589" name="FK_Loans_Customers_CustomerId">
+      <ColNames>CustomerId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.430</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.430</ModifiedTimestamp>
+      <ObjectId>1833773590</ObjectId>
+      <RefColNames>PersonalId</RefColNames>
+      <RefTableId>1465772279</RefTableId>
+      <RefTableName>Customers</RefTableName>
+    </foreign-key>
+    <foreign-key id="5816" parent="5589" name="FK_Loans_Employees_EmployeeId">
+      <ColNames>EmployeeId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.430</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.430</ModifiedTimestamp>
+      <ObjectId>1849773647</ObjectId>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>1513772450</RefTableId>
+      <RefTableName>Employees</RefTableName>
+    </foreign-key>
+    <foreign-key id="5817" parent="5589" name="FK_Loans_LoanTypes_LoanTypeId">
+      <ColNames>LoanTypeId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.433</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.433</ModifiedTimestamp>
+      <ObjectId>1865773704</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>1145771139</RefTableId>
+      <RefTableName>LoanTypes</RefTableName>
+    </foreign-key>
+    <index id="5818" parent="5589" name="PK_Loans">
+      <Clustering>1</Clustering>
+      <ColNames>Id</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5819" parent="5589" name="IX_Loans_AccountId">
+      <ColNames>AccountId</ColNames>
+      <Position>2</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5820" parent="5589" name="IX_Loans_CustomerId">
+      <ColNames>CustomerId</ColNames>
+      <Position>3</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5821" parent="5589" name="IX_Loans_EmployeeId">
+      <ColNames>EmployeeId</ColNames>
+      <Position>4</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5822" parent="5589" name="IX_Loans_LoanTypeId">
+      <ColNames>LoanTypeId</ColNames>
+      <Position>5</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5823" parent="5589" name="PK_Loans">
+      <CreatedTimestamp>2023-12-10.05:57:38.430</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.430</ModifiedTimestamp>
+      <ObjectId>1801773476</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_Loans</UnderlyingIndexName>
+    </key>
+    <column id="5824" parent="5590" name="Id">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="5825" parent="5590" name="ServiceName">
+      <DasType>nvarchar(50 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="5826" parent="5590" name="ServiceTypeId">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="5827" parent="5590" name="Content">
+      <DasType>nvarchar(1000 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="5828" parent="5590" name="Amount">
+      <DasType>float|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="5829" parent="5590" name="EmployeeId">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="5830" parent="5590" name="ServiceAccountNumber">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="5831" parent="5590" name="CustomerPersonalId">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+    </column>
+    <column id="5832" parent="5590" name="CreatedDate">
+      <DasType>datetime2|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>9</Position>
+    </column>
+    <column id="5833" parent="5590" name="AccountNumber">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <Position>10</Position>
+    </column>
+    <foreign-key id="5834" parent="5590" name="FK_Services_ServicesTypes_ServiceTypeId">
+      <ColNames>ServiceTypeId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.583</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.583</ModifiedTimestamp>
+      <ObjectId>1961774046</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>1177771253</RefTableId>
+      <RefTableName>ServicesTypes</RefTableName>
+    </foreign-key>
+    <foreign-key id="5835" parent="5590" name="FK_Services_Employees_EmployeeId">
+      <ColNames>EmployeeId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.580</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.580</ModifiedTimestamp>
+      <ObjectId>1945773989</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableId>1513772450</RefTableId>
+      <RefTableName>Employees</RefTableName>
+    </foreign-key>
+    <foreign-key id="5836" parent="5590" name="FK_Services_Customers_CustomerPersonalId">
+      <ColNames>CustomerPersonalId</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.580</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.580</ModifiedTimestamp>
+      <ObjectId>1929773932</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>PersonalId</RefColNames>
+      <RefTableId>1465772279</RefTableId>
+      <RefTableName>Customers</RefTableName>
+    </foreign-key>
+    <foreign-key id="5837" parent="5590" name="FK_Services_Accounts_AccountNumber">
+      <ColNames>AccountNumber</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.580</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.580</ModifiedTimestamp>
+      <ObjectId>1913773875</ObjectId>
+      <RefColNames>AccountNumber</RefColNames>
+      <RefTableId>1625772849</RefTableId>
+      <RefTableName>Accounts</RefTableName>
+    </foreign-key>
+    <index id="5838" parent="5590" name="PK_Services">
+      <Clustering>1</Clustering>
+      <ColNames>Id</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5839" parent="5590" name="IX_Services_AccountNumber">
+      <ColNames>AccountNumber</ColNames>
+      <Position>2</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5840" parent="5590" name="IX_Services_CustomerPersonalId">
+      <ColNames>CustomerPersonalId</ColNames>
+      <Position>3</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5841" parent="5590" name="IX_Services_EmployeeId">
+      <ColNames>EmployeeId</ColNames>
+      <Position>4</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5842" parent="5590" name="IX_Services_ServiceTypeId">
+      <ColNames>ServiceTypeId</ColNames>
+      <Position>5</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5843" parent="5590" name="PK_Services">
+      <CreatedTimestamp>2023-12-10.05:57:38.577</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.577</ModifiedTimestamp>
+      <ObjectId>1897773818</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_Services</UnderlyingIndexName>
+    </key>
+    <column id="5844" parent="5591" name="Id">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="5845" parent="5591" name="ServiceName">
+      <DasType>nvarchar(50 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="5846" parent="5591" name="Description">
+      <DasType>nvarchar(500 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <index id="5847" parent="5591" name="PK_ServicesTypes">
+      <Clustering>1</Clustering>
+      <ColNames>Id</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5848" parent="5591" name="PK_ServicesTypes">
+      <CreatedTimestamp>2023-12-10.05:57:37.620</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:37.620</ModifiedTimestamp>
+      <ObjectId>1193771310</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_ServicesTypes</UnderlyingIndexName>
+    </key>
+    <column id="5849" parent="5592" name="Id">
+      <DasType>nvarchar(450 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="5850" parent="5592" name="SenderAccountNumber">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="5851" parent="5592" name="ReceiverAccountNumber">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="5852" parent="5592" name="Amount">
+      <DasType>float|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="5853" parent="5592" name="Content">
+      <DasType>nvarchar(1000 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="5854" parent="5592" name="TransactionDate">
+      <DasType>datetime2|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="5855" parent="5592" name="Status">
+      <DasType>bit|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="5856" parent="5592" name="AccountNumber">
+      <DasType>nvarchar(20 char)|0s</DasType>
+      <Position>8</Position>
+    </column>
+    <foreign-key id="5857" parent="5592" name="FK_Transactions_Accounts_AccountNumber">
+      <ColNames>AccountNumber</ColNames>
+      <CreatedTimestamp>2023-12-10.05:57:38.643</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.643</ModifiedTimestamp>
+      <ObjectId>2009774217</ObjectId>
+      <RefColNames>AccountNumber</RefColNames>
+      <RefTableId>1625772849</RefTableId>
+      <RefTableName>Accounts</RefTableName>
+    </foreign-key>
+    <index id="5858" parent="5592" name="PK_Transactions">
+      <Clustering>1</Clustering>
+      <ColNames>Id</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <index id="5859" parent="5592" name="IX_Transactions_AccountNumber">
+      <ColNames>AccountNumber</ColNames>
+      <Position>2</Position>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5860" parent="5592" name="PK_Transactions">
+      <CreatedTimestamp>2023-12-10.05:57:38.643</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:38.643</ModifiedTimestamp>
+      <ObjectId>1993774160</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_Transactions</UnderlyingIndexName>
+    </key>
+    <column id="5861" parent="5593" name="MigrationId">
+      <DasType>nvarchar(150 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="5862" parent="5593" name="ProductVersion">
+      <DasType>nvarchar(32 char)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <index id="5863" parent="5593" name="PK___EFMigrationsHistory">
+      <Clustering>1</Clustering>
+      <ColNames>MigrationId</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5864" parent="5593" name="PK___EFMigrationsHistory">
+      <CreatedTimestamp>2023-12-10.05:57:35.900</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-10.05:57:35.900</ModifiedTimestamp>
+      <ObjectId>905770284</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK___EFMigrationsHistory</UnderlyingIndexName>
+    </key>
+    <column id="5865" parent="5594" name="name">
+      <DasType>sysname|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="5866" parent="5594" name="principal_id">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="5867" parent="5594" name="diagram_id">
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="5592" parent="5570" name="version">
+    <column id="5868" parent="5594" name="version">
       <DasType>int|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="5593" parent="5570" name="definition">
+    <column id="5869" parent="5594" name="definition">
       <DasType>varbinary(max)|0s</DasType>
       <Position>5</Position>
     </column>
-    <index id="5594" parent="5570" name="PK__sysdiagr__C2B05B619B63C578">
+    <index id="5870" parent="5594" name="PK__sysdiagr__C2B05B619B63C578">
       <Clustering>1</Clustering>
       <ColNames>diagram_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -16996,14 +18651,14 @@ int</ExtendedProperties>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <index id="5595" parent="5570" name="UK_principal_name">
+    <index id="5871" parent="5594" name="UK_principal_name">
       <ColNames>principal_id
 name</ColNames>
       <Position>2</Position>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <key id="5596" parent="5570" name="PK__sysdiagr__C2B05B619B63C578">
+    <key id="5872" parent="5594" name="PK__sysdiagr__C2B05B619B63C578">
       <CreatedTimestamp>2023-12-10.04:51:13.393</CreatedTimestamp>
       <ModifiedTimestamp>2023-12-10.04:51:13.393</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -17011,17 +18666,229 @@ name</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__sysdiagr__C2B05B619B63C578</UnderlyingIndexName>
     </key>
-    <key id="5597" parent="5570" name="UK_principal_name">
+    <key id="5873" parent="5594" name="UK_principal_name">
       <CreatedTimestamp>2023-12-10.04:51:13.397</CreatedTimestamp>
       <ModifiedTimestamp>2023-12-10.04:51:13.397</ModifiedTimestamp>
       <ObjectId>719055</ObjectId>
       <UnderlyingIndexName>UK_principal_name</UnderlyingIndexName>
     </key>
-    <partition id="5598" parent="5594">
+    <partition id="5874" parent="5616">
+      <ObjectId>72057594073841664</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5875" parent="5627">
+      <ObjectId>72057594074955776</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5876" parent="5628">
+      <ObjectId>72057594075348992</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5877" parent="5629">
+      <ObjectId>72057594075414528</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5878" parent="5636">
+      <ObjectId>72057594074431488</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5879" parent="5637">
+      <ObjectId>72057594075480064</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5880" parent="5643">
+      <ObjectId>72057594073907200</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5881" parent="5644">
+      <ObjectId>72057594075545600</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5882" parent="5651">
+      <ObjectId>72057594074497024</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5883" parent="5652">
+      <ObjectId>72057594075611136</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5884" parent="5659">
+      <ObjectId>72057594074562560</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5885" parent="5660">
+      <ObjectId>72057594075676672</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5886" parent="5666">
+      <ObjectId>72057594074628096</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5887" parent="5667">
+      <ObjectId>72057594075742208</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5888" parent="5674">
+      <ObjectId>72057594074693632</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5889" parent="5691">
+      <ObjectId>72057594073972736</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5890" parent="5692">
+      <ObjectId>72057594075807744</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5891" parent="5693">
+      <ObjectId>72057594075873280</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5892" parent="5700">
+      <ObjectId>72057594074038272</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5893" parent="5709">
+      <ObjectId>72057594074103808</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5894" parent="5724">
+      <ObjectId>72057594074759168</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5895" parent="5725">
+      <ObjectId>72057594075938816</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5896" parent="5742">
+      <ObjectId>72057594074824704</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5897" parent="5743">
+      <ObjectId>72057594076004352</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5898" parent="5744">
+      <ObjectId>72057594076069888</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5899" parent="5751">
+      <ObjectId>72057594074890240</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5900" parent="5752">
+      <ObjectId>72057594076135424</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5901" parent="5756">
+      <ObjectId>72057594074169344</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5902" parent="5771">
+      <ObjectId>72057594075021312</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5903" parent="5772">
+      <ObjectId>72057594076200960</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5904" parent="5773">
+      <ObjectId>72057594076266496</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5905" parent="5774">
+      <ObjectId>72057594076332032</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5906" parent="5775">
+      <ObjectId>72057594076397568</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5907" parent="5780">
+      <ObjectId>72057594074234880</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5908" parent="5792">
+      <ObjectId>72057594075283456</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5909" parent="5793">
+      <ObjectId>72057594076463104</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5910" parent="5794">
+      <ObjectId>72057594076528640</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5911" parent="5795">
+      <ObjectId>72057594076594176</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5912" parent="5800">
+      <ObjectId>72057594074300416</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5913" parent="5818">
+      <ObjectId>72057594075086848</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5914" parent="5819">
+      <ObjectId>72057594076659712</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5915" parent="5820">
+      <ObjectId>72057594076725248</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5916" parent="5821">
+      <ObjectId>72057594076790784</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5917" parent="5822">
+      <ObjectId>72057594076856320</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5918" parent="5838">
+      <ObjectId>72057594075152384</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5919" parent="5839">
+      <ObjectId>72057594076921856</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5920" parent="5840">
+      <ObjectId>72057594076987392</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5921" parent="5841">
+      <ObjectId>72057594077052928</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5922" parent="5842">
+      <ObjectId>72057594077118464</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5923" parent="5847">
+      <ObjectId>72057594074365952</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5924" parent="5858">
+      <ObjectId>72057594075217920</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5925" parent="5859">
+      <ObjectId>72057594077184000</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5926" parent="5863">
+      <ObjectId>72057594073776128</ObjectId>
+      <Position>1</Position>
+    </partition>
+    <partition id="5927" parent="5870">
       <ObjectId>72057594064797696</ObjectId>
       <Position>1</Position>
     </partition>
-    <partition id="5599" parent="5595">
+    <partition id="5928" parent="5871">
       <ObjectId>72057594064863232</ObjectId>
       <Position>1</Position>
     </partition>
