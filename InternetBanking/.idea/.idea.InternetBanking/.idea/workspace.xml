@@ -7,7 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63a36561-732a-45d3-afb7-55125ac74dfb" name="Changes" comment="" />
+    <list default="true" id="63a36561-732a-45d3-afb7-55125ac74dfb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/TransactionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/TransactionController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,7 +78,7 @@
       <workItem from="1702132991176" duration="470000" />
       <workItem from="1702133474163" duration="745000" />
       <workItem from="1702134286259" duration="908000" />
-      <workItem from="1702135653956" duration="1514000" />
+      <workItem from="1702135653956" duration="8739000" />
     </task>
     <servers />
   </component>
