@@ -37,7 +37,14 @@
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        @RenderBody()
+        <div class="content-wrapper">
+            <section class="content">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </section>            
+        </div>
+        
         <!-- /.content-wrapper -->
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
