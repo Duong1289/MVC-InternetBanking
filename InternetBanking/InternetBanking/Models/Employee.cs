@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InternetBanking.Models
@@ -8,9 +9,11 @@ namespace InternetBanking.Models
         [Key]
         public string? Id { get; set; }
 
-        [ForeignKey("AspNetUsers")]
-        public string? EmpUserId { get; set; }
+        [ForeignKey("User")]
+        public string UserId { get; set; }
 
+        // Mối quan hệ 1-1 với IdentityUser
+        public IdentityUser User { get; set; }
         [Required]
         [MaxLength(20)]
         public string? PersonalId { get; set; }

@@ -1,0 +1,117 @@
+﻿@model InternetBanking.Models.Transaction
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/Transaction/Index.css" />
+}
+
+
+@if (ViewBag.TransactionStatus != null)
+{
+    <!-- Display success popup using Bootstrap modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Transaction Status</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @if (ViewBag.TransactionStatus.Contains("successful"))
+                    {
+                        <p style="color: green;">@Html.Raw(ViewBag.TransactionStatus)</p>
+                    }
+                    else
+                    {
+                        <p style="color: red;">@Html.Raw(ViewBag.TransactionStatus)</p>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <div>Thank you for using our service!</div>
+                    <button type="button" class="btn btn-secondary close" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<h1>Transaction</h1>
+<hr />
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <div class="navbar-wrapper">
+            <ul class="navbar-nav">
+                <li class="nav-item" id="transaction">
+                    <a class="nav-link" asp-action="Index" style="font-size: 18px; color: white; font-weight: bold;">Transaction</a>
+                </li>
+                <li class="nav-item" id="history">
+                    <a class="nav-link" asp-action="TransactionHistory" style="font-size: 18px; color: white; font-weight: bold;">View Transaction History</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<hr />
+
+<div class="row mt-4">
+    <div class="center-container">
+        <form asp-action="ProcessTransaction">
+            <div class="form-group">
+                <label for="SenderAccountNumber">Sender Account Number</label>
+                <input type="text" id="SenderAccountNumber" name="SenderAccountNumber" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ReceiverAccountNumber">Receiver Account Number</label>
+                <input type="text" id="ReceiverAccountNumber" name="ReceiverAccountNumber" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Amount">Amount</label>
+                <input type="number" id="Amount" name="Amount" class="form-control" required min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="Content">Transaction Details</label>
+                <textarea id="Content" name="Content" class="form-control" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Transfer Money</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            // Show the success modal on page load
+            $('#successModal').modal('show');
+
+            // Handle modal dismissal
+            $('#successModal').on('hidden.bs.modal', function (e) {
+                // Reinitialize the modal when it is hidden
+                $(this).removeData('bs.modal');
+            });
+
+            // Handle clicking on the close button
+            $('#successModal .close, #successModal button.close').on('click', function () {
+                // Hide the modal
+                $('#successModal').modal('hide');
+            });
+
+        });
+    </script>
+
+}

@@ -14,10 +14,12 @@ namespace InternetBanking.Models
         
         public string? PersonalId { get; set; }
 
-        [ForeignKey("AspNetUsers")]
+        [ForeignKey("User")]
         public string? UserId { get; set; }
 
-        [Required]
+        // Mối quan hệ 1-1 với IdentityUser
+        public IdentityUser? User { get; set; }
+        
         [MaxLength(20)]
         public string? Username { get; set; }
 

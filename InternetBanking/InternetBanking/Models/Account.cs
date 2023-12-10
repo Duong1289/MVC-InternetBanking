@@ -16,9 +16,9 @@ namespace InternetBanking.Models
         [DefaultValue(0.0)]
         public double? Balance { get; set; }
 
-        [Required]
+        
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime? OpenDate { get; set; }
+        public DateTime? OpenDate { get; set; } = DateTime.Now;
 
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
