@@ -1748,4 +1748,8 @@
     <None Include="wwwroot\scss\_variables.scss" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Loan\" />
+  </ItemGroup>
+
 </Project>
