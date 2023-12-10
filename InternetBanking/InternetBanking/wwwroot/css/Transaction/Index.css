@@ -1,0 +1,76 @@
+﻿.row{
+   justify-content: center
+}
+
+.center-container {
+    margin-right: 200px;
+    margin-left: 200px;
+    width: 500px;
+}
+h1{
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 300px;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group-prepend {
+    position: absolute;
+    left: 0;
+    top: 8px;
+}
+
+.form-control-feedback {
+    position: absolute;
+    right: 0;
+    top: 0;
+    line-height: 38px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border: 1px solid #0056b3;
+    }
+
+.navbar-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 0 20px; /* Add padding to create space between buttons */
+}
+
+.nav-divider {
+    border-left: 1px solid white; /* Add a vertical line between buttons */
+    height: 30px; /* Adjust the height of the divider */
+    margin: 0 10px; /* Add spacing around the divider */
+}
+
+li {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
+hr {
+    height: 1px; /* Adjust the height as needed */
+    background-color: white;
+    margin-top: 20px; /* Adjust the top margin as needed */
+    margin-bottom: 20px; /* Adjust the bottom margin as needed */
+}
