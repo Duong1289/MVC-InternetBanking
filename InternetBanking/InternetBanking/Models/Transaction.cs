@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace InternetBanking.Model
+namespace InternetBanking.Models
 {
     public class Transaction
     {
@@ -22,7 +22,7 @@ namespace InternetBanking.Model
         public string? ReceiverAccountNumber { get; set; }
 
         [Required]
-        public double? Amount { get; set;}
+        public double Amount { get; set;}
 
         [Required]
         [MaxLength(1000)]
@@ -32,7 +32,7 @@ namespace InternetBanking.Model
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime TransactionDate { get; set; }
 
-        public bool Validation { get; set; }
+        public bool Status { get; set; }
 
     }
 }

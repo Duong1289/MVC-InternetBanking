@@ -2,122 +2,161 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using InternetBanking.Model;
+using InternetBanking.Models;
 
-namespace InternetBanking.Controller
+namespace InternetBanking.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class BanksController : ControllerBase
+    public class BanksController : Controller
     {
-        InternetBankingContext _context;
+        private readonly InternetBankingContext _context;
 
         public BanksController(InternetBankingContext context)
         {
             _context = context;
         }
 
-        // GET: api/Banks
-        [HttpGet]
-        public async Task<ActionResult<List<Bank>>> GetBanks()
+        // GET: Banks
+        public async Task<IActionResult> Index()
         {
-          if (_context.Banks == null)
-          {
-              return NotFound();
-          }
-            return Ok( await _context.Banks.ToListAsync());
+              return _context.Banks != null ? 
+                          View(await _context.Banks.ToListAsync()) :
+                          Problem("Entity set 'InternetBankingContext.Banks'  is null.");
         }
 
-        // GET: api/Banks/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Bank>> GetBank(int? id)
+        // GET: Banks/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
-          if (_context.Banks == null)
-          {
-              return NotFound();
-          }
-            var bank = await _context.Banks.FindAsync(id);
+            if (id == null || _context.Banks == null)
+            {
+                return NotFound();
+            }
 
+            var bank = await _context.Banks
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (bank == null)
             {
                 return NotFound();
             }
 
-            return bank;
+            return View(bank);
         }
 
-        // PUT: api/Banks/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutBank(int? id, Bank bank)
+        // GET: Banks/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Banks/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,BankName,Phone,Email,Address")] Bank bank)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(bank);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(bank);
+        }
+
+        // GET: Banks/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null || _context.Banks == null)
+            {
+                return NotFound();
+            }
+
+            var bank = await _context.Banks.FindAsync(id);
+            if (bank == null)
+            {
+                return NotFound();
+            }
+            return View(bank);
+        }
+
+        // POST: Banks/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int? id, [Bind("Id,BankName,Phone,Email,Address")] Bank bank)
         {
             if (id != bank.Id)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(bank).State = EntityState.Modified;
-
-            try
+            if (ModelState.IsValid)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BankExists(id))
+                try
                 {
-                    return NotFound();
+                    _context.Update(bank);
+                    await _context.SaveChangesAsync();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!BankExists(bank.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
+                return RedirectToAction(nameof(Index));
             }
-
-            return NoContent();
+            return View(bank);
         }
 
-        // POST: api/Banks
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Bank>> PostBank(Bank bank)
+        // GET: Banks/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
-          if (_context.Banks == null)
-          {
-              return Problem("Entity set 'InternetBankingContext.Banks'  is null.");
-          }
-            _context.Banks.Add(bank);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetBank", new { id = bank.Id }, bank);
-        }
-
-        // DELETE: api/Banks/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBank(int? id)
-        {
-            if (_context.Banks == null)
+            if (id == null || _context.Banks == null)
             {
                 return NotFound();
             }
-            var bank = await _context.Banks.FindAsync(id);
+
+            var bank = await _context.Banks
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (bank == null)
             {
                 return NotFound();
             }
 
-            _context.Banks.Remove(bank);
-            await _context.SaveChangesAsync();
+            return View(bank);
+        }
 
-            return NoContent();
+        // POST: Banks/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int? id)
+        {
+            if (_context.Banks == null)
+            {
+                return Problem("Entity set 'InternetBankingContext.Banks'  is null.");
+            }
+            var bank = await _context.Banks.FindAsync(id);
+            if (bank != null)
+            {
+                _context.Banks.Remove(bank);
+            }
+            
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         private bool BankExists(int? id)
         {
-            return (_context.Banks?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Banks?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

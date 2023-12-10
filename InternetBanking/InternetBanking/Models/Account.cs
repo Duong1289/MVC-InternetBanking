@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 
-namespace InternetBanking.Model
+namespace InternetBanking.Models
 {
     public class Account
     {

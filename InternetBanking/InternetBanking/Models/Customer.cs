@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace InternetBanking.Model
+namespace InternetBanking.Models
 {
     public class Customer
     {
@@ -12,9 +12,9 @@ namespace InternetBanking.Model
         [Required]
         [MaxLength(20)]
         
-        public int? PersonalId { get; set; }
+        public string? PersonalId { get; set; }
 
-        [ForeignKey("AspNetUser")]
+        [ForeignKey("AspNetUsers")]
         public string? UserId { get; set; }
 
         [Required]

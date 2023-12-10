@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace InternetBanking.Model
+namespace InternetBanking.Models
 {
     public class Bank
     {

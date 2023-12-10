@@ -1,14 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace InternetBanking.Model
+namespace InternetBanking.Models
 {
     public class Employee
     {
         [Key]
         public string? Id { get; set; }
 
-        [ForeignKey("AspNetUser")]
+        [ForeignKey("AspNetUsers")]
         public string? EmpUserId { get; set; }
 
         [Required]

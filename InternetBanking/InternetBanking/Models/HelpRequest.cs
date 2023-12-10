@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace InternetBanking.Model
+namespace InternetBanking.Models
 {
     public class HelpRequest
     {
@@ -10,19 +10,16 @@ namespace InternetBanking.Model
         public int? Id { get; set; }
 
         [ForeignKey("Accounts")]
-        [Required]
         [MaxLength(20)]
         public string? AccountId {  get; set; }
 
         [ForeignKey("Customers")]
-        [Required]
         [MaxLength(20)]
         public string? CustomerPersonalId { get; set; }
 
 
         [ForeignKey("Employees")]
-        [Required]
-        public int? EmployeeId { get; set; }
+        public string? EmployeeId { get; set; }
 
         [ForeignKey("HelpRequestTypes")]
         [Required]

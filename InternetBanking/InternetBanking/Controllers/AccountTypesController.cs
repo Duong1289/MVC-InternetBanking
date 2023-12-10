@@ -2,122 +2,161 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using InternetBanking.Model;
+using InternetBanking.Models;
 
-namespace InternetBanking.Controller
+namespace InternetBanking.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AccountTypesController : ControllerBase
+    public class AccountTypesController : Controller
     {
-        InternetBankingContext _context;
+        private readonly InternetBankingContext _context;
 
         public AccountTypesController(InternetBankingContext context)
         {
             _context = context;
         }
 
-        // GET: api/AccountTypes
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<AccountType>>> GetAccountTypes()
+        // GET: AccountTypes
+        public async Task<IActionResult> Index()
         {
-          if (_context.AccountTypes == null)
-          {
-              return NotFound();
-          }
-            return await _context.AccountTypes.ToListAsync();
+              return _context.AccountTypes != null ? 
+                          View(await _context.AccountTypes.ToListAsync()) :
+                          Problem("Entity set 'InternetBankingContext.AccountTypes'  is null.");
         }
 
-        // GET: api/AccountTypes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<AccountType>> GetAccountType(int? id)
+        // GET: AccountTypes/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
-          if (_context.AccountTypes == null)
-          {
-              return NotFound();
-          }
-            var accountType = await _context.AccountTypes.FindAsync(id);
+            if (id == null || _context.AccountTypes == null)
+            {
+                return NotFound();
+            }
 
+            var accountType = await _context.AccountTypes
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (accountType == null)
             {
                 return NotFound();
             }
 
-            return accountType;
+            return View(accountType);
         }
 
-        // PUT: api/AccountTypes/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutAccountType(int? id, AccountType accountType)
+        // GET: AccountTypes/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: AccountTypes/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,AccTypeName,Description")] AccountType accountType)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(accountType);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(accountType);
+        }
+
+        // GET: AccountTypes/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null || _context.AccountTypes == null)
+            {
+                return NotFound();
+            }
+
+            var accountType = await _context.AccountTypes.FindAsync(id);
+            if (accountType == null)
+            {
+                return NotFound();
+            }
+            return View(accountType);
+        }
+
+        // POST: AccountTypes/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int? id, [Bind("Id,AccTypeName,Description")] AccountType accountType)
         {
             if (id != accountType.Id)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(accountType).State = EntityState.Modified;
-
-            try
+            if (ModelState.IsValid)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AccountTypeExists(id))
+                try
                 {
-                    return NotFound();
+                    _context.Update(accountType);
+                    await _context.SaveChangesAsync();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!AccountTypeExists(accountType.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
+                return RedirectToAction(nameof(Index));
             }
-
-            return NoContent();
+            return View(accountType);
         }
 
-        // POST: api/AccountTypes
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<AccountType>> PostAccountType(AccountType accountType)
+        // GET: AccountTypes/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
-          if (_context.AccountTypes == null)
-          {
-              return Problem("Entity set 'InternetBankingContext.AccountTypes'  is null.");
-          }
-            _context.AccountTypes.Add(accountType);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetAccountType", new { id = accountType.Id }, accountType);
-        }
-
-        // DELETE: api/AccountTypes/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAccountType(int? id)
-        {
-            if (_context.AccountTypes == null)
+            if (id == null || _context.AccountTypes == null)
             {
                 return NotFound();
             }
-            var accountType = await _context.AccountTypes.FindAsync(id);
+
+            var accountType = await _context.AccountTypes
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (accountType == null)
             {
                 return NotFound();
             }
 
-            _context.AccountTypes.Remove(accountType);
-            await _context.SaveChangesAsync();
+            return View(accountType);
+        }
 
-            return NoContent();
+        // POST: AccountTypes/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int? id)
+        {
+            if (_context.AccountTypes == null)
+            {
+                return Problem("Entity set 'InternetBankingContext.AccountTypes'  is null.");
+            }
+            var accountType = await _context.AccountTypes.FindAsync(id);
+            if (accountType != null)
+            {
+                _context.AccountTypes.Remove(accountType);
+            }
+            
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         private bool AccountTypeExists(int? id)
         {
-            return (_context.AccountTypes?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.AccountTypes?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

@@ -1,20 +1,19 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace InternetBanking.Model
+namespace InternetBanking.Models
 {
     public class Image
     {
         [Key]
-        public int? Id { get; set; }
+        public string? Id { get; set; }
 
         [ForeignKey("Customers")]
         [MaxLength(20)]
         public string? CustomerId { get; set; }
 
         [ForeignKey("Employees")]
-        [MaxLength(20)]
-        public int? EmployeeId { get; set; }
+        public string? EmployeeId { get; set; }
 
         [ForeignKey("HelpRequests")]
         [MaxLength(20)]

@@ -1,68 +1,83 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using InternetBanking.Model;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using InternetBanking.Mail;
+using InternetBanking.Models;
+using InternetBanking.Service;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
-namespace InternetBanking.Controller
+namespace InternetBanking.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    [Authorize]
-    public class TransactionController : ControllerBase
+    public class TransactionController : Controller
     {
-        private InternetBankingContext context;
+        TransactionService transactionService;
+        SendMailService sendMailService;
 
-        public TransactionController(InternetBankingContext context)
+        public TransactionController(TransactionService transactionService, SendMailService sendMailService)
         {
-            this.context = context;
+            this.transactionService = transactionService;
+            this.sendMailService = sendMailService;
         }
 
-        [HttpGet]
-        [Route("view-statement")]
-        public async Task<IActionResult> ViewStatement([FromQuery] string accountNumber, [FromQuery] DateTime startDate,
-            [FromQuery] DateTime endDate)
+        public IActionResult Index()
+        {
+            if (TempData["TransactionSuccess"] != null)
+            {
+                ViewBag.TransactionStatus = TempData["TransactionSuccess"];
+            }
+            else
+            {
+                ViewBag.TransactionStatus = TempData["TransactionError"];
+            }
+
+            return View();
+        }
+
+        public async Task<IActionResult> ProcessTransaction(Transaction transac)
         {
             try
             {
-                var statement = await context.Transactions
-                    .Where(t => (t.SenderAccountNumber == accountNumber || t.ReceiverAccountNumber == accountNumber) &&
-                                t.TransactionDate >= startDate && t.TransactionDate <= endDate)
-                    .OrderByDescending(t => t.TransactionDate).ToListAsync();
-                if (statement == null)
+                bool receiverExist = await transactionService.CheckReceiver(transac.ReceiverAccountNumber);
+                if (!receiverExist)
                 {
-                    return NotFound();
+                    throw new InvalidOperationException("Invalid receiver account number!!");
                 }
-                return Ok(statement);
+                bool validFunds = await transactionService.CheckBalance(transac.Amount,transac.SenderAccountNumber);
+                if (!validFunds)
+                {
+                    throw new InvalidOperationException("Insufficient funds to transfer!!");
+                }
+                var sender = await transactionService.GetAccount(transac.SenderAccountNumber);
+                var receiver = await transactionService.GetAccount(transac.ReceiverAccountNumber);
+
+
+                if (receiverExist && validFunds)
+                {
+                    bool processTransaction = await transactionService.SaveTransactionDeltail(transac);
+                    if (processTransaction)
+                    {
+                        bool updateBalance = await transactionService.UpdateBalance(receiver, sender, transac.Amount);
+                        if (!updateBalance)
+                        {
+                            string transactionId = await transactionService.SetStatusFalse(transac.Id);
+                            throw new InvalidOperationException("Update balance failed! Please try again! Your transaction ID: "+ transactionId);
+                        }
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("Transaction failed! Please try again later");
+                    }
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch (InvalidOperationException ex)
+            {
+                TempData["TransactionError"] = $"Transaction failed: {ex.Message}";
             }
             catch (Exception ex)
             {
-                throw new Exception($"Internal server error: {ex.Message}");
+                TempData["TransactionError"] = $"An unexpected error occurred: {ex.Message}";
             }
-        }
 
-        [HttpGet]
-        [Route("view-statement/{id}")]
-        public async Task<IActionResult> GetStatementById(int id)
-        {
-            try
-            {
-                var statement = await context.Transactions.FindAsync(id);
-                if (statement == null)
-                {
-                    return NotFound("Statement not found");
-                }
-
-                return Ok(statement);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Internal server error: {ex.Message}");
-            }
+            return RedirectToAction("Index");
         }
 
 
