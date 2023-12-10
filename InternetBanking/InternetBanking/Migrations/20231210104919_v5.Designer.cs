@@ -4,6 +4,7 @@ using InternetBanking.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InternetBanking.Migrations
 {
     [DbContext(typeof(InternetBankingContext))]
-    partial class InternetBankingContextModelSnapshot : ModelSnapshot
+    [Migration("20231210104919_v5")]
+    partial class v5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -203,17 +206,16 @@ namespace InternetBanking.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
                     b.HasKey("PersonalId");
 
                     b.HasIndex("BankId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Customers");
                 });
@@ -229,6 +231,9 @@ namespace InternetBanking.Migrations
                     b.Property<int?>("BranchId")
                         .IsRequired()
                         .HasColumnType("int");
+
+                    b.Property<string>("EmpUserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -267,10 +272,6 @@ namespace InternetBanking.Migrations
                         .IsRequired()
                         .HasColumnType("bit");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -281,8 +282,6 @@ namespace InternetBanking.Migrations
                     b.HasIndex("BankId");
 
                     b.HasIndex("BranchId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Employees");
                 });
@@ -871,12 +870,6 @@ namespace InternetBanking.Migrations
                     b.HasOne("InternetBanking.Models.Bank", null)
                         .WithMany("Customers")
                         .HasForeignKey("BankId");
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("InternetBanking.Models.Employee", b =>
@@ -890,14 +883,6 @@ namespace InternetBanking.Migrations
                         .HasForeignKey("BranchId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("InternetBanking.Models.FAQ", b =>

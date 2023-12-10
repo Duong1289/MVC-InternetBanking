@@ -47,8 +47,12 @@ namespace InternetBanking.Controllers
         // GET: Accounts/Create
         public async Task<IActionResult> Create()
         {
-            var accounttype = await _context.AccountTypes.ToListAsync();
-            ViewData["Account"] = new SelectList(accounttype, "Id", "Id");
+            var accountTypes = await _context.AccountTypes.ToListAsync();
+            var customers = await _context.Customers.ToListAsync();
+
+            ViewData["Account"] = new SelectList(accountTypes, "Id", "AccTypeName");
+            ViewData["Customer"] = new SelectList(customers, "PersonalId", "Username");
+
             return View();
         }
 
@@ -65,6 +69,14 @@ namespace InternetBanking.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            // ModelState không hợp lệ, quay lại view với lỗi
+            var accountTypes = await _context.AccountTypes.ToListAsync();
+            var customers = await _context.Customers.ToListAsync();
+
+            ViewData["Account"] = new SelectList(accountTypes, "Id", "AccTypeName");
+            ViewData["Customer"] = new SelectList(customers, "PersonalId", "Username");
+
             return View(account);
         }
 
