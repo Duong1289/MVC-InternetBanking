@@ -34,6 +34,10 @@ namespace InternetBanking.Models
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? CreatedDate { get; set; } = DateTime.Now;
+        
+        [Required]
+        [MaxLength(1000)]
+        public string? Answer { get; set; }
 
         [DefaultValue(false)]
         public bool? Status { get; set; }

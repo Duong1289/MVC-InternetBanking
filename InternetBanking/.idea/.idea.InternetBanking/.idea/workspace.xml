@@ -8,19 +8,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63a36561-732a-45d3-afb7-55125ac74dfb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Statement/CreateStatement.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Statement/Index.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Statement/StatementsWithinPeriod.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/InternetBanking.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/InternetBanking.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Service/MailService/MailProcessRequest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/HelpRequestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/HelpRequestController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Models/HelpRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Models/HelpRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Service/MailService/SendMailService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Service/MailService/SendMailService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -36,27 +39,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.Run.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.Run.executor": "Run",
+    ".NET Launch Settings Profile.Unnamed.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,
-      &quot;/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,
-      &quot;/Users/KEN/.local/share/Symbols/src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache",
+      "/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache",
+      "/Users/KEN/.local/share/Symbols/src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Run" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/InternetBanking/InternetBanking.csproj" />
@@ -86,7 +90,7 @@
       <workItem from="1702132991176" duration="470000" />
       <workItem from="1702133474163" duration="745000" />
       <workItem from="1702134286259" duration="908000" />
-      <workItem from="1702135653956" duration="19813000" />
+      <workItem from="1702135653956" duration="27742000" />
     </task>
     <servers />
   </component>

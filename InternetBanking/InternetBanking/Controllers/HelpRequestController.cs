@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InternetBanking.Mail;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +13,12 @@ namespace InternetBanking.Controllers
     public class HelpRequestController : Controller
     {
         private readonly InternetBankingContext _context;
+        private readonly SendMailService sendMailService;
 
-        public HelpRequestController(InternetBankingContext context)
+        public HelpRequestController(SendMailService sendMailService,InternetBankingContext context)
         {
             _context = context;
+            this.sendMailService = sendMailService;
         }
 
         // GET: HelpRequest
@@ -157,6 +160,39 @@ namespace InternetBanking.Controllers
         private bool HelpRequestExists(int? id)
         {
           return (_context.HelpRequests?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+        
+        //POST: HelpRequest/ProcessRequest
+        [HttpPost]
+        public async Task<IActionResult> ProcessRequest(int? id, string answer)
+        {
+            if (id == null || _context.HelpRequests == null)
+            {
+                return NotFound();
+            }
+
+            var helpRequest = await _context.HelpRequests.FindAsync(id);
+            if (helpRequest == null)
+            {
+                return NotFound();
+            }
+
+            helpRequest.Answer = answer;
+            helpRequest.Status = true;
+            
+            _context.Update(helpRequest);
+            await _context.SaveChangesAsync();
+            // Send email notification to the customer
+            var customer = await _context.Customers
+                .FirstOrDefaultAsync(c => c.PersonalId == helpRequest.CustomerPersonalId);
+
+            if (customer != null)
+            {
+                var emailSubject = "Your Help Request Update";
+                var emailBody = $"Your help request has been answered. Here is the response: {answer}";
+                await sendMailService.SendEmailAsync(customer.Email, emailSubject, emailBody);
+            }
+            return RedirectToAction(nameof(Index));
         }
     }
 }
