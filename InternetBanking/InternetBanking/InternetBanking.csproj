@@ -1748,4 +1748,13 @@
     <None Include="wwwroot\scss\_variables.scss" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="Views\Statement\Index.cshtml" />
+    <AdditionalFiles Include="Views\Statement\StatementsWithinPeriod.cshtml" />
+  </ItemGroup>
+
 </Project>
