@@ -8,11 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63a36561-732a-45d3-afb7-55125ac74dfb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Home/Footer.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Home/Header.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Home/LayoutIndex.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Home/LayoutIndex.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Home/LayoutIndex.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +89,7 @@
       <workItem from="1702133474163" duration="745000" />
       <workItem from="1702134286259" duration="908000" />
       <workItem from="1702135653956" duration="27742000" />
-      <workItem from="1702311036506" duration="13652000" />
+      <workItem from="1702311036506" duration="14900000" />
     </task>
     <servers />
   </component>
