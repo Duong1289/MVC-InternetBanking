@@ -7,40 +7,40 @@ namespace InternetBanking.Models
     public class HelpRequest
     {
         [Key]
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         [ForeignKey("Accounts")]
         [MaxLength(20)]
-        public string? AccountId {  get; set; }
+        public required string AccountId {  get; set; }
 
         [ForeignKey("Customers")]
         [MaxLength(20)]
-        public string? CustomerPersonalId { get; set; }
+        public required string CustomerId { get; set; }
 
 
         [ForeignKey("Employees")]
-        public string? EmployeeId { get; set; }
+        public required string EmployeeId { get; set; }
 
         [ForeignKey("HelpRequestTypes")]
         [Required]
-        public int? RequestTypeId { get; set; }
+        public int RequestTypeId { get; set; }
         
-
-
         [Required]
         [MaxLength(1000)]
-        public string? Content {  get; set; }
+        public required string Content {  get; set; }
         
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime? CreatedDate { get; set; } = DateTime.Now;
+        public required DateTime CreatedDate { get; set; } = DateTime.Now;
         
         [Required]
         [MaxLength(1000)]
-        public string? Answer { get; set; }
+        public required string Answer { get; set; }
 
         [DefaultValue(false)]
-        public bool? Status { get; set; }
+        public  bool Status { get; set; }
+
+        public required string HelpRequestImageId { get; set; }
 
         public ICollection<Image>? Images { get; set; }
     }

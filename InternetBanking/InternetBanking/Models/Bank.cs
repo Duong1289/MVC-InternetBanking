@@ -22,7 +22,6 @@ namespace InternetBanking.Models
         [Required]
         [MaxLength(250)]
         public string? Address { get; set; }
-        public ICollection<Customer>? Customers { get; set; }
-        public ICollection<Employee>? Employees { get; set; }
+        
     }
 }

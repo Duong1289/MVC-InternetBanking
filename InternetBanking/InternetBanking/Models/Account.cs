@@ -10,32 +10,28 @@ namespace InternetBanking.Models
         //auto gen number
         [Key]
         [MaxLength(20)]
-        public string? AccountNumber { get; set; }
+        public required string AccountNumber { get; set; }
         
-        [Required]
+        
         [DefaultValue(0.0)]
-        public double? Balance { get; set; }
+        public double Balance { get; set; }
 
         
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime? OpenDate { get; set; } = DateTime.Now;
+        public required DateTime OpenDate { get; set; } = DateTime.Now;
 
-        [Required]
+        
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime? ExpireDate { get; set;}
+        public required DateTime ExpireDate { get; set;}
 
         //Block/unlock
-        [Required]
-        [DefaultValue(true)]
-        public bool? Status { get; set;}
-
-        [ForeignKey("AccountTypes")]
-        public int? AccountTypeId { get; set; }
         
-        [ForeignKey("Customers")]
+        [DefaultValue(true)]
+        public required bool Status { get; set;}        
+        
         [Required]
         [MaxLength(20)]
-        public string? CustomerPersonalId { get; set; }
+        public required string CustomerPersonalId { get; set; }
  
         public ICollection<Service>? Services  { get; set; }
 

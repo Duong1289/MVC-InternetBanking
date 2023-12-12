@@ -19,9 +19,9 @@ internal class Program
         var connectionString = builder.Configuration.GetConnectionString("IdentityConnectionString") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
         builder.Services.AddDbContext<InternetBankingContext>(options =>
             options.UseSqlServer(connectionString));
-        builder.Services.AddIdentity<InternetBankingUser, IdentityRole>()
-            .AddEntityFrameworkStores<InternetBankingContext>()
-            .AddDefaultTokenProviders();
+        //builder.Services.AddIdentity<InternetBankingUser, IdentityRole>()
+        //    .AddEntityFrameworkStores<InternetBankingContext>()
+        //    .AddDefaultTokenProviders();
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
         builder.Services.AddDefaultIdentity<InternetBankingUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<InternetBankingContext>();
 
@@ -69,9 +69,9 @@ internal class Program
         // });
         // builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
         //    .AddEntityFrameworkStores<ApplicationDbContext>();
-        builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-            .AddEntityFrameworkStores<InternetBankingContext>()
-            .AddDefaultTokenProviders();
+        //builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+        //    .AddEntityFrameworkStores<InternetBankingContext>()
+        //    .AddDefaultTokenProviders();
 
         builder.Services.ConfigureApplicationCookie(options =>
         {
