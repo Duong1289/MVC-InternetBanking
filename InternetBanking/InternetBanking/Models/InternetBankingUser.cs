@@ -40,7 +40,8 @@ namespace InternetBanking.Areas.Identity.Data
         [PersonalData]
         public ICollection<HelpRequest>? HelpRequests { get; set; }
         [PersonalData]
-        public ICollection<Service> Services { get; set; }
+        public ICollection<Models.Service> Services { get; set; }
+
         [PersonalData]
         public ICollection<Image>? Images { get; set; }
         [PersonalData]

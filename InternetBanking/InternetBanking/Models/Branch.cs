@@ -32,6 +32,6 @@ namespace InternetBanking.Models
         [ForeignKey("Banks")]
         public int? BankId { get; set; }
 
-        public ICollection<Employee>? Employees { get; set; }
+        
     }
 }

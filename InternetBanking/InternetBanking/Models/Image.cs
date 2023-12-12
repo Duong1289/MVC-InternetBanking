@@ -19,14 +19,10 @@ namespace InternetBanking.Models
         [MaxLength(20)]
         public string? RequestId { get; set; }
 
-        [Required]
         [MaxLength(1000)]
-        public string? Path { get; set; }
+        public required string Path { get; set; }
 
-        [Required]
-        [MaxLength(20)]
-        public string? Type { get; set; }
+        public bool Avatar {  get; set; }
 
-       
     }
 }
