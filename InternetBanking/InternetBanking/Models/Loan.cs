@@ -19,7 +19,6 @@ namespace InternetBanking.Models
         [ForeignKey("Employees")]
         public string? EmployeeId { get; set; }
 
-
         [Required]
         [ForeignKey("LoanTypes")]
         public int? LoanTypeId { get; set; }
@@ -31,13 +30,7 @@ namespace InternetBanking.Models
         public double? Interest {  get; set; }
 
         [Required]
-        public double? FineInterest { get; set; }
-
-        [Required]
         public DateTime? IssueDate {  get; set; }
-
-        [Required]
-        public int? Period { get; set; }
 
         [Required]
         public DateTime? ExpireDate { get; set; }
