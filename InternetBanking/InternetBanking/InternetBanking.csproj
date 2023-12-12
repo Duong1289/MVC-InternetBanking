@@ -65,6 +65,7 @@
     <None Include="wwwroot\dist\js\pages\dashboard.js" />
     <None Include="wwwroot\dist\js\pages\dashboard2.js" />
     <None Include="wwwroot\dist\js\pages\dashboard3.js" />
+    <None Include="wwwroot\images\logo.png" />
     <None Include="wwwroot\js\AdminLTE.js" />
     <None Include="wwwroot\js\CardRefresh.js" />
     <None Include="wwwroot\js\CardWidget.js" />
@@ -1746,10 +1747,6 @@
     <None Include="wwwroot\scss\_users-list.scss" />
     <None Include="wwwroot\scss\_variables-alt.scss" />
     <None Include="wwwroot\scss\_variables.scss" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pages\" />
   </ItemGroup>
 
   <ItemGroup>

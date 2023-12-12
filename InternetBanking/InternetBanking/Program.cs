@@ -4,7 +4,7 @@ using InternetBanking.Service;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
-using InternetBanking.Data;
+// using InternetBanking.Data;
 using InternetBanking.Areas.Identity.Data;
 
 internal class Program

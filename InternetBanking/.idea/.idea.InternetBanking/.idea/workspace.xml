@@ -8,10 +8,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63a36561-732a-45d3-afb7-55125ac74dfb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Service/MailService/MailProcessRequest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/ProcessRequest.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/dataSources/57e4d81c-27ca-4e6a-a8e4-8a6f220e4d93.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/dataSources/57e4d81c-27ca-4e6a-a8e4-8a6f220e4d93.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Areas/Identity/Data/InternetBankingDbContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Areas/Identity/Data/InternetBankingUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Models/InternetBankingUser.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/HelpRequestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/HelpRequestController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Models/HelpRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Models/HelpRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Service/MailService/SendMailService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Service/MailService/SendMailService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/InternetBanking.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/InternetBanking.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Mail/SendMailService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Mail/SendMailService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Models/InternetBankingContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Models/InternetBankingContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +100,7 @@
       <workItem from="1702133474163" duration="745000" />
       <workItem from="1702134286259" duration="908000" />
       <workItem from="1702135653956" duration="27742000" />
+      <workItem from="1702311036506" duration="9538000" />
     </task>
     <servers />
   </component>
