@@ -13,7 +13,7 @@ internal class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-
+       
 
         // Add services to the container.
         var connectionString = builder.Configuration.GetConnectionString("IdentityConnectionString") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -69,9 +69,9 @@ internal class Program
         // });
         // builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
         //    .AddEntityFrameworkStores<ApplicationDbContext>();
-        //builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-        //   .AddEntityFrameworkStores<InternetBankingContext>()
-        //    .AddDefaultTokenProviders();
+        builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+            .AddEntityFrameworkStores<InternetBankingContext>()
+            .AddDefaultTokenProviders();
 
         builder.Services.ConfigureApplicationCookie(options =>
         {
@@ -81,7 +81,7 @@ internal class Program
         });
         builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages();
-
+        
 
         var app = builder.Build();
 
@@ -112,59 +112,5 @@ internal class Program
         app.MapRazorPages();
 
         app.Run();
-    }
-    public void ConfigureServices(IServiceCollection services)
-    {
-        // ... other configurations ...
-
-        services.AddIdentity<InternetBankingUser, IdentityRole>()
-            .AddEntityFrameworkStores<InternetBankingContext>()
-            .AddDefaultTokenProviders();
-
-        var serviceProvider = services.BuildServiceProvider();
-        var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-        var userManager = serviceProvider.GetRequiredService<UserManager<InternetBankingUser>>();
-
-        CreateRoles(roleManager, userManager).Wait();
-    }
-
-    private async Task CreateRoles(RoleManager<IdentityRole> roleManager, UserManager<InternetBankingUser> userManager)
-    {
-        string[] roleNames = { "Admin", "User", "Employee" };
-
-        IdentityResult roleResult;
-
-        foreach (var roleName in roleNames)
-        {
-            // Check if the role doesn't exist
-            var roleExist = await roleManager.RoleExistsAsync(roleName);
-
-            if (!roleExist)
-            {
-                // Create the roles and seed them to the database
-                roleResult = await roleManager.CreateAsync(new IdentityRole(roleName));
-
-                if (roleResult.Succeeded)
-                {
-                    // Create default user accounts for each role
-                    InternetBankingUser user = new InternetBankingUser
-                    {
-                        UserName = $"{roleName.ToLower()}",
-                        Email = $"{roleName.ToLower()}@gmail.com",
-                    };
-
-                    string defaultPassword = "123456";
-
-                    var result = await userManager.CreateAsync(user, defaultPassword);
-
-                    if (result.Succeeded)
-                    {
-                        // Assign the role to the user
-                        await userManager.AddToRoleAsync(user, roleName);
-                    }
-                }
-
-            }
-        }
     }
 }
