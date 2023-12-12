@@ -4,6 +4,8 @@ using InternetBanking.Service;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+// using InternetBanking.Data;
+using InternetBanking.Areas.Identity.Data;
 
 internal class Program
 {
@@ -17,7 +19,12 @@ internal class Program
         var connectionString = builder.Configuration.GetConnectionString("IdentityConnectionString") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
         builder.Services.AddDbContext<InternetBankingContext>(options =>
             options.UseSqlServer(connectionString));
+        builder.Services.AddIdentity<InternetBankingUser, IdentityRole>()
+            .AddEntityFrameworkStores<InternetBankingContext>()
+            .AddDefaultTokenProviders();
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+        builder.Services.AddDefaultIdentity<InternetBankingUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<InternetBankingContext>();
+
 
         builder.Services.Configure<IdentityOptions>(options =>
         {
@@ -53,15 +60,15 @@ internal class Program
             options.ClientSecret = section["ClientSecret"];
             options.CallbackPath = "/dang-nhap-google";
         });
-        //builder.Services.AddAuthorization(options =>
-        //{
-        //    options.AddPolicy("Admin", policy =>
-        //    {
-        //        policy.RequireRole("admin");
-        //    });
-        //});
-        //builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
-        //   .AddEntityFrameworkStores<ApplicationDbContext>();
+        // builder.Services.AddAuthorization(options =>
+        // {
+        //     options.AddPolicy("Admin", policy =>
+        //     {
+        //         policy.RequireRole("admin");
+        //     });
+        // });
+        // builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+        //    .AddEntityFrameworkStores<ApplicationDbContext>();
         builder.Services.AddIdentity<IdentityUser, IdentityRole>()
             .AddEntityFrameworkStores<InternetBankingContext>()
             .AddDefaultTokenProviders();
@@ -74,6 +81,7 @@ internal class Program
         });
         builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages();
+        
 
         var app = builder.Build();
 
