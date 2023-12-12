@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 // using InternetBanking.Data;
 using InternetBanking.Areas.Identity.Data;
+using InternetBanking.Service.MailService;
 
 internal class Program
 {
@@ -53,6 +54,7 @@ internal class Program
 
         builder.Services.AddTransient<TransactionService>();
         builder.Services.AddTransient<SendMailService>();
+        builder.Services.AddTransient<SendMailServiceTransHelp>();
         builder.Services.AddAuthentication().AddGoogle(options =>
         {
             IConfigurationSection section = builder.Configuration.GetSection("Authentication:Google");

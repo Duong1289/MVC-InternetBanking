@@ -15,13 +15,13 @@ namespace InternetBanking.Controllers
     public class HelpRequestController : Controller
     {
         private readonly InternetBankingContext _context;
-        private readonly SendMailService sendMailService;
+        private readonly SendMailServiceTransHelp _sendMailServiceTransHelp;
         private readonly UserManager<InternetBankingUser> _userManager;
 
-        public HelpRequestController(SendMailService sendMailService, InternetBankingContext context, UserManager<InternetBankingUser> _userManager)
+        public HelpRequestController(SendMailServiceTransHelp sendMailServiceTransHelp, InternetBankingContext context, UserManager<InternetBankingUser> _userManager)
         {
             _context = context;
-            this.sendMailService = sendMailService;
+            this._sendMailServiceTransHelp = sendMailServiceTransHelp;
             this._userManager = _userManager;
         }
 
@@ -211,8 +211,8 @@ namespace InternetBanking.Controllers
             if (customer != null)
             {
                 var emailSubject = "Your Help Request Update";
-                var emailBody = sendMailService.GetEmailHelpBody(helpRequest);
-                await sendMailService.SendEmailHelpRequest(customer.PersonalId,helpRequest);
+                var emailBody = _sendMailServiceTransHelp.GetEmailHelpBody(helpRequest);
+                await _sendMailServiceTransHelp.SendEmailHelpRequest(customer.PersonalId,helpRequest);
             }
             return RedirectToAction(nameof(Index));
         }

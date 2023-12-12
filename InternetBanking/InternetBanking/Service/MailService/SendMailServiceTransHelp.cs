@@ -16,12 +16,12 @@ namespace InternetBanking.Service.MailService
         public string? Host { get; set; }
         public int Port { get; set; }
     }
-    public class SendMailService
+    public class SendMailServiceTransHelp
     {
         readonly MailSetting MailSetting;
         private readonly UserManager<InternetBankingUser> _userManager;
 
-        public SendMailService(IOptions<MailSetting> MailSetting, UserManager<InternetBankingUser> _userManager)
+        public SendMailServiceTransHelp(IOptions<MailSetting> MailSetting, UserManager<InternetBankingUser> _userManager)
         {
             this.MailSetting = MailSetting.Value;
             this._userManager = _userManager;

@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InternetBanking.Models
 {
+    [Authorize("Admin, User")]
     public class HelpRequest
     {
         [Key]
