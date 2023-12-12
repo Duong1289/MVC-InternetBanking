@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.UI.Services;
+﻿using InternetBanking.Models;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using MimeKit;
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Options;
@@ -53,5 +54,6 @@ namespace InternetBanking.Mail
             }
             smtp.Disconnect(true);
         }
+
     }
 }

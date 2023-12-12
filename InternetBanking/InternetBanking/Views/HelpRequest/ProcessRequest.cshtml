@@ -1,0 +1,32 @@
+@model HelpRequest
+
+@{
+    ViewBag.Title = "Process HelpRequest";
+    Layout = "_Layout";
+}
+
+<h2>Process HelpRequest</h2>
+
+<h2>Process Help Request</h2>
+
+<form method="post">
+    <div>
+        <label>Reuqest Id</label>
+        <p>@Model.RequestTypeId</p>
+    </div>
+    <div>
+        <label>Account Id</label>
+        <p>@Model.AccountId</p>
+    </div>
+    <div>
+        <label>Help Request Content:</label>
+        <p>@Model.Content</p>
+    </div>
+    <div>
+        <label>Answer:</label>
+        <textarea asp-for="@Model.Answer" rows="4"></textarea>
+    </div>
+    <div>
+        <input type="submit" value="Submit">
+    </div>
+</form>

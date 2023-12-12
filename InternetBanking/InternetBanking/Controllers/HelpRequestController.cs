@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using InternetBanking.Mail;
+using InternetBanking.Service.MailService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +15,7 @@ namespace InternetBanking.Controllers
         private readonly InternetBankingContext _context;
         private readonly SendMailService sendMailService;
 
-        public HelpRequestController(SendMailService sendMailService,InternetBankingContext context)
+        public HelpRequestController(SendMailService sendMailService, InternetBankingContext context)
         {
             _context = context;
             this.sendMailService = sendMailService;
@@ -162,6 +162,24 @@ namespace InternetBanking.Controllers
           return (_context.HelpRequests?.Any(e => e.Id == id)).GetValueOrDefault();
         }
         
+        
+        [HttpGet]
+        public async Task<IActionResult> ProcessRequest(int? id)
+        {
+            if (id == null || _context.HelpRequests == null)
+            {
+                return NotFound();
+            }
+
+            var helpRequest = await _context.HelpRequests.FindAsync(id);
+            if (helpRequest == null)
+            {
+                return NotFound();
+            }
+
+            return View(helpRequest);
+        }
+        
         //POST: HelpRequest/ProcessRequest
         [HttpPost]
         public async Task<IActionResult> ProcessRequest(int? id, string answer)
@@ -189,8 +207,8 @@ namespace InternetBanking.Controllers
             if (customer != null)
             {
                 var emailSubject = "Your Help Request Update";
-                var emailBody = $"Your help request has been answered. Here is the response: {answer}";
-                await sendMailService.SendEmailAsync(customer.Email, emailSubject, emailBody);
+                var emailBody = sendMailService.GetEmailHelpBody(helpRequest);
+                await sendMailService.SendEmailHelpRequest(helpRequest);
             }
             return RedirectToAction(nameof(Index));
         }
