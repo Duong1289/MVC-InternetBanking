@@ -9,18 +9,10 @@
   <component name="ChangeListManager">
     <list default="true" id="63a36561-732a-45d3-afb7-55125ac74dfb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/InternetBanking.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/InternetBanking.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Models/Bank.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Models/Bank.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Models/Branch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Models/Branch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Models/Customer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Models/Employee.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Models/InternetBankingContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Models/InternetBankingContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Models/InternetBankingUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Models/InternetBankingUser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Customers/Create.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Customers/Delete.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Customers/Details.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Customers/Edit.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Customers/Index.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/HelpRequestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/HelpRequestController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Models/HelpRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Models/HelpRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Service/MailService/SendMailService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Service/MailService/SendMailServiceTransHelp.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +28,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/349375d06f3745f68d82860b9f9ab3a42f400/a6/7dc2affd/SignInManager`1.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -60,6 +55,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.smartKeys_rider&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -103,6 +99,7 @@
       <workItem from="1702311036506" duration="14900000" />
       <workItem from="1702388039772" duration="634000" />
       <workItem from="1702390522947" duration="1261000" />
+      <workItem from="1702399891756" duration="702000" />
     </task>
     <servers />
   </component>

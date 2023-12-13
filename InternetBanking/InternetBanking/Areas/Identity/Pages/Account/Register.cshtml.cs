@@ -47,6 +47,17 @@ namespace InternetBanking.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "First Name")]
+            public string? FirstName { get; set; }
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Last Name")]
+            public string? LastName { get; set; }
+            [DataType(DataType.Text)]
+            [Display(Name = "Username")]
+            public string? UserName { get; set; }
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -75,7 +86,10 @@ namespace InternetBanking.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new InternetBankingUser { UserName = Input.Email, Email = Input.Email };
+                var user = new InternetBankingUser { UserName = Input.UserName, Email = Input.Email };
+                user.FirstName = Input.FirstName;
+                user.LastName = Input.LastName;
+                user.UserName = Input.UserName;
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
