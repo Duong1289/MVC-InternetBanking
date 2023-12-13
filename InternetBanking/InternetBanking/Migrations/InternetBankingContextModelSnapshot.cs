@@ -118,9 +118,13 @@ namespace InternetBanking.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("CustomerPersonalId")
+<<<<<<< HEAD
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
+=======
+                        .HasColumnType("nvarchar(450)");
+>>>>>>> parent of c480796 (update models)
 
                     b.Property<DateTime>("ExpireDate")
                         .HasColumnType("datetime2");
@@ -136,7 +140,11 @@ namespace InternetBanking.Migrations
 
                     b.HasKey("AccountNumber");
 
+<<<<<<< HEAD
                     b.HasIndex("InternetBankingUserId");
+=======
+                    b.HasIndex("CustomerPersonalId");
+>>>>>>> parent of c480796 (update models)
 
                     b.ToTable("Accounts");
                 });
@@ -289,6 +297,7 @@ namespace InternetBanking.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+<<<<<<< HEAD
                     b.Property<string>("CustomerId")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -297,6 +306,13 @@ namespace InternetBanking.Migrations
                     b.Property<string>("EmployeeId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+=======
+                    b.Property<string>("CustomerPersonalId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("EmployeeEmpId")
+                        .HasColumnType("nvarchar(450)");
+>>>>>>> parent of c480796 (update models)
 
                     b.Property<string>("HelpRequestImageId")
                         .IsRequired()
@@ -318,6 +334,13 @@ namespace InternetBanking.Migrations
 
                     b.HasIndex("AccountId");
 
+<<<<<<< HEAD
+=======
+                    b.HasIndex("CustomerPersonalId");
+
+                    b.HasIndex("EmployeeEmpId");
+
+>>>>>>> parent of c480796 (update models)
                     b.HasIndex("HelpRequestTypeRequestTypeId");
 
                     b.HasIndex("InternetBankingUserId");
@@ -356,12 +379,20 @@ namespace InternetBanking.Migrations
                     b.Property<bool>("Avatar")
                         .HasColumnType("bit");
 
+<<<<<<< HEAD
                     b.Property<string>("CustomerId")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("EmployeeId")
                         .HasColumnType("nvarchar(max)");
+=======
+                    b.Property<string>("CustomerPersonalId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("EmployeeEmpId")
+                        .HasColumnType("nvarchar(450)");
+>>>>>>> parent of c480796 (update models)
 
                     b.Property<int?>("HelpRequestId")
                         .HasColumnType("int");
@@ -380,6 +411,13 @@ namespace InternetBanking.Migrations
 
                     b.HasKey("Id");
 
+<<<<<<< HEAD
+=======
+                    b.HasIndex("CustomerPersonalId");
+
+                    b.HasIndex("EmployeeEmpId");
+
+>>>>>>> parent of c480796 (update models)
                     b.HasIndex("HelpRequestId");
 
                     b.HasIndex("InternetBankingUserId");
@@ -403,12 +441,20 @@ namespace InternetBanking.Migrations
                         .IsRequired()
                         .HasColumnType("float");
 
+<<<<<<< HEAD
                     b.Property<string>("CustomerId")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("EmployeeId")
                         .HasColumnType("nvarchar(max)");
+=======
+                    b.Property<string>("CustomerPersonalId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("EmployeeEmpId")
+                        .HasColumnType("nvarchar(450)");
+>>>>>>> parent of c480796 (update models)
 
                     b.Property<DateTime?>("ExpireDate")
                         .IsRequired()
@@ -437,7 +483,13 @@ namespace InternetBanking.Migrations
 
                     b.HasIndex("AccountId");
 
+<<<<<<< HEAD
                     b.HasIndex("InternetBankingUserId");
+=======
+                    b.HasIndex("CustomerPersonalId");
+
+                    b.HasIndex("EmployeeEmpId");
+>>>>>>> parent of c480796 (update models)
 
                     b.HasIndex("LoanTypeId");
 
@@ -486,6 +538,7 @@ namespace InternetBanking.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CustomerPersonalId")
+<<<<<<< HEAD
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -494,6 +547,11 @@ namespace InternetBanking.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("InternetBankingUserId")
+=======
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("EmployeeEmpId")
+>>>>>>> parent of c480796 (update models)
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ServiceAccountNumber")
@@ -514,7 +572,13 @@ namespace InternetBanking.Migrations
 
                     b.HasIndex("AccountNumber");
 
+<<<<<<< HEAD
                     b.HasIndex("InternetBankingUserId");
+=======
+                    b.HasIndex("CustomerPersonalId");
+
+                    b.HasIndex("EmployeeEmpId");
+>>>>>>> parent of c480796 (update models)
 
                     b.HasIndex("ServiceTypeId");
 
@@ -724,7 +788,33 @@ namespace InternetBanking.Migrations
                 {
                     b.HasOne("InternetBanking.Areas.Identity.Data.InternetBankingUser", null)
                         .WithMany("Accounts")
+<<<<<<< HEAD
                         .HasForeignKey("InternetBankingUserId");
+=======
+                        .HasForeignKey("CustomerPersonalId");
+                });
+
+            modelBuilder.Entity("InternetBanking.Models.Customer", b =>
+                {
+                    b.HasOne("InternetBanking.Areas.Identity.Data.InternetBankingUser", "InternetBankingUser")
+                        .WithOne("Customer")
+                        .HasForeignKey("InternetBanking.Models.Customer", "PersonalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("InternetBankingUser");
+                });
+
+            modelBuilder.Entity("InternetBanking.Models.Employee", b =>
+                {
+                    b.HasOne("InternetBanking.Areas.Identity.Data.InternetBankingUser", "InternetBankingUser")
+                        .WithOne("Employee")
+                        .HasForeignKey("InternetBanking.Models.Employee", "EmpId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("InternetBankingUser");
+>>>>>>> parent of c480796 (update models)
                 });
 
             modelBuilder.Entity("InternetBanking.Models.FAQ", b =>
@@ -744,6 +834,17 @@ namespace InternetBanking.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+<<<<<<< HEAD
+=======
+                    b.HasOne("InternetBanking.Models.Customer", null)
+                        .WithMany("HelpRequests")
+                        .HasForeignKey("CustomerPersonalId");
+
+                    b.HasOne("InternetBanking.Models.Employee", null)
+                        .WithMany("HelpRequests")
+                        .HasForeignKey("EmployeeEmpId");
+
+>>>>>>> parent of c480796 (update models)
                     b.HasOne("InternetBanking.Models.HelpRequestType", null)
                         .WithMany("HelpRequests")
                         .HasForeignKey("HelpRequestTypeRequestTypeId");
@@ -755,6 +856,17 @@ namespace InternetBanking.Migrations
 
             modelBuilder.Entity("InternetBanking.Models.Image", b =>
                 {
+<<<<<<< HEAD
+=======
+                    b.HasOne("InternetBanking.Models.Customer", null)
+                        .WithMany("Images")
+                        .HasForeignKey("CustomerPersonalId");
+
+                    b.HasOne("InternetBanking.Models.Employee", null)
+                        .WithMany("Images")
+                        .HasForeignKey("EmployeeEmpId");
+
+>>>>>>> parent of c480796 (update models)
                     b.HasOne("InternetBanking.Models.HelpRequest", null)
                         .WithMany("Images")
                         .HasForeignKey("HelpRequestId");
@@ -772,7 +884,15 @@ namespace InternetBanking.Migrations
 
                     b.HasOne("InternetBanking.Areas.Identity.Data.InternetBankingUser", null)
                         .WithMany("Loans")
+<<<<<<< HEAD
                         .HasForeignKey("InternetBankingUserId");
+=======
+                        .HasForeignKey("CustomerPersonalId");
+
+                    b.HasOne("InternetBanking.Models.Employee", null)
+                        .WithMany("Loans")
+                        .HasForeignKey("EmployeeEmpId");
+>>>>>>> parent of c480796 (update models)
 
                     b.HasOne("InternetBanking.Models.LoanType", null)
                         .WithMany("Loans")
@@ -789,7 +909,15 @@ namespace InternetBanking.Migrations
 
                     b.HasOne("InternetBanking.Areas.Identity.Data.InternetBankingUser", null)
                         .WithMany("Services")
+<<<<<<< HEAD
                         .HasForeignKey("InternetBankingUserId");
+=======
+                        .HasForeignKey("CustomerPersonalId");
+
+                    b.HasOne("InternetBanking.Models.Employee", null)
+                        .WithMany("Services")
+                        .HasForeignKey("EmployeeEmpId");
+>>>>>>> parent of c480796 (update models)
 
                     b.HasOne("InternetBanking.Models.ServiceType", null)
                         .WithMany("Services")
