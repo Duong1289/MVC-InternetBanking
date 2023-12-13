@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InternetBanking.Models
 {
-    public class InternetBankingContext: IdentityDbContext
+    public class InternetBankingContext: IdentityDbContext<InternetBankingUser>
     {
         public InternetBankingContext(DbContextOptions<InternetBankingContext> options):base(options) 
         {
