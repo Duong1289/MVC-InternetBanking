@@ -29,9 +29,7 @@ namespace InternetBanking.Models
         [DefaultValue(true)]
         public required bool Status { get; set;}        
         
-        [Required]
-        [MaxLength(20)]
-        public required string CustomerPersonalId { get; set; }
+        public string? CustomerPersonalId { get; set; }
  
         public ICollection<Service>? Services  { get; set; }
 

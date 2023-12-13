@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InternetBanking.Migrations
 {
     [DbContext(typeof(InternetBankingContext))]
-    [Migration("20231213104506_v12")]
-    partial class v12
+    [Migration("20231213123603_v1")]
+    partial class v1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,9 +35,7 @@ namespace InternetBanking.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("CustomerPersonalId")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("ExpireDate")
                         .HasColumnType("datetime2");
@@ -49,6 +47,8 @@ namespace InternetBanking.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("AccountNumber");
+
+                    b.HasIndex("CustomerPersonalId");
 
                     b.ToTable("Accounts");
                 });
@@ -128,6 +128,111 @@ namespace InternetBanking.Migrations
                     b.ToTable("Branches");
                 });
 
+            modelBuilder.Entity("InternetBanking.Models.Customer", b =>
+                {
+                    b.Property<string>("PersonalId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<int?>("BranchId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool?>("Locked")
+                        .IsRequired()
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("OpenDate")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool?>("Status")
+                        .IsRequired()
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Username")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("PersonalId");
+
+                    b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("InternetBanking.Models.Employee", b =>
+                {
+                    b.Property<string>("EmpId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("BranchId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("ManageBy")
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PersonalId")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<bool?>("Status")
+                        .IsRequired()
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("EmpId");
+
+                    b.ToTable("Employees");
+                });
+
             modelBuilder.Entity("InternetBanking.Models.FAQ", b =>
                 {
                     b.Property<int?>("Id")
@@ -201,6 +306,12 @@ namespace InternetBanking.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CustomerPersonalId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("EmployeeEmpId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("HelpRequestImageId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -217,6 +328,10 @@ namespace InternetBanking.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AccountId");
+
+                    b.HasIndex("CustomerPersonalId");
+
+                    b.HasIndex("EmployeeEmpId");
 
                     b.HasIndex("HelpRequestTypeRequestTypeId");
 
@@ -259,6 +374,12 @@ namespace InternetBanking.Migrations
                     b.Property<bool>("Avatar")
                         .HasColumnType("bit");
 
+                    b.Property<string>("CustomerPersonalId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("EmployeeEmpId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int?>("HelpRequestId")
                         .HasColumnType("int");
 
@@ -272,6 +393,10 @@ namespace InternetBanking.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CustomerPersonalId");
+
+                    b.HasIndex("EmployeeEmpId");
 
                     b.HasIndex("HelpRequestId");
 
@@ -293,6 +418,12 @@ namespace InternetBanking.Migrations
                     b.Property<double?>("Amount")
                         .IsRequired()
                         .HasColumnType("float");
+
+                    b.Property<string>("CustomerPersonalId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("EmployeeEmpId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("ExpireDate")
                         .IsRequired()
@@ -317,6 +448,10 @@ namespace InternetBanking.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AccountId");
+
+                    b.HasIndex("CustomerPersonalId");
+
+                    b.HasIndex("EmployeeEmpId");
 
                     b.HasIndex("LoanTypeId");
 
@@ -364,6 +499,12 @@ namespace InternetBanking.Migrations
                         .IsRequired()
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CustomerPersonalId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("EmployeeEmpId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("ServiceAccountNumber")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -381,6 +522,10 @@ namespace InternetBanking.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AccountNumber");
+
+                    b.HasIndex("CustomerPersonalId");
+
+                    b.HasIndex("EmployeeEmpId");
 
                     b.HasIndex("ServiceTypeId");
 
@@ -513,6 +658,10 @@ namespace InternetBanking.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -564,6 +713,10 @@ namespace InternetBanking.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -651,6 +804,48 @@ namespace InternetBanking.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("InternetBanking.Areas.Identity.Data.InternetBankingUser", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasDiscriminator().HasValue("InternetBankingUser");
+                });
+
+            modelBuilder.Entity("InternetBanking.Models.Account", b =>
+                {
+                    b.HasOne("InternetBanking.Models.Customer", null)
+                        .WithMany("Accounts")
+                        .HasForeignKey("CustomerPersonalId");
+                });
+
+            modelBuilder.Entity("InternetBanking.Models.Customer", b =>
+                {
+                    b.HasOne("InternetBanking.Areas.Identity.Data.InternetBankingUser", "InternetBankingUser")
+                        .WithOne("Customer")
+                        .HasForeignKey("InternetBanking.Models.Customer", "PersonalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("InternetBankingUser");
+                });
+
+            modelBuilder.Entity("InternetBanking.Models.Employee", b =>
+                {
+                    b.HasOne("InternetBanking.Areas.Identity.Data.InternetBankingUser", "InternetBankingUser")
+                        .WithOne("Employee")
+                        .HasForeignKey("InternetBanking.Models.Employee", "EmpId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("InternetBankingUser");
+                });
+
             modelBuilder.Entity("InternetBanking.Models.FAQ", b =>
                 {
                     b.HasOne("InternetBanking.Models.FAQCategory", null)
@@ -668,6 +863,14 @@ namespace InternetBanking.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("InternetBanking.Models.Customer", null)
+                        .WithMany("HelpRequests")
+                        .HasForeignKey("CustomerPersonalId");
+
+                    b.HasOne("InternetBanking.Models.Employee", null)
+                        .WithMany("HelpRequests")
+                        .HasForeignKey("EmployeeEmpId");
+
                     b.HasOne("InternetBanking.Models.HelpRequestType", null)
                         .WithMany("HelpRequests")
                         .HasForeignKey("HelpRequestTypeRequestTypeId");
@@ -675,6 +878,14 @@ namespace InternetBanking.Migrations
 
             modelBuilder.Entity("InternetBanking.Models.Image", b =>
                 {
+                    b.HasOne("InternetBanking.Models.Customer", null)
+                        .WithMany("Images")
+                        .HasForeignKey("CustomerPersonalId");
+
+                    b.HasOne("InternetBanking.Models.Employee", null)
+                        .WithMany("Images")
+                        .HasForeignKey("EmployeeEmpId");
+
                     b.HasOne("InternetBanking.Models.HelpRequest", null)
                         .WithMany("Images")
                         .HasForeignKey("HelpRequestId");
@@ -685,6 +896,14 @@ namespace InternetBanking.Migrations
                     b.HasOne("InternetBanking.Models.Account", null)
                         .WithMany("Loans")
                         .HasForeignKey("AccountId");
+
+                    b.HasOne("InternetBanking.Models.Customer", null)
+                        .WithMany("Loans")
+                        .HasForeignKey("CustomerPersonalId");
+
+                    b.HasOne("InternetBanking.Models.Employee", null)
+                        .WithMany("Loans")
+                        .HasForeignKey("EmployeeEmpId");
 
                     b.HasOne("InternetBanking.Models.LoanType", null)
                         .WithMany("Loans")
@@ -698,6 +917,14 @@ namespace InternetBanking.Migrations
                     b.HasOne("InternetBanking.Models.Account", null)
                         .WithMany("Services")
                         .HasForeignKey("AccountNumber");
+
+                    b.HasOne("InternetBanking.Models.Customer", null)
+                        .WithMany("Services")
+                        .HasForeignKey("CustomerPersonalId");
+
+                    b.HasOne("InternetBanking.Models.Employee", null)
+                        .WithMany("Services")
+                        .HasForeignKey("EmployeeEmpId");
 
                     b.HasOne("InternetBanking.Models.ServiceType", null)
                         .WithMany("Services")
@@ -775,6 +1002,30 @@ namespace InternetBanking.Migrations
                     b.Navigation("Transactions");
                 });
 
+            modelBuilder.Entity("InternetBanking.Models.Customer", b =>
+                {
+                    b.Navigation("Accounts");
+
+                    b.Navigation("HelpRequests");
+
+                    b.Navigation("Images");
+
+                    b.Navigation("Loans");
+
+                    b.Navigation("Services");
+                });
+
+            modelBuilder.Entity("InternetBanking.Models.Employee", b =>
+                {
+                    b.Navigation("HelpRequests");
+
+                    b.Navigation("Images");
+
+                    b.Navigation("Loans");
+
+                    b.Navigation("Services");
+                });
+
             modelBuilder.Entity("InternetBanking.Models.FAQCategory", b =>
                 {
                     b.Navigation("FAQ");
@@ -798,6 +1049,15 @@ namespace InternetBanking.Migrations
             modelBuilder.Entity("InternetBanking.Models.ServiceType", b =>
                 {
                     b.Navigation("Services");
+                });
+
+            modelBuilder.Entity("InternetBanking.Areas.Identity.Data.InternetBankingUser", b =>
+                {
+                    b.Navigation("Customer")
+                        .IsRequired();
+
+                    b.Navigation("Employee")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
