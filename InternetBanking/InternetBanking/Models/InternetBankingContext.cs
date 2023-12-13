@@ -13,6 +13,8 @@ namespace InternetBanking.Models
         public DbSet<Account>? Accounts { get; set; }
         public DbSet<Bank>? Banks { get; set; }
         public DbSet<Branch>? Branches { get; set; }
+        public DbSet<Customer>? Customers { get; set; }
+        public DbSet<Employee>? Employees { get; set; }
        
         public DbSet<FAQ>? FAQ { get; set; }
         public DbSet<FAQCategory>? FAQCategories { get; set; }
@@ -23,6 +25,7 @@ namespace InternetBanking.Models
         public DbSet<Transaction>? Transactions { get; set; }
 
         public DbSet<Image>? Images { get; set; }
+        public DbSet<InternetBankingUser>? InternetBankingUsers { get; set; }
         public DbSet<Loan>? Loans { get; set; }
         public DbSet<LoanType>? LoanTypes { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)

@@ -2,13 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using InternetBanking.Areas.Identity.Data;
-using InternetBanking.Service.MailService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InternetBanking.Models;
-using Microsoft.AspNetCore.Identity;
+using InternetBanking.Service.MailService;
 
 namespace InternetBanking.Controllers
 {
@@ -16,13 +14,11 @@ namespace InternetBanking.Controllers
     {
         private readonly InternetBankingContext _context;
         private readonly SendMailServiceTransHelp _sendMailServiceTransHelp;
-        private readonly UserManager<InternetBankingUser> _userManager;
 
-        public HelpRequestController(SendMailServiceTransHelp sendMailServiceTransHelp, InternetBankingContext context, UserManager<InternetBankingUser> _userManager)
+        public HelpRequestController(InternetBankingContext context, SendMailServiceTransHelp _sendMailServiceTransHelp)
         {
             _context = context;
-            this._sendMailServiceTransHelp = sendMailServiceTransHelp;
-            this._userManager = _userManager;
+            this._sendMailServiceTransHelp = _sendMailServiceTransHelp;
         }
 
         // GET: HelpRequest
@@ -62,7 +58,7 @@ namespace InternetBanking.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AccountId,CustomerPersonalId,EmployeeId,RequestTypeId,Content,CreatedDate,Status")] HelpRequest helpRequest)
+        public async Task<IActionResult> Create([Bind("Id,AccountId,CustomerId,EmployeeId,RequestTypeId,Content,CreatedDate,Answer,Status,HelpRequestImageId")] HelpRequest helpRequest)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +90,7 @@ namespace InternetBanking.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, [Bind("Id,AccountId,CustomerPersonalId,EmployeeId,RequestTypeId,Content,CreatedDate,Status")] HelpRequest helpRequest)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,AccountId,CustomerId,EmployeeId,RequestTypeId,Content,CreatedDate,Answer,Status,HelpRequestImageId")] HelpRequest helpRequest)
         {
             if (id != helpRequest.Id)
             {
@@ -145,7 +141,7 @@ namespace InternetBanking.Controllers
         // POST: HelpRequest/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int? id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.HelpRequests == null)
             {
@@ -161,11 +157,10 @@ namespace InternetBanking.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool HelpRequestExists(int? id)
+        private bool HelpRequestExists(int id)
         {
           return (_context.HelpRequests?.Any(e => e.Id == id)).GetValueOrDefault();
         }
-        
         
         [HttpGet]
         public async Task<IActionResult> ProcessRequest(int? id)
@@ -205,14 +200,13 @@ namespace InternetBanking.Controllers
             _context.Update(helpRequest);
             await _context.SaveChangesAsync();
             // Send email notification to the customer
-            var customer = await _userManager.Users
-                .FirstOrDefaultAsync(c => c.Id == helpRequest.CustomerId);
+            var customer = await _context.Customers.FindAsync(helpRequest.CustomerId);
             
             if (customer != null)
             {
                 var emailSubject = "Your Help Request Update";
                 var emailBody = _sendMailServiceTransHelp.GetEmailHelpBody(helpRequest);
-                await _sendMailServiceTransHelp.SendEmailHelpRequest(customer.Id,helpRequest);
+                await _sendMailServiceTransHelp.SendEmailHelpRequest(customer.PersonalId,helpRequest);
             }
             return RedirectToAction(nameof(Index));
         }
