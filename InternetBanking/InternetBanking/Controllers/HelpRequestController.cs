@@ -200,11 +200,10 @@ namespace InternetBanking.Controllers
             _context.Update(helpRequest);
             await _context.SaveChangesAsync();
             // Send email notification to the customer
-            var customer = await _context.Customers.FindAsync(helpRequest.CustomerId);
+            var customer = await _context.Customers!.FindAsync(helpRequest.CustomerId);
             
             if (customer != null)
             {
-                var emailSubject = "Your Help Request Update";
                 var emailBody = _sendMailServiceTransHelp.GetEmailHelpBody(helpRequest);
                 await _sendMailServiceTransHelp.SendEmailHelpRequest(customer.PersonalId,helpRequest);
             }
