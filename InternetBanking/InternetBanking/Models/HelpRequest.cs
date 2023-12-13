@@ -16,11 +16,11 @@ namespace InternetBanking.Models
         public required string AccountId {  get; set; }
 
         [ForeignKey("Customers")]
-        public required string CustomerId { get; set; }
+        public string? CustomerId { get; set; }
 
 
         [ForeignKey("Employees")]
-        public required string EmployeeId { get; set; }
+        public string? EmployeeId { get; set; }
 
         [ForeignKey("HelpRequestTypes")]
         [Required]

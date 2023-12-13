@@ -349,8 +349,8 @@ namespace InternetBanking.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AccountId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     RequestTypeId = table.Column<int>(type: "int", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -372,14 +372,12 @@ namespace InternetBanking.Migrations
                         name: "FK_HelpRequests_Customer_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customer",
-                        principalColumn: "PersonalId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "PersonalId");
                     table.ForeignKey(
                         name: "FK_HelpRequests_Employee_EmployeeId",
                         column: x => x.EmployeeId,
                         principalTable: "Employee",
-                        principalColumn: "EmpId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "EmpId");
                     table.ForeignKey(
                         name: "FK_HelpRequests_HelpRequestsTypes_HelpRequestTypeRequestTypeId",
                         column: x => x.HelpRequestTypeRequestTypeId,
@@ -439,9 +437,9 @@ namespace InternetBanking.Migrations
                     ServiceTypeId = table.Column<int>(type: "int", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false),
-                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     ServiceAccountNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    CustomerPersonalId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CustomerPersonalId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AccountNumber = table.Column<string>(type: "nvarchar(20)", nullable: true)
                 },
@@ -457,14 +455,12 @@ namespace InternetBanking.Migrations
                         name: "FK_Services_Customer_CustomerPersonalId",
                         column: x => x.CustomerPersonalId,
                         principalTable: "Customer",
-                        principalColumn: "PersonalId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "PersonalId");
                     table.ForeignKey(
                         name: "FK_Services_Employee_EmployeeId",
                         column: x => x.EmployeeId,
                         principalTable: "Employee",
-                        principalColumn: "EmpId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "EmpId");
                     table.ForeignKey(
                         name: "FK_Services_ServicesTypes_ServiceTypeId",
                         column: x => x.ServiceTypeId,
@@ -501,7 +497,7 @@ namespace InternetBanking.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CustomerId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     RequestId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Path = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
