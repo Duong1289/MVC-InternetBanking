@@ -12,7 +12,7 @@ namespace InternetBanking.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_HelpRequests_Employees_EmpId",
-                table: "HelpRequests");
+                table: "HelpRequests");//
 
             migrationBuilder.AlterColumn<string>(
                 name: "EmpId",
