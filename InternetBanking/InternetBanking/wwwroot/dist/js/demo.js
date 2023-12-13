@@ -8,7 +8,7 @@
 /* eslint-disable camelcase */
 
 (function ($) {
-  'use strict'
+  // 'use strict'
 
   // setTimeout(function () {
   //   if (window.___browserSync___ === undefined && Number(localStorage.getItem('AdminLTE:Demo:MessageShowed')) < Date.now()) {

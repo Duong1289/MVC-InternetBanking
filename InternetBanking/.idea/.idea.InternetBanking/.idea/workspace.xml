@@ -8,11 +8,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63a36561-732a-45d3-afb7-55125ac74dfb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/ProcessRequest.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/dataSources/57e4d81c-27ca-4e6a-a8e4-8a6f220e4d93.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/dataSources/57e4d81c-27ca-4e6a-a8e4-8a6f220e4d93.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Controllers/FaqCategoryController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Controllers/FaqController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Faq/Create.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Faq/Delete.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Faq/Details.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Faq/Edit.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Faq/Index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/FaqCategory/Create.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/FaqCategory/Delete.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/FaqCategory/Details.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/FaqCategory/Edit.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/FaqCategory/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/HelpRequestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/HelpRequestController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/StatementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/StatementController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/ProcessRequest.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/ProcessRequest.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/ProcessRequest.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Home/Header.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Home/Header.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/wwwroot/dist/js/demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/wwwroot/dist/js/demo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,29 +58,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.Run.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.smartKeys_rider&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.Run.executor": "Run",
+    ".NET Launch Settings Profile.Unnamed.executor": "Run",
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.smartKeys_rider",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,
-      &quot;/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,
-      &quot;/Users/KEN/.local/share/Symbols/src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache",
+      "/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache",
+      "/Users/KEN/.local/share/Symbols/src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Run" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/InternetBanking/InternetBanking.csproj" />
@@ -101,7 +117,7 @@
       <workItem from="1702390522947" duration="1261000" />
       <workItem from="1702399891756" duration="702000" />
       <workItem from="1702474380768" duration="4009000" />
-      <workItem from="1702478617804" duration="820000" />
+      <workItem from="1702478617804" duration="3755000" />
     </task>
     <servers />
   </component>
@@ -109,6 +125,7 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
 </project>

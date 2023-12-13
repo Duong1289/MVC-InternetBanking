@@ -31,7 +31,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.HelpRequestImageId)
             </th>
+            <th>Answer</th>
             <th></th>
+            
         </tr>
     </thead>
     <tbody>
@@ -54,6 +56,16 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.HelpRequestImageId)
+            </td>
+            <td>
+                @if(item.Answer == null)
+                {
+                    <a asp-action="ProcessRequest" asp-route-id="@item.Id">Answer</a>
+                }
+                else
+                {
+                    <p class="text-success">Processed</p>
+                }
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

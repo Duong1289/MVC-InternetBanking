@@ -47,7 +47,7 @@ namespace InternetBanking.Controllers
         [HttpPost]
         public async Task<IActionResult> ExportToXml(DateTime startDate, DateTime endDate)
         {
-            var statements = await _context.Transactions
+            var statements = await _context.Transactions!
                 .Where(t => t.TransactionDate >= startDate && t.TransactionDate <= endDate)
                 .OrderByDescending(t => t.TransactionDate)
                 .ToListAsync();
