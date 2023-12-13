@@ -206,13 +206,13 @@ namespace InternetBanking.Controllers
             await _context.SaveChangesAsync();
             // Send email notification to the customer
             var customer = await _userManager.Users
-                .FirstOrDefaultAsync(c => c.Id == helpRequest.AccountId);
+                .FirstOrDefaultAsync(c => c.PersonalId == helpRequest.CustomerId);
             
             if (customer != null)
             {
                 var emailSubject = "Your Help Request Update";
                 var emailBody = _sendMailServiceTransHelp.GetEmailHelpBody(helpRequest);
-                await _sendMailServiceTransHelp.SendEmailHelpRequest(customer.Id,helpRequest);
+                await _sendMailServiceTransHelp.SendEmailHelpRequest(customer.PersonalId,helpRequest);
             }
             return RedirectToAction(nameof(Index));
         }

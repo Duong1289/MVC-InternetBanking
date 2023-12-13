@@ -26,10 +26,9 @@ namespace InternetBanking.Models
         public double? Amount { get; set; }
 
 
-         [ForeignKey("Employee")]
-         [Column("EmpId")]
-         [Required]
-         public string? EmployeeId { get; set; }
+        [ForeignKey("Employees")]
+        [Required]
+        public string? EmployeeId { get; set; }
 
 
         [ForeignKey("Accounts")]
@@ -38,8 +37,7 @@ namespace InternetBanking.Models
         public string? ServiceAccountNumber { get; set;}
 
 
-        [ForeignKey("Customer")]
-        [Column("PersonalId")]
+        [ForeignKey("Customers")]
         [Required]
         public string? CustomerPersonalId { get; set; }
         

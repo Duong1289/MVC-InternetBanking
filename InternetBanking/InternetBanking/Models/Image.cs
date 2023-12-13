@@ -7,17 +7,12 @@ namespace InternetBanking.Models
     {
         [Key]
         public string? Id { get; set; }
-        
-        [ForeignKey("Accounts")]
-        [MaxLength(20)]
-        public required string AccountId {  get; set; }
 
-        [ForeignKey("Customer")]
-        [Column("PersonalId")]
+        [ForeignKey("Customers")]
+        [MaxLength(20)]
         public string? CustomerId { get; set; }
-        
-        [ForeignKey("Employee")]
-        [Column("EmpId")]
+
+        [ForeignKey("Employees")]
         public string? EmployeeId { get; set; }
 
         [ForeignKey("HelpRequests")]

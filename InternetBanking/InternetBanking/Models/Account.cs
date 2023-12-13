@@ -27,13 +27,12 @@ namespace InternetBanking.Models
         //Block/unlock
         
         [DefaultValue(true)]
-        public required bool Status { get; set;}
-
-
-        [ForeignKey("Customer")]
-        [Column("PersonalId")]
-        public string? CustomerId { get; set; }
-
+        public required bool Status { get; set;}        
+        
+        [Required]
+        [MaxLength(20)]
+        public required string CustomerPersonalId { get; set; }
+ 
         public ICollection<Service>? Services  { get; set; }
 
         public ICollection<Transaction>? Transactions  { get; set; }
