@@ -16887,7 +16887,6 @@ int</ExtendedProperties>
       <DataRetentionPeriod>-1</DataRetentionPeriod>
       <ModifiedTimestamp>2023-12-10.05:57:38.840</ModifiedTimestamp>
       <ObjectId>1625772849</ObjectId>
-      <Outdated>1</Outdated>
       <LedgerViewId>0</LedgerViewId>
       <LobDataSpaceId>0</LobDataSpaceId>
     </table>
@@ -17000,7 +16999,6 @@ int</ExtendedProperties>
       <DataRetentionPeriod>-1</DataRetentionPeriod>
       <ModifiedTimestamp>2023-12-10.05:57:39.777</ModifiedTimestamp>
       <ObjectId>1689773077</ObjectId>
-      <Outdated>1</Outdated>
       <LedgerViewId>0</LedgerViewId>
       <LobDataSpaceId>0</LobDataSpaceId>
     </table>

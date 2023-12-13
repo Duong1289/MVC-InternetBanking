@@ -11,14 +11,12 @@ namespace InternetBanking.Models
         //Ma giao dich tu sinh TTDH-yyyymmdd_radom text...
         public string? Id {  get; set; }
         
-        [ForeignKey("Account")]
-        // [Column("AccountNumber")]
+        [ForeignKey("Accounts")]
         [Required]
         [MaxLength(20)]
         public string? SenderAccountNumber { get; set; }
 
-        [ForeignKey("Account")]
-        // [Column("AccountNumber")]
+        [ForeignKey("Accounts")]
         [Required]
         [MaxLength(20)]
         public string? ReceiverAccountNumber { get; set; }

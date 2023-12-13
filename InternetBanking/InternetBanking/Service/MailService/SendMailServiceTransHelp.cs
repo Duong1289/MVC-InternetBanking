@@ -94,6 +94,8 @@ namespace InternetBanking.Service.MailService
             // Replace placeholders with actual content
             template = template.Replace("{{Id}}", helpRequest.Id.ToString())
                 .Replace("{{AccountId}}", helpRequest.AccountId)
+                .Replace("{{CustomerPersonalId}}", helpRequest.CustomerId)
+                .Replace("{{EmployeeId}}", helpRequest.EmployeeId)
                 .Replace("{{RequestTypeId}}", helpRequest.RequestTypeId.ToString())
                 .Replace("{{Content}}", helpRequest.Content)
                 .Replace("{{CreatedDate}}", helpRequest.CreatedDate.ToString())

@@ -22,27 +22,21 @@ namespace InternetBanking.Models
         public string? Content { get; set;}
 
         [Required]
-        // >= 0
         public double? Amount { get; set; }
 
 
-        // [ForeignKey("Employee")]
-        // [Column("EmployeeId")]
-        // [Required]
-        // public string? EmployeeId { get; set; }
-
+        [ForeignKey("Employees")]
+        [Required]
+        public string? EmployeeId { get; set; }
 
         [ForeignKey("Accounts")]
         [Required]
         [MaxLength(20)]
         public string? ServiceAccountNumber { get; set;}
 
-
-        // [ForeignKey("Customers")]
-        // [Column("CustomerId")]
-        // [Required]
-        // public string? CustomerPersonalId { get; set; }
-        
+        [ForeignKey("Customers")]
+        [Required]
+        public string? CustomerPersonalId { get; set; }
         
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

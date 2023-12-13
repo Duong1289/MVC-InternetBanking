@@ -14,7 +14,6 @@ namespace InternetBanking.Areas.Identity.Data
     // Add profile data for application users by adding properties to the InternetBankingUser class
     public class InternetBankingUser : IdentityUser
     {
-        
         [PersonalData]
         [Column(TypeName = "nvarchar(100)")]
         public string? FirstName { get; set; }
@@ -22,7 +21,7 @@ namespace InternetBanking.Areas.Identity.Data
         [Column(TypeName = "nvarchar(100)")]
         public string? LastName { get; set; }
 
-        public virtual Customer Customer { get; set; }  
-        public virtual Employee Employee { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual Employee Employee { get; set; }  
     }
 }
