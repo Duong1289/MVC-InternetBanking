@@ -206,7 +206,7 @@ namespace InternetBanking.Controllers
             await _context.SaveChangesAsync();
             // Send email notification to the customer
             var customer = await _userManager.Users
-                .FirstOrDefaultAsync(c => c.PersonalId == helpRequest.CustomerId);
+                .FirstOrDefaultAsync(c => c.PersonalId == helpRequest.AccountId);
             
             if (customer != null)
             {

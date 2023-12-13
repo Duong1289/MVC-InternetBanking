@@ -15,13 +15,14 @@ namespace InternetBanking.Models
         [MaxLength(20)]
         public required string AccountId {  get; set; }
 
-        [ForeignKey("Customers")]
-        [MaxLength(20)]
-        public required string CustomerId { get; set; }
+        // [ForeignKey("Customer")]
+        // [Column("CustomerId")]
+        // [MaxLength(20)]
+        // public required string CustomerId { get; set; }
 
-
-        [ForeignKey("Employees")]
-        public required string EmployeeId { get; set; }
+        // [ForeignKey("Employees")]
+        // [Column("EmployeeId")]
+        // public required string EmployeeId { get; set; }
 
         [ForeignKey("HelpRequestTypes")]
         [Required]
