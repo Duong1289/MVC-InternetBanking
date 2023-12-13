@@ -19,12 +19,14 @@ namespace InternetBanking.Service.MailService
     public class SendMailServiceTransHelp
     {
         readonly MailSetting MailSetting;
-        private readonly UserManager<InternetBankingUser> _userManager;
+        // private readonly UserManager<InternetBankingUser> _userManager;
+        InternetBankingContext _context;
 
-        public SendMailServiceTransHelp(IOptions<MailSetting> MailSetting, UserManager<InternetBankingUser> _userManager)
+        public SendMailServiceTransHelp(IOptions<MailSetting> MailSetting, InternetBankingContext _context)
         {
             this.MailSetting = MailSetting.Value;
-            this._userManager = _userManager;
+            this._context = _context;
+            // this._userManager = _userManager;
         }
         public string GetEmailBody(Transaction transac)
         {
@@ -106,11 +108,11 @@ namespace InternetBanking.Service.MailService
         
         public async Task SendEmailHelpRequest(string? id, HelpRequest helpRequest) {
             var message = new MimeMessage();
-            var customer = await _userManager.FindByIdAsync(id);
+            var customer = _context.Customers!.SingleOrDefault(c => c.PersonalId == helpRequest.CustomerId);
             message.From.Add(new MailboxAddress(MailSetting.DisplayName, MailSetting.Mail));
-            message.To.Add(new MailboxAddress(customer.LastName + customer.LastName, customer.Email));
+            message.To.Add(new MailboxAddress(customer.LastName+ " " + customer.LastName, customer.Email));
             message.Subject = "NexBank's Process HelpRequest! Thank you for using our service";
-
+            
             string htmlBody = GetEmailHelpBody(helpRequest);
 
             var bodyBuilder = new BodyBuilder();
