@@ -47,17 +47,6 @@ namespace InternetBanking.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [DataType(DataType.Text)]
-            [Display(Name = "First Name")]
-            public string? FirstName { get; set; }
-            [Required]
-            [DataType(DataType.Text)]
-            [Display(Name = "Last Name")]
-            public string? LastName { get; set; }
-            [DataType(DataType.Text)]
-            [Display(Name = "Username")]
-            public string? UserName { get; set; }
-            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -86,16 +75,12 @@ namespace InternetBanking.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new InternetBankingUser { UserName = Input.UserName, Email = Input.Email };
-                user.FirstName = Input.FirstName;
-                user.LastName = Input.LastName;
-                user.UserName = Input.UserName;
+                var user = new InternetBankingUser { UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
-                    //khi dang ky xong se tro thanh User
-                    await _userManager.AddToRoleAsync(user, "User");
+
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(
