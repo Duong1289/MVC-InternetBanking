@@ -29,13 +29,9 @@ namespace InternetBanking.Models
         [DefaultValue(true)]
         public required bool Status { get; set;}        
         
-<<<<<<< HEAD
         [Required]
-        [MaxLength(20)]
+       
         public required string CustomerPersonalId { get; set; }
-=======
-        public string? CustomerPersonalId { get; set; }
->>>>>>> parent of c480796 (update models)
  
         public ICollection<Service>? Services  { get; set; }
 

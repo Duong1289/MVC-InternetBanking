@@ -15,7 +15,6 @@ namespace InternetBanking.Models
         [MaxLength(20)]
         public required string AccountId {  get; set; }
 
-<<<<<<< HEAD
         [ForeignKey("Customers")]
         [MaxLength(20)]
         public required string CustomerId { get; set; }
@@ -23,16 +22,6 @@ namespace InternetBanking.Models
 
         [ForeignKey("Employees")]
         public required string EmployeeId { get; set; }
-=======
-        // [ForeignKey("Customer")]
-        // [Column("CustomerId")]
-        // [MaxLength(20)]
-        // public required string CustomerId { get; set; }
-
-        // [ForeignKey("Employees")]
-        // [Column("EmployeeId")]
-        // public required string EmployeeId { get; set; }
->>>>>>> parent of c480796 (update models)
 
         [ForeignKey("HelpRequestTypes")]
         [Required]
