@@ -30,7 +30,7 @@ namespace InternetBanking.Models
         public required bool Status { get; set;}        
         
         [Required]
-       
+        [ForeignKey("Customers")]
         public required string CustomerPersonalId { get; set; }
  
         public ICollection<Service>? Services  { get; set; }

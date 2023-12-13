@@ -16,7 +16,6 @@ namespace InternetBanking.Models
         public required string AccountId {  get; set; }
 
         [ForeignKey("Customers")]
-        [MaxLength(20)]
         public required string CustomerId { get; set; }
 
 
