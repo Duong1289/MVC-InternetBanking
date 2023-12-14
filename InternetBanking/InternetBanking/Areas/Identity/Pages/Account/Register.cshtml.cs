@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using InternetBanking.Models;
 
 namespace InternetBanking.Areas.Identity.Pages.Account
 {
@@ -24,17 +25,20 @@ namespace InternetBanking.Areas.Identity.Pages.Account
         private readonly UserManager<InternetBankingUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly InternetBankingContext _internetBankingContext;
 
         public RegisterModel(
             UserManager<InternetBankingUser> userManager,
             SignInManager<InternetBankingUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            InternetBankingContext internetBankingContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _internetBankingContext = internetBankingContext;
         }
 
         [BindProperty]
@@ -80,6 +84,17 @@ namespace InternetBanking.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+                    var customer = new Customer
+                    {
+                        Id = user.Id,
+                        Email = Input.Email,
+                        Status = false, // Assuming the user is not authenticated yet
+                        OpenDate = DateTime.Now, // Set the account open date
+                                                 // Set other properties as needed
+                    };
+
+                    _internetBankingContext.Customers.Add(customer);
+                    await _internetBankingContext.SaveChangesAsync();
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -91,6 +106,8 @@ namespace InternetBanking.Areas.Identity.Pages.Account
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+                    
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {

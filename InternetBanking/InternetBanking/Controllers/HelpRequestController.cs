@@ -182,34 +182,34 @@ namespace InternetBanking.Controllers
         }
         
         //POST: HelpRequest/ProcessRequest
-        [HttpPost]
-        public async Task<IActionResult> ProcessRequest(int? id, string answer)
-        {
-            if (id == null || _context.HelpRequests == null)
-            {
-                return NotFound();
-            }
+        
+        //public async Task<IActionResult> ProcessRequest(int? id, string answer)
+        //{
+        //    if (id == null || _context.HelpRequests == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var helpRequest = await _context.HelpRequests.FindAsync(id);
-            if (helpRequest == null)
-            {
-                return NotFound();
-            }
+        //    var helpRequest = await _context.HelpRequests.FindAsync(id);
+        //    if (helpRequest == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            helpRequest.Answer = answer;
-            helpRequest.Status = true;
+        //    helpRequest.Answer = answer;
+        //    helpRequest.Status = true;
             
-            _context.Update(helpRequest);
-            await _context.SaveChangesAsync();
-            // Send email notification to the customer
-            var customer = await _context.Customers!.FindAsync(helpRequest.CustomerId);
+        //    _context.Update(helpRequest);
+        //    await _context.SaveChangesAsync();
+        //    // Send email notification to the customer
+        //    var customer = await _context.Customers!.FindAsync(helpRequest.CustomerId);
             
-            if (customer != null)
-            {
-                var emailBody = _sendMailServiceTransHelp.GetEmailHelpBody(helpRequest);
-                //await _sendMailServiceTransHelp.SendEmailHelpRequest(customer.PersonalId,helpRequest);
-            }
-            return RedirectToAction(nameof(Index));
-        }
+            //if (customer != null)
+            //{
+            //    var emailBody = _sendMailServiceTransHelp.GetEmailHelpBody(helpRequest);
+            //    //await _sendMailServiceTransHelp.SendEmailHelpRequest(customer.PersonalId,helpRequest);
+            //}
+            //return RedirectToAction(nameof(Index));
+        
     }
 }
