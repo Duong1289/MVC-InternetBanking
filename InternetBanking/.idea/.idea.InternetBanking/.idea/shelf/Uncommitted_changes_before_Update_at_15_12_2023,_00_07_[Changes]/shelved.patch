@@ -1,0 +1,1422 @@
+Index: InternetBanking/Views/Shared/_Footer.cshtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>@* @model TModel *@\n\n@{\n    Layout = null;\n}\n\n<footer class=\"main-footer\">\n    <strong>Copyright &copy; 2014-2021 <a href=\"https://adminlte.io\">AdminLTE.io</a>.</strong>\n    All rights reserved.\n    <div class=\"float-right d-none d-sm-inline-block\">\n        <b>Version</b> 3.2.0\n    </div>\n</footer>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/InternetBanking/Views/Shared/_Footer.cshtml b/InternetBanking/Views/Shared/_Footer.cshtml
+--- a/InternetBanking/Views/Shared/_Footer.cshtml	(revision 6d431342eb5a0ae34ccb7f6af7fff7a2ce938a91)
++++ b/InternetBanking/Views/Shared/_Footer.cshtml	(date 1702572421901)
+@@ -5,9 +5,9 @@
+ }
+ 
+ <footer class="main-footer">
+-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
++    <strong>Copyright 2023 <a href="https://adminlte.io">Group 1 - FPT-Aptech</a>.</strong>
+     All rights reserved.
+     <div class="float-right d-none d-sm-inline-block">
+-        <b>Version</b> 3.2.0
++        <b>Version</b> 1.0.0
+     </div>
+ </footer>
+\ No newline at end of file
+Index: InternetBanking/Views/Shared/_Sidebar.cshtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>@* @model TModel *@\n\n@{\n    Layout = null;\n}\n\n<div class=\"sidebar\">\n    <!-- Sidebar user panel (optional) -->\n    <div class=\"user-panel mt-3 pb-3 mb-3 d-flex\">\n        <div class=\"image\">\n            <img src=\"images/logo.png\" class=\"img-circle elevation-2\" alt=\"User Image\">\n        </div>\n        <div class=\"info\">\n            <a asp class=\"d-block\">Alexander Pierce</a>\n        </div>\n    </div>\n\n    <!-- SidebarSearch Form -->\n    <div class=\"form-inline\">\n        <div class=\"input-group\" data-widget=\"sidebar-search\">\n            <input class=\"form-control form-control-sidebar\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n            <div class=\"input-group-append\">\n                <button class=\"btn btn-sidebar\">\n                    <i class=\"fas fa-search fa-fw\"></i>\n                </button>\n            </div>\n        </div>\n    </div>\n\n    <!-- Sidebar Menu -->\n    <nav class=\"mt-2\">\n        <ul class=\"nav nav-pills nav-sidebar flex-column\" data-widget=\"treeview\" role=\"menu\" data-accordion=\"false\">\n            <!-- Add icons to the links using the .nav-icon class\n                 with font-awesome or any other icon font library -->\n                 <li class=\"nav-header\"></li>\n                 \n                 <li class=\"nav-item menu-open\">\n                     <a href=\"#\" class=\"nav-link active\">\n                         <i class=\"nav-icon fas fa-tachometer-alt\"></i>\n                         <p>\n                             Accounts\n                             <i class=\"right fas fa-angle-left\"></i>\n                         </p>\n                     </a>\n                     <ul class=\"nav nav-treeview\">\n                         <li class=\"nav-item\">\n                             <a asp-controller=\"Account\" asp-action=\"Index\" class=\"nav-link\">\n                                 <i class=\"far fa-circle nav-icon\"></i>\n                                 <p>Manage Account</p>\n                             </a>\n                         </li>\n                     </ul>\n                 </li>\n                 @* Help Request *@\n                 <li class=\"nav-item\">\n                     <a href=\"#\" class=\"nav-link\">\n                         <i class=\"nav-icon fas fa-copy\"></i>\n                         <p>\n                             Help Request\n                             <i class=\"fas fa-angle-left right\"></i>\n                         </p>\n                     </a>\n                     <ul class=\"nav nav-treeview\">\n                         <li class=\"nav-item\">\n                             <a asp-controller=\"HelpRequest\" asp-action=\"Index\" class=\"nav-link\">\n                                 <i class=\"far fa-circle nav-icon\"></i>\n                                 <p>Manage Help Request</p>\n                             </a>\n                         </li>\n                     </ul>\n                 </li>\n                 @* Help Request Type *@\n                 <li class=\"nav-item\">\n                     <a href=\"#\" class=\"nav-link\">\n                         <i class=\"nav-icon fas fa-copy\"></i>\n                         <p>\n                             Help Request Types\n                             <i class=\"fas fa-angle-left right\"></i>\n                         </p>\n                     </a>\n                     <ul class=\"nav nav-treeview\">\n                         <li class=\"nav-item\">\n                             <a asp-controller=\"HelpRequest\" asp-action=\"Index\" class=\"nav-link\">\n                                 <i class=\"far fa-circle nav-icon\"></i>\n                                 <p>Manage Help Request Types</p>\n                             </a>\n                         </li>\n                     </ul>\n                 </li>\n                 @* FAQ *@\n                 <li class=\"nav-item\">\n                     <a href=\"#\" class=\"nav-link\">\n                         <i class=\"nav-icon fas fa-copy\"></i>\n                         <p>\n                             FAQ\n                             <i class=\"fas fa-angle-left right\"></i>\n                         </p>\n                     </a>\n                     <ul class=\"nav nav-treeview\">\n                         <li class=\"nav-item\">\n                             <a asp-controller=\"Faq\" asp-action=\"Index\" class=\"nav-link\">\n                                 <i class=\"far fa-circle nav-icon\"></i>\n                                 <p>Manage FAQ</p>\n                             </a>\n                         </li>\n                     </ul>\n                 </li>\n                 @* FAQ Category *@\n                 <li class=\"nav-item\">\n                     <a href=\"#\" class=\"nav-link\">\n                         <i class=\"nav-icon fas fa-copy\"></i>\n                         <p>\n                             FAQ Category\n                             <i class=\"fas fa-angle-left right\"></i>\n                         </p>\n                     </a>\n                     <ul class=\"nav nav-treeview\">\n                         <li class=\"nav-item\">\n                             <a asp-controller=\"FaqCategory\" asp-action=\"Index\" class=\"nav-link\">\n                                 <i class=\"far fa-circle nav-icon\"></i>\n                                 <p>Manage FAQ Category</p>\n                             </a>\n                         </li>\n                     </ul>\n                 </li>\n                 \n                 @* Statement *@\n                 <li class=\"nav-item\">\n                     <a href=\"#\" class=\"nav-link\">\n                         <i class=\"nav-icon fas fa-copy\"></i>\n                         <p>\n                             Statement\n                             <i class=\"fas fa-angle-left right\"></i>\n                         </p>\n                     </a>\n                     <ul class=\"nav nav-treeview\">\n                         <li class=\"nav-item\">\n                             <a asp-controller=\"Statement\" asp-action=\"Index\" class=\"nav-link\">\n                                 <i class=\"far fa-circle nav-icon\"></i>\n                                 <p>All Transaction Statements</p>\n                             </a>\n                         </li>\n                     </ul>\n                     \n                     <ul class=\"nav nav-treeview\">\n                         <li class=\"nav-item\">\n                             <a asp-controller=\"Statement\" asp-action=\"CreateStatement\" class=\"nav-link\">\n                                 <i class=\"far fa-circle nav-icon\"></i>\n                                 <p>Export Transaction Statements Within Period</p>\n                             </a>\n                         </li>\n                     </ul>\n                 </li>\n                 <li class=\"nav-item\">\n                                 <a href=\"#\" class=\"nav-link\">\n                                     <i class=\"nav-icon fas fa-copy\"></i>\n                                     <p>\n                                         Transfer fund\n                                         <i class=\"fas fa-angle-left right\"></i>\n                                     </p>\n                                 </a>\n                                 <ul class=\"nav nav-treeview\">\n                                     <li class=\"nav-item\">\n                                         <a asp-controller=\"Transaction\" asp-action=\"Index\" class=\"nav-link\">\n                                             <i class=\"far fa-circle nav-icon\"></i>\n                                             <p>Transaction</p>\n                                         </a>\n                                     </li>\n                                     <li class=\"nav-item\">\n                                        <a asp-controller=\"Transaction\" asp-action=\"TransactionHistory\" class=\"nav-link\">\n                                             <i class=\"far fa-circle nav-icon\"></i>\n                                             <p>View Transaction History </p>\n                                        </a>\n                                     </li>\n                                 </ul>\n                             </li>\n            <li class=\"nav-header\">Payment</li>\n            <li class=\"nav-item\">\n                <a href=\"#\" class=\"nav-link\">\n                    <i class=\"nav-icon fas fa-chart-pie\"></i>\n                    <p>\n                        Charts\n                        <i class=\"right fas fa-angle-left\"></i>\n                    </p>\n                </a>\n                <ul class=\"nav nav-treeview\">\n                    <li class=\"nav-item\">\n                        <a href=\"pages/charts/chartjs.html\" class=\"nav-link\">\n                            <i class=\"far fa-circle nav-icon\"></i>\n                            <p>ChartJS</p>\n                        </a>\n                    </li>\n                    <li class=\"nav-item\">\n                        <a href=\"pages/charts/flot.html\" class=\"nav-link\">\n                            <i class=\"far fa-circle nav-icon\"></i>\n                            <p>Flot</p>\n                        </a>\n                    </li>\n                    <li class=\"nav-item\">\n                        <a href=\"pages/charts/inline.html\" class=\"nav-link\">\n                            <i class=\"far fa-circle nav-icon\"></i>\n                            <p>Inline</p>\n                        </a>\n                    </li>\n                    <li class=\"nav-item\">\n                        <a href=\"pages/charts/uplot.html\" class=\"nav-link\">\n                            <i class=\"far fa-circle nav-icon\"></i>\n                            <p>uPlot</p>\n                        </a>\n                    </li>\n                </ul>\n            </li>\n            <li class=\"nav-header\">Utilities</li>\n            <li class=\"nav-item\">\n                <a href=\"#\" class=\"nav-link\">\n                    <i class=\"nav-icon fas fa-tree\"></i>\n                    <p>\n                         Setting\n                        <i class=\"fas fa-angle-left right\"></i>\n                    </p>\n                </a>\n                <ul class=\"nav nav-treeview\">\n                    <li class=\"nav-item\">\n                        <a href=\"pages/UI/general.html\" class=\"nav-link\">\n                            <i class=\"far fa-circle nav-icon\"></i>\n                            <p>General</p>\n                        </a>\n                    </li>\n                    <li class=\"nav-item\">\n                        <a href=\"pages/UI/icons.html\" class=\"nav-link\">\n                            <i class=\"far fa-circle nav-icon\"></i>\n                            <p>Icons</p>\n                        </a>\n                    </li>\n                    <li class=\"nav-item\">\n                        <a href=\"pages/UI/buttons.html\" class=\"nav-link\">\n                            <i class=\"far fa-circle nav-icon\"></i>\n                            <p>Buttons</p>\n                        </a>\n                    </li>\n                    <li class=\"nav-item\">\n                        <a href=\"pages/UI/sliders.html\" class=\"nav-link\">\n                            <i class=\"far fa-circle nav-icon\"></i>\n                            <p>Sliders</p>\n                        </a>\n                    </li>\n                    <li class=\"nav-item\">\n                        <a href=\"pages/UI/modals.html\" class=\"nav-link\">\n                            <i class=\"far fa-circle nav-icon\"></i>\n                            <p>Modals & Alerts</p>\n                        </a>\n                    </li>\n                    <li class=\"nav-item\">\n                        <a href=\"pages/UI/navbar.html\" class=\"nav-link\">\n                            <i class=\"far fa-circle nav-icon\"></i>\n                            <p>Navbar & Tabs</p>\n                        </a>\n                    </li>\n                    <li class=\"nav-item\">\n                        <a href=\"pages/UI/timeline.html\" class=\"nav-link\">\n                            <i class=\"far fa-circle nav-icon\"></i>\n                            <p>Timeline</p>\n                        </a>\n                    </li>\n                    <li class=\"nav-item\">\n                        <a href=\"pages/UI/ribbons.html\" class=\"nav-link\">\n                            <i class=\"far fa-circle nav-icon\"></i>\n                            <p>Ribbons</p>\n                        </a>\n                    </li>\n                </ul>\n            </li>\n            <li class=\"nav-item\">\n                <a href=\"#\" class=\"nav-link\">\n                    <i class=\"nav-icon fas fa-edit\"></i>\n                    <p>\n                        Forms\n                        <i class=\"fas fa-angle-left right\"></i>\n                    </p>\n                </a>\n                <ul class=\"nav nav-treeview\">\n                    <li class=\"nav-item\">\n                        <a href=\"pages/forms/general.html\" class=\"nav-link\">\n                            <i class=\"far fa-circle nav-icon\"></i>\n                            <p>General Elements</p>\n                        </a>\n                    </li>\n                    <li class=\"nav-item\">\n                        <a href=\"pages/forms/advanced.html\" class=\"nav-link\">\n                            <i class=\"far fa-circle nav-icon\"></i>\n                            <p>Advanced Elements</p>\n                        </a>\n                    </li>\n                    <li class=\"nav-item\">\n                        <a href=\"pages/forms/editors.html\" class=\"nav-link\">\n                            <i class=\"far fa-circle nav-icon\"></i>\n                            <p>Editors</p>\n                        </a>\n                    </li>\n                    <li class=\"nav-item\">\n                        <a href=\"pages/forms/validation.html\" class=\"nav-link\">\n                            <i class=\"far fa-circle nav-icon\"></i>\n                            <p>Validation</p>\n                        </a>\n                    </li>\n                </ul>\n            </li>\n            <li class=\"nav-item\">\n                <a href=\"#\" class=\"nav-link\">\n                    <i class=\"nav-icon fas fa-table\"></i>\n                    <p>\n                        User guide\n\n                    </p>\n                </a>\n            </li>\n            <li class=\"nav-item\">\n                <a href=\"#\" class=\"nav-link\">\n                    <i class=\"nav-icon fas fa-table\"></i>\n                    <p>\n                        Change password\n                    </p>\n                </a>\n            </li>\n            \n            <li class=\"nav-item\">\n                <a href=\"#\" class=\"nav-link\">\n                    <i class=\"nav-icon far fa-circle text-danger\"></i>\n                    <p class=\"text\">Close account</p>\n                </a>\n            </li>\n            \n        </ul>\n    </nav>\n    <!-- /.sidebar-menu -->\n</div>\n  
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/InternetBanking/Views/Shared/_Sidebar.cshtml b/InternetBanking/Views/Shared/_Sidebar.cshtml
+--- a/InternetBanking/Views/Shared/_Sidebar.cshtml	(revision 6d431342eb5a0ae34ccb7f6af7fff7a2ce938a91)
++++ b/InternetBanking/Views/Shared/_Sidebar.cshtml	(date 1702572966579)
+@@ -8,7 +8,7 @@
+     <!-- Sidebar user panel (optional) -->
+     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+         <div class="image">
+-            <img src="images/logo.png" class="img-circle elevation-2" alt="User Image">
++            <img src="~/images/logo.png" class="img-circle elevation-2" alt="User Image">
+         </div>
+         <div class="info">
+             <a asp class="d-block">Alexander Pierce</a>
+@@ -32,302 +32,172 @@
+         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+             <!-- Add icons to the links using the .nav-icon class
+                  with font-awesome or any other icon font library -->
+-                 <li class="nav-header"></li>
+-                 
+-                 <li class="nav-item menu-open">
+-                     <a href="#" class="nav-link active">
+-                         <i class="nav-icon fas fa-tachometer-alt"></i>
+-                         <p>
+-                             Accounts
+-                             <i class="right fas fa-angle-left"></i>
+-                         </p>
+-                     </a>
+-                     <ul class="nav nav-treeview">
+-                         <li class="nav-item">
+-                             <a asp-controller="Account" asp-action="Index" class="nav-link">
+-                                 <i class="far fa-circle nav-icon"></i>
+-                                 <p>Manage Account</p>
+-                             </a>
+-                         </li>
+-                     </ul>
+-                 </li>
++                 <li class="nav-header">Nex Bank Account</li>
++                 @* Account *@
++            <li class="nav-item">
++                <a href="#" class="nav-link active">
++                    <i class="nav-icon fas fa-tachometer-alt"></i>
++                    <p>
++                        Accounts
++                        <i class="right fas fa-angle-left"></i>
++                    </p>
++                </a>
++                <ul class="nav nav-treeview">
++                    <li class="nav-item">
++                        <a asp-controller="Account" asp-action="Index" class="nav-link">
++                            <i class="far fa-circle nav-icon"></i>
++                            <p>Manage Account</p>
++                        </a>
++                    </li>
++                </ul>
++            </li>
++            @* Customer *@
++            <li class="nav-item">
++                <a href="#" class="nav-link active">
++                    <i class="nav-icon fas fa-tachometer-alt"></i>
++                    <p>
++                        Customers
++                        <i class="right fas fa-angle-left"></i>
++                    </p>
++                </a>
++                <ul class="nav nav-treeview">
++                    <li class="nav-item">
++                        <a asp-controller="Account" asp-action="Index" class="nav-link">
++                            <i class="far fa-circle nav-icon"></i>
++                            <p>View Customer</p>
++                        </a>
++                    </li>
++                </ul>
++            </li>
++            
+                  @* Help Request *@
+-                 <li class="nav-item">
+-                     <a href="#" class="nav-link">
+-                         <i class="nav-icon fas fa-copy"></i>
+-                         <p>
+-                             Help Request
+-                             <i class="fas fa-angle-left right"></i>
+-                         </p>
+-                     </a>
+-                     <ul class="nav nav-treeview">
+-                         <li class="nav-item">
+-                             <a asp-controller="HelpRequest" asp-action="Index" class="nav-link">
+-                                 <i class="far fa-circle nav-icon"></i>
+-                                 <p>Manage Help Request</p>
+-                             </a>
+-                         </li>
+-                     </ul>
+-                 </li>
++            <li class="nav-item">
++                <a href="#" class="nav-link active">
++                    <i class="nav-icon fas fa-copy"></i>
++                    <p>
++                        Help Request 
++                        <i class="fas fa-angle-left right"></i>
++                    </p>
++                </a>
++                <ul class="nav nav-treeview">
++                    <li class="nav-item">
++                        <a asp-controller="HelpRequest" asp-action="Index" class="nav-link">
++                            <i class="far fa-circle nav-icon"></i>
++                            <p>Manage Help Request</p>
++                        </a>
++                    </li>
++                </ul>
++            </li>
++            
+                  @* Help Request Type *@
+-                 <li class="nav-item">
+-                     <a href="#" class="nav-link">
+-                         <i class="nav-icon fas fa-copy"></i>
+-                         <p>
+-                             Help Request Types
+-                             <i class="fas fa-angle-left right"></i>
+-                         </p>
+-                     </a>
+-                     <ul class="nav nav-treeview">
+-                         <li class="nav-item">
+-                             <a asp-controller="HelpRequest" asp-action="Index" class="nav-link">
+-                                 <i class="far fa-circle nav-icon"></i>
+-                                 <p>Manage Help Request Types</p>
+-                             </a>
+-                         </li>
+-                     </ul>
+-                 </li>
++            <li class="nav-item">
++                <a href="#" class="nav-link active">
++                    <i class="nav-icon fas fa-copy"></i>
++                    <p>
++                        Help Request Types
++                        <i class="fas fa-angle-left right"></i>
++                    </p>
++                </a>
++                <ul class="nav nav-treeview">
++                    <li class="nav-item">
++                        <a asp-controller="HelpRequest" asp-action="Index" class="nav-link">
++                            <i class="far fa-circle nav-icon"></i>
++                            <p>Manage Help Request Types</p>
++                        </a>
++                    </li>
++                </ul>
++            </li>
++            
+                  @* FAQ *@
+-                 <li class="nav-item">
+-                     <a href="#" class="nav-link">
+-                         <i class="nav-icon fas fa-copy"></i>
+-                         <p>
+-                             FAQ
+-                             <i class="fas fa-angle-left right"></i>
+-                         </p>
+-                     </a>
+-                     <ul class="nav nav-treeview">
+-                         <li class="nav-item">
+-                             <a asp-controller="Faq" asp-action="Index" class="nav-link">
+-                                 <i class="far fa-circle nav-icon"></i>
+-                                 <p>Manage FAQ</p>
+-                             </a>
+-                         </li>
+-                     </ul>
+-                 </li>
++            <li class="nav-item">
++                <a href="#" class="nav-link active">
++                    <i class="nav-icon fas fa-copy"></i>
++                    <p>
++                        FAQ
++                        <i class="fas fa-angle-left right"></i>
++                    </p>
++                </a>
++                <ul class="nav nav-treeview">
++                    <li class="nav-item">
++                        <a asp-controller="Faq" asp-action="Index" class="nav-link">
++                            <i class="far fa-circle nav-icon"></i>
++                            <p>Manage FAQ</p>
++                        </a>
++                    </li>
++                </ul>
++            </li>
++            
+                  @* FAQ Category *@
+-                 <li class="nav-item">
+-                     <a href="#" class="nav-link">
+-                         <i class="nav-icon fas fa-copy"></i>
+-                         <p>
+-                             FAQ Category
+-                             <i class="fas fa-angle-left right"></i>
+-                         </p>
+-                     </a>
+-                     <ul class="nav nav-treeview">
+-                         <li class="nav-item">
+-                             <a asp-controller="FaqCategory" asp-action="Index" class="nav-link">
+-                                 <i class="far fa-circle nav-icon"></i>
+-                                 <p>Manage FAQ Category</p>
+-                             </a>
+-                         </li>
+-                     </ul>
+-                 </li>
++            <li class="nav-item">
++                <a href="#" class="nav-link active">
++                    <i class="nav-icon fas fa-copy"></i>
++                    <p>
++                        FAQ Category
++                        <i class="fas fa-angle-left right"></i>
++                    </p>
++                </a>
++                <ul class="nav nav-treeview">
++                    <li class="nav-item">
++                        <a asp-controller="FaqCategory" asp-action="Index" class="nav-link">
++                            <i class="far fa-circle nav-icon"></i>
++                            <p>Manage FAQ Category</p>
++                        </a>
++                    </li>
++                </ul>
++            </li>
++            
+                  
+                  @* Statement *@
+-                 <li class="nav-item">
+-                     <a href="#" class="nav-link">
+-                         <i class="nav-icon fas fa-copy"></i>
+-                         <p>
+-                             Statement
+-                             <i class="fas fa-angle-left right"></i>
+-                         </p>
+-                     </a>
+-                     <ul class="nav nav-treeview">
+-                         <li class="nav-item">
+-                             <a asp-controller="Statement" asp-action="Index" class="nav-link">
+-                                 <i class="far fa-circle nav-icon"></i>
+-                                 <p>All Transaction Statements</p>
+-                             </a>
+-                         </li>
+-                     </ul>
++            <li class="nav-item">
++                <a href="#" class="nav-link active">
++                    <i class="nav-icon fas fa-copy"></i>
++                    <p>
++                        Statement
++                        <i class="fas fa-angle-left right"></i>
++                    </p>
++                </a>
++                <ul class="nav nav-treeview">
++                    <li class="nav-item">
++                        <a asp-controller="Statement" asp-action="Index" class="nav-link">
++                            <i class="far fa-circle nav-icon"></i>
++                            <p>All Transaction Statements</p>
++                        </a>
++                    </li>
++                </ul>
+                      
+-                     <ul class="nav nav-treeview">
+-                         <li class="nav-item">
+-                             <a asp-controller="Statement" asp-action="CreateStatement" class="nav-link">
+-                                 <i class="far fa-circle nav-icon"></i>
+-                                 <p>Export Transaction Statements Within Period</p>
+-                             </a>
+-                         </li>
+-                     </ul>
+-                 </li>
+-                 <li class="nav-item">
+-                                 <a href="#" class="nav-link">
+-                                     <i class="nav-icon fas fa-copy"></i>
+-                                     <p>
+-                                         Transfer fund
+-                                         <i class="fas fa-angle-left right"></i>
+-                                     </p>
+-                                 </a>
+-                                 <ul class="nav nav-treeview">
+-                                     <li class="nav-item">
+-                                         <a asp-controller="Transaction" asp-action="Index" class="nav-link">
+-                                             <i class="far fa-circle nav-icon"></i>
+-                                             <p>Transaction</p>
+-                                         </a>
+-                                     </li>
+-                                     <li class="nav-item">
+-                                        <a asp-controller="Transaction" asp-action="TransactionHistory" class="nav-link">
+-                                             <i class="far fa-circle nav-icon"></i>
+-                                             <p>View Transaction History </p>
+-                                        </a>
+-                                     </li>
+-                                 </ul>
+-                             </li>
+-            <li class="nav-header">Payment</li>
+-            <li class="nav-item">
+-                <a href="#" class="nav-link">
+-                    <i class="nav-icon fas fa-chart-pie"></i>
+-                    <p>
+-                        Charts
+-                        <i class="right fas fa-angle-left"></i>
+-                    </p>
+-                </a>
+-                <ul class="nav nav-treeview">
+-                    <li class="nav-item">
+-                        <a href="pages/charts/chartjs.html" class="nav-link">
+-                            <i class="far fa-circle nav-icon"></i>
+-                            <p>ChartJS</p>
+-                        </a>
+-                    </li>
+-                    <li class="nav-item">
+-                        <a href="pages/charts/flot.html" class="nav-link">
+-                            <i class="far fa-circle nav-icon"></i>
+-                            <p>Flot</p>
+-                        </a>
+-                    </li>
+-                    <li class="nav-item">
+-                        <a href="pages/charts/inline.html" class="nav-link">
+-                            <i class="far fa-circle nav-icon"></i>
+-                            <p>Inline</p>
+-                        </a>
+-                    </li>
+-                    <li class="nav-item">
+-                        <a href="pages/charts/uplot.html" class="nav-link">
+-                            <i class="far fa-circle nav-icon"></i>
+-                            <p>uPlot</p>
++                <ul class="nav nav-treeview">
++                    <li class="nav-item">
++                        <a asp-controller="Statement" asp-action="CreateStatement" class="nav-link">
++                            <i class="far fa-circle nav-icon"></i>
++                            <p>Export Transaction Statements Within Period</p>
++                        </a>
++                    </li>
++                </ul>
++            </li>
++            
++            @* Tranferfund *@
++            <li class="nav-item">
++                <a href="#" class="nav-link active">
++                    <i class="nav-icon fas fa-copy"></i>
++                    <p>
++                        Transfer fund
++                        <i class="fas fa-angle-left right"></i>
++                    </p>
++                </a>
++                <ul class="nav nav-treeview">
++                    <li class="nav-item">
++                        <a asp-controller="Transaction" asp-action="Index" class="nav-link">
++                            <i class="far fa-circle nav-icon"></i>
++                            <p>Transaction</p>
++                        </a>
++                    </li>
++                    <li class="nav-item">
++                        <a asp-controller="Transaction" asp-action="TransactionHistory" class="nav-link">
++                            <i class="far fa-circle nav-icon"></i>
++                            <p>View Transaction History </p>
+                         </a>
+                     </li>
+                 </ul>
+-            </li>
+-            <li class="nav-header">Utilities</li>
+-            <li class="nav-item">
+-                <a href="#" class="nav-link">
+-                    <i class="nav-icon fas fa-tree"></i>
+-                    <p>
+-                         Setting
+-                        <i class="fas fa-angle-left right"></i>
+-                    </p>
+-                </a>
+-                <ul class="nav nav-treeview">
+-                    <li class="nav-item">
+-                        <a href="pages/UI/general.html" class="nav-link">
+-                            <i class="far fa-circle nav-icon"></i>
+-                            <p>General</p>
+-                        </a>
+-                    </li>
+-                    <li class="nav-item">
+-                        <a href="pages/UI/icons.html" class="nav-link">
+-                            <i class="far fa-circle nav-icon"></i>
+-                            <p>Icons</p>
+-                        </a>
+-                    </li>
+-                    <li class="nav-item">
+-                        <a href="pages/UI/buttons.html" class="nav-link">
+-                            <i class="far fa-circle nav-icon"></i>
+-                            <p>Buttons</p>
+-                        </a>
+-                    </li>
+-                    <li class="nav-item">
+-                        <a href="pages/UI/sliders.html" class="nav-link">
+-                            <i class="far fa-circle nav-icon"></i>
+-                            <p>Sliders</p>
+-                        </a>
+-                    </li>
+-                    <li class="nav-item">
+-                        <a href="pages/UI/modals.html" class="nav-link">
+-                            <i class="far fa-circle nav-icon"></i>
+-                            <p>Modals & Alerts</p>
+-                        </a>
+-                    </li>
+-                    <li class="nav-item">
+-                        <a href="pages/UI/navbar.html" class="nav-link">
+-                            <i class="far fa-circle nav-icon"></i>
+-                            <p>Navbar & Tabs</p>
+-                        </a>
+-                    </li>
+-                    <li class="nav-item">
+-                        <a href="pages/UI/timeline.html" class="nav-link">
+-                            <i class="far fa-circle nav-icon"></i>
+-                            <p>Timeline</p>
+-                        </a>
+-                    </li>
+-                    <li class="nav-item">
+-                        <a href="pages/UI/ribbons.html" class="nav-link">
+-                            <i class="far fa-circle nav-icon"></i>
+-                            <p>Ribbons</p>
+-                        </a>
+-                    </li>
+-                </ul>
+-            </li>
+-            <li class="nav-item">
+-                <a href="#" class="nav-link">
+-                    <i class="nav-icon fas fa-edit"></i>
+-                    <p>
+-                        Forms
+-                        <i class="fas fa-angle-left right"></i>
+-                    </p>
+-                </a>
+-                <ul class="nav nav-treeview">
+-                    <li class="nav-item">
+-                        <a href="pages/forms/general.html" class="nav-link">
+-                            <i class="far fa-circle nav-icon"></i>
+-                            <p>General Elements</p>
+-                        </a>
+-                    </li>
+-                    <li class="nav-item">
+-                        <a href="pages/forms/advanced.html" class="nav-link">
+-                            <i class="far fa-circle nav-icon"></i>
+-                            <p>Advanced Elements</p>
+-                        </a>
+-                    </li>
+-                    <li class="nav-item">
+-                        <a href="pages/forms/editors.html" class="nav-link">
+-                            <i class="far fa-circle nav-icon"></i>
+-                            <p>Editors</p>
+-                        </a>
+-                    </li>
+-                    <li class="nav-item">
+-                        <a href="pages/forms/validation.html" class="nav-link">
+-                            <i class="far fa-circle nav-icon"></i>
+-                            <p>Validation</p>
+-                        </a>
+-                    </li>
+-                </ul>
+-            </li>
+-            <li class="nav-item">
+-                <a href="#" class="nav-link">
+-                    <i class="nav-icon fas fa-table"></i>
+-                    <p>
+-                        User guide
+-
+-                    </p>
+-                </a>
+-            </li>
+-            <li class="nav-item">
+-                <a href="#" class="nav-link">
+-                    <i class="nav-icon fas fa-table"></i>
+-                    <p>
+-                        Change password
+-                    </p>
+-                </a>
+-            </li>
+-            
+-            <li class="nav-item">
+-                <a href="#" class="nav-link">
+-                    <i class="nav-icon far fa-circle text-danger"></i>
+-                    <p class="text">Close account</p>
+-                </a>
+             </li>
+             
+         </ul>
+Index: InternetBanking/Views/Shared/_Layout.cshtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <title>Nex Bank | Digital Bank</title>\n\n    <!-- Google Font: Source Sans Pro -->\n    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback\">\n    <!-- Font Awesome Icons -->\n    <link rel=\"stylesheet\" href=\"~/plugins/fontawesome-free/css/all.min.css\">\n    <!-- overlayScrollbars -->\n    <link rel=\"stylesheet\" href=\"~/plugins/overlayScrollbars/css/OverlayScrollbars.min.css\">\n    <!-- Theme style -->\n    <link rel=\"stylesheet\" href=\"~/dist/css/adminlte.min.css\">\n    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\n          integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">\n    <script src=\"https://code.jquery.com/jquery-3.3.1.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\" integrity=\"sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1\" crossorigin=\"anonymous\"></script>\n    <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\" integrity=\"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIu/n1z4C7ZJS3c5pFX1u5tjQ4SQ==\" crossorigin=\"anonymous\"></script>\n    \n    @RenderSection(\"Styles\", required: false)\n</head>\n<body class=\"hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed\">\n    <div class=\"wrapper\">\n\n        <!-- Preloader -->\n        <div class=\"preloader flex-column justify-content-center align-items-center\">\n            <img class=\"animation__wobble\" src=\"~/images/logo.png\" alt=\"AdminLTELogo\" height=\"60\" width=\"60\">\n        </div>\n\n        @await Html.PartialAsync(\"_Navbar\")\n        <!-- Main Sidebar Container -->\n        <aside class=\"main-sidebar sidebar-dark-primary elevation-4\">\n            <!-- Brand Logo -->\n            <a href=\"index3.html\" class=\"brand-link\">\n                <img src=\"dist/img/AdminLTELogo.png\" alt=\"AdminLTE Logo\" class=\"brand-image img-circle elevation-3\" style=\"opacity: .8\">\n                <span class=\"brand-text font-weight-light\">Nex Bank</span>\n            </a>\n\n            <!-- Sidebar -->\n            @await Html.PartialAsync(\"_Sidebar\")\n            <!-- /.sidebar -->\n        </aside>\n\n        <!-- Content Wrapper. Contains page content -->\n        <div class=\"content-wrapper\">\n            <section class=\"content\">\n                <div class=\"container-fluid\">\n                    @RenderBody()\n                </div>\n            </section>            \n        </div>\n        \n        <!-- /.content-wrapper -->\n        <!-- Control Sidebar -->\n        <aside class=\"control-sidebar control-sidebar-dark\">\n            <!-- Control sidebar content goes here -->\n        </aside>\n        <!-- /.control-sidebar -->\n        <!-- Main Footer -->\n        \n    </div>\n    @RenderSection(\"Scripts\", required: false)\n    <!-- ./wrapper -->\n    <!-- REQUIRED SCRIPTS -->\n    <!-- jQuery -->\n    <script src=\"~/plugins/jquery/jquery.min.js\"></script>\n    <!-- Bootstrap -->\n    <script src=\"~/plugins/bootstrap/js/bootstrap.bundle.min.js\"></script>\n    <!-- overlayScrollbars -->\n    <script src=\"~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js\"></script>\n    <!-- AdminLTE App -->\n    <script src=\"~/dist/js/adminlte.js\"></script>\n\n    <!-- PAGE PLUGINS -->\n    <!-- jQuery Mapael -->\n    <script src=\"~/plugins/jquery-mousewheel/jquery.mousewheel.js\"></script>\n    <script src=\"~/plugins/raphael/raphael.min.js\"></script>\n    <script src=\"~/plugins/jquery-mapael/jquery.mapael.min.js\"></script>\n    <script src=\"~/plugins/jquery-mapael/maps/usa_states.min.js\"></script>\n    <!-- ChartJS -->\n    <script src=\"~/plugins/chart.js/Chart.min.js\"></script>\n\n    <!-- AdminLTE for demo purposes -->\n    <script src=\"~/dist/js/demo.js\"></script>\n    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->\n    <script src=\"~/dist/js/pages/dashboard2.js\"></script>\n</body>\n</html>\n@section Scripts{\n    @await RenderSectionAsync(\"Scripts\", required: false)\n    <script>\n        $(function () {\n            const currentPage = location.pathname;\n            $('.nav-tabs li a').each(function () {\n                const $this = $(this);\n                if (currentPage.toLowerCase().indexOf($this.attr('href').toLowerCase()) !== -1) {\n                    $this.addClass('active');\n                }\n            })\n        })\n    </script>\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/InternetBanking/Views/Shared/_Layout.cshtml b/InternetBanking/Views/Shared/_Layout.cshtml
+--- a/InternetBanking/Views/Shared/_Layout.cshtml	(revision 6d431342eb5a0ae34ccb7f6af7fff7a2ce938a91)
++++ b/InternetBanking/Views/Shared/_Layout.cshtml	(date 1702572421907)
+@@ -34,7 +34,7 @@
+         <aside class="main-sidebar sidebar-dark-primary elevation-4">
+             <!-- Brand Logo -->
+             <a href="index3.html" class="brand-link">
+-                <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
++                <img src="~/images/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                 <span class="brand-text font-weight-light">Nex Bank</span>
+             </a>
+ 
+Index: InternetBanking/Views/Customer/Index.cshtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>@model IEnumerable<InternetBanking.Models.Customer>\n\n@{\n    ViewData[\"Title\"] = \"Index\";\n    Layout = \"~/Views/Shared/_Layout.cshtml\";\n}\n\n<h1>Index</h1>\n\n<p>\n    <a asp-action=\"Create\">Create New</a>\n</p>\n<table class=\"table\">\n    <thead>\n        <tr>\n            <th>\n                @Html.DisplayNameFor(model => model.PersonalId)\n            </th>\n            <th>\n                @Html.DisplayNameFor(model => model.Email)\n            </th>\n            <th>\n                @Html.DisplayNameFor(model => model.Phone)\n            </th>\n            <th>\n                @Html.DisplayNameFor(model => model.FirstName)\n            </th>\n            <th>\n                @Html.DisplayNameFor(model => model.LastName)\n            </th>\n            <th>\n                @Html.DisplayNameFor(model => model.Address)\n            </th>\n            <th>\n                @Html.DisplayNameFor(model => model.OpenDate)\n            </th>\n            <th>\n                @Html.DisplayNameFor(model => model.Status)\n            </th>\n            <th>\n                @Html.DisplayNameFor(model => model.InternetBankingUser)\n            </th>\n            <th></th>\n        </tr>\n    </thead>\n    <tbody>\n@foreach (var item in Model) {\n        <tr>\n            <td>\n                @Html.DisplayFor(modelItem => item.PersonalId)\n            </td>\n            <td>\n                @Html.DisplayFor(modelItem => item.Email)\n            </td>\n            <td>\n                @Html.DisplayFor(modelItem => item.Phone)\n            </td>\n            <td>\n                @Html.DisplayFor(modelItem => item.FirstName)\n            </td>\n            <td>\n                @Html.DisplayFor(modelItem => item.LastName)\n            </td>\n            <td>\n                @Html.DisplayFor(modelItem => item.Address)\n            </td>\n            <td>\n                @Html.DisplayFor(modelItem => item.OpenDate)\n            </td>\n            <td>\n                @Html.DisplayFor(modelItem => item.Status)\n            </td>\n            <td>\n                @Html.DisplayFor(modelItem => item.InternetBankingUser.Id)\n            </td>\n            <td>\n                <a asp-action=\"Edit\" asp-route-id=\"@item.Id\">Edit</a> |\n                <a asp-action=\"Details\" asp-route-id=\"@item.Id\">Details</a> |\n                <a asp-action=\"Delete\" asp-route-id=\"@item.Id\">Delete</a>\n            </td>\n        </tr>\n}\n    </tbody>\n</table>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/InternetBanking/Views/Customer/Index.cshtml b/InternetBanking/Views/Customer/Index.cshtml
+--- a/InternetBanking/Views/Customer/Index.cshtml	(revision 6d431342eb5a0ae34ccb7f6af7fff7a2ce938a91)
++++ b/InternetBanking/Views/Customer/Index.cshtml	(date 1702572115459)
+@@ -8,7 +8,7 @@
+ <h1>Index</h1>
+ 
+ <p>
+-    <a asp-action="Create">Create New</a>
++    @* <a asp-action="Create">Create New</a> *@
+ </p>
+ <table class="table">
+     <thead>
+@@ -76,7 +76,7 @@
+             <td>
+                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
++                @* <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
+             </td>
+         </tr>
+ }
+Index: InternetBanking/Areas/Identity/Pages/Account/Manage/_Layout.cshtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>@{\n    if (ViewData.TryGetValue(\"ParentLayout\", out var parentLayout) && parentLayout !=  null)\n    {\n        Layout = parentLayout.ToString();\n    }\n    else\n    {\n        Layout = \"Area/Identity/Pages/_Layout.cshtml\";\n    }\n}\n\n<h1>Manage your account</h1>\n\n<div>\n    <h2>Change your account settings</h2>\n    <hr />\n    <div class=\"row\">\n        <div class=\"col-md-3\">\n            <partial name=\"_ManageNav\" />\n        </div>\n        <div class=\"col-md-9\">\n            @RenderBody()\n        </div>\n    </div>\n</div>\n\n@section Scripts {\n    @RenderSection(\"Scripts\", required: false)\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/InternetBanking/Areas/Identity/Pages/Account/Manage/_Layout.cshtml b/InternetBanking/Areas/Identity/Pages/Account/Manage/_Layout.cshtml
+--- a/InternetBanking/Areas/Identity/Pages/Account/Manage/_Layout.cshtml	(revision 6d431342eb5a0ae34ccb7f6af7fff7a2ce938a91)
++++ b/InternetBanking/Areas/Identity/Pages/Account/Manage/_Layout.cshtml	(date 1702571287476)
+@@ -5,7 +5,7 @@
+     }
+     else
+     {
+-        Layout = "Area/Identity/Pages/_Layout.cshtml";
++        Layout = null;
+     }
+ }
+ 
+Index: .idea/.idea.InternetBanking/.idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoGeneratedRunConfigurationManager\">\n    <projectFile profileName=\"http\">InternetBanking/InternetBanking.csproj</projectFile>\n  </component>\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"63a36561-732a-45d3-afb7-55125ac74dfb\" name=\"Changes\" comment=\"\">\n      <change afterPath=\"$PROJECT_DIR$/InternetBanking/Views/Account/Create.cshtml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/InternetBanking/Views/Account/Delete.cshtml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/InternetBanking/Views/Account/Details.cshtml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/InternetBanking/Views/Account/Edit.cshtml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/InternetBanking/Views/Account/Index.cshtml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/InternetBanking/Views/Customer/Create.cshtml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/InternetBanking/Views/Customer/Delete.cshtml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/InternetBanking/Views/Customer/Details.cshtml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/InternetBanking/Views/Customer/Edit.cshtml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/InternetBanking/Views/Customer/Index.cshtml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/InternetBanking/Areas/Identity/Pages/Account/Manage/_Layout.cshtml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/InternetBanking/Areas/Identity/Pages/Account/Manage/_Layout.cshtml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/InternetBanking/Controllers/AccountsController.cs\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/InternetBanking/Controllers/AccountController.cs\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/InternetBanking/Controllers/CustomersController.cs\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/InternetBanking/Controllers/CustomerController.cs\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"HTML File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\n  </component>\n  <component name=\"HighlightingSettingsPerFile\">\n    <setting file=\"file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/349375d06f3745f68d82860b9f9ab3a42f400/a6/7dc2affd/SignInManager`1.cs\" root0=\"SKIP_HIGHLIGHTING\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 5\n}</component>\n  <component name=\"ProjectId\" id=\"2ZHkWdNMmqlTgYbYZbcXYF3gmtF\" />\n  <component name=\"ProjectLevelVcsManager\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;.NET Launch Settings Profile.Run.executor&quot;: &quot;Run&quot;,\n    &quot;.NET Launch Settings Profile.Unnamed.executor&quot;: &quot;Run&quot;,\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\n    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.smartKeys_rider&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  },\n  &quot;keyToStringList&quot;: {\n    &quot;rider.external.source.directories&quot;: [\n      &quot;/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,\n      &quot;/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,\n      &quot;/Users/KEN/.local/share/Symbols/src&quot;\n    ]\n  }\n}</component>\n  <component name=\"RunManager\">\n    <configuration name=\"Run\" type=\"LaunchSettings\" factoryName=\".NET Launch Settings Profile\">\n      <option name=\"LAUNCH_PROFILE_PROJECT_FILE_PATH\" value=\"$PROJECT_DIR$/InternetBanking/InternetBanking.csproj\" />\n      <option name=\"LAUNCH_PROFILE_TFM\" value=\"net7.0\" />\n      <option name=\"LAUNCH_PROFILE_NAME\" value=\"http\" />\n      <option name=\"USE_EXTERNAL_CONSOLE\" value=\"0\" />\n      <option name=\"USE_MONO\" value=\"0\" />\n      <option name=\"RUNTIME_ARGUMENTS\" value=\"\" />\n      <option name=\"GENERATE_APPLICATIONHOST_CONFIG\" value=\"1\" />\n      <option name=\"SHOW_IIS_EXPRESS_OUTPUT\" value=\"0\" />\n      <option name=\"SEND_DEBUG_REQUEST\" value=\"1\" />\n      <option name=\"ADDITIONAL_IIS_EXPRESS_ARGUMENTS\" value=\"\" />\n      <method v=\"2\">\n        <option name=\"Build\" />\n      </method>\n    </configuration>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"63a36561-732a-45d3-afb7-55125ac74dfb\" name=\"Changes\" comment=\"\" />\n      <created>1702086424451</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1702086424451</updated>\n      <workItem from=\"1702086426800\" duration=\"625000\" />\n      <workItem from=\"1702132991176\" duration=\"470000\" />\n      <workItem from=\"1702133474163\" duration=\"745000\" />\n      <workItem from=\"1702134286259\" duration=\"908000\" />\n      <workItem from=\"1702135653956\" duration=\"27742000\" />\n      <workItem from=\"1702311036506\" duration=\"14900000\" />\n      <workItem from=\"1702388039772\" duration=\"634000\" />\n      <workItem from=\"1702390522947\" duration=\"1261000\" />\n      <workItem from=\"1702399891756\" duration=\"702000\" />\n      <workItem from=\"1702474380768\" duration=\"4009000\" />\n      <workItem from=\"1702478617804\" duration=\"18496000\" />\n      <workItem from=\"1702569034622\" duration=\"1544000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\n    <option name=\"CLEAR_INITIAL_COMMIT_MESSAGE\" value=\"true\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.idea.InternetBanking/.idea/workspace.xml b/.idea/.idea.InternetBanking/.idea/workspace.xml
+--- a/.idea/.idea.InternetBanking/.idea/workspace.xml	(revision a3379f37ecbbcf44cb1762f6a155f173416f6a17)
++++ b/.idea/.idea.InternetBanking/.idea/workspace.xml	(date 1702573639400)
+@@ -8,20 +8,18 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="63a36561-732a-45d3-afb7-55125ac74dfb" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Account/Create.cshtml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Account/Delete.cshtml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Account/Details.cshtml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Account/Edit.cshtml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Account/Index.cshtml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Customer/Create.cshtml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Customer/Delete.cshtml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Customer/Details.cshtml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Customer/Edit.cshtml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Customer/Index.cshtml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Employees/Create.cshtml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Employees/Delete.cshtml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Employees/Details.cshtml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Employees/Edit.cshtml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Employees/Index.cshtml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/InternetBanking/Areas/Identity/Pages/Account/Manage/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Areas/Identity/Pages/Account/Manage/_Layout.cshtml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/AccountsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/AccountController.cs" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/CustomersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/CustomerController.cs" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/CustomerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/CustomerController.cs" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/EmployeesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/EmployeesController.cs" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Customer/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Customer/Index.cshtml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Footer.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Footer.cshtml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Layout.cshtml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -53,30 +51,30 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;.NET Launch Settings Profile.Run.executor&quot;: &quot;Run&quot;,
+-    &quot;.NET Launch Settings Profile.Unnamed.executor&quot;: &quot;Run&quot;,
+-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.smartKeys_rider&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    ".NET Launch Settings Profile.Run.executor": "Run",
++    ".NET Launch Settings Profile.Unnamed.executor": "Run",
++    "ASKED_ADD_EXTERNAL_FILES": "true",
++    "DefaultHtmlFileTemplate": "HTML File",
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "git-widget-placeholder": "Merging main",
++    "node.js.detected.package.eslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "settings.editor.selected.configurable": "editor.preferences.smartKeys_rider",
++    "vue.rearranger.settings.migration": "true"
+   },
+-  &quot;keyToStringList&quot;: {
+-    &quot;rider.external.source.directories&quot;: [
+-      &quot;/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,
+-      &quot;/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,
+-      &quot;/Users/KEN/.local/share/Symbols/src&quot;
++  "keyToStringList": {
++    "rider.external.source.directories": [
++      "/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache",
++      "/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache",
++      "/Users/KEN/.local/share/Symbols/src"
+     ]
+   }
+-}</component>
++}]]></component>
+   <component name="RunManager">
+     <configuration name="Run" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/InternetBanking/InternetBanking.csproj" />
+@@ -113,7 +111,7 @@
+       <workItem from="1702399891756" duration="702000" />
+       <workItem from="1702474380768" duration="4009000" />
+       <workItem from="1702478617804" duration="18496000" />
+-      <workItem from="1702569034622" duration="1544000" />
++      <workItem from="1702569034622" duration="4017000" />
+     </task>
+     <servers />
+   </component>
+Index: InternetBanking/Views/Employees/Edit.cshtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/InternetBanking/Views/Employees/Edit.cshtml b/InternetBanking/Views/Employees/Edit.cshtml
+new file mode 100644
+--- /dev/null	(date 1702571061488)
++++ b/InternetBanking/Views/Employees/Edit.cshtml	(date 1702571061488)
+@@ -0,0 +1,70 @@
++@model InternetBanking.Models.Employee
++
++@{
++    ViewData["Title"] = "Edit";
++    Layout = "~/Views/Shared/_Layout.cshtml";
++}
++
++<h1>Edit</h1>
++
++<h4>Employee</h4>
++<hr />
++<div class="row">
++    <div class="col-md-4">
++        <form asp-action="Edit">
++            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
++            <input type="hidden" asp-for="Id" />
++            <div class="form-group">
++                <label asp-for="PersonalId" class="control-label"></label>
++                <input asp-for="PersonalId" class="form-control" />
++                <span asp-validation-for="PersonalId" class="text-danger"></span>
++            </div>
++            <div class="form-group">
++                <label asp-for="Email" class="control-label"></label>
++                <input asp-for="Email" class="form-control" />
++                <span asp-validation-for="Email" class="text-danger"></span>
++            </div>
++            <div class="form-group">
++                <label asp-for="FirstName" class="control-label"></label>
++                <input asp-for="FirstName" class="form-control" />
++                <span asp-validation-for="FirstName" class="text-danger"></span>
++            </div>
++            <div class="form-group">
++                <label asp-for="LastName" class="control-label"></label>
++                <input asp-for="LastName" class="form-control" />
++                <span asp-validation-for="LastName" class="text-danger"></span>
++            </div>
++            <div class="form-group">
++                <label asp-for="Address" class="control-label"></label>
++                <input asp-for="Address" class="form-control" />
++                <span asp-validation-for="Address" class="text-danger"></span>
++            </div>
++            <div class="form-group">
++                <label asp-for="Phone" class="control-label"></label>
++                <input asp-for="Phone" class="form-control" />
++                <span asp-validation-for="Phone" class="text-danger"></span>
++            </div>
++            <div class="form-group">
++                <label asp-for="OpenDate" class="control-label"></label>
++                <input asp-for="OpenDate" class="form-control" />
++                <span asp-validation-for="OpenDate" class="text-danger"></span>
++            </div>
++            <div class="form-group">
++                <label asp-for="Status" class="control-label"></label>
++                <input asp-for="Status" class="form-control" />
++                <span asp-validation-for="Status" class="text-danger"></span>
++            </div>
++            <div class="form-group">
++                <input type="submit" value="Save" class="btn btn-primary" />
++            </div>
++        </form>
++    </div>
++</div>
++
++<div>
++    <a asp-action="Index">Back to List</a>
++</div>
++
++@section Scripts {
++    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
++}
+Index: InternetBanking/Views/Employees/Delete.cshtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/InternetBanking/Views/Employees/Delete.cshtml b/InternetBanking/Views/Employees/Delete.cshtml
+new file mode 100644
+--- /dev/null	(date 1702571061487)
++++ b/InternetBanking/Views/Employees/Delete.cshtml	(date 1702571061487)
+@@ -0,0 +1,76 @@
++@model InternetBanking.Models.Employee
++
++@{
++    ViewData["Title"] = "Delete";
++    Layout = "~/Views/Shared/_Layout.cshtml";
++}
++
++<h1>Delete</h1>
++
++<h3>Are you sure you want to delete this?</h3>
++<div>
++    <h4>Employee</h4>
++    <hr />
++    <dl class="row">
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.PersonalId)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.PersonalId)
++        </dd>
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.Email)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.Email)
++        </dd>
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.FirstName)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.FirstName)
++        </dd>
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.LastName)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.LastName)
++        </dd>
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.Address)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.Address)
++        </dd>
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.Phone)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.Phone)
++        </dd>
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.OpenDate)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.OpenDate)
++        </dd>
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.Status)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.Status)
++        </dd>
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.InternetBankingUser)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.InternetBankingUser.Id)
++        </dd>
++    </dl>
++    
++    <form asp-action="Delete">
++        <input type="hidden" asp-for="Id" />
++        <input type="submit" value="Delete" class="btn btn-danger" /> |
++        <a asp-action="Index">Back to List</a>
++    </form>
++</div>
+Index: InternetBanking/Views/Employees/Create.cshtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/InternetBanking/Views/Employees/Create.cshtml b/InternetBanking/Views/Employees/Create.cshtml
+new file mode 100644
+--- /dev/null	(date 1702571061487)
++++ b/InternetBanking/Views/Employees/Create.cshtml	(date 1702571061487)
+@@ -0,0 +1,73 @@
++@model InternetBanking.Models.Employee
++
++@{
++    ViewData["Title"] = "Create";
++    Layout = "~/Views/Shared/_Layout.cshtml";
++}
++
++<h1>Create</h1>
++
++<h4>Employee</h4>
++<hr />
++<div class="row">
++    <div class="col-md-4">
++        <form asp-action="Create">
++            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
++            <div class="form-group">
++                <label asp-for="Id" class="control-label"></label>
++                <select asp-for="Id" class ="form-control" asp-items="ViewBag.Id"></select>
++            </div>
++            <div class="form-group">
++                <label asp-for="PersonalId" class="control-label"></label>
++                <input asp-for="PersonalId" class="form-control" />
++                <span asp-validation-for="PersonalId" class="text-danger"></span>
++            </div>
++            <div class="form-group">
++                <label asp-for="Email" class="control-label"></label>
++                <input asp-for="Email" class="form-control" />
++                <span asp-validation-for="Email" class="text-danger"></span>
++            </div>
++            <div class="form-group">
++                <label asp-for="FirstName" class="control-label"></label>
++                <input asp-for="FirstName" class="form-control" />
++                <span asp-validation-for="FirstName" class="text-danger"></span>
++            </div>
++            <div class="form-group">
++                <label asp-for="LastName" class="control-label"></label>
++                <input asp-for="LastName" class="form-control" />
++                <span asp-validation-for="LastName" class="text-danger"></span>
++            </div>
++            <div class="form-group">
++                <label asp-for="Address" class="control-label"></label>
++                <input asp-for="Address" class="form-control" />
++                <span asp-validation-for="Address" class="text-danger"></span>
++            </div>
++            <div class="form-group">
++                <label asp-for="Phone" class="control-label"></label>
++                <input asp-for="Phone" class="form-control" />
++                <span asp-validation-for="Phone" class="text-danger"></span>
++            </div>
++            <div class="form-group">
++                <label asp-for="OpenDate" class="control-label"></label>
++                <input asp-for="OpenDate" class="form-control" />
++                <span asp-validation-for="OpenDate" class="text-danger"></span>
++            </div>
++            <div class="form-group">
++                <label asp-for="Status" class="control-label"></label>
++                <input asp-for="Status" class="form-control" />
++                <span asp-validation-for="Status" class="text-danger"></span>
++            </div>
++            <div class="form-group">
++                <input type="submit" value="Create" class="btn btn-primary" />
++            </div>
++        </form>
++    </div>
++</div>
++
++<div>
++    <a asp-action="Index">Back to List</a>
++</div>
++
++@section Scripts {
++    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
++}
+Index: InternetBanking/Views/Employees/Index.cshtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/InternetBanking/Views/Employees/Index.cshtml b/InternetBanking/Views/Employees/Index.cshtml
+new file mode 100644
+--- /dev/null	(date 1702571061489)
++++ b/InternetBanking/Views/Employees/Index.cshtml	(date 1702571061489)
+@@ -0,0 +1,84 @@
++@model IEnumerable<InternetBanking.Models.Employee>
++
++@{
++    ViewData["Title"] = "Index";
++    Layout = "~/Views/Shared/_Layout.cshtml";
++}
++
++<h1>Index</h1>
++
++<p>
++    <a asp-action="Create">Create New</a>
++</p>
++<table class="table">
++    <thead>
++        <tr>
++            <th>
++                @Html.DisplayNameFor(model => model.PersonalId)
++            </th>
++            <th>
++                @Html.DisplayNameFor(model => model.Email)
++            </th>
++            <th>
++                @Html.DisplayNameFor(model => model.FirstName)
++            </th>
++            <th>
++                @Html.DisplayNameFor(model => model.LastName)
++            </th>
++            <th>
++                @Html.DisplayNameFor(model => model.Address)
++            </th>
++            <th>
++                @Html.DisplayNameFor(model => model.Phone)
++            </th>
++            <th>
++                @Html.DisplayNameFor(model => model.OpenDate)
++            </th>
++            <th>
++                @Html.DisplayNameFor(model => model.Status)
++            </th>
++            <th>
++                @Html.DisplayNameFor(model => model.InternetBankingUser)
++            </th>
++            <th></th>
++        </tr>
++    </thead>
++    <tbody>
++@foreach (var item in Model) {
++        <tr>
++            <td>
++                @Html.DisplayFor(modelItem => item.PersonalId)
++            </td>
++            <td>
++                @Html.DisplayFor(modelItem => item.Email)
++            </td>
++            <td>
++                @Html.DisplayFor(modelItem => item.FirstName)
++            </td>
++            <td>
++                @Html.DisplayFor(modelItem => item.LastName)
++            </td>
++            <td>
++                @Html.DisplayFor(modelItem => item.Address)
++            </td>
++            <td>
++                @Html.DisplayFor(modelItem => item.Phone)
++            </td>
++            <td>
++                @Html.DisplayFor(modelItem => item.OpenDate)
++            </td>
++            <td>
++                @Html.DisplayFor(modelItem => item.Status)
++            </td>
++            <td>
++                @Html.DisplayFor(modelItem => item.InternetBankingUser.Id)
++            </td>
++            <td>
++                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
++                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
++                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
++            </td>
++        </tr>
++}
++    </tbody>
++</table>
+Index: InternetBanking/Views/Employees/Details.cshtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/InternetBanking/Views/Employees/Details.cshtml b/InternetBanking/Views/Employees/Details.cshtml
+new file mode 100644
+--- /dev/null	(date 1702571061488)
++++ b/InternetBanking/Views/Employees/Details.cshtml	(date 1702571061488)
+@@ -0,0 +1,73 @@
++@model InternetBanking.Models.Employee
++
++@{
++    ViewData["Title"] = "Details";
++    Layout = "~/Views/Shared/_Layout.cshtml";
++}
++
++<h1>Details</h1>
++
++<div>
++    <h4>Employee</h4>
++    <hr />
++    <dl class="row">
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.PersonalId)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.PersonalId)
++        </dd>
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.Email)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.Email)
++        </dd>
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.FirstName)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.FirstName)
++        </dd>
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.LastName)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.LastName)
++        </dd>
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.Address)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.Address)
++        </dd>
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.Phone)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.Phone)
++        </dd>
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.OpenDate)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.OpenDate)
++        </dd>
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.Status)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.Status)
++        </dd>
++        <dt class = "col-sm-2">
++            @Html.DisplayNameFor(model => model.InternetBankingUser)
++        </dt>
++        <dd class = "col-sm-10">
++            @Html.DisplayFor(model => model.InternetBankingUser.Id)
++        </dd>
++    </dl>
++</div>
++<div>
++    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
++    <a asp-action="Index">Back to List</a>
++</div>
+Index: InternetBanking/Controllers/EmployeesController.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>//using System;\n//using System.Collections.Generic;\n//using System.Linq;\n//using System.Threading.Tasks;\n//using Microsoft.AspNetCore.Mvc;\n//using Microsoft.AspNetCore.Mvc.Rendering;\n//using Microsoft.EntityFrameworkCore;\n//using InternetBanking.Models;\n\n//namespace InternetBanking.Controllers\n//{\n//    public class EmployeesController : Controller\n//    {\n//        private readonly InternetBankingContext _context;\n\n//        public EmployeesController(InternetBankingContext context)\n//        {\n//            _context = context;\n//        }\n\n//        // GET: Employees\n//        public async Task<IActionResult> Index()\n//        {\n//            var internetBankingContext = _context.Employees.Include(e => e.InternetBankingUser);\n//            return View(await internetBankingContext.ToListAsync());\n//        }\n\n//        // GET: Employees/Details/5\n//        public async Task<IActionResult> Details(string id)\n//        {\n//            if (id == null || _context.Employees == null)\n//            {\n//                return NotFound();\n//            }\n\n//            var employee = await _context.Employees\n//                .Include(e => e.InternetBankingUser)\n//                .FirstOrDefaultAsync(m => m.EmpId == id);\n//            if (employee == null)\n//            {\n//                return NotFound();\n//            }\n\n//            return View(employee);\n//        }\n\n//        // GET: Employees/Create\n//        public IActionResult Create()\n//        {\n//            ViewData[\"EmpId\"] = new SelectList(_context.InternetBankingUsers, \"Id\", \"Id\");\n//            return View();\n//        }\n\n//        // POST: Employees/Create\n//        // To protect from overposting attacks, enable the specific properties you want to bind to.\n//        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.\n//        [HttpPost]\n//        [ValidateAntiForgeryToken]\n//        public async Task<IActionResult> Create([Bind(\"EmpId,PersonalId,Username,Password,FirstName,LastName,Phone,Status,RoleId,ManageBy,BranchId\")] Employee employee)\n//        {\n//            if (ModelState.IsValid)\n//            {\n//                _context.Add(employee);\n//                await _context.SaveChangesAsync();\n//                return RedirectToAction(nameof(Index));\n//            }\n//            ViewData[\"EmpId\"] = new SelectList(_context.InternetBankingUsers, \"Id\", \"Id\", employee.EmpId);\n//            return View(employee);\n//        }\n\n//        // GET: Employees/Edit/5\n//        public async Task<IActionResult> Edit(string id)\n//        {\n//            if (id == null || _context.Employees == null)\n//            {\n//                return NotFound();\n//            }\n\n//            var employee = await _context.Employees.FindAsync(id);\n//            if (employee == null)\n//            {\n//                return NotFound();\n//            }\n//            ViewData[\"EmpId\"] = new SelectList(_context.InternetBankingUsers, \"Id\", \"Id\", employee.EmpId);\n//            return View(employee);\n//        }\n\n//        // POST: Employees/Edit/5\n//        // To protect from overposting attacks, enable the specific properties you want to bind to.\n//        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.\n//        [HttpPost]\n//        [ValidateAntiForgeryToken]\n//        public async Task<IActionResult> Edit(string id, [Bind(\"EmpId,PersonalId,Username,Password,FirstName,LastName,Phone,Status,RoleId,ManageBy,BranchId\")] Employee employee)\n//        {\n//            if (id != employee.EmpId)\n//            {\n//                return NotFound();\n//            }\n\n//            if (ModelState.IsValid)\n//            {\n//                try\n//                {\n//                    _context.Update(employee);\n//                    await _context.SaveChangesAsync();\n//                }\n//                catch (DbUpdateConcurrencyException)\n//                {\n//                    if (!EmployeeExists(employee.EmpId))\n//                    {\n//                        return NotFound();\n//                    }\n//                    else\n//                    {\n//                        throw;\n//                    }\n//                }\n//                return RedirectToAction(nameof(Index));\n//            }\n//            ViewData[\"EmpId\"] = new SelectList(_context.InternetBankingUsers, \"Id\", \"Id\", employee.EmpId);\n//            return View(employee);\n//        }\n\n//        // GET: Employees/Delete/5\n//        public async Task<IActionResult> Delete(string id)\n//        {\n//            if (id == null || _context.Employees == null)\n//            {\n//                return NotFound();\n//            }\n\n//            var employee = await _context.Employees\n//                .Include(e => e.InternetBankingUser)\n//                .FirstOrDefaultAsync(m => m.EmpId == id);\n//            if (employee == null)\n//            {\n//                return NotFound();\n//            }\n\n//            return View(employee);\n//        }\n\n//        // POST: Employees/Delete/5\n//        [HttpPost, ActionName(\"Delete\")]\n//        [ValidateAntiForgeryToken]\n//        public async Task<IActionResult> DeleteConfirmed(string id)\n//        {\n//            if (_context.Employees == null)\n//            {\n//                return Problem(\"Entity set 'InternetBankingContext.Employees'  is null.\");\n//            }\n//            var employee = await _context.Employees.FindAsync(id);\n//            if (employee != null)\n//            {\n//                _context.Employees.Remove(employee);\n//            }\n            \n//            await _context.SaveChangesAsync();\n//            return RedirectToAction(nameof(Index));\n//        }\n\n//        private bool EmployeeExists(string id)\n//        {\n//          return (_context.Employees?.Any(e => e.EmpId == id)).GetValueOrDefault();\n//        }\n//    }\n//}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/InternetBanking/Controllers/EmployeesController.cs b/InternetBanking/Controllers/EmployeesController.cs
+--- a/InternetBanking/Controllers/EmployeesController.cs	(revision 6d431342eb5a0ae34ccb7f6af7fff7a2ce938a91)
++++ b/InternetBanking/Controllers/EmployeesController.cs	(date 1702571061482)
+@@ -1,167 +1,167 @@
+-//using System;
+-//using System.Collections.Generic;
+-//using System.Linq;
+-//using System.Threading.Tasks;
+-//using Microsoft.AspNetCore.Mvc;
+-//using Microsoft.AspNetCore.Mvc.Rendering;
+-//using Microsoft.EntityFrameworkCore;
+-//using InternetBanking.Models;
++using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Threading.Tasks;
++using Microsoft.AspNetCore.Mvc;
++using Microsoft.AspNetCore.Mvc.Rendering;
++using Microsoft.EntityFrameworkCore;
++using InternetBanking.Models;
+ 
+-//namespace InternetBanking.Controllers
+-//{
+-//    public class EmployeesController : Controller
+-//    {
+-//        private readonly InternetBankingContext _context;
++namespace InternetBanking.Controllers
++{
++    public class EmployeesController : Controller
++    {
++        private readonly InternetBankingContext _context;
+ 
+-//        public EmployeesController(InternetBankingContext context)
+-//        {
+-//            _context = context;
+-//        }
++        public EmployeesController(InternetBankingContext context)
++        {
++            _context = context;
++        }
+ 
+-//        // GET: Employees
+-//        public async Task<IActionResult> Index()
+-//        {
+-//            var internetBankingContext = _context.Employees.Include(e => e.InternetBankingUser);
+-//            return View(await internetBankingContext.ToListAsync());
+-//        }
++        // GET: Employees
++        public async Task<IActionResult> Index()
++        {
++            var internetBankingContext = _context.Employees.Include(e => e.InternetBankingUser);
++            return View(await internetBankingContext.ToListAsync());
++        }
+ 
+-//        // GET: Employees/Details/5
+-//        public async Task<IActionResult> Details(string id)
+-//        {
+-//            if (id == null || _context.Employees == null)
+-//            {
+-//                return NotFound();
+-//            }
++        // GET: Employees/Details/5
++        public async Task<IActionResult> Details(string id)
++        {
++            if (id == null || _context.Employees == null)
++            {
++                return NotFound();
++            }
+ 
+-//            var employee = await _context.Employees
+-//                .Include(e => e.InternetBankingUser)
+-//                .FirstOrDefaultAsync(m => m.EmpId == id);
+-//            if (employee == null)
+-//            {
+-//                return NotFound();
+-//            }
++            var employee = await _context.Employees
++                .Include(e => e.InternetBankingUser)
++                .FirstOrDefaultAsync(m => m.Id == id);
++            if (employee == null)
++            {
++                return NotFound();
++            }
+ 
+-//            return View(employee);
+-//        }
++            return View(employee);
++        }
+ 
+-//        // GET: Employees/Create
+-//        public IActionResult Create()
+-//        {
+-//            ViewData["EmpId"] = new SelectList(_context.InternetBankingUsers, "Id", "Id");
+-//            return View();
+-//        }
++        // GET: Employees/Create
++        public IActionResult Create()
++        {
++            ViewData["Id"] = new SelectList(_context.InternetBankingUsers, "Id", "Id");
++            return View();
++        }
+ 
+-//        // POST: Employees/Create
+-//        // To protect from overposting attacks, enable the specific properties you want to bind to.
+-//        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+-//        [HttpPost]
+-//        [ValidateAntiForgeryToken]
+-//        public async Task<IActionResult> Create([Bind("EmpId,PersonalId,Username,Password,FirstName,LastName,Phone,Status,RoleId,ManageBy,BranchId")] Employee employee)
+-//        {
+-//            if (ModelState.IsValid)
+-//            {
+-//                _context.Add(employee);
+-//                await _context.SaveChangesAsync();
+-//                return RedirectToAction(nameof(Index));
+-//            }
+-//            ViewData["EmpId"] = new SelectList(_context.InternetBankingUsers, "Id", "Id", employee.EmpId);
+-//            return View(employee);
+-//        }
++        // POST: Employees/Create
++        // To protect from overposting attacks, enable the specific properties you want to bind to.
++        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
++        [HttpPost]
++        [ValidateAntiForgeryToken]
++        public async Task<IActionResult> Create([Bind("Id,PersonalId,Email,FirstName,LastName,Address,Phone,OpenDate,Status")] Employee employee)
++        {
++            if (ModelState.IsValid)
++            {
++                _context.Add(employee);
++                await _context.SaveChangesAsync();
++                return RedirectToAction(nameof(Index));
++            }
++            ViewData["Id"] = new SelectList(_context.InternetBankingUsers, "Id", "Id", employee.Id);
++            return View(employee);
++        }
+ 
+-//        // GET: Employees/Edit/5
+-//        public async Task<IActionResult> Edit(string id)
+-//        {
+-//            if (id == null || _context.Employees == null)
+-//            {
+-//                return NotFound();
+-//            }
++        // GET: Employees/Edit/5
++        public async Task<IActionResult> Edit(string id)
++        {
++            if (id == null || _context.Employees == null)
++            {
++                return NotFound();
++            }
+ 
+-//            var employee = await _context.Employees.FindAsync(id);
+-//            if (employee == null)
+-//            {
+-//                return NotFound();
+-//            }
+-//            ViewData["EmpId"] = new SelectList(_context.InternetBankingUsers, "Id", "Id", employee.EmpId);
+-//            return View(employee);
+-//        }
++            var employee = await _context.Employees.FindAsync(id);
++            if (employee == null)
++            {
++                return NotFound();
++            }
++            ViewData["Id"] = new SelectList(_context.InternetBankingUsers, "Id", "Id", employee.Id);
++            return View(employee);
++        }
+ 
+-//        // POST: Employees/Edit/5
+-//        // To protect from overposting attacks, enable the specific properties you want to bind to.
+-//        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+-//        [HttpPost]
+-//        [ValidateAntiForgeryToken]
+-//        public async Task<IActionResult> Edit(string id, [Bind("EmpId,PersonalId,Username,Password,FirstName,LastName,Phone,Status,RoleId,ManageBy,BranchId")] Employee employee)
+-//        {
+-//            if (id != employee.EmpId)
+-//            {
+-//                return NotFound();
+-//            }
++        // POST: Employees/Edit/5
++        // To protect from overposting attacks, enable the specific properties you want to bind to.
++        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
++        [HttpPost]
++        [ValidateAntiForgeryToken]
++        public async Task<IActionResult> Edit(string id, [Bind("Id,PersonalId,Email,FirstName,LastName,Address,Phone,OpenDate,Status")] Employee employee)
++        {
++            if (id != employee.Id)
++            {
++                return NotFound();
++            }
+ 
+-//            if (ModelState.IsValid)
+-//            {
+-//                try
+-//                {
+-//                    _context.Update(employee);
+-//                    await _context.SaveChangesAsync();
+-//                }
+-//                catch (DbUpdateConcurrencyException)
+-//                {
+-//                    if (!EmployeeExists(employee.EmpId))
+-//                    {
+-//                        return NotFound();
+-//                    }
+-//                    else
+-//                    {
+-//                        throw;
+-//                    }
+-//                }
+-//                return RedirectToAction(nameof(Index));
+-//            }
+-//            ViewData["EmpId"] = new SelectList(_context.InternetBankingUsers, "Id", "Id", employee.EmpId);
+-//            return View(employee);
+-//        }
++            if (ModelState.IsValid)
++            {
++                try
++                {
++                    _context.Update(employee);
++                    await _context.SaveChangesAsync();
++                }
++                catch (DbUpdateConcurrencyException)
++                {
++                    if (!EmployeeExists(employee.Id))
++                    {
++                        return NotFound();
++                    }
++                    else
++                    {
++                        throw;
++                    }
++                }
++                return RedirectToAction(nameof(Index));
++            }
++            ViewData["Id"] = new SelectList(_context.InternetBankingUsers, "Id", "Id", employee.Id);
++            return View(employee);
++        }
+ 
+-//        // GET: Employees/Delete/5
+-//        public async Task<IActionResult> Delete(string id)
+-//        {
+-//            if (id == null || _context.Employees == null)
+-//            {
+-//                return NotFound();
+-//            }
++        // GET: Employees/Delete/5
++        public async Task<IActionResult> Delete(string id)
++        {
++            if (id == null || _context.Employees == null)
++            {
++                return NotFound();
++            }
+ 
+-//            var employee = await _context.Employees
+-//                .Include(e => e.InternetBankingUser)
+-//                .FirstOrDefaultAsync(m => m.EmpId == id);
+-//            if (employee == null)
+-//            {
+-//                return NotFound();
+-//            }
++            var employee = await _context.Employees
++                .Include(e => e.InternetBankingUser)
++                .FirstOrDefaultAsync(m => m.Id == id);
++            if (employee == null)
++            {
++                return NotFound();
++            }
+ 
+-//            return View(employee);
+-//        }
++            return View(employee);
++        }
+ 
+-//        // POST: Employees/Delete/5
+-//        [HttpPost, ActionName("Delete")]
+-//        [ValidateAntiForgeryToken]
+-//        public async Task<IActionResult> DeleteConfirmed(string id)
+-//        {
+-//            if (_context.Employees == null)
+-//            {
+-//                return Problem("Entity set 'InternetBankingContext.Employees'  is null.");
+-//            }
+-//            var employee = await _context.Employees.FindAsync(id);
+-//            if (employee != null)
+-//            {
+-//                _context.Employees.Remove(employee);
+-//            }
++        // POST: Employees/Delete/5
++        [HttpPost, ActionName("Delete")]
++        [ValidateAntiForgeryToken]
++        public async Task<IActionResult> DeleteConfirmed(string id)
++        {
++            if (_context.Employees == null)
++            {
++                return Problem("Entity set 'InternetBankingContext.Employees'  is null.");
++            }
++            var employee = await _context.Employees.FindAsync(id);
++            if (employee != null)
++            {
++                _context.Employees.Remove(employee);
++            }
+             
+-//            await _context.SaveChangesAsync();
+-//            return RedirectToAction(nameof(Index));
+-//        }
++            await _context.SaveChangesAsync();
++            return RedirectToAction(nameof(Index));
++        }
+ 
+-//        private bool EmployeeExists(string id)
+-//        {
+-//          return (_context.Employees?.Any(e => e.EmpId == id)).GetValueOrDefault();
+-//        }
+-//    }
+-//}
++        private bool EmployeeExists(string id)
++        {
++          return (_context.Employees?.Any(e => e.Id == id)).GetValueOrDefault();
++        }
++    }
++}
