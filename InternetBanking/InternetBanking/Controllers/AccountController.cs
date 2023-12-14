@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,16 +9,16 @@ using InternetBanking.Models;
 
 namespace InternetBanking.Controllers
 {
-    public class AccountsController : Controller
+    public class AccountController : Controller
     {
         private readonly InternetBankingContext _context;
 
-        public AccountsController(InternetBankingContext context)
+        public AccountController(InternetBankingContext context)
         {
             _context = context;
         }
 
-        // GET: Accounts
+        // GET: Account
         public async Task<IActionResult> Index()
         {
               return _context.Accounts != null ? 
@@ -26,7 +26,7 @@ namespace InternetBanking.Controllers
                           Problem("Entity set 'InternetBankingContext.Accounts'  is null.");
         }
 
-        // GET: Accounts/Details/5
+        // GET: Account/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.Accounts == null)
@@ -44,13 +44,13 @@ namespace InternetBanking.Controllers
             return View(account);
         }
 
-        // GET: Accounts/Create
+        // GET: Account/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Accounts/Create
+        // POST: Account/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -66,7 +66,7 @@ namespace InternetBanking.Controllers
             return View(account);
         }
 
-        // GET: Accounts/Edit/5
+        // GET: Account/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.Accounts == null)
@@ -82,7 +82,7 @@ namespace InternetBanking.Controllers
             return View(account);
         }
 
-        // POST: Accounts/Edit/5
+        // POST: Account/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -117,7 +117,7 @@ namespace InternetBanking.Controllers
             return View(account);
         }
 
-        // GET: Accounts/Delete/5
+        // GET: Account/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.Accounts == null)
@@ -135,7 +135,7 @@ namespace InternetBanking.Controllers
             return View(account);
         }
 
-        // POST: Accounts/Delete/5
+        // POST: Account/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)

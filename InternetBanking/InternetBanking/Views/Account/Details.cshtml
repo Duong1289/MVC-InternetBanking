@@ -1,4 +1,4 @@
-﻿@model InternetBanking.Models.Account
+@model InternetBanking.Models.Account
 
 @{
     ViewData["Title"] = "Details";
@@ -44,6 +44,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.AccountNumber">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.AccountNumber">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

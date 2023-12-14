@@ -8,7 +8,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-            <img src="images/logo.png" class="img-circle elevation-2" alt="User Image">
+            <img src="~/images/logo.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
             <a asp class="d-block">Alexander Pierce</a>
@@ -32,308 +32,172 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
-            <li class="nav-header">Transaction</li>
-                 <li class="nav-item menu-open">
-                     <a href="#" class="nav-link active">
-                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                         <p>
-                             Accounts
-                             <i class="right fas fa-angle-left"></i>
-                         </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                         <li class="nav-item">
-                             <a asp-action="" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Account 01</p>
-                             </a>
-                         </li>
-                         <li class="nav-item">
-                             <a asp-action="" class="nav-link active">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Account 02</p>
-                             </a>
-                         </li>
-                   
-                     </ul>
-                 </li>
-                 @* Help Request *@
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-                         <i class="nav-icon fas fa-copy"></i>
-                         <p>
-                             Help Request
-                             <i class="fas fa-angle-left right"></i>
-                         </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                         <li class="nav-item">
-                             <a asp-action="HelpRequest" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Manage Help Request</p>
-                             </a>
-                         </li>
-                     </ul>
-                 </li>
-                 @* Help Request Type *@
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-                         <i class="nav-icon fas fa-copy"></i>
-                         <p>
-                             Help Request Types
-                             <i class="fas fa-angle-left right"></i>
-                         </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                         <li class="nav-item">
-                             <a asp-action="HelpRequestType" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Manage Help Request Types</p>
-                             </a>
-                         </li>
-                     </ul>
-                 </li>
-                 @* FAQ *@
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-                         <i class="nav-icon fas fa-copy"></i>
-                         <p>
-                             FAQ
-                             <i class="fas fa-angle-left right"></i>
-                         </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                         <li class="nav-item">
-                             <a asp-action="Faq" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Manage FAQ</p>
-                             </a>
-                         </li>
-                     </ul>
-                 </li>
-                 @* FAQ Category *@
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-                         <i class="nav-icon fas fa-copy"></i>
-                         <p>
-                             FAQ Category
-                             <i class="fas fa-angle-left right"></i>
-                         </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                         <li class="nav-item">
-                             <a asp-action="FaqCategory" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Manage FAQ Category</p>
-                             </a>
-                         </li>
-                     </ul>
-                 </li>
-                 
-                 @* Statement *@
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-                         <i class="nav-icon fas fa-copy"></i>
-                         <p>
-                             Statement
-                             <i class="fas fa-angle-left right"></i>
-                         </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                         <li class="nav-item">
-                             <a asp-action="Statement" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>All Transaction Statements</p>
-                             </a>
-                         </li>
-                     </ul>
-                     
-                     <ul class="nav nav-treeview">
-                         <li class="nav-item">
-                             <a asp-action="Statement/CreateStatement" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Export Transaction Statements Within Period</p>
-                             </a>
-                         </li>
-                     </ul>
-                 </li>
-                 <li class="nav-item">
-                                 <a href="#" class="nav-link">
-                                     <i class="nav-icon fas fa-copy"></i>
-                                     <p>
-                                         Transfer fund
-                                         <i class="fas fa-angle-left right"></i>
-                                     </p>
-                                 </a>
-                                 <ul class="nav nav-treeview">
-                                     <li class="nav-item">
-                                         <a asp-controller="Transaction" asp-action="Index" class="nav-link">
-                                             <i class="far fa-circle nav-icon"></i>
-                                             <p>Transaction</p>
-                                         </a>
-                                     </li>
-                                     <li class="nav-item">
-                                        <a asp-controller="Transaction" asp-action="TransactionHistory" class="nav-link">
-                                             <i class="far fa-circle nav-icon"></i>
-                                             <p>View Transaction History </p>
-                                        </a>
-                                     </li>
-                                 </ul>
-                             </li>
-            <li class="nav-header">Payment</li>
+                 <li class="nav-header">Nex Bank Account</li>
+                 @* Account *@
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-chart-pie"></i>
+                <a href="#" class="nav-link active">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
-                        Charts
+                        Accounts
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="pages/charts/chartjs.html" class="nav-link">
+                        <a asp-controller="Account" asp-action="Index" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>ChartJS</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/charts/flot.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Flot</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/charts/inline.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Inline</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/charts/uplot.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>uPlot</p>
+                            <p>Manage Account</p>
                         </a>
                     </li>
                 </ul>
             </li>
-            <li class="nav-header">Utilities</li>
+            @* Customer *@
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-tree"></i>
+                <a href="#" class="nav-link active">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
-                         Setting
-                        <i class="fas fa-angle-left right"></i>
+                        Customers
+                        <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="pages/UI/general.html" class="nav-link">
+                        <a asp-controller="Account" asp-action="Index" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>General</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/UI/icons.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Icons</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/UI/buttons.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Buttons</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/UI/sliders.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Sliders</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/UI/modals.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Modals & Alerts</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/UI/navbar.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Navbar & Tabs</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/UI/timeline.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Timeline</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/UI/ribbons.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Ribbons</p>
+                            <p>View Customer</p>
                         </a>
                     </li>
                 </ul>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-edit"></i>
-                    <p>
-                        Forms
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="pages/forms/general.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>General Elements</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/forms/advanced.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Advanced Elements</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/forms/editors.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Editors</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/forms/validation.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Validation</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-table"></i>
-                    <p>
-                        User guide
-
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-table"></i>
-                    <p>
-                        Change password
-                    </p>
-                </a>
             </li>
             
+                 @* Help Request *@
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon far fa-circle text-danger"></i>
-                    <p class="text">Close account</p>
+                <a href="#" class="nav-link active">
+                    <i class="nav-icon fas fa-copy"></i>
+                    <p>
+                        Help Request 
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a asp-controller="HelpRequest" asp-action="Index" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Manage Help Request</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            
+                 @* Help Request Type *@
+            <li class="nav-item">
+                <a href="#" class="nav-link active">
+                    <i class="nav-icon fas fa-copy"></i>
+                    <p>
+                        Help Request Types
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a asp-controller="HelpRequest" asp-action="Index" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Manage Help Request Types</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            
+                 @* FAQ *@
+            <li class="nav-item">
+                <a href="#" class="nav-link active">
+                    <i class="nav-icon fas fa-copy"></i>
+                    <p>
+                        FAQ
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a asp-controller="Faq" asp-action="Index" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Manage FAQ</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            
+                 @* FAQ Category *@
+            <li class="nav-item">
+                <a href="#" class="nav-link active">
+                    <i class="nav-icon fas fa-copy"></i>
+                    <p>
+                        FAQ Category
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a asp-controller="FaqCategory" asp-action="Index" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Manage FAQ Category</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            
+                 
+                 @* Statement *@
+            <li class="nav-item">
+                <a href="#" class="nav-link active">
+                    <i class="nav-icon fas fa-copy"></i>
+                    <p>
+                        Statement
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a asp-controller="Statement" asp-action="Index" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>All Transaction Statements</p>
+                        </a>
+                    </li>
+                </ul>
+                     
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a asp-controller="Statement" asp-action="CreateStatement" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Export Transaction Statements Within Period</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            
+            @* Tranferfund *@
+            <li class="nav-item">
+                <a href="#" class="nav-link active">
+                    <i class="nav-icon fas fa-copy"></i>
+                    <p>
+                        Transfer fund
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a asp-controller="Transaction" asp-action="Index" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Transaction</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Transaction" asp-action="TransactionHistory" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>View Transaction History </p>
+                        </a>
+                    </li>
+                </ul>
             </li>
             
         </ul>
