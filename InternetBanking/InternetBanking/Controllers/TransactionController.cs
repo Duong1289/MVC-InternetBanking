@@ -1,11 +1,13 @@
 ﻿using InternetBanking.Mail;
 using InternetBanking.Models;
 using InternetBanking.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace InternetBanking.Controllers
 {
+    [Authorize]
     public class TransactionController : Controller
     {
         TransactionService transactionService;

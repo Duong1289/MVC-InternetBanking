@@ -1,27 +1,33 @@
 ﻿using InternetBanking.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
 namespace InternetBanking.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly InternetBankingContext _context;
+        
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, InternetBankingContext context)
         {
             _logger = logger;
+            _context = context;
         }
+        
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
+        {
+            var fAQ = await _context.FAQ.ToListAsync();
+            return View(fAQ);
+        }
+        
+        public IActionResult Privacy()
         {
             return View();
         }
-        //
-        // public IActionResult Privacy()
-        // {
-        //     return View();
-        // }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

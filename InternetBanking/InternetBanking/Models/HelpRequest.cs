@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace InternetBanking.Models
 {
-    [Authorize("Admin, User")]
+    // [Authorize("Admin, User")]
     public class HelpRequest
     {
         [Key]

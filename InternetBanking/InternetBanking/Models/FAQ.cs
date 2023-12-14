@@ -8,17 +8,14 @@ namespace InternetBanking.Models
         [Key]
         public int? Id { get; set; }
 
-        [Required]
         [MaxLength(300)]
-        public string? Question { get; set; }
+        public required string? Question { get; set; }
 
-        [Required]
         [MaxLength(1000)]
-        public string? Answer { get; set; }
+        public required string? Answer { get; set; }
 
 
         [ForeignKey("FAQCategories")]
-        [Required]
-        public int? FAQCategoryId { get; set; }
+        public required int? FAQCategoryId { get; set; }
     }
 }
