@@ -10,11 +10,9 @@ using InternetBanking.Service.MailService;
 
 internal class Program
 {
-    private static async void Main(string[] args)
+    private static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-
-
 
         // Add services to the container.
         var connectionString = builder.Configuration.GetConnectionString("IdentityConnectionString") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -73,7 +71,6 @@ internal class Program
         builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages();
 
-
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -81,7 +78,6 @@ internal class Program
         {
             app.UseExceptionHandler("/Home/Error");
         }
-
 
         app.UseStaticFiles();
 

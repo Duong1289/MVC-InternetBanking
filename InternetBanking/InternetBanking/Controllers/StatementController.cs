@@ -42,7 +42,6 @@ namespace InternetBanking.Controllers
                 .Where(t => t.TransactionDate >= startDate && t.TransactionDate <= endDate)
                 .OrderByDescending(t => t.TransactionDate)
                 .ToListAsync();
-    
             return View(statements);
         }
     
