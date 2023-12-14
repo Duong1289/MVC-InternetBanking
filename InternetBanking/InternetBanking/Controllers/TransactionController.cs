@@ -29,6 +29,7 @@ namespace InternetBanking.Controllers
 
         public IActionResult Index()
         {
+
             if (TempData["TransactionSuccess"] != null)
             {
                 ViewBag.TransactionStatus = TempData["TransactionSuccess"];
@@ -69,7 +70,7 @@ namespace InternetBanking.Controllers
                         bool updateBalance = await transactionService.UpdateBalance(receiver, sender, transac.Amount);
                         if (updateBalance)
                         {
-                            await sendMailService.SendEmailTransaction(transac, currentUser.Email, customer.LastName);
+                            await sendMailService.SendEmailTransaction(transac, currentUser.Email, (customer.FirstName+" "+customer.LastName));
                         }
                        else
                         {
