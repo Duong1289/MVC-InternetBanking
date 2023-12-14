@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InternetBanking.Models;
 using InternetBanking.Service.MailService;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InternetBanking.Controllers
 {
+    [Authorize]
     public class HelpRequestController : Controller
     {
         private readonly InternetBankingContext _context;
