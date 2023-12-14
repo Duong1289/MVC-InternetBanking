@@ -17,6 +17,19 @@ namespace InternetBanking.Controllers
         {
             _context = context;
         }
+        public async Task<IActionResult> Customerbylogin(string PersonalId)
+        {
+            var customer = await _context.Customers
+                .Include(c => c.InternetBankingUser)
+                .FirstOrDefaultAsync(m => m.PersonalId == PersonalId);
+
+            if (customer == null)
+            {
+                return NotFound(); // Or any other action based on your requirement
+            }
+
+            return View(customer);
+        }
 
         // GET: Customers
         public async Task<IActionResult> Index()
