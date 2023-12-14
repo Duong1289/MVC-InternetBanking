@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InternetBanking.Models;
+using InternetBanking.Areas.Identity.Data;
 
 namespace InternetBanking.Controllers
 {
@@ -21,8 +22,8 @@ namespace InternetBanking.Controllers
         // GET: Customers
         public async Task<IActionResult> Index()
         {
-            var internetBankingContext = _context.Users.Include(c => c.Customer);
-            return View(await internetBankingContext.ToListAsync());
+            //var internetBankingContext = _context.Customers;
+            return View(await _context.Customers.ToListAsync());
         }
 
         // GET: Customers/Details/5
@@ -58,13 +59,16 @@ namespace InternetBanking.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PersonalId,Username,FirstName,LastName,Email,Address,OpenDate,Status,Locked,BranchId")] Customer customer)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PersonalId"] = new SelectList(_context.Users, "Id", "Id", customer.PersonalId);
+
+            // Instead of using "Id", use the property that represents the primary key of InternetBankingUser
+            ViewData["PersonalId"] = new SelectList(_context.Users, nameof(InternetBankingUser.Id), nameof(InternetBankingUser.UserName), customer.PersonalId);
+
             return View(customer);
         }
 

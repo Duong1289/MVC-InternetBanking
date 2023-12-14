@@ -33,7 +33,7 @@ namespace InternetBanking.Models
         //block/ublock
         [Required]
         public bool? Status { get; set; }
-        [Required]
+       
         [MaxLength(5)]
         public string? RoleId { get; set; }
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<InternetBanking.Models.Customer>
+﻿@model IEnumerable<InternetBanking.Models.Employee>
 
 @{
     ViewData["Title"] = "Index";
@@ -14,10 +14,16 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.InternetBankingUser)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.PersonalId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
@@ -26,19 +32,16 @@
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OpenDate)
+                @Html.DisplayNameFor(model => model.Phone)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Locked)
+                @Html.DisplayNameFor(model => model.RoleId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ManageBy)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.BranchId)
@@ -50,10 +53,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.InternetBankingUser.Id)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.PersonalId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
@@ -62,27 +71,24 @@
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OpenDate)
+                @Html.DisplayFor(modelItem => item.Phone)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Locked)
+                @Html.DisplayFor(modelItem => item.RoleId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManageBy)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BranchId)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PersonalId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PersonalId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PersonalId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.EmpId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EmpId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EmpId">Delete</a>
             </td>
         </tr>
 }
