@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using InternetBanking.Constants;
 
 namespace InternetBanking.Areas.Identity.Pages.Account
 {
@@ -22,6 +24,8 @@ namespace InternetBanking.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<InternetBankingUser> _signInManager;
         private readonly UserManager<InternetBankingUser> _userManager;
+        private readonly IUserStore<InternetBankingUser> _userStore;
+        private readonly IUserEmailStore<InternetBankingUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
@@ -46,6 +50,14 @@ namespace InternetBanking.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "First Name")]
+            public string? FirstName { get; set; }
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Last Name")]
+            public string? LastName { get; set; }
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -76,9 +88,12 @@ namespace InternetBanking.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new InternetBankingUser { UserName = Input.Email, Email = Input.Email };
+                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, Roles.User.ToString());
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
