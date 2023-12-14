@@ -26,19 +26,22 @@ namespace InternetBanking.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly InternetBankingContext _internetBankingContext;
+        private readonly RoleManager<IdentityRole> _roleManager; // Add this line
 
         public RegisterModel(
             UserManager<InternetBankingUser> userManager,
             SignInManager<InternetBankingUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            InternetBankingContext internetBankingContext)
+            InternetBankingContext internetBankingContext,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
             _internetBankingContext = internetBankingContext;
+            _roleManager = roleManager;
         }
 
         [BindProperty]
@@ -79,11 +82,13 @@ namespace InternetBanking.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
+                await CreateRolesIfNotExist();
                 var user = new InternetBankingUser { UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+                    await _userManager.AddToRoleAsync(user, "Customer");
                     var customer = new Customer
                     {
                         Id = user.Id,
@@ -104,8 +109,8 @@ namespace InternetBanking.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+                    //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     
 
@@ -128,5 +133,20 @@ namespace InternetBanking.Areas.Identity.Pages.Account
             // If we got this far, something failed, redisplay form
             return Page();
         }
+
+        private async Task CreateRolesIfNotExist()
+        {
+            var roles = new[] { "Admin", "Employee", "Customer" };
+
+            foreach (var roleName in roles)
+            {
+                if (!await _roleManager.RoleExistsAsync(roleName))
+                {
+                    var newRole = new IdentityRole(roleName);
+                    await _roleManager.CreateAsync(newRole);
+                }
+            }
+        }
+
     }
 }

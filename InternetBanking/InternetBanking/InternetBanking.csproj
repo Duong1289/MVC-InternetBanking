@@ -9,9 +9,13 @@
 
   <ItemGroup>
     <Compile Remove="Data\**" />
+    <Compile Remove="Views\Loan\**" />
     <Content Remove="Data\**" />
+    <Content Remove="Views\Loan\**" />
     <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="Views\Loan\**" />
     <None Remove="Data\**" />
+    <None Remove="Views\Loan\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -1754,7 +1758,6 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\" />
-    <Folder Include="Views\Loan\" />
     <AdditionalFiles Include="Views\Statement\Index.cshtml" />
     <AdditionalFiles Include="Views\Statement\StatementsWithinPeriod.cshtml" />
   </ItemGroup>
