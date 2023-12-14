@@ -6,9 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InternetBanking.Models;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace InternetBanking.Controllers
 {
+    [Authorize]
     public class BanksController : Controller
     {
         private readonly InternetBankingContext _context;
