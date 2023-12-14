@@ -101,12 +101,39 @@ namespace InternetBanking.Controllers
         [Route("Transaction/view-history")]
         public async Task<IActionResult> TransactionHistory()
         {
-            string AccNumer = "040507";
-            var histories = await ctx.Transactions!
-             .Where(t => t.SenderAccountNumber == AccNumer || t.ReceiverAccountNumber == AccNumer)
-             .ToListAsync();
-            return View(histories);
+            var currentUser = await _userManager.GetUserAsync(User);
+
+            // Assuming CustomerAccounts is a navigation property in the InternetBankingUser class that points to the customer's accounts
+            var customer = await ctx.Customers
+                .Include(c => c.Accounts)
+                .SingleOrDefaultAsync(c => c.Id == currentUser.Id);
+
+            if (customer == null)
+            {
+                // Handle the case where the customer is not found
+                return NotFound();
+            }
+
+            // Retrieve all accounts belonging to the customer
+            var customerAccounts = customer.Accounts;
+
+            // Create a list to store transaction histories for all accounts
+            var allHistories = new List<Transaction>();
+
+            foreach (var account in customerAccounts)
+            {
+                // Retrieve transaction histories for each account
+                var accountHistories = await ctx.Transactions
+                    .Where(t => t.SenderAccountNumber == account.AccountNumber || t.ReceiverAccountNumber == account.AccountNumber)
+                    .ToListAsync();
+
+                // Add the transaction histories to the list
+                allHistories.AddRange(accountHistories);
+            }
+
+            return View(allHistories);
         }
+
 
 
     }
