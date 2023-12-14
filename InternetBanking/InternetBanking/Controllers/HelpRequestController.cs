@@ -207,7 +207,7 @@ namespace InternetBanking.Controllers
             if (customer != null)
             {
                 var emailBody = _sendMailServiceTransHelp.GetEmailHelpBody(helpRequest);
-                await _sendMailServiceTransHelp.SendEmailHelpRequest(customer.PersonalId,helpRequest);
+                //await _sendMailServiceTransHelp.SendEmailHelpRequest(customer.PersonalId,helpRequest);
             }
             return RedirectToAction(nameof(Index));
         }
