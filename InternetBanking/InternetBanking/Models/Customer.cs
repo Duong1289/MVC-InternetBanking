@@ -12,7 +12,7 @@ namespace InternetBanking.Models
         [Key]
         public string? PersonalId { get; set; }
         [ForeignKey("PersonalId")]
-        public virtual InternetBankingUser InternetBankingUser { get; set; }
+        public virtual InternetBankingUser? InternetBankingUser { get; set; }
         // Mối quan hệ 1-1 với IdentityUser
 
         [MaxLength(20)]

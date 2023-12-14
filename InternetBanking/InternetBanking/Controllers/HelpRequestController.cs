@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace InternetBanking.Controllers
 {
-    [Authorize]
+    // [Authorize]
     public class HelpRequestController : Controller
     {
         private readonly InternetBankingContext _context;

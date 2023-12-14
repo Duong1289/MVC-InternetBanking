@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace InternetBanking.Areas.Identity.Data
+
 {
     // Add profile data for application users by adding properties to the InternetBankingUser class
     public class InternetBankingUser : IdentityUser

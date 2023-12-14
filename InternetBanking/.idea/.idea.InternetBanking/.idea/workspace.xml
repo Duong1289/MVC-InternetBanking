@@ -8,21 +8,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63a36561-732a-45d3-afb7-55125ac74dfb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Areas/Identity/Pages/Account/_StatusMessage.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/BanksController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/BanksController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/BranchesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/BranchesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/CustomersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/CustomersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Areas/Identity/Pages/Account/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Areas/Identity/Pages/Account/Login.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/AccountsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/AccountsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/FaqCategoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/FaqCategoryController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/FaqController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/FaqController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/HelpRequestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/HelpRequestController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/HelpRequestTypeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/HelpRequestTypeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/HomeController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/StatementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/StatementController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/TransactionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/TransactionController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Models/FAQ.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Models/FAQ.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Models/HelpRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Models/HelpRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/FaqCategory/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/FaqCategory/Create.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Models/Account.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Models/Account.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Customers/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Customers/Create.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Customers/Delete.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Customers/Delete.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Customers/Details.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Customers/Details.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Customers/Edit.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Customers/Edit.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Customers/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Customers/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Home/Footer.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Home/Footer.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Home/Header.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Home/Header.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Home/LayoutIndex.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Home/LayoutIndex.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/wwwroot/dist/js/demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/wwwroot/dist/js/demo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +117,7 @@
       <workItem from="1702390522947" duration="1261000" />
       <workItem from="1702399891756" duration="702000" />
       <workItem from="1702474380768" duration="4009000" />
-      <workItem from="1702478617804" duration="10211000" />
+      <workItem from="1702478617804" duration="18496000" />
     </task>
     <servers />
   </component>
