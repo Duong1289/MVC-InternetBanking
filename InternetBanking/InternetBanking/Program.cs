@@ -1,4 +1,3 @@
-using InternetBanking.Mail;
 using InternetBanking.Models;
 using InternetBanking.Service;
 using Microsoft.AspNetCore.Identity;
@@ -49,7 +48,7 @@ internal class Program
         });
         builder.Services.AddOptions();
         var mailSettings = builder.Configuration.GetSection("MailSettings");
-        builder.Services.Configure<MailSettings>(mailSettings);
+        builder.Services.Configure<MailSetting>(mailSettings);
 
         builder.Services.AddTransient<TransactionService>();
         builder.Services.AddTransient<IEmailSender, SendMailService>();
