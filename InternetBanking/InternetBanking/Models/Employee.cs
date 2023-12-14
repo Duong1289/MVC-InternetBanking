@@ -33,14 +33,14 @@ namespace InternetBanking.Models
         //block/ublock
         [Required]
         public bool? Status { get; set; }
-        [Required]
+       
         [MaxLength(5)]
         public string? RoleId { get; set; }
 
         [MaxLength(5)]
         [ForeignKey(nameof(EmpId))]
         public string? ManageBy { get; set; }
-        [Required]
+        
         [ForeignKey("Branches")]
         public int? BranchId { get; set; }
         public ICollection<HelpRequest>? HelpRequests { get; set; }
