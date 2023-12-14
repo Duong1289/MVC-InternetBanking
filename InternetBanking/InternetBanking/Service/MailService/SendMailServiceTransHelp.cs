@@ -3,6 +3,7 @@ using InternetBanking.Models;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using MimeKit;
 
@@ -46,7 +47,7 @@ namespace InternetBanking.Service.MailService
         
         
 
-        public async Task SendEmail(Transaction transac)
+        public async Task SendEmailTransaction(Transaction transac, string email, string fullname)
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(MailSetting.DisplayName, MailSetting.Mail));

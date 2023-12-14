@@ -1,9 +1,13 @@
-﻿using InternetBanking.Mail;
+﻿using InternetBanking.Areas.Identity.Data;
+using InternetBanking.Mail;
 using InternetBanking.Models;
+using InternetBanking.Service.MailService;
 using InternetBanking.Service;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace InternetBanking.Controllers
 {
@@ -11,15 +15,18 @@ namespace InternetBanking.Controllers
     public class TransactionController : Controller
     {
         TransactionService transactionService;
-        SendMailService sendMailService;
+        SendMailServiceTransHelp sendMailService;
         InternetBankingContext ctx;
+        UserManager<InternetBankingUser> _userManager;
 
-        public TransactionController(TransactionService transactionService, SendMailService sendMailService, InternetBankingContext ctx)
+        public TransactionController(TransactionService transactionService, SendMailServiceTransHelp sendMailService, InternetBankingContext ctx, UserManager<InternetBankingUser> _userManager)
         {
             this.transactionService = transactionService;
             this.sendMailService = sendMailService;
             this.ctx = ctx;
+            this._userManager = _userManager;
         }
+        
 
         public IActionResult Index()
         {
@@ -31,12 +38,13 @@ namespace InternetBanking.Controllers
             {
                 ViewBag.TransactionStatus = TempData["TransactionError"];
             }
-
             return View();
         }
 
         public async Task<IActionResult> ProcessTransaction(Transaction transac)
         {
+            
+            var currentUser = await _userManager.GetUserAsync(User);
             try
             {
                 bool receiverExist = await transactionService.CheckReceiver(transac.ReceiverAccountNumber);
@@ -59,7 +67,11 @@ namespace InternetBanking.Controllers
                     if (processTransaction)
                     {
                         bool updateBalance = await transactionService.UpdateBalance(receiver, sender, transac.Amount);
-                        if (!updateBalance)
+                        if (updateBalance)
+                        {
+                            await sendMailService.SendEmailTransaction(transac, currentUser.Email, currentUser.LastName);
+                        }
+                       else
                         {
                             string transactionId = await transactionService.SetStatusFalse(transac.Id);
                             throw new InvalidOperationException("Update balance failed! Please try again! Your transaction ID: " + transactionId);
