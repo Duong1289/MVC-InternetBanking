@@ -17,11 +17,11 @@ internal class Program
         var connectionString = builder.Configuration.GetConnectionString("IdentityConnectionString") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
         builder.Services.AddDbContext<InternetBankingContext>(options =>
             options.UseSqlServer(connectionString));
-        //builder.Services.AddIdentity<InternetBankingUser, IdentityRole>()
-        //    .AddEntityFrameworkStores<InternetBankingContext>()
-        //    .AddDefaultTokenProviders();
+        builder.Services.AddIdentity<InternetBankingUser, IdentityRole>()
+            .AddEntityFrameworkStores<InternetBankingContext>()
+            .AddDefaultTokenProviders();
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-        builder.Services.AddDefaultIdentity<InternetBankingUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<InternetBankingContext>();
+        //builder.Services.AddDefaultIdentity<InternetBankingUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<InternetBankingContext>();
 
 
         builder.Services.Configure<IdentityOptions>(options =>
@@ -43,7 +43,7 @@ internal class Program
             //cau hinh dang nhap
             options.SignIn.RequireConfirmedEmail = true;
             options.SignIn.RequireConfirmedPhoneNumber = false;
-
+            options.SignIn.RequireConfirmedAccount = true;
 
         });
         builder.Services.AddOptions();
@@ -51,7 +51,8 @@ internal class Program
         builder.Services.Configure<MailSetting>(mailSettings);
 
         builder.Services.AddTransient<TransactionService>();
-        builder.Services.AddTransient<SendMailService>();
+        builder.Services.AddTransient<IEmailSender, SendMailService>();
+        builder.Services.AddTransient<SendMailServiceTransHelp>();
         builder.Services.AddAuthentication().AddGoogle(options =>
         {
             IConfigurationSection section = builder.Configuration.GetSection("Authentication:Google");
