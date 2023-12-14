@@ -17,19 +17,6 @@ namespace InternetBanking.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Customerbylogin(string PersonalId)
-        {
-            var customer = await _context.Customers
-                .Include(c => c.InternetBankingUser)
-                .FirstOrDefaultAsync(m => m.PersonalId == PersonalId);
-
-            if (customer == null)
-            {
-                return NotFound(); // Or any other action based on your requirement
-            }
-
-            return View(customer);
-        }
 
         // GET: Customers
         public async Task<IActionResult> Index()
@@ -48,7 +35,7 @@ namespace InternetBanking.Controllers
 
             var customer = await _context.Customers
                 .Include(c => c.InternetBankingUser)
-                .FirstOrDefaultAsync(m => m.PersonalId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (customer == null)
             {
                 return NotFound();
@@ -60,7 +47,7 @@ namespace InternetBanking.Controllers
         // GET: Customers/Create
         public IActionResult Create()
         {
-            ViewData["PersonalId"] = new SelectList(_context.InternetBankingUsers, "Id", "Id");
+            ViewData["Id"] = new SelectList(_context.InternetBankingUsers, "Id", "Id");
             return View();
         }
 
@@ -69,7 +56,7 @@ namespace InternetBanking.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PersonalId,Username,FirstName,LastName,Email,Address,OpenDate,Status,Locked,BranchId")] Customer customer)
+        public async Task<IActionResult> Create([Bind("Id,PersonalId,Email,Phone,FirstName,LastName,Address,OpenDate,Status")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +64,7 @@ namespace InternetBanking.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PersonalId"] = new SelectList(_context.InternetBankingUsers, "Id", "Id", customer.PersonalId);
+            ViewData["Id"] = new SelectList(_context.InternetBankingUsers, "Id", "Id", customer.Id);
             return View(customer);
         }
 
@@ -94,7 +81,7 @@ namespace InternetBanking.Controllers
             {
                 return NotFound();
             }
-            ViewData["PersonalId"] = new SelectList(_context.InternetBankingUsers, "Id", "Id", customer.PersonalId);
+            ViewData["Id"] = new SelectList(_context.InternetBankingUsers, "Id", "Id", customer.Id);
             return View(customer);
         }
 
@@ -103,9 +90,9 @@ namespace InternetBanking.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("PersonalId,Username,FirstName,LastName,Email,Address,OpenDate,Status,Locked,BranchId")] Customer customer)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,PersonalId,Email,Phone,FirstName,LastName,Address,OpenDate,Status")] Customer customer)
         {
-            if (id != customer.PersonalId)
+            if (id != customer.Id)
             {
                 return NotFound();
             }
@@ -119,7 +106,7 @@ namespace InternetBanking.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CustomerExists(customer.PersonalId))
+                    if (!CustomerExists(customer.Id))
                     {
                         return NotFound();
                     }
@@ -130,7 +117,7 @@ namespace InternetBanking.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PersonalId"] = new SelectList(_context.InternetBankingUsers, "Id", "Id", customer.PersonalId);
+            ViewData["Id"] = new SelectList(_context.InternetBankingUsers, "Id", "Id", customer.Id);
             return View(customer);
         }
 
@@ -144,7 +131,7 @@ namespace InternetBanking.Controllers
 
             var customer = await _context.Customers
                 .Include(c => c.InternetBankingUser)
-                .FirstOrDefaultAsync(m => m.PersonalId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (customer == null)
             {
                 return NotFound();
@@ -174,7 +161,7 @@ namespace InternetBanking.Controllers
 
         private bool CustomerExists(string id)
         {
-          return (_context.Customers?.Any(e => e.PersonalId == id)).GetValueOrDefault();
+          return (_context.Customers?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
