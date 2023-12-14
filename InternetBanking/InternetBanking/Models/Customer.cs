@@ -13,19 +13,22 @@ namespace InternetBanking.Models
         public string? Id { get; set; }
 
         [MaxLength(20)]
-        public required string? PersonalId { get; set; }
+        public string? PersonalId { get; set; }
+
+        [MaxLength(200)]
+        public required string Email { get; set; }
 
         [MaxLength(20)]
-        public required string? Phone {  get; set; }
+        public string? Phone {  get; set; }
 
         [MaxLength(50)]
-        public required string FirstName { get; set; }
+        public string? FirstName { get; set; }
        
         [MaxLength(50)]
-        public required string LastName { get; set; }
+        public string? LastName { get; set; }
        
         [MaxLength(250)]
-        public required string Address { get; set; }
+        public string? Address { get; set; }
        
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public required DateTime? OpenDate { get; set; }

@@ -13,7 +13,10 @@ namespace InternetBanking.Models
         [Required]
         [MaxLength(20)]
         public string? PersonalId { get; set; }
- 
+
+        [MaxLength(200)]
+        public required string Email { get; set; }
+
         [Required]
         [MaxLength(50)]
         public string? FirstName { get; set; }
