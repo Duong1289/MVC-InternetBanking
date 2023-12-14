@@ -8,8 +8,9 @@ namespace InternetBanking.Models
 {
     public class Customer
     {
+
+        [Key, ForeignKey("InternetBankingUser")]
         
-        [Key]
         public string? Id { get; set; }
 
         [MaxLength(20)]

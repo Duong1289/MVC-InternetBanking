@@ -7,7 +7,7 @@ namespace InternetBanking.Models
 {
     public class Employee
     {
-        [Key]
+        [Key, ForeignKey("InternetBankingUser")]
         public required string Id { get; set; }
         
         [Required]
