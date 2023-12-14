@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,87 +9,90 @@ using InternetBanking.Models;
 
 namespace InternetBanking.Controllers
 {
-    public class AccountsController : Controller
+    public class CustomerController : Controller
     {
         private readonly InternetBankingContext _context;
 
-        public AccountsController(InternetBankingContext context)
+        public CustomerController(InternetBankingContext context)
         {
             _context = context;
         }
 
-        // GET: Accounts
+        // GET: Customer
         public async Task<IActionResult> Index()
         {
-              return _context.Accounts != null ? 
-                          View(await _context.Accounts.ToListAsync()) :
-                          Problem("Entity set 'InternetBankingContext.Accounts'  is null.");
+            var internetBankingContext = _context.Customers.Include(c => c.InternetBankingUser);
+            return View(await internetBankingContext.ToListAsync());
         }
 
-        // GET: Accounts/Details/5
+        // GET: Customer/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.Accounts == null)
+            if (id == null || _context.Customers == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts
-                .FirstOrDefaultAsync(m => m.AccountNumber == id);
-            if (account == null)
+            var customer = await _context.Customers
+                .Include(c => c.InternetBankingUser)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (customer == null)
             {
                 return NotFound();
             }
 
-            return View(account);
+            return View(customer);
         }
 
-        // GET: Accounts/Create
+        // GET: Customer/Create
         public IActionResult Create()
         {
+            ViewData["Id"] = new SelectList(_context.InternetBankingUsers, "Id", "Id");
             return View();
         }
 
-        // POST: Accounts/Create
+        // POST: Customer/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AccountNumber,Balance,OpenDate,ExpireDate,Status,CustomerPersonalId")] Account account)
+        public async Task<IActionResult> Create([Bind("Id,PersonalId,Email,Phone,FirstName,LastName,Address,OpenDate,Status")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(account);
+                _context.Add(customer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(account);
+            ViewData["Id"] = new SelectList(_context.InternetBankingUsers, "Id", "Id", customer.Id);
+            return View(customer);
         }
 
-        // GET: Accounts/Edit/5
+        // GET: Customer/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null || _context.Accounts == null)
+            if (id == null || _context.Customers == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts.FindAsync(id);
-            if (account == null)
+            var customer = await _context.Customers.FindAsync(id);
+            if (customer == null)
             {
                 return NotFound();
             }
-            return View(account);
+            ViewData["Id"] = new SelectList(_context.InternetBankingUsers, "Id", "Id", customer.Id);
+            return View(customer);
         }
 
-        // POST: Accounts/Edit/5
+        // POST: Customer/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("AccountNumber,Balance,OpenDate,ExpireDate,Status,CustomerPersonalId")] Account account)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,PersonalId,Email,Phone,FirstName,LastName,Address,OpenDate,Status")] Customer customer)
         {
-            if (id != account.AccountNumber)
+            if (id != customer.Id)
             {
                 return NotFound();
             }
@@ -98,12 +101,12 @@ namespace InternetBanking.Controllers
             {
                 try
                 {
-                    _context.Update(account);
+                    _context.Update(customer);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AccountExists(account.AccountNumber))
+                    if (!CustomerExists(customer.Id))
                     {
                         return NotFound();
                     }
@@ -114,49 +117,51 @@ namespace InternetBanking.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(account);
+            ViewData["Id"] = new SelectList(_context.InternetBankingUsers, "Id", "Id", customer.Id);
+            return View(customer);
         }
 
-        // GET: Accounts/Delete/5
+        // GET: Customer/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.Accounts == null)
+            if (id == null || _context.Customers == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts
-                .FirstOrDefaultAsync(m => m.AccountNumber == id);
-            if (account == null)
+            var customer = await _context.Customers
+                .Include(c => c.InternetBankingUser)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (customer == null)
             {
                 return NotFound();
             }
 
-            return View(account);
+            return View(customer);
         }
 
-        // POST: Accounts/Delete/5
+        // POST: Customer/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.Accounts == null)
+            if (_context.Customers == null)
             {
-                return Problem("Entity set 'InternetBankingContext.Accounts'  is null.");
+                return Problem("Entity set 'InternetBankingContext.Customers'  is null.");
             }
-            var account = await _context.Accounts.FindAsync(id);
-            if (account != null)
+            var customer = await _context.Customers.FindAsync(id);
+            if (customer != null)
             {
-                _context.Accounts.Remove(account);
+                _context.Customers.Remove(customer);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AccountExists(string id)
+        private bool CustomerExists(string id)
         {
-          return (_context.Accounts?.Any(e => e.AccountNumber == id)).GetValueOrDefault();
+          return (_context.Customers?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

@@ -8,7 +8,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63a36561-732a-45d3-afb7-55125ac74dfb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Account/Create.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Account/Delete.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Account/Details.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Account/Edit.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Account/Index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Customer/Create.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Customer/Delete.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Customer/Details.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Customer/Edit.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Customer/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Areas/Identity/Pages/Account/Manage/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Areas/Identity/Pages/Account/Manage/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/AccountsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/AccountController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/CustomersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/CustomerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_Sidebar.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +113,7 @@
       <workItem from="1702399891756" duration="702000" />
       <workItem from="1702474380768" duration="4009000" />
       <workItem from="1702478617804" duration="18496000" />
+      <workItem from="1702569034622" duration="1544000" />
     </task>
     <servers />
   </component>

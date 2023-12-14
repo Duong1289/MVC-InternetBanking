@@ -32,7 +32,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
-            <li class="nav-header">Transaction</li>
+                 <li class="nav-header"></li>
+                 
                  <li class="nav-item menu-open">
                      <a href="#" class="nav-link active">
                          <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -43,18 +44,11 @@
                      </a>
                      <ul class="nav nav-treeview">
                          <li class="nav-item">
-                             <a asp-action="" class="nav-link">
+                             <a asp-controller="Account" asp-action="Index" class="nav-link">
                                  <i class="far fa-circle nav-icon"></i>
-                                 <p>Account 01</p>
+                                 <p>Manage Account</p>
                              </a>
                          </li>
-                         <li class="nav-item">
-                             <a asp-action="" class="nav-link active">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Account 02</p>
-                             </a>
-                         </li>
-                   
                      </ul>
                  </li>
                  @* Help Request *@
@@ -68,7 +62,7 @@
                      </a>
                      <ul class="nav nav-treeview">
                          <li class="nav-item">
-                             <a asp-action="HelpRequest" class="nav-link">
+                             <a asp-controller="HelpRequest" asp-action="Index" class="nav-link">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Manage Help Request</p>
                              </a>
@@ -86,7 +80,7 @@
                      </a>
                      <ul class="nav nav-treeview">
                          <li class="nav-item">
-                             <a asp-action="HelpRequestType" class="nav-link">
+                             <a asp-controller="HelpRequest" asp-action="Index" class="nav-link">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Manage Help Request Types</p>
                              </a>
@@ -104,7 +98,7 @@
                      </a>
                      <ul class="nav nav-treeview">
                          <li class="nav-item">
-                             <a asp-action="Faq" class="nav-link">
+                             <a asp-controller="Faq" asp-action="Index" class="nav-link">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Manage FAQ</p>
                              </a>
@@ -122,7 +116,7 @@
                      </a>
                      <ul class="nav nav-treeview">
                          <li class="nav-item">
-                             <a asp-action="FaqCategory" class="nav-link">
+                             <a asp-controller="FaqCategory" asp-action="Index" class="nav-link">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Manage FAQ Category</p>
                              </a>
@@ -141,7 +135,7 @@
                      </a>
                      <ul class="nav nav-treeview">
                          <li class="nav-item">
-                             <a asp-action="Statement" class="nav-link">
+                             <a asp-controller="Statement" asp-action="Index" class="nav-link">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>All Transaction Statements</p>
                              </a>
@@ -150,7 +144,7 @@
                      
                      <ul class="nav nav-treeview">
                          <li class="nav-item">
-                             <a asp-action="Statement/CreateStatement" class="nav-link">
+                             <a asp-controller="Statement" asp-action="CreateStatement" class="nav-link">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Export Transaction Statements Within Period</p>
                              </a>
