@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InternetBanking.Models;
-using InternetBanking.Areas.Identity.Data;
 
 namespace InternetBanking.Controllers
 {
@@ -22,8 +21,8 @@ namespace InternetBanking.Controllers
         // GET: Customers
         public async Task<IActionResult> Index()
         {
-            //var internetBankingContext = _context.Customers;
-            return View(await _context.Customers.ToListAsync());
+            var internetBankingContext = _context.Customers.Include(c => c.InternetBankingUser);
+            return View(await internetBankingContext.ToListAsync());
         }
 
         // GET: Customers/Details/5
@@ -48,7 +47,7 @@ namespace InternetBanking.Controllers
         // GET: Customers/Create
         public IActionResult Create()
         {
-            ViewData["PersonalId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["PersonalId"] = new SelectList(_context.InternetBankingUsers, "Id", "Id");
             return View();
         }
 
@@ -65,10 +64,7 @@ namespace InternetBanking.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-
-            // Instead of using "Id", use the property that represents the primary key of InternetBankingUser
-            ViewData["PersonalId"] = new SelectList(_context.Users, nameof(InternetBankingUser.Id), nameof(InternetBankingUser.UserName), customer.PersonalId);
-
+            ViewData["PersonalId"] = new SelectList(_context.InternetBankingUsers, "Id", "Id", customer.PersonalId);
             return View(customer);
         }
 
