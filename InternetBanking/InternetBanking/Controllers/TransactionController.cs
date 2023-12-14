@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InternetBanking.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Customer")]
     public class TransactionController : Controller
     {
         TransactionService transactionService;
