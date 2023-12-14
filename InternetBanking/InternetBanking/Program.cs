@@ -52,7 +52,7 @@ internal class Program
 
         builder.Services.AddTransient<TransactionService>();
         builder.Services.AddTransient<IEmailSender, SendMailService>();
-        builder.Services.AddTransient<SendMailServiceTransHelp>();
+        builder.Services.AddTransient<SendMailService>();
         builder.Services.AddAuthentication().AddGoogle(options =>
         {
             IConfigurationSection section = builder.Configuration.GetSection("Authentication:Google");
