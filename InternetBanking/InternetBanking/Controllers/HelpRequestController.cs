@@ -15,9 +15,9 @@ namespace InternetBanking.Controllers
     public class HelpRequestController : Controller
     {
         private readonly InternetBankingContext _context;
-        private readonly SendMailServiceTransHelp _sendMailServiceTransHelp;
+        private readonly SendMailService _sendMailServiceTransHelp;
 
-        public HelpRequestController(InternetBankingContext context, SendMailServiceTransHelp _sendMailServiceTransHelp)
+        public HelpRequestController(InternetBankingContext context, SendMailService _sendMailServiceTransHelp)
         {
             _context = context;
             this._sendMailServiceTransHelp = _sendMailServiceTransHelp;

@@ -1,5 +1,4 @@
 ﻿using InternetBanking.Areas.Identity.Data;
-using InternetBanking.Mail;
 using InternetBanking.Models;
 using InternetBanking.Service.MailService;
 using InternetBanking.Service;
@@ -15,11 +14,11 @@ namespace InternetBanking.Controllers
     public class TransactionController : Controller
     {
         TransactionService transactionService;
-        SendMailServiceTransHelp sendMailService;
+        SendMailService sendMailService;
         InternetBankingContext ctx;
         UserManager<InternetBankingUser> _userManager;
 
-        public TransactionController(TransactionService transactionService, SendMailServiceTransHelp sendMailService, InternetBankingContext ctx, UserManager<InternetBankingUser> _userManager)
+        public TransactionController(TransactionService transactionService, SendMailService sendMailService, InternetBankingContext ctx, UserManager<InternetBankingUser> _userManager)
         {
             this.transactionService = transactionService;
             this.sendMailService = sendMailService;
@@ -45,6 +44,7 @@ namespace InternetBanking.Controllers
         {
             
             var currentUser = await _userManager.GetUserAsync(User);
+            var customer = await ctx.Customers.SingleOrDefaultAsync(c => c.Id == currentUser.Id);
             try
             {
                 bool receiverExist = await transactionService.CheckReceiver(transac.ReceiverAccountNumber);
@@ -69,7 +69,7 @@ namespace InternetBanking.Controllers
                         bool updateBalance = await transactionService.UpdateBalance(receiver, sender, transac.Amount);
                         if (updateBalance)
                         {
-                            await sendMailService.SendEmailTransaction(transac, currentUser.Email, currentUser.LastName);
+                            await sendMailService.SendEmailTransaction(transac, currentUser.Email, customer.LastName);
                         }
                        else
                         {
