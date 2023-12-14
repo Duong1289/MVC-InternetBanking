@@ -40,7 +40,7 @@ namespace InternetBanking.Models
         [MaxLength(5)]
         [ForeignKey(nameof(EmpId))]
         public string? ManageBy { get; set; }
-        [Required]
+        
         [ForeignKey("Branches")]
         public int? BranchId { get; set; }
         public ICollection<HelpRequest>? HelpRequests { get; set; }
