@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace InternetBanking.Areas.Identity.Data
+
 {
     // Add profile data for application users by adding properties to the InternetBankingUser class
     public class InternetBankingUser : IdentityUser
@@ -20,6 +21,7 @@ namespace InternetBanking.Areas.Identity.Data
         [PersonalData]
         [Column(TypeName = "nvarchar(100)")]
         public string? LastName { get; set; }
+
 
         public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }  
