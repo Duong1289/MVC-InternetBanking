@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using InternetBanking.Models;
+using Microsoft.AspNetCore.Hosting;
+using InternetBanking.Service;
 
 namespace InternetBanking.Areas.Identity.Pages.Account
 {
@@ -27,6 +29,8 @@ namespace InternetBanking.Areas.Identity.Pages.Account
         private readonly IEmailSender _emailSender;
         private readonly InternetBankingContext _internetBankingContext;
         private readonly RoleManager<IdentityRole> _roleManager; // Add this line
+        private readonly IFileService _fileService;
+        
 
         public RegisterModel(
             UserManager<InternetBankingUser> userManager,
@@ -34,7 +38,8 @@ namespace InternetBanking.Areas.Identity.Pages.Account
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
             InternetBankingContext internetBankingContext,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            IFileService fileService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -42,6 +47,7 @@ namespace InternetBanking.Areas.Identity.Pages.Account
             _emailSender = emailSender;
             _internetBankingContext = internetBankingContext;
             _roleManager = roleManager;
+            _fileService = fileService;
         }
 
         [BindProperty]
@@ -62,10 +68,12 @@ namespace InternetBanking.Areas.Identity.Pages.Account
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
             [Required]
+            [StringLength(15, ErrorMessage = "The {0} must be at least {2} numbers.", MinimumLength = 8)]
             [DataType(DataType.Text)]
             [Display(Name = "Phone Number")]
             public string Phone { get; set; }
             [Required]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters.", MinimumLength = 12)]
             [DataType(DataType.Text)]
             [Display(Name = "Personal ID")]
             public string PersonalId { get; set; }
@@ -111,6 +119,7 @@ namespace InternetBanking.Areas.Identity.Pages.Account
                     await _userManager.AddToRoleAsync(user, "Customer");
                     var customer = new Customer
                     {
+
                         Id = user.Id,
                         Email = Input.Email,
                         FirstName = Input.FirstName,
@@ -159,7 +168,6 @@ namespace InternetBanking.Areas.Identity.Pages.Account
             return Page();
         }
 
-
-
+       
     }
 }

@@ -27,7 +27,7 @@ internal class Program
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
        
-
+        builder.Services.AddScoped<IFileService, FIleService>();
 
 
         builder.Services.Configure<IdentityOptions>(options =>

@@ -106,6 +106,9 @@ namespace InternetBanking.Migrations
                     b.Property<DateTime>("ExpireDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("InternetBankingUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime>("OpenDate")
                         .HasColumnType("datetime2");
 
@@ -117,6 +120,8 @@ namespace InternetBanking.Migrations
                     b.HasIndex("AccountTypeId");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("InternetBankingUserId");
 
                     b.ToTable("Accounts");
                 });
@@ -689,9 +694,15 @@ namespace InternetBanking.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("InternetBanking.Areas.Identity.Data.InternetBankingUser", "InternetBankingUser")
+                        .WithMany()
+                        .HasForeignKey("InternetBankingUserId");
+
                     b.Navigation("AccountType");
 
                     b.Navigation("Customer");
+
+                    b.Navigation("InternetBankingUser");
                 });
 
             modelBuilder.Entity("InternetBanking.Models.Customer", b =>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using InternetBanking.Areas.Identity.Data;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
@@ -37,5 +38,6 @@ namespace InternetBanking.Models
         public ICollection<Deposit>? Deposits { get; set; }
         public ICollection<Transaction> Transactions { get; set; }
         public ICollection<HelpRequest> HelpRequests { get; set; }
+        
     }
 }
