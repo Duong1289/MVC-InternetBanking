@@ -14,7 +14,7 @@ namespace InternetBanking.Models
         public DbSet<Bank>? Banks { get; set; }
         public DbSet<Customer>? Customers { get; set; }
         public DbSet<Employee>? Employees { get; set; }
-       
+        public DbSet<AccountType>? AccountTypes { get; set; }
         public DbSet<FAQ>? FAQ { get; set; }
         public DbSet<FAQCategory>? FAQCategories { get; set; }
         public DbSet<HelpRequest>? HelpRequests { get; set; }

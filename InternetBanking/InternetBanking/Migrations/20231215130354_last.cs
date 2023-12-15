@@ -12,6 +12,19 @@ namespace InternetBanking.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "AccountTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TypeName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AccountTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -99,8 +112,7 @@ namespace InternetBanking.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ServiceName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false)
+                    ServiceName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -243,13 +255,13 @@ namespace InternetBanking.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    PersonalId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    PersonalId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    OpenDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Phone = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -269,9 +281,9 @@ namespace InternetBanking.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Question = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
-                    Answer = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
-                    FAQCategoryId = table.Column<int>(type: "int", nullable: true)
+                    Question = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    Answer = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    FAQCategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -280,7 +292,8 @@ namespace InternetBanking.Migrations
                         name: "FK_FAQ_FAQCategories_FAQCategoryId",
                         column: x => x.FAQCategoryId,
                         principalTable: "FAQCategories",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -288,6 +301,7 @@ namespace InternetBanking.Migrations
                 columns: table => new
                 {
                     AccountNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    AccountTypeId = table.Column<int>(type: "int", nullable: false),
                     CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Balance = table.Column<double>(type: "float", nullable: false),
                     OpenDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -297,6 +311,12 @@ namespace InternetBanking.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Accounts", x => x.AccountNumber);
+                    table.ForeignKey(
+                        name: "FK_Accounts_AccountTypes_AccountTypeId",
+                        column: x => x.AccountTypeId,
+                        principalTable: "AccountTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Accounts_Customers_CustomerId",
                         column: x => x.CustomerId,
@@ -315,11 +335,11 @@ namespace InternetBanking.Migrations
                     CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     RequestTypeId = table.Column<int>(type: "int", nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Answer = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    Answer = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    HelpRequestImageId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false),
-                    HelpRequestImageId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HelpRequestTypeRequestTypeId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -445,6 +465,11 @@ namespace InternetBanking.Migrations
                         principalTable: "HelpRequests",
                         principalColumn: "Id");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Accounts_AccountTypeId",
+                table: "Accounts",
+                column: "AccountTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Accounts_CustomerId",
@@ -609,6 +634,9 @@ namespace InternetBanking.Migrations
 
             migrationBuilder.DropTable(
                 name: "HelpRequestsTypes");
+
+            migrationBuilder.DropTable(
+                name: "AccountTypes");
 
             migrationBuilder.DropTable(
                 name: "Customers");

@@ -11,7 +11,10 @@ namespace InternetBanking.Models
         [MaxLength(20)]
         public required string AccountNumber { get; set; }
 
-        [ForeignKey("Customer")]
+        [ForeignKey("AccountTypes")]
+        public required int AccountTypeId { get; set; }
+
+        [ForeignKey("Customers")]
         public required string CustomerId { get; set; }
 
         [DefaultValue(0.0)]
@@ -28,6 +31,7 @@ namespace InternetBanking.Models
 
         // Navigation properties
         public virtual Customer Customer { get; set; }
+        public virtual AccountType AccountType { get; set; }
 
         public ICollection<Service> Services { get; set; }
         public ICollection<Transaction> Transactions { get; set; }

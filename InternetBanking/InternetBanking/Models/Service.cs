@@ -22,7 +22,7 @@ namespace InternetBanking.Models
         public string? Content { get; set;}
 
         [Required]
-        public double? Amount { get; set; }
+        public double Amount { get; set; }
 
 
         [ForeignKey("Employees")]

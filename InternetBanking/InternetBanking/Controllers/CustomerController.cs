@@ -78,7 +78,7 @@ namespace InternetBanking.Controllers
         }
 
         // GET: Customers/Edit/5
-        [Authorize(Roles = "Admin, Emloyee")]
+        
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.Customers == null)

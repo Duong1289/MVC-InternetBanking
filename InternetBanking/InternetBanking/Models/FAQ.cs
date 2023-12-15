@@ -6,16 +6,16 @@ namespace InternetBanking.Models
     public class FAQ
     {
         [Key]
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         [MaxLength(300)]
-        public required string? Question { get; set; }
+        public required string Question { get; set; }
 
         [MaxLength(1000)]
-        public required string? Answer { get; set; }
+        public required string Answer { get; set; }
 
 
         [ForeignKey("FAQCategories")]
-        public required int? FAQCategoryId { get; set; }
+        public required int FAQCategoryId { get; set; }
     }
 }

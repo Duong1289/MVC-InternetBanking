@@ -10,30 +10,30 @@ namespace InternetBanking.Models
         [Key, ForeignKey("InternetBankingUser")]
         public required string Id { get; set; }
         
-        [Required]
+        
         [MaxLength(20)]
         public string? PersonalId { get; set; }
 
         [MaxLength(200)]
         public required string Email { get; set; }
 
-        [Required]
+        
         [MaxLength(50)]
         public string? FirstName { get; set; }
-        [Required]
+        
         [MaxLength(50)]
         public string? LastName { get; set; }
 
-        public required string Address { get; set; }
+        public string? Address { get; set; }
         
         [MaxLength(15)]
-        public required string Phone { get; set; }
+        public string? Phone { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public required DateTime? OpenDate { get; set; }
+        public required DateTime? CreateDate { get; set; }
 
         [Required]
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
        
         
         public ICollection<HelpRequest>? HelpRequests { get; set; }
