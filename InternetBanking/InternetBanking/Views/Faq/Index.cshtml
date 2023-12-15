@@ -1,8 +1,7 @@
-@model IEnumerable<InternetBanking.Models.FAQ>
+﻿@model IEnumerable<InternetBanking.Models.FAQ>
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Index</h1>
@@ -19,6 +18,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Answer)
             </th>
+            <th>
+               FAQ-Category
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -32,8 +34,10 @@
                 @Html.DisplayFor(modelItem => item.Answer)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                @Html.DisplayFor(modelItem => item.FAQCategory.CategoryName)
+            </td>
+            <td>
+                <a asp-action="Update" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>

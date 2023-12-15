@@ -10,6 +10,6 @@ namespace InternetBanking.Models
         [Required]
         [MaxLength(50)]
         public string? CategoryName { get; set; }
-        public ICollection<FAQ> FAQ { get; set; }
+        public ICollection<FAQ>? FAQ { get; set; }
     }
 }

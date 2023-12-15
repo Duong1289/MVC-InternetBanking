@@ -8,38 +8,6 @@
     <link rel="stylesheet" href="~/css/Transaction/Index.css" />
 }
 
-
-@if (ViewBag.TransactionStatus != null)
-{
-    <!-- Display success popup using Bootstrap modal -->
-    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="successModalLabel">Transaction Status</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    @if (ViewBag.TransactionStatus.Contains("successful"))
-                    {
-                        <p style="color: green;">@Html.Raw(ViewBag.TransactionStatus)</p>
-                    }
-                    else
-                    {
-                        <p style="color: red;">@Html.Raw(ViewBag.TransactionStatus)</p>
-                    }
-                </div>
-                <div class="modal-footer">
-                    <div>Thank you for using our service!</div>
-                    <button type="button" class="btn btn-secondary close" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-}
 <div class="container">
     <h1>Transaction</h1>
     <hr />

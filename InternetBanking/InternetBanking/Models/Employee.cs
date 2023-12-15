@@ -37,8 +37,9 @@ namespace InternetBanking.Models
        
         
         public ICollection<HelpRequest>? HelpRequests { get; set; }
-        public ICollection<Service>? Services { get; set; }
-        
+        public ICollection<Withdraw>? Withdraws { get; set; }
+        public ICollection<Deposit>? Deposits { get; set; }
+
         public ICollection<Image>? Images { get; set; }
         public virtual required InternetBankingUser InternetBankingUser { get; set; }
         // Mối quan hệ 1-1 với IdentityUser

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace InternetBanking.Migrations
 {
     /// <inheritdoc />
-    public partial class last : Migration
+    public partial class v1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -374,23 +374,21 @@ namespace InternetBanking.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ServiceName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ServiceTypeId = table.Column<int>(type: "int", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false),
                     EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    ServiceAccountNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    CustomerPersonalId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AccountNumber = table.Column<string>(type: "nvarchar(20)", nullable: true),
-                    CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    AccountNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    IssueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AccountNumber1 = table.Column<string>(type: "nvarchar(20)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Services", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Services_Accounts_AccountNumber",
-                        column: x => x.AccountNumber,
+                        name: "FK_Services_Accounts_AccountNumber1",
+                        column: x => x.AccountNumber1,
                         principalTable: "Accounts",
                         principalColumn: "AccountNumber");
                     table.ForeignKey(
@@ -556,9 +554,9 @@ namespace InternetBanking.Migrations
                 column: "HelpRequestId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Services_AccountNumber",
+                name: "IX_Services_AccountNumber1",
                 table: "Services",
-                column: "AccountNumber");
+                column: "AccountNumber1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Services_CustomerId",

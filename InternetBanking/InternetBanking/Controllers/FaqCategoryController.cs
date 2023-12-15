@@ -13,164 +13,92 @@ namespace InternetBanking.Controllers
     // [Authorize]
     public class FaqCategoryController : Controller
     {
-        private readonly InternetBankingContext _context;
+        private readonly InternetBankingContext ctx;
 
-        public FaqCategoryController(InternetBankingContext context)
+        public FaqCategoryController(InternetBankingContext ctx)
         {
-            _context = context;
+            this.ctx = ctx;
         }
 
         // GET: FaqCategory
         public async Task<IActionResult> Index()
         {
-              return _context.FAQCategories != null ? 
-                          View(await _context.FAQCategories.ToListAsync()) :
-                          Problem("Entity set 'InternetBankingContext.FAQCategories'  is null.");
+            var cate = await ctx.FAQCategories!.ToListAsync();
+            ViewBag.Result = false;
+            if (TempData["Result"] != null)
+            {
+                ViewBag.Result = TempData["Result"];
+            }
+            return View(cate);
         }
 
-        // GET: FaqCategory/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.FAQCategories == null)
-            {
-                return NotFound();
-            }
-
-            var fAQCategory = await _context.FAQCategories
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (fAQCategory == null)
-            {
-                return NotFound();
-            }
-
-            return View(fAQCategory);
-        }
-
-        // GET: FaqCategory/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: FaqCategory/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CategoryName")] FAQCategory fAQCategory)
+        public async Task<IActionResult> Create(FAQCategory faqcate)
         {
-            try
+            ctx.FAQCategories!.Add(faqcate);
+            if (await ctx.SaveChangesAsync() >0)
             {
-               
-                    
-                    _context.Add(fAQCategory);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                
+                TempData["Result"] = "Create FAQ-Category succesfully";
+                return RedirectToAction("Index");
             }
-            catch (Exception ex)
-            {
-                // Log the exception for debugging purposes
-                // You can replace this with your preferred logging mechanism
-                Console.WriteLine($"Error creating FAQCategory: {ex.Message}");
-                throw; // Rethrow the exception to see it in the console or log
-            }
-
-            return View(fAQCategory);
+            ViewBag.Result = false;
+            return View();
         }
 
-
-        // GET: FaqCategory/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Update(int id)
         {
-            if (id == null || _context.FAQCategories == null)
+            var faq = await ctx.FAQCategories!.SingleOrDefaultAsync(f => f.Id == id);
+            if (faq == null)
             {
-                return NotFound();
+                TempData["Result"] = "Can not find FAQ-Category question";
+                return RedirectToAction("Index");
             }
-
-            var fAQCategory = await _context.FAQCategories.FindAsync(id);
-            if (fAQCategory == null)
-            {
-                return NotFound();
-            }
-            return View(fAQCategory);
+            return View(faq);
         }
 
-        // POST: FaqCategory/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, [Bind("Id,CategoryName")] FAQCategory fAQCategory)
+        public async Task<IActionResult> Update(FAQCategory cate)
         {
-            if (id != fAQCategory.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
+                ctx.Entry(cate).State = EntityState.Modified;
+                if (await ctx.SaveChangesAsync() > 0)
                 {
-                    _context.Update(fAQCategory);
-                    await _context.SaveChangesAsync();
+                    TempData["Result"] = "Update successfully!";
+                    return RedirectToAction("Index");
                 }
-                catch (DbUpdateConcurrencyException)
+                ViewBag.Result = false;
+                return View();
+            }
+            ViewBag.Result = false;
+            return View();
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var faq = await ctx.FAQCategories!.SingleOrDefaultAsync(f => f.Id == id);
+            if (faq != null)
+            {
+                ctx.FAQCategories!.Remove(faq);
+                if (await ctx.SaveChangesAsync() > 0)
                 {
-                    if (!FAQCategoryExists(fAQCategory.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    TempData["Result"] = "Delete FAQ-Category succesfully!";
+                    return RedirectToAction("Index");
                 }
-                return RedirectToAction(nameof(Index));
             }
-            return View(fAQCategory);
+            ViewBag.Result = false;
+            return View(faq);
         }
 
-        // GET: FaqCategory/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.FAQCategories == null)
-            {
-                return NotFound();
-            }
 
-            var fAQCategory = await _context.FAQCategories
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (fAQCategory == null)
-            {
-                return NotFound();
-            }
 
-            return View(fAQCategory);
-        }
 
-        // POST: FaqCategory/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int? id)
-        {
-            if (_context.FAQCategories == null)
-            {
-                return Problem("Entity set 'InternetBankingContext.FAQCategories'  is null.");
-            }
-            var fAQCategory = await _context.FAQCategories.FindAsync(id);
-            if (fAQCategory != null)
-            {
-                _context.FAQCategories.Remove(fAQCategory);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
 
-        private bool FAQCategoryExists(int? id)
-        {
-          return (_context.FAQCategories?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
+
     }
 }
