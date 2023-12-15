@@ -60,7 +60,7 @@ namespace InternetBanking.Controllers
                 .Include(c => c.Withdraws)
                 .Include(c=>c.Deposits)
                 .Include(c => c.Images)
-                .FirstOrDefaultAsync(m => m.Id == currentUser.Id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (customer == null)
             {
                 return NotFound();
