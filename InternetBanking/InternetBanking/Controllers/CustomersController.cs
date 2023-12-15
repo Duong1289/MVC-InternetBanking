@@ -6,43 +6,31 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InternetBanking.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using InternetBanking.Areas.Identity.Data;
 
 namespace InternetBanking.Controllers
 {
-    [Authorize(Roles ="Admin, Emloyee, Customer")]
     public class CustomersController : Controller
     {
         private readonly InternetBankingContext _context;
-        UserManager<InternetBankingUser> _userManager;
 
-        public CustomersController(InternetBankingContext context, UserManager<InternetBankingUser> _userManager)
+        public CustomersController(InternetBankingContext context)
         {
             _context = context;
-            this._userManager = _userManager;
         }
-
-        // GET: Customers
-        [Authorize(Roles = "Admin, Emloyee")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> DetailsbyCustomer(string id)
         {
-            var internetBankingContext = _context.Customers.Include(c => c.InternetBankingUser);
-            return View(await internetBankingContext.ToListAsync());
-        }
+            if (id == null || _context.Customers == null)
+            {
+                return NotFound();
+            }
 
-        // GET: Customers/Details/5
-        public async Task<IActionResult> Details()
-        {
-            var currentUser = await _userManager.GetUserAsync(User);
             var customer = await _context.Customers
                 .Include(c => c.InternetBankingUser)
                 .Include(c => c.Accounts)
-                .Include(c=>c.HelpRequests)
+                .Include(c => c.HelpRequests)
                 .Include(c => c.Services)
                 .Include(c => c.Images)
-                .FirstOrDefaultAsync(m => m.Id == currentUser.Id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (customer == null)
             {
                 return NotFound();
@@ -51,8 +39,34 @@ namespace InternetBanking.Controllers
             return View(customer);
         }
 
+        // GET: Customers
+        public async Task<IActionResult> Index()
+        {
+            var internetBankingContext = _context.Customers.Include(c => c.InternetBankingUser);
+            return View(await internetBankingContext.ToListAsync());
+        }
+
+        // GET: Customers/Details/5
+        public async Task<IActionResult> Details(string id)
+        {
+            if (id == null || _context.Customers == null)
+            {
+                return NotFound();
+            }
+
+            var customer = await _context.Customers
+                .Include(c => c.InternetBankingUser)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            return View(customer);
+        }
+
+
         // GET: Customers/Create
-        [Authorize(Roles = "Admin, Emloyee")]
         public IActionResult Create()
         {
             ViewData["Id"] = new SelectList(_context.InternetBankingUsers, "Id", "Id");
@@ -64,7 +78,6 @@ namespace InternetBanking.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin, Emloyee")]
         public async Task<IActionResult> Create([Bind("Id,PersonalId,Email,Phone,FirstName,LastName,Address,OpenDate,Status")] Customer customer)
         {
             if (ModelState.IsValid)
@@ -78,7 +91,6 @@ namespace InternetBanking.Controllers
         }
 
         // GET: Customers/Edit/5
-        
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.Customers == null)
@@ -132,7 +144,6 @@ namespace InternetBanking.Controllers
         }
 
         // GET: Customers/Delete/5
-        [Authorize(Roles = "Admin, Emloyee")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.Customers == null)
@@ -154,7 +165,6 @@ namespace InternetBanking.Controllers
         // POST: Customers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin, Emloyee")]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             if (_context.Customers == null)
