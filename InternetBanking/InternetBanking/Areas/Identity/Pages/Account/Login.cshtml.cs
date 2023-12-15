@@ -74,7 +74,7 @@ namespace InternetBanking.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl ??= Url.Content("~/MyAccount");
+            returnUrl ??= Url.Content("~/Customer");
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         
