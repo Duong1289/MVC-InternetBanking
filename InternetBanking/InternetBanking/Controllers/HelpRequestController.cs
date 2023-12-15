@@ -6,21 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InternetBanking.Models;
-using InternetBanking.Service.MailService;
-using Microsoft.AspNetCore.Authorization;
 
 namespace InternetBanking.Controllers
 {
-    // [Authorize]
     public class HelpRequestController : Controller
     {
         private readonly InternetBankingContext _context;
-        private readonly SendMailService _sendMailServiceTransHelp;
 
-        public HelpRequestController(InternetBankingContext context, SendMailService _sendMailServiceTransHelp)
+        public HelpRequestController(InternetBankingContext context)
         {
             _context = context;
-            this._sendMailServiceTransHelp = _sendMailServiceTransHelp;
         }
 
         // GET: HelpRequest
@@ -163,55 +158,5 @@ namespace InternetBanking.Controllers
         {
           return (_context.HelpRequests?.Any(e => e.Id == id)).GetValueOrDefault();
         }
-        
-        [HttpGet]
-        public async Task<IActionResult> ProcessRequest(int? id)
-        {
-            if (id == null || _context.HelpRequests == null)
-            {
-                return NotFound();
-            }
-
-            var helpRequest = await _context.HelpRequests.FindAsync(id);
-            if (helpRequest == null)
-            {
-                return NotFound();
-            }
-
-            return View(helpRequest);
-        }
-
-        //POST: HelpRequest/ProcessRequest
-
-        public async Task<IActionResult> ProcessRequest(int? id, string answer)
-        {
-            if (id == null || _context.HelpRequests == null)
-            {
-                return NotFound();
-            }
-
-            var helpRequest = await _context.HelpRequests.FindAsync(id);
-            if (helpRequest == null)
-            {
-                return NotFound();
-            }
-
-            helpRequest.Answer = answer;
-            helpRequest.Status = true;
-
-            _context.Update(helpRequest);
-            await _context.SaveChangesAsync();
-            // Send email notification to the customer
-            var customer = await _context.Customers!.FindAsync(helpRequest.CustomerId);
-
-            if (customer != null)
-            {
-                var emailBody = _sendMailServiceTransHelp.GetEmailHelpBody(helpRequest);
-                //await _sendMailServiceTransHelp.SendEmailHelpRequest(customer.PersonalId,helpRequest);
-            }
-            return RedirectToAction(nameof(Index));
-
-        }
-
     }
 }

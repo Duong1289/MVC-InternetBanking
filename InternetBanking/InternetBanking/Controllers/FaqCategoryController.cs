@@ -59,14 +59,26 @@ namespace InternetBanking.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,CategoryName")] FAQCategory fAQCategory)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(fAQCategory);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _context.Add(fAQCategory);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
+            catch (Exception ex)
+            {
+                // Log the exception for debugging purposes
+                // You can replace this with your preferred logging mechanism
+                Console.WriteLine($"Error creating FAQCategory: {ex.Message}");
+                throw; // Rethrow the exception to see it in the console or log
+            }
+
             return View(fAQCategory);
         }
+
 
         // GET: FaqCategory/Edit/5
         public async Task<IActionResult> Edit(int? id)
