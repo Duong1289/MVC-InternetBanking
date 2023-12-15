@@ -28,6 +28,7 @@ namespace InternetBanking.Controllers
                 .Include(c => c.InternetBankingUser)
                 .Include(c => c.Accounts)
                 .Include(c => c.HelpRequests)
+                
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (customer == null)
             {
