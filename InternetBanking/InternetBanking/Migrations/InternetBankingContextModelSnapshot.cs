@@ -106,9 +106,6 @@ namespace InternetBanking.Migrations
                     b.Property<DateTime>("ExpireDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("InternetBankingUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("OpenDate")
                         .HasColumnType("datetime2");
 
@@ -120,8 +117,6 @@ namespace InternetBanking.Migrations
                     b.HasIndex("AccountTypeId");
 
                     b.HasIndex("CustomerId");
-
-                    b.HasIndex("InternetBankingUserId");
 
                     b.ToTable("Accounts");
                 });
@@ -242,13 +237,14 @@ namespace InternetBanking.Migrations
                         .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("CustomerId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("EmployeeId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime?>("IssueDate")
-                        .IsRequired()
+                    b.Property<DateTime>("IssueDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -527,13 +523,14 @@ namespace InternetBanking.Migrations
                         .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("CustomerId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("EmployeeId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime?>("IssueDate")
-                        .IsRequired()
+                    b.Property<DateTime>("IssueDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -694,15 +691,9 @@ namespace InternetBanking.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("InternetBanking.Areas.Identity.Data.InternetBankingUser", "InternetBankingUser")
-                        .WithMany()
-                        .HasForeignKey("InternetBankingUserId");
-
                     b.Navigation("AccountType");
 
                     b.Navigation("Customer");
-
-                    b.Navigation("InternetBankingUser");
                 });
 
             modelBuilder.Entity("InternetBanking.Models.Customer", b =>
@@ -724,11 +715,15 @@ namespace InternetBanking.Migrations
 
                     b.HasOne("InternetBanking.Models.Customer", "Customer")
                         .WithMany("Deposits")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("InternetBanking.Models.Employee", "Employee")
                         .WithMany("Deposits")
-                        .HasForeignKey("EmployeeId");
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Account");
 
@@ -810,11 +805,15 @@ namespace InternetBanking.Migrations
 
                     b.HasOne("InternetBanking.Models.Customer", "Customer")
                         .WithMany("Withdraws")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("InternetBanking.Models.Employee", "Employee")
                         .WithMany("Withdraws")
-                        .HasForeignKey("EmployeeId");
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Account");
 

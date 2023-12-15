@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InternetBanking.Migrations
 {
     [DbContext(typeof(InternetBankingContext))]
-    [Migration("20231215171238_v2")]
+    [Migration("20231215182516_v2")]
     partial class v2
     {
         /// <inheritdoc />
@@ -240,13 +240,14 @@ namespace InternetBanking.Migrations
                         .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("CustomerId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("EmployeeId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime?>("IssueDate")
-                        .IsRequired()
+                    b.Property<DateTime>("IssueDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -525,13 +526,14 @@ namespace InternetBanking.Migrations
                         .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("CustomerId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("EmployeeId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime?>("IssueDate")
-                        .IsRequired()
+                    b.Property<DateTime>("IssueDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -716,11 +718,15 @@ namespace InternetBanking.Migrations
 
                     b.HasOne("InternetBanking.Models.Customer", "Customer")
                         .WithMany("Deposits")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("InternetBanking.Models.Employee", "Employee")
                         .WithMany("Deposits")
-                        .HasForeignKey("EmployeeId");
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Account");
 
@@ -802,11 +808,15 @@ namespace InternetBanking.Migrations
 
                     b.HasOne("InternetBanking.Models.Customer", "Customer")
                         .WithMany("Withdraws")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("InternetBanking.Models.Employee", "Employee")
                         .WithMany("Withdraws")
-                        .HasForeignKey("EmployeeId");
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Account");
 
