@@ -36,7 +36,7 @@
                             @if(User.IsInRole("Customer"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="Customers" asp-action="Details" title="Manage">MyAccount @User.Identity?.Name!</a>
+                                    <a class="nav-link text-dark" asp-controller="Customers" asp-action="Details" title="Manage">Hello @User.Identity?.Name!</a>
                                 </li>
                             }
                             else

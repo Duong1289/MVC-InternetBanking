@@ -54,6 +54,26 @@ namespace InternetBanking.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Phone Number")]
+            public string Phone { get; set; }
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Personal ID")]
+            public string PersonalId { get; set; }
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Address")]
+            public string Address { get; set; }
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -83,7 +103,7 @@ namespace InternetBanking.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                
-                var user = new InternetBankingUser { UserName = Input.Email, Email = Input.Email };
+                var user = new InternetBankingUser { UserName = Input.Phone, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
@@ -93,6 +113,11 @@ namespace InternetBanking.Areas.Identity.Pages.Account
                     {
                         Id = user.Id,
                         Email = Input.Email,
+                        FirstName = Input.FirstName,
+                        LastName = Input.LastName,
+                        Phone = Input.Phone,
+                        PersonalId = Input.PersonalId,
+                        Address = Input.Address,
                         Status = false, // Assuming the user is not authenticated yet
                         OpenDate = DateTime.Now, // Set the account open date
                                                  // Set other properties as needed
