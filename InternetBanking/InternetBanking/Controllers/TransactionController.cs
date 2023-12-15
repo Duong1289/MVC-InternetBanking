@@ -14,8 +14,8 @@ namespace InternetBanking.Controllers
     public class TransactionController : Controller
     {
         TransactionService transactionService;
-        SendBankMailService sendMailService;
         InternetBankingContext ctx;
+        SendBankMailService sendMailService;
         UserManager<InternetBankingUser> _userManager;
 
         public TransactionController(TransactionService transactionService, SendBankMailService sendMailService, InternetBankingContext ctx, UserManager<InternetBankingUser> _userManager)

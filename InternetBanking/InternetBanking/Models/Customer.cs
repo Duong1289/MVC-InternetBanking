@@ -39,7 +39,8 @@ namespace InternetBanking.Models
 
         public ICollection<Account>? Accounts { get; set; }
         public ICollection<HelpRequest>? HelpRequests { get; set; }
-        public ICollection<Service>? Services { get; set; }
+        public ICollection<Withdraw>? Withdraws { get; set; }
+        public ICollection<Deposit>? Deposits { get; set; }
         public ICollection<Image>? Images { get; set; }
         
         public virtual InternetBankingUser? InternetBankingUser { get; set; }

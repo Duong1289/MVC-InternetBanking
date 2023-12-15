@@ -55,7 +55,12 @@ namespace InternetBanking.Controllers
 
             var customer = await _context.Customers
                 .Include(c => c.InternetBankingUser)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Include(c => c.Accounts)
+                .Include(c=>c.HelpRequests)
+                .Include(c => c.Withdraws)
+                .Include(c=>c.Deposits)
+                .Include(c => c.Images)
+                .FirstOrDefaultAsync(m => m.Id == currentUser.Id);
             if (customer == null)
             {
                 return NotFound();

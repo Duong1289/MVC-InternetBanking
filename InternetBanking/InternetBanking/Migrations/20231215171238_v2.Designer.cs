@@ -4,6 +4,7 @@ using InternetBanking.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InternetBanking.Migrations
 {
     [DbContext(typeof(InternetBankingContext))]
-    partial class InternetBankingContextModelSnapshot : ModelSnapshot
+    [Migration("20231215171238_v2")]
+    partial class v2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,9 +109,6 @@ namespace InternetBanking.Migrations
                     b.Property<DateTime>("ExpireDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("InternetBankingUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("OpenDate")
                         .HasColumnType("datetime2");
 
@@ -120,8 +120,6 @@ namespace InternetBanking.Migrations
                     b.HasIndex("AccountTypeId");
 
                     b.HasIndex("CustomerId");
-
-                    b.HasIndex("InternetBankingUserId");
 
                     b.ToTable("Accounts");
                 });
@@ -694,15 +692,9 @@ namespace InternetBanking.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("InternetBanking.Areas.Identity.Data.InternetBankingUser", "InternetBankingUser")
-                        .WithMany()
-                        .HasForeignKey("InternetBankingUserId");
-
                     b.Navigation("AccountType");
 
                     b.Navigation("Customer");
-
-                    b.Navigation("InternetBankingUser");
                 });
 
             modelBuilder.Entity("InternetBanking.Models.Customer", b =>

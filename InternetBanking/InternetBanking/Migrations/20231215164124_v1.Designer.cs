@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InternetBanking.Migrations
 {
     [DbContext(typeof(InternetBankingContext))]
-    [Migration("20231215130354_last")]
-    partial class last
+    [Migration("20231215164124_v1")]
+    partial class v1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -418,13 +418,18 @@ namespace InternetBanking.Migrations
 
             modelBuilder.Entity("InternetBanking.Models.Service", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AccountNumber")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("AccountNumber1")
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<double>("Amount")
@@ -435,28 +440,15 @@ namespace InternetBanking.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<DateTime?>("CreatedDate")
-                        .IsRequired()
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("CustomerId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CustomerPersonalId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmployeeId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ServiceAccountNumber")
+                    b.Property<DateTime?>("IssueDate")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("ServiceName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("ServiceTypeId")
                         .IsRequired()
@@ -464,7 +456,7 @@ namespace InternetBanking.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountNumber");
+                    b.HasIndex("AccountNumber1");
 
                     b.HasIndex("CustomerId");
 
@@ -708,11 +700,13 @@ namespace InternetBanking.Migrations
 
             modelBuilder.Entity("InternetBanking.Models.FAQ", b =>
                 {
-                    b.HasOne("InternetBanking.Models.FAQCategory", null)
+                    b.HasOne("InternetBanking.Models.FAQCategory", "FAQCategory")
                         .WithMany("FAQ")
                         .HasForeignKey("FAQCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("FAQCategory");
                 });
 
             modelBuilder.Entity("InternetBanking.Models.HelpRequest", b =>
@@ -755,7 +749,7 @@ namespace InternetBanking.Migrations
                 {
                     b.HasOne("InternetBanking.Models.Account", null)
                         .WithMany("Services")
-                        .HasForeignKey("AccountNumber");
+                        .HasForeignKey("AccountNumber1");
 
                     b.HasOne("InternetBanking.Models.Customer", null)
                         .WithMany("Services")

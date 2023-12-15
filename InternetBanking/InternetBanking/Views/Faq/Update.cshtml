@@ -1,17 +1,16 @@
-@model InternetBanking.Models.FAQ
+﻿@model InternetBanking.Models.FAQ
 
 @{
-    ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Update";
 }
 
-<h1>Edit</h1>
+<h1>Update</h1>
 
 <h4>FAQ</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Update">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
@@ -26,7 +25,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="FAQCategoryId" class="control-label"></label>
-                <select asp-for="FAQCategoryId" class="form-control" asp-items="ViewBag.FAQCategoryId"></select>
+                <select asp-for="FAQCategoryId" class="form-control">
+                    @foreach (var type in ViewBag.FAQcategory)
+                    {
+                        <option value="@type.Id">@type.CategoryName</option>
+                    }
+                </select>
                 <span asp-validation-for="FAQCategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -40,3 +44,6 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

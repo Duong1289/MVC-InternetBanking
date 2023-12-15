@@ -19,8 +19,8 @@ namespace InternetBanking.Models
         public DbSet<FAQCategory>? FAQCategories { get; set; }
         public DbSet<HelpRequest>? HelpRequests { get; set; }
         public DbSet<HelpRequestType>? HelpRequestsTypes { get; set; }
-        public DbSet<Service>? Services { get; set; }
-        public DbSet<ServiceType>? ServicesTypes { get; set; }
+        public DbSet<Withdraw>? Withdraws { get; set; }
+        public DbSet<Deposit>? Deposits { get; set; }
         public DbSet<Transaction>? Transactions { get; set; }
 
         public DbSet<Image>? Images { get; set; }

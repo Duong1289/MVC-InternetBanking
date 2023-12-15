@@ -1761,6 +1761,7 @@
     <Folder Include="Areas\Admin\Views\" />
     <AdditionalFiles Include="Views\Statement\Index.cshtml" />
     <AdditionalFiles Include="Views\Statement\StatementsWithinPeriod.cshtml" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
