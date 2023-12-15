@@ -6,24 +6,32 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InternetBanking.Models;
+using Microsoft.AspNetCore.Identity;
+using InternetBanking.Areas.Identity.Data;
+using System.Collections.Immutable;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InternetBanking.Controllers
 {
+    [Authorize(Roles ="Customer")]
     public class AccountController : Controller
     {
         private readonly InternetBankingContext _context;
+        UserManager<InternetBankingUser> _userManager;
 
-        public AccountController(InternetBankingContext context)
+
+        public AccountController(InternetBankingContext context, UserManager<InternetBankingUser> _userManager)
         {
             _context = context;
+            this._userManager = _userManager;
         }
 
         // GET: Account
         public async Task<IActionResult> Index()
-        {
-              return _context.Accounts != null ? 
-                          View(await _context.Accounts.ToListAsync()) :
-                          Problem("Entity set 'InternetBankingContext.Accounts'  is null.");
+        {   
+            var currentUser = await _userManager.GetUserAsync(User);
+            var accounts = await _context.Accounts.Where(a => a.CustomerId == currentUser.Id).ToListAsync();
+            return View(accounts);
         }
 
         // GET: Account/Details/5

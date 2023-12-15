@@ -6,9 +6,10 @@
 }
 
 <div class="container">
-    <h1>Customer Details</h1>
-    <hr />
 
+    <h1>Customer Details</h1>
+    <a>Create Account</a>
+    <hr />
     <dl class="row">
         <dt class="col-sm-2">Personal ID:</dt>
         <dd class="col-sm-10">@Html.DisplayFor(model => model.PersonalId)</dd>
@@ -38,6 +39,29 @@
         <dd class="col-sm-10">@Html.DisplayFor(model => model.InternetBankingUser.Id)</dd>
     </dl>
 
+    @foreach (var item in Model.Accounts)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>AccountNumber</th>
+                    <th>Balance</th>
+                    <th>ExpireDate</th>
+                </tr>
+            
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@item.AccountNumber</td>
+                    <td>@item.Balance</td>
+                    <td>@item.Balance</td>
+                </tr>
+            
+
+            </tbody>
+        </table>
+    }
+   
     <div class="row">
         <div class="col-md-2">
             <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
