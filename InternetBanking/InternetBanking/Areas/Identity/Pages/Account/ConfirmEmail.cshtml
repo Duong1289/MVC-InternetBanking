@@ -3,7 +3,10 @@
 @model ConfirmEmailModel
 @{
     ViewData["Title"] = "Confirm email";
+    Layout = "~/Areas/Identity/Pages/_AuthLayout.cshtml";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1>You are verified!</h1>
+<h3>Enjoy our Service</h3>
 <partial name="_StatusMessage" model="Model.StatusMessage" />
+<a asp-page="./Login">Back to Signin</a>.
