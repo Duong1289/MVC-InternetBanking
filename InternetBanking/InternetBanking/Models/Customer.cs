@@ -10,7 +10,6 @@ namespace InternetBanking.Models
     {
 
         [Key, ForeignKey("InternetBankingUser")]
-        
         public string? Id { get; set; }
 
         [MaxLength(20)]
