@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace InternetBanking.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin, Employee")]
     public class BanksController : Controller
     {
         private readonly InternetBankingContext _context;

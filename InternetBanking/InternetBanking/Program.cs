@@ -11,7 +11,7 @@ using InternetBanking.Mail;
 
 internal class Program
 {
-    private static void Main(string[] args)
+    private static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +23,7 @@ internal class Program
         builder.Services.AddIdentity<InternetBankingUser, IdentityRole>()
           .AddEntityFrameworkStores<InternetBankingContext>()
           .AddDefaultTokenProviders();
-
+        
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
        
@@ -102,6 +102,42 @@ internal class Program
                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
                  );
         app.MapRazorPages();
+
+        using (var scope = app.Services.CreateScope())
+        {
+            var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            var roles = new[] { "Admin", "Employee", "Customer" };
+
+            foreach (var r in roles)
+            {
+                if (!await roleManager.RoleExistsAsync(r))
+                {
+                    await roleManager.CreateAsync(new IdentityRole(r));
+                }
+            }
+        }
+
+        using (var scope = app.Services.CreateScope())
+        {
+            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<InternetBankingUser>>();
+
+            var roles = new[] { "Admin", "Employee", "Customer" };
+
+            string email = "admin@gmail.com";
+            string password = "admin";
+
+            if(await userManager.FindByEmailAsync(email) == null)
+            {
+                var user = new InternetBankingUser();
+                user.UserName = "admin@nex";
+                user.Email = email;
+                user.EmailConfirmed = true;
+
+                await userManager.CreateAsync(user, password);
+                await userManager.AddToRoleAsync(user, "Admin");
+            }
+        }
         app.Run();
 
     }

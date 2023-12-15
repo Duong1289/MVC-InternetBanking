@@ -64,10 +64,7 @@ input {
     margin: 0 10px; /* Add spacing around the divider */
 }
 
-li {
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
-}
+
 hr {
     height: 1px; /* Adjust the height as needed */
     background-color: white;

@@ -82,7 +82,7 @@ namespace InternetBanking.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                await CreateRolesIfNotExist();
+               
                 var user = new InternetBankingUser { UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
@@ -134,19 +134,7 @@ namespace InternetBanking.Areas.Identity.Pages.Account
             return Page();
         }
 
-        private async Task CreateRolesIfNotExist()
-        {
-            var roles = new[] { "Admin", "Employee", "Customer" };
 
-            foreach (var roleName in roles)
-            {
-                if (!await _roleManager.RoleExistsAsync(roleName))
-                {
-                    var newRole = new IdentityRole(roleName);
-                    await _roleManager.CreateAsync(newRole);
-                }
-            }
-        }
 
     }
 }
