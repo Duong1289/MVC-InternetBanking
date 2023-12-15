@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using InternetBanking.Areas.Identity.Data;
 using InternetBanking.Service.MailService;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using InternetBanking.Mail;
 
 internal class Program
 {
@@ -18,6 +19,7 @@ internal class Program
         var connectionString = builder.Configuration.GetConnectionString("IdentityConnectionString") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
         builder.Services.AddDbContext<InternetBankingContext>(options =>
             options.UseSqlServer(connectionString));
+
         builder.Services.AddIdentity<InternetBankingUser, IdentityRole>()
           .AddEntityFrameworkStores<InternetBankingContext>()
           .AddDefaultTokenProviders();
@@ -55,8 +57,8 @@ internal class Program
         builder.Services.Configure<MailSetting>(mailSettings);
 
         builder.Services.AddTransient<TransactionService>();
-        builder.Services.AddTransient<IEmailSender,SendConfirmationMail>();
-        builder.Services.AddTransient<SendMailService>();
+        builder.Services.AddTransient<IEmailSender, SendMailService>();
+        builder.Services.AddTransient<SendBankMailService>();
         builder.Services.AddAuthentication().AddGoogle(options =>
         {
             IConfigurationSection section = builder.Configuration.GetSection("Authentication:Google");

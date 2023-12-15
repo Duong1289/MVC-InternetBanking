@@ -17,14 +17,14 @@ namespace InternetBanking.Service.MailService
         public string? Host { get; set; }
         public int Port { get; set; }
     }
-    public class SendMailService
+    public class SendBankMailService
     {
         readonly MailSetting MailSetting;
         // private readonly UserManager<InternetBankingUser> _userManager;
         InternetBankingContext _context;
         
 
-        public SendMailService(IOptions<MailSetting> MailSetting, InternetBankingContext _context)
+        public SendBankMailService(IOptions<MailSetting> MailSetting, InternetBankingContext _context)
         {
             this.MailSetting = MailSetting.Value;
             this._context = _context;

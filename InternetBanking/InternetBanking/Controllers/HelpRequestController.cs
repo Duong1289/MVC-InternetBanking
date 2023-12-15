@@ -15,9 +15,9 @@ namespace InternetBanking.Controllers
     public class HelpRequestController : Controller
     {
         private readonly InternetBankingContext _context;
-        private readonly SendMailService _sendMailServiceTransHelp;
+        private readonly SendBankMailService _sendMailServiceTransHelp;
 
-        public HelpRequestController(InternetBankingContext context, SendMailService _sendMailServiceTransHelp)
+        public HelpRequestController(InternetBankingContext context, SendBankMailService _sendMailServiceTransHelp)
         {
             _context = context;
             this._sendMailServiceTransHelp = _sendMailServiceTransHelp;
@@ -180,9 +180,9 @@ namespace InternetBanking.Controllers
 
             return View(helpRequest);
         }
-
+        
         //POST: HelpRequest/ProcessRequest
-
+        [HttpPost]
         public async Task<IActionResult> ProcessRequest(int? id, string answer)
         {
             if (id == null || _context.HelpRequests == null)
@@ -198,20 +198,18 @@ namespace InternetBanking.Controllers
 
             helpRequest.Answer = answer;
             helpRequest.Status = true;
-
+            
             _context.Update(helpRequest);
             await _context.SaveChangesAsync();
             // Send email notification to the customer
             var customer = await _context.Customers!.FindAsync(helpRequest.CustomerId);
-
+            
             if (customer != null)
             {
                 var emailBody = _sendMailServiceTransHelp.GetEmailHelpBody(helpRequest);
-                //await _sendMailServiceTransHelp.SendEmailHelpRequest(customer.PersonalId,helpRequest);
+                await _sendMailServiceTransHelp.SendEmailHelpRequest(customer.PersonalId,helpRequest);
             }
             return RedirectToAction(nameof(Index));
-
         }
-
     }
 }

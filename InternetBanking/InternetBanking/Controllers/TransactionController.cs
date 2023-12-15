@@ -14,11 +14,11 @@ namespace InternetBanking.Controllers
     public class TransactionController : Controller
     {
         TransactionService transactionService;
-        SendMailService sendMailService;
+        SendBankMailService sendMailService;
         InternetBankingContext ctx;
         UserManager<InternetBankingUser> _userManager;
 
-        public TransactionController(TransactionService transactionService, SendMailService sendMailService, InternetBankingContext ctx, UserManager<InternetBankingUser> _userManager)
+        public TransactionController(TransactionService transactionService, SendBankMailService sendMailService, InternetBankingContext ctx, UserManager<InternetBankingUser> _userManager)
         {
             this.transactionService = transactionService;
             this.sendMailService = sendMailService;
