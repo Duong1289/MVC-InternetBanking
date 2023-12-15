@@ -47,8 +47,9 @@ namespace InternetBanking.Controllers
         }
 
         // GET: Faq/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ViewBag.FAQCategory = await _context.FAQCategories!.ToListAsync();
             return View();
         }
 

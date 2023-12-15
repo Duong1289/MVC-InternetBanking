@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace InternetBanking.Controllers
 {
-    [Authorize(Roles ="Admin, Employee")]
+   
     public class HelpRequestController : Controller
     {
         private readonly InternetBankingContext _context;
@@ -57,8 +57,10 @@ namespace InternetBanking.Controllers
         {
             var currentUser = await _userManager.GetUserAsync(User);
             var accounts = await _context.Accounts!.Where(a => a.CustomerId == currentUser.Id).ToListAsync();
+            var helpRequestTypes = await _context.HelpRequestsTypes!.ToListAsync();
             ViewBag.CustomerId = currentUser.Id;
             ViewBag.UserAccounts = accounts;
+            ViewBag.HelpRequestsTypes = helpRequestTypes;
             return View();
         }
 
@@ -67,15 +69,17 @@ namespace InternetBanking.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AccountId,CustomerId,EmployeeId,RequestTypeId,Content,CreatedDate,Answer,Status,HelpRequestImageId")] HelpRequest helpRequest)
+        public async Task<IActionResult> Create(HelpRequest helpRequest)
         {
-            if (ModelState.IsValid)
-            {
+                helpRequest.CreatedDate = DateTime.Now;
+                helpRequest.Status = false;
+                helpRequest.Answer = "";
+            helpRequest.HelpRequestImageId = "";
                 _context.Add(helpRequest);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            return View(helpRequest);
+            
+            
         }
 
         // GET: HelpRequest/Edit/5

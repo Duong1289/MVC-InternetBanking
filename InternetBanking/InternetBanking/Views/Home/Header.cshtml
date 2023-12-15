@@ -25,7 +25,7 @@
                     <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                         @if (SignInManager.IsSignedIn(User))
                         {
-                            <li><a href="Home" class="nav-link">Home</a></li>
+                            <li><a asp-controller="Home">Home</a></li>
                             <li class="has-children">
                                 <a href="#about-section" class="nav-link">About Us</a>
                                 <ul class="dropdown">
@@ -35,16 +35,15 @@
                             </li>
                             @if(User.IsInRole("Customer"))
                             {
-                                <li><a href="#blog-section" class="nav-link">My Account</a></li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+                                    <a class="nav-link text-dark" asp-controller="Customers" asp-action="Details" title="Manage">MyAccount @User.Identity?.Name!</a>
                                 </li>
                             }
                             else
                             {
                                 <li><a href="Customers" class="nav-link">Dash Board</a></li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+                                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">MyAccount @User.Identity?.Name!</a>
                                 </li>
                             }
 

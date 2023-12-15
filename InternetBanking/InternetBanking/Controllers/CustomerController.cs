@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InternetBanking.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using InternetBanking.Areas.Identity.Data;
 
 namespace InternetBanking.Controllers
 {
@@ -14,10 +16,12 @@ namespace InternetBanking.Controllers
     public class CustomersController : Controller
     {
         private readonly InternetBankingContext _context;
+        UserManager<InternetBankingUser> _userManager;
 
-        public CustomersController(InternetBankingContext context)
+        public CustomersController(InternetBankingContext context, UserManager<InternetBankingUser> _userManager)
         {
             _context = context;
+            this._userManager = _userManager;
         }
 
         // GET: Customers
@@ -29,20 +33,16 @@ namespace InternetBanking.Controllers
         }
 
         // GET: Customers/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details()
         {
-            if (id == null || _context.Customers == null)
-            {
-                return NotFound();
-            }
-
+            var currentUser = await _userManager.GetUserAsync(User);
             var customer = await _context.Customers
                 .Include(c => c.InternetBankingUser)
                 .Include(c => c.Accounts)
                 .Include(c=>c.HelpRequests)
                 .Include(c => c.Services)
                 .Include(c => c.Images)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == currentUser.Id);
             if (customer == null)
             {
                 return NotFound();
