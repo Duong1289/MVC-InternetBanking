@@ -57,6 +57,7 @@ internal class Program
         builder.Services.Configure<MailSetting>(mailSettings);
 
         builder.Services.AddTransient<TransactionService>();
+        builder.Services.AddTransient<ServiceService>();
         builder.Services.AddTransient<IEmailSender, SendMailService>();
         builder.Services.AddTransient<SendBankMailService>();
         builder.Services.AddAuthentication().AddGoogle(options =>

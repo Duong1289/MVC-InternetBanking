@@ -17,5 +17,7 @@ namespace InternetBanking.Models
 
         [ForeignKey("FAQCategories")]
         public required int FAQCategoryId { get; set; }
+
+        public FAQCategory? FAQCategory { get; set; }
     }
 }
