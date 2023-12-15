@@ -33,10 +33,20 @@
                                     <li><a href="#testimonials-section" class="nav-link">Customers Feedback</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#blog-section" class="nav-link">My Account</a></li>
-                            <li class="nav-item">
-                                <a asp-controller="MyAccount" asp-action="Index" class="nav-link text-dark" title="Manage">Hello @User.Identity?.Name!</a>
-                            </li>
+                            @if(User.IsInRole("Customer"))
+                            {
+                                <li><a href="#blog-section" class="nav-link">My Account</a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li><a href="Customers" class="nav-link">Dash Board</a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+                                </li>
+                            }
 
                             <li class="nav-item">
                                 <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">

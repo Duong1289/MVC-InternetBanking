@@ -9,9 +9,11 @@ using InternetBanking.Models;
 using InternetBanking.Service.MailService;
 using Microsoft.AspNetCore.Identity;
 using InternetBanking.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InternetBanking.Controllers
 {
+    [Authorize(Roles ="Admin, Employee")]
     public class HelpRequestController : Controller
     {
         private readonly InternetBankingContext _context;
