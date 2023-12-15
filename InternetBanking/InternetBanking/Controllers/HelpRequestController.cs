@@ -6,12 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InternetBanking.Models;
-using InternetBanking.Service.MailService;
-using Microsoft.AspNetCore.Authorization;
 
 namespace InternetBanking.Controllers
 {
-    // [Authorize]
     public class HelpRequestController : Controller
     {
         private readonly InternetBankingContext _context;
@@ -20,7 +17,6 @@ namespace InternetBanking.Controllers
         public HelpRequestController(InternetBankingContext context, SendBankMailService _sendMailServiceTransHelp)
         {
             _context = context;
-            this._sendMailServiceTransHelp = _sendMailServiceTransHelp;
         }
 
         // GET: HelpRequest

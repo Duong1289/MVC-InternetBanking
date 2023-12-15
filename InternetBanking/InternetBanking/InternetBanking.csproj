@@ -44,6 +44,7 @@
     <_ContentIncludedByDefault Remove="Views\HelpRequest\Details.cshtml" />
     <_ContentIncludedByDefault Remove="Views\HelpRequest\Edit.cshtml" />
     <_ContentIncludedByDefault Remove="Views\HelpRequest\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\HelpRequest\ProcessRequest.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -1760,6 +1761,14 @@
     <Folder Include="Areas\Admin\Views\" />
     <AdditionalFiles Include="Views\Statement\Index.cshtml" />
     <AdditionalFiles Include="Views\Statement\StatementsWithinPeriod.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\HelpRequest\Create.cshtml" />
+    <UpToDateCheckInput Remove="Views\HelpRequest\Delete.cshtml" />
+    <UpToDateCheckInput Remove="Views\HelpRequest\Details.cshtml" />
+    <UpToDateCheckInput Remove="Views\HelpRequest\Edit.cshtml" />
+    <UpToDateCheckInput Remove="Views\HelpRequest\Index.cshtml" />
   </ItemGroup>
 
 </Project>
