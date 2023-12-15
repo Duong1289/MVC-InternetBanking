@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InternetBanking.Models;
 using InternetBanking.Service.MailService;
+using Microsoft.AspNetCore.Identity;
+using InternetBanking.Areas.Identity.Data;
 
 namespace InternetBanking.Controllers
 {
@@ -14,10 +16,12 @@ namespace InternetBanking.Controllers
     {
         private readonly InternetBankingContext _context;
         private readonly SendBankMailService _sendMailServiceTransHelp;
+        UserManager<InternetBankingUser> _userManager;
 
-        public HelpRequestController(InternetBankingContext context, SendBankMailService _sendMailServiceTransHelp)
+        public HelpRequestController(InternetBankingContext context, SendBankMailService _sendMailServiceTransHelp, UserManager<InternetBankingUser> _userManager)
         {
             _context = context;
+            this._userManager = _userManager;
         }
 
         // GET: HelpRequest
@@ -47,8 +51,12 @@ namespace InternetBanking.Controllers
         }
 
         // GET: HelpRequest/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var currentUser = await _userManager.GetUserAsync(User);
+            var accounts = await _context.Accounts!.Where(a => a.CustomerId == currentUser.Id).ToListAsync();
+            ViewBag.CustomerId = currentUser.Id;
+            ViewBag.UserAccounts = accounts;
             return View();
         }
 
@@ -69,20 +77,20 @@ namespace InternetBanking.Controllers
         }
 
         // GET: HelpRequest/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.HelpRequests == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Edit(int? id)
+        //{
+        //    if (id == null || _context.HelpRequests == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var helpRequest = await _context.HelpRequests.FindAsync(id);
-            if (helpRequest == null)
-            {
-                return NotFound();
-            }
-            return View(helpRequest);
-        }
+        //    var helpRequest = await _context.HelpRequests.FindAsync(id);
+        //    if (helpRequest == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return View(helpRequest);
+        //}
 
         // POST: HelpRequest/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.

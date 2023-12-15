@@ -30,7 +30,7 @@ namespace InternetBanking.Controllers
         public async Task<IActionResult> Index()
         {   
             var currentUser = await _userManager.GetUserAsync(User);
-            var accounts = await _context.Accounts.Where(a => a.CustomerId == currentUser.Id).ToListAsync();
+            var accounts = await _context.Accounts!.Where(a => a.CustomerId == currentUser.Id).ToListAsync();
             return View(accounts);
         }
 
@@ -63,15 +63,19 @@ namespace InternetBanking.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AccountNumber,Balance,OpenDate,ExpireDate,Status,CustomerPersonalId")] Account account)
+        public async Task<IActionResult> Create(Account account)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(account);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(account);
+            var currentUser = await _userManager.GetUserAsync(User);
+            account.CustomerId = currentUser.Id;
+            account.Balance = 0;
+            account.OpenDate = DateTime.Now;
+            account.ExpireDate = DateTime.Now.AddYears(5);
+            account.Status = false;
+            _context.Add(account);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+            
+            
         }
 
         // GET: Account/Edit/5

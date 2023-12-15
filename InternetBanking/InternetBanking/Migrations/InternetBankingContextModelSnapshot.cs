@@ -97,11 +97,8 @@ namespace InternetBanking.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("CustomerId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CustomerPersonalId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("ExpireDate")
                         .HasColumnType("datetime2");
@@ -185,8 +182,7 @@ namespace InternetBanking.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<bool?>("Status")
-                        .IsRequired()
+                    b.Property<bool>("Status")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
@@ -659,9 +655,13 @@ namespace InternetBanking.Migrations
 
             modelBuilder.Entity("InternetBanking.Models.Account", b =>
                 {
-                    b.HasOne("InternetBanking.Models.Customer", null)
+                    b.HasOne("InternetBanking.Models.Customer", "Customer")
                         .WithMany("Accounts")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("InternetBanking.Models.Customer", b =>

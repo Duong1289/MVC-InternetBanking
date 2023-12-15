@@ -103,35 +103,21 @@ namespace InternetBanking.Controllers
         {
             var currentUser = await _userManager.GetUserAsync(User);
 
-            // Assuming CustomerAccounts is a navigation property in the InternetBankingUser class that points to the customer's accounts
-            var customer = await ctx.Customers
-                .Include(c => c.Accounts)
-                .SingleOrDefaultAsync(c => c.Id == currentUser.Id);
+            // Retrieve accounts belonging to the current user
+            var accounts = await ctx.Accounts
+                .Where(a => a.CustomerId == currentUser.Id)
+                .ToListAsync();
 
-            if (customer == null)
-            {
-                // Handle the case where the customer is not found
-                return NotFound();
-            }
+            // Retrieve transactions associated with the accounts
+            var transactions = await ctx.Transactions
+            .Where(t => accounts.Select(a => a.AccountNumber).Contains(t.SenderAccountNumber) || accounts.Select(a => a.AccountNumber).Contains(t.ReceiverAccountNumber))
+            .ToListAsync();
 
-            // Retrieve all accounts belonging to the customer
-            var customerAccounts = customer.Accounts;
 
-            // Create a list to store transaction histories for all accounts
-            var allHistories = new List<Transaction>();
+            // Pass the transactions to the view
+            
 
-            foreach (var account in customerAccounts)
-            {
-                // Retrieve transaction histories for each account
-                var accountHistories = await ctx.Transactions
-                    .Where(t => t.SenderAccountNumber == account.AccountNumber || t.ReceiverAccountNumber == account.AccountNumber)
-                    .ToListAsync();
-
-                // Add the transaction histories to the list
-                allHistories.AddRange(accountHistories);
-            }
-
-            return View(allHistories);
+            return View(transactions);
         }
 
 

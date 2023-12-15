@@ -54,8 +54,8 @@
                             <td>@Html.DisplayFor(modelItem => item.ReceiverAccountNumber)</td>
                             <td>@Html.DisplayFor(modelItem => item.Amount)</td>
                             <td>@Html.DisplayFor(modelItem => item.Content)</td>
-                            <td>@Html.DisplayFor(modelItem => item.TransactionDate.ToString("yyyy-MM-dd HH:mm:ss"))</td>
-                            <td>@Html.DisplayFor(modelItem => item.Status ? "Success" : "Failed")</td>   
+                            <td>@item.TransactionDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                            <td>@(item.Status ? "Success" : "Failed")</td>
                         </tr>
                     }
                 </tbody>
