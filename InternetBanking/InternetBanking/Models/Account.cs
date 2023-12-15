@@ -34,8 +34,8 @@ namespace InternetBanking.Models
         public virtual Customer Customer { get; set; }
         public virtual AccountType AccountType { get; set; }
 
-        public ICollection<Withdraw>? Withdraws { get; set; }
-        public ICollection<Deposit>? Deposits { get; set; }
+        public ICollection<Withdraw> Withdraws { get; set; }
+        public ICollection<Deposit> Deposits { get; set; }
         public ICollection<Transaction> Transactions { get; set; }
         public ICollection<HelpRequest> HelpRequests { get; set; }
         

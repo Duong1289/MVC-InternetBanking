@@ -54,7 +54,6 @@ namespace InternetBanking.Controllers
                 deposit.IssueDate = DateTime.Now;
                 var currentUser = await _userManager.GetUserAsync(User);
                 deposit.EmployeeId = currentUser.Id;
-
                 ctx.Deposits.Add(deposit);
 
                 if (await ctx.SaveChangesAsync() > 0)

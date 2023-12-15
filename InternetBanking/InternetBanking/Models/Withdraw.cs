@@ -17,7 +17,7 @@ namespace InternetBanking.Models
         public double Amount { get; set; }
 
         [ForeignKey("Employees")]
-        public string EmployeeId { get; set; }
+        public string? EmployeeId { get; set; }
 
         [ForeignKey("Accounts")]
         [Required]
@@ -25,7 +25,7 @@ namespace InternetBanking.Models
         public string AccountNumber { get; set; }
 
         [ForeignKey("Customers")]
-        public string CustomerId { get; set; }
+        public string? CustomerId { get; set; }
 
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

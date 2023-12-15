@@ -55,7 +55,7 @@ namespace InternetBanking.Controllers
                 withdraw.CustomerId = await service.getCustomerId(withdraw.AccountNumber);
                 withdraw.IssueDate = DateTime.Now;
                 var currentUser = await _userManager.GetUserAsync(User);
-                //withdraw.EmployeeId = currentUser.Id;
+                withdraw.EmployeeId = currentUser.Id;
 
                 ctx.Withdraws.Add(withdraw);
                 if (await ctx.SaveChangesAsync() > 0)

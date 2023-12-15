@@ -237,11 +237,9 @@ namespace InternetBanking.Migrations
                         .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("CustomerId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("EmployeeId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("IssueDate")
@@ -523,11 +521,9 @@ namespace InternetBanking.Migrations
                         .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("CustomerId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("EmployeeId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("IssueDate")
@@ -715,15 +711,11 @@ namespace InternetBanking.Migrations
 
                     b.HasOne("InternetBanking.Models.Customer", "Customer")
                         .WithMany("Deposits")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
 
                     b.HasOne("InternetBanking.Models.Employee", "Employee")
                         .WithMany("Deposits")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployeeId");
 
                     b.Navigation("Account");
 
@@ -805,15 +797,11 @@ namespace InternetBanking.Migrations
 
                     b.HasOne("InternetBanking.Models.Customer", "Customer")
                         .WithMany("Withdraws")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
 
                     b.HasOne("InternetBanking.Models.Employee", "Employee")
                         .WithMany("Withdraws")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployeeId");
 
                     b.Navigation("Account");
 
