@@ -13,7 +13,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace InternetBanking.Controllers
 {
-   
+
+    [Authorize(Roles ="Admin, Employee")]
     public class HelpRequestController : Controller
     {
         private readonly InternetBankingContext _context;
@@ -175,23 +176,23 @@ namespace InternetBanking.Controllers
           return (_context.HelpRequests?.Any(e => e.Id == id)).GetValueOrDefault();
         }
         
-        [HttpGet]
-        public async Task<IActionResult> ProcessRequest(int? id)
-        {
-            if (id == null || _context.HelpRequests == null)
-            {
-                return NotFound();
-            }
-
-            var helpRequest = await _context.HelpRequests.FindAsync(id);
-            if (helpRequest == null)
-            {
-                return NotFound();
-            }
-
-            return View(helpRequest);
-        }
-        
+        // [HttpGet]
+        // public async Task<IActionResult> ProcessRequest(int? id)
+        // {
+        //     if (id == null || _context.HelpRequests == null)
+        //     {
+        //         return NotFound();
+        //     }
+        //
+        //     var helpRequest = await _context.HelpRequests.FindAsync(id);
+        //     if (helpRequest == null)
+        //     {
+        //         return NotFound();
+        //     }
+        //
+        //     return View(helpRequest);
+        // }
+        //
         //POST: HelpRequest/ProcessRequest
         [HttpPost]
         public async Task<IActionResult> ProcessRequest(int? id, string answer)
