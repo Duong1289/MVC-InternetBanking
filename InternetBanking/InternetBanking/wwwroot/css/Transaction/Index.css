@@ -64,7 +64,7 @@ input {
     margin: 0 10px; /* Add spacing around the divider */
 }
 
-li {
+#transaction {
     padding-right: 1.5rem;
     padding-left: 1.5rem;
 }

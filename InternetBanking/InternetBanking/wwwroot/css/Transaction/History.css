@@ -88,10 +88,11 @@ h1 {
     padding: 0 20px; /* Add padding to create space between buttons */
 }
 
-li {
+#transaction {
     padding-right: 1.5rem;
     padding-left: 1.5rem;
 }
+
 hr {
     height: 1px; /* Adjust the height as needed */
     background-color: white;
