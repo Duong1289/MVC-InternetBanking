@@ -13,35 +13,8 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table id="example" class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PersonalId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-}
 
-<h1>Employee List</h1>
-
-<button class="btn btn-success">
-    <p>
-        <a class="text-light" asp-action="Create">Generate Employee Account</a>
-    </p>
-</button>
-
-<table class="table">
+<table class="table" id="table1">
     <thead>
         <tr>
             <th>
@@ -120,27 +93,3 @@
         $('#table1').DataTable();
     });
 </script>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
