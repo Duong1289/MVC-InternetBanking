@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace InternetBanking.Controllers
 {
-    [Authorize(Roles ="Customer")]
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly InternetBankingContext _context;
