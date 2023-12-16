@@ -150,10 +150,20 @@ namespace InternetBanking.Areas.Identity.Pages.Account
                         $"<meta charset=\"UTF-8\">" +
                         $"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
                         $"<style>" +
-                        $"   .button {{ display: inline-block; padding: 10px 20px; font-size: 16px; text-align: center; text-decoration: none; background-color: #007bff; color: #ffffff; border-radius: 5px; }}" +
+                                                    $"   body {{ font-family: 'Arial', sans-serif; }}" +
+                            $"   .container {{ max-width: 600px; margin: 0 auto; padding: 20px; }}" +
+                            $"   .header {{ background-color: #007bff; color: #fff; padding: 10px; text-align: center; }}" +
+                            $"   .content {{ padding: 20px; }}" +
+
+                            $"   .button {{ display: inline-block; padding: 10px 20px; font-size: 16px; text-align: center; text-decoration: none; background-color: #007bff; color: #ffffff; border-radius: 5px; }}" +
                         $"</style>" +
                         $"</head>" +
                         $"<body>" +
+                         $"       <div class='header'>" +
+                            $"           <h2>Welcome to NexBank</h2>" +
+                            $"       </div>" +
+                            $"       <div class='content'>" +
+                            $"           <p>Dear {customer.FirstName} {customer.LastName},</p>" +
                         $"   <p>Please confirm your account by clicking the button below:</p>" +
                         $"   <a href='{HtmlEncoder.Default.Encode(callbackUrl)}' class='button'>Confirm Your Email</a>" +
                         $"</body>" +

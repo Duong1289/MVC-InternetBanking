@@ -14,6 +14,7 @@ using System.Text.Encodings.Web;
 
 namespace InternetBanking.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class EmployeesController : Controller
     {
         private readonly InternetBankingContext _context;
