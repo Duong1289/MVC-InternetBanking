@@ -8,67 +8,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63a36561-732a-45d3-afb7-55125ac74dfb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Accounts/Create.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Accounts/Index.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Deposit/AdminDetails.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Deposit/Details.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Deposit/History.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Deposit/UserHistory.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Update.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Transaction/ViewAllHistory.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Withdraw/AdminDetails.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Withdraw/Details.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Withdraw/History.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InternetBanking/Views/Withdraw/UserHistory.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Areas/Identity/Pages/Account/AccessDenied.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Areas/Identity/Pages/Account/AccessDenied.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/AccountsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/CustomersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/CustomersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/DepositController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/DepositController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/EmployeesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/EmployeesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/HelpRequestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/HelpRequestController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/TransactionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/TransactionController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/WithdrawController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/WithdrawController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/InternetBanking.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/InternetBanking.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Models/Account.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Models/Account.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Service/MailService/SendBankMailService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Service/MailService/SendBankMailService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Service/ServiceService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Service/ServiceService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Account/Create.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Account/Delete.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Accounts/Delete.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Account/Details.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Accounts/Details.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Account/Edit.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Accounts/Edit.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Account/Index.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Banks/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Banks/Create.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Banks/Delete.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Banks/Delete.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Banks/Details.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Banks/Details.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Banks/Edit.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Banks/Edit.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Banks/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Banks/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Customers/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Customers/Create.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Customers/DetailsbyCustomer.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Customers/DetailsbyCustomer.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Customers/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Customers/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Deposit/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Deposit/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Employees/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Employees/Create.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Employees/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Employees/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Create.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Delete.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Delete.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Details.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Details.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Edit.cshtml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Create.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Delete.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Delete.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Details.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Details.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Edit.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Edit.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Home/Header.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Home/Header.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_HeaderAdmin.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_HeaderAdmin.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_LoginPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_LoginPartial.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_SidebarAdmin.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_SidebarAdmin.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_SidebarUser.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_SidebarUser.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Statement/CreateStatement.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Statement/CreateStatement.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Statement/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Statement/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Statement/StatementsWithinPeriod.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Statement/StatementsWithinPeriod.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Transaction/Detail.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Transaction/Detail.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Withdraw/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Withdraw/Index.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +56,7 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -164,6 +111,7 @@
       <workItem from="1702569034622" duration="7894000" />
       <workItem from="1702636866135" duration="8850000" />
       <workItem from="1702706221180" duration="2709000" />
+      <workItem from="1702722368987" duration="3982000" />
     </task>
     <servers />
   </component>
