@@ -8,6 +8,20 @@
 @section Styles {
     <link rel="stylesheet" href="~/css/Transaction/Index.css" />
 }
+@if (ViewBag.TransactionStatus != null)
+{
+    <div class="alert alert-@(ViewBag.Color) text-white" role="alert" id="transactionAlert">
+        @if (ViewBag.Color == "success")
+        {
+            <strong>Success!</strong> @ViewBag.TransactionStatus
+        }
+        else
+        {
+            <strong>Error!</strong> @ViewBag.TransactionStatus
+        }
+    </div>
+}
+    
 <div class="row">
     <div class="col-md-7 mt-4">
         <div class="card">
@@ -21,24 +35,24 @@
                         <select asp-for="SenderAccountNumber" class="form-control" id="SenderAccount" aria-describedby="basic-addon3">
                             @foreach (var account in ViewBag.Accounts)
                             {
-                                <option value="@account.AccountNumber">@account.AccountNumber</option>
+                                <option value="@account.AccountNumber">@account.AccountNumber - Balance: @account.Balance</option>
                             }
                         </select>
                     </div>
                     <label class="form-label" asp-for="ReceiverAccountNumber">Receiver Account Number</label>
                     <div class="input-group input-group-outline my-3">
-                      
                         <input asp-for="ReceiverAccountNumber" class="form-control form-control-lg" aria-describedby="basic-addon3" onfocus="focused(this)" onfocusout="defocused(this)" required>
+                        <span asp-validation-for="ReceiverAccountNumber"></span>
                     </div>
                     <label class="form-label" asp-for="Amount">Amount</label>
                     <div class="input-group input-group-outline my-3">
-                        
-                        <input asp-for="Amount" class="form-control form-control-lg" aria-describedby="basic-addon3" onfocus="focused(this)" onfocusout="defocused(this)" required min="0">
+                        <input asp-for="Amount" type="number" step="0.01" class="form-control form-control-lg" aria-describedby="basic-addon3" onfocus="focused(this)" onfocusout="defocused(this)" required min="0">
+                        <span asp-validation-for="Amount"></span>
                     </div>
                     <label class="form-label" asp-for="Content">Transaction Details</label>
                     <div class="input-group input-group-outline my-3">
-                       
                         <textarea asp-for="Content" aria-describedby="basic-addon3" onfocus="focused(this)" onfocusout="defocused(this)" rows="3" class="form-control" required></textarea>
+                        <span asp-validation-for="Content"></span>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn bg-gradient-primary w-100">Transfer Money</button>
@@ -125,23 +139,9 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script>
-        $(document).ready(function () {
-            // Show the success modal on page load
-            $('#successModal').modal('show');
-
-            // Handle modal dismissal
-            $('#successModal').on('hidden.bs.modal', function (e) {
-                // Reinitialize the modal when it is hidden
-                $(this).removeData('bs.modal');
-            });
-
-            // Handle clicking on the close button
-            $('#successModal .close, #successModal button.close').on('click', function () {
-                // Hide the modal
-                $('#successModal').modal('hide');
-            });
-
-        });
+            setTimeout(function () {
+                document.getElementById('transactionAlert').style.display = 'none';
+            }, 20000);
     </script>
 
 }
