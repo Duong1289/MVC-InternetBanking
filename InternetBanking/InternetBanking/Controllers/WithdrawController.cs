@@ -2,6 +2,7 @@
 using InternetBanking.Models;
 using InternetBanking.Service;
 using InternetBanking.Service.MailService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace InternetBanking.Controllers
 {
+    [Authorize]
     public class WithdrawController : Controller
     {
         InternetBankingContext ctx;
@@ -16,7 +18,7 @@ namespace InternetBanking.Controllers
         SendBankMailService mailService;
         UserManager<InternetBankingUser> _userManager;
 
-
+        
         public WithdrawController(InternetBankingContext ctx, ServiceService service, SendBankMailService mailService, UserManager<InternetBankingUser> _userManager)
         {
             this.ctx = ctx;
@@ -25,6 +27,7 @@ namespace InternetBanking.Controllers
             this._userManager = _userManager;
         }
 
+        [Authorize(Roles = "Admin,Employee")]
         public IActionResult Index()
         {
            
@@ -45,6 +48,7 @@ namespace InternetBanking.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin,Employee")]
         public async Task<IActionResult> ProcessWithdraw(Withdraw withdraw)
         {
             try
@@ -55,11 +59,16 @@ namespace InternetBanking.Controllers
                 {
                     throw new InvalidOperationException("Invalid account number!");
                 }
+                if (!await service.CheckBalance(withdraw.WithdrawAccountNumber, withdraw.Amount))
+                {
+                    throw new InvalidOperationException("Insufficient funds to withdraw!!");
+                }
 
                 withdraw.CustomerId = await service.getCustomerId(withdraw.WithdrawAccountNumber);
                 withdraw.IssueDate = DateTime.Now;
-                var currentUser = await _userManager.GetUserAsync(User);
-                var customer = await ctx.Customers.SingleOrDefaultAsync(c => c.Id == currentUser.Id);
+                var customer = await ctx.Customers!.Where(c => c.Accounts
+                .Any(a => a.AccountNumber == withdraw.WithdrawAccountNumber)).SingleOrDefaultAsync();
+               
 
                 ctx.Withdraws!.Add(withdraw);
                 if (await ctx.SaveChangesAsync() > 0)
@@ -100,11 +109,48 @@ namespace InternetBanking.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Admin,Employee")]
         public async Task<IActionResult> History()
         {
             var withdraws = await ctx.Withdraws!.ToListAsync();
             return View(withdraws);
         }
+
+        [Authorize(Roles = "Customer")]
+        public async Task<IActionResult> UserHistory()
+        {
+            var currentUser = await _userManager.GetUserAsync(User);
+
+            // Retrieve accounts belonging to the current user
+            var accounts = await ctx.Accounts!
+                .Where(a => a.CustomerId == currentUser.Id)
+                .ToListAsync();
+
+            // Retrieve withdrawal transactions associated with the user's accounts
+            var withdrawals = await ctx.Withdraws!
+                .Where(w => accounts.Select(a => a.AccountNumber).Contains(w.WithdrawAccountNumber))
+                .ToListAsync();
+
+            // Additional logic for displaying or processing withdrawal transactions
+
+            return View(withdrawals);
+        }
+
+
+        [Authorize(Roles = "Customer")]
+        public async Task<IActionResult> Details(int id)
+        {
+            var withdraw = await ctx.Withdraws!.SingleOrDefaultAsync(w=>w.Id== id);
+            return View(withdraw);  
+        }
+
+        [Authorize(Roles = "Admin,Employee")]
+        public async Task<IActionResult> AdminDetails(int id)
+        {
+            var withdraw = await ctx.Withdraws!.SingleOrDefaultAsync(w => w.Id == id);
+            return View(withdraw);
+        }
+
 
 
 

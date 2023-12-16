@@ -4,9 +4,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<h1>Index</h1>
-
-<h4>Withdraw</h4>
+<h1 style="text-align:center;">Withdraw</h1>
 @if (ViewBag.Result != null)
 {
     <div class="alert alert-@(ViewBag.Color) text-white" role="alert" id="transactionAlert">
@@ -19,9 +17,10 @@
                 <strong>Error!</strong> @ViewBag.Result
             }
     </div>
-}
+}<a asp-action="History" class="btn bg-gradient-primary">
+    View Withdraw History
+</a>
 <hr />
-
     <form asp-action="ProcessWithdraw" method="post">
         <label asp-for="WithdrawAccountNumber" class="form-label">Withdraw Account Number</label>
         <div class="input-group input-group-outline my-3">
@@ -45,10 +44,6 @@
     </form>
 
         <!-- Display the result message with appropriate styling -->
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

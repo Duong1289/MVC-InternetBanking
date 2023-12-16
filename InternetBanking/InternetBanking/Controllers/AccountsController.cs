@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,35 +6,32 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InternetBanking.Models;
-using Microsoft.AspNetCore.Identity;
-using InternetBanking.Areas.Identity.Data;
-using System.Collections.Immutable;
+using InternetBanking.Constants;
 using Microsoft.AspNetCore.Authorization;
 
 namespace InternetBanking.Controllers
 {
-    [Authorize]
-    public class AccountController : Controller
+    [Authorize(Roles = "Admin, Employee,Customer")]
+    public class AccountsController : Controller
     {
+        
         private readonly InternetBankingContext _context;
-        UserManager<InternetBankingUser> _userManager;
 
-
-        public AccountController(InternetBankingContext context, UserManager<InternetBankingUser> _userManager)
+        public AccountsController(InternetBankingContext context)
         {
             _context = context;
-            this._userManager = _userManager;
         }
 
-        // GET: Account
+        // GET: Accounts
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Index()
-        {   
-            var currentUser = await _userManager.GetUserAsync(User);
-            var accounts = await _context.Accounts!.Where(a => a.CustomerId == currentUser.Id).ToListAsync();
-            return View(accounts);
+        {
+            var internetBankingContext = _context.Accounts.Include(a => a.AccountType).Include(a => a.Customer);
+            return View(await internetBankingContext.ToListAsync());
         }
 
-        // GET: Account/Details/5
+        // GET: Accounts/Details/5
+        [Authorize(Roles = "Admin, Employee,Customer")]
         public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.Accounts == null)
@@ -43,6 +40,8 @@ namespace InternetBanking.Controllers
             }
 
             var account = await _context.Accounts
+                .Include(a => a.AccountType)
+                .Include(a => a.Customer)
                 .FirstOrDefaultAsync(m => m.AccountNumber == id);
             if (account == null)
             {
@@ -52,33 +51,36 @@ namespace InternetBanking.Controllers
             return View(account);
         }
 
-        // GET: Account/Create
+        // GET: Accounts/Create
+        [Authorize(Roles = "Admin, Employee,Customer")]
         public IActionResult Create()
         {
+            ViewData["AccountTypeId"] = new SelectList(_context.AccountTypes, "Id", "TypeName");
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Id");
             return View();
         }
 
-        // POST: Account/Create
+        // POST: Accounts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Account account)
+        [Authorize(Roles = "Customer")]
+        public async Task<IActionResult> Create([Bind("AccountNumber,AccountTypeId,CustomerId,Balance,OpenDate,ExpireDate,Status")] Account account)
         {
-            var currentUser = await _userManager.GetUserAsync(User);
-            account.CustomerId = currentUser.Id;
-            account.Balance = 0;
-            account.OpenDate = DateTime.Now;
-            account.ExpireDate = DateTime.Now.AddYears(5);
-            account.Status = false;
-            _context.Add(account);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
-            
-            
+            if (ModelState.IsValid)
+            {
+                _context.Add(account);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["AccountTypeId"] = new SelectList(_context.AccountTypes, "Id", "TypeName", account.AccountTypeId);
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Id", account.CustomerId);
+            return View(account);
         }
 
-        // GET: Account/Edit/5
+        // GET: Accounts/Edit/5
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.Accounts == null)
@@ -91,15 +93,18 @@ namespace InternetBanking.Controllers
             {
                 return NotFound();
             }
+            ViewData["AccountTypeId"] = new SelectList(_context.AccountTypes, "Id", "TypeName", account.AccountTypeId);
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Id", account.CustomerId);
             return View(account);
         }
 
-        // POST: Account/Edit/5
+        // POST: Accounts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("AccountNumber,Balance,OpenDate,ExpireDate,Status,CustomerPersonalId")] Account account)
+        [Authorize(Roles = "Admin, Employee")]
+        public async Task<IActionResult> Edit(string id, [Bind("AccountNumber,AccountTypeId,CustomerId,Balance,OpenDate,ExpireDate,Status")] Account account)
         {
             if (id != account.AccountNumber)
             {
@@ -126,10 +131,13 @@ namespace InternetBanking.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["AccountTypeId"] = new SelectList(_context.AccountTypes, "Id", "TypeName", account.AccountTypeId);
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Id", account.CustomerId);
             return View(account);
         }
 
-        // GET: Account/Delete/5
+        // GET: Accounts/Delete/5
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.Accounts == null)
@@ -138,6 +146,8 @@ namespace InternetBanking.Controllers
             }
 
             var account = await _context.Accounts
+                .Include(a => a.AccountType)
+                .Include(a => a.Customer)
                 .FirstOrDefaultAsync(m => m.AccountNumber == id);
             if (account == null)
             {
@@ -147,9 +157,10 @@ namespace InternetBanking.Controllers
             return View(account);
         }
 
-        // POST: Account/Delete/5
+        // POST: Accounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             if (_context.Accounts == null)

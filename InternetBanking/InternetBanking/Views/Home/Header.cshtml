@@ -30,13 +30,12 @@
                                 <a href="#about-section" class="nav-link">About Us</a>
                                 <ul class="dropdown">
                                     <li><a href="#faq-section" class="nav-link">FAQ</a></li>
-                                    <li><a href="#testimonials-section" class="nav-link">Customers Feedback</a></li>
                                 </ul>
                             </li>
                             @if(User.IsInRole("Customer"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="Customers" asp-action="Details" title="Manage">Hello @User.Identity?.Name!</a>
+                                    <a class="nav-link text-dark" asp-controller="Customers" asp-action="DetailsbyCustomer" title="Manage">Hello @User.Identity?.Name!</a>
                                 </li>
                             }
                             else
