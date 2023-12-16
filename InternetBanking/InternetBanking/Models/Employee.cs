@@ -9,23 +9,23 @@ namespace InternetBanking.Models
     {
         [Key, ForeignKey("InternetBankingUser")]
         public string? Id { get; set; }
-        
-        
+
+
         [MaxLength(20)]
         public string? PersonalId { get; set; }
 
         [MaxLength(200)]
         public required string Email { get; set; }
 
-        
+
         [MaxLength(50)]
         public string? FirstName { get; set; }
-        
+
         [MaxLength(50)]
         public string? LastName { get; set; }
 
         public string? Address { get; set; }
-        
+
         [MaxLength(15)]
         public string? Phone { get; set; }
 
@@ -34,11 +34,11 @@ namespace InternetBanking.Models
 
         [Required]
         public bool Status { get; set; }
-       
-        
+
+
         public ICollection<HelpRequest>? HelpRequests { get; set; }
         public ICollection<Image>? Images { get; set; }
-        public virtual required InternetBankingUser InternetBankingUser { get; set; }
+        public virtual InternetBankingUser? InternetBankingUser { get; set; }
         // Mối quan hệ 1-1 với IdentityUser
 
     }
