@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InternetBanking.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using InternetBanking.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace InternetBanking.Controllers
 {
@@ -14,10 +17,16 @@ namespace InternetBanking.Controllers
     public class EmployeesController : Controller
     {
         private readonly InternetBankingContext _context;
+        private readonly UserManager<InternetBankingUser> _userManager;
+        private readonly SignInManager<InternetBankingUser> _signInManager;
+        private readonly IEmailSender _emailSender;
 
-        public EmployeesController(InternetBankingContext context)
+        public EmployeesController(InternetBankingContext context, UserManager<InternetBankingUser> userManager, SignInManager<InternetBankingUser> signInManager, IEmailSender emailSender)
         {
             _context = context;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _emailSender = emailSender;
         }
 
         // GET: Employees
@@ -56,22 +65,76 @@ namespace InternetBanking.Controllers
         // POST: Employees/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
+        // POST: Employees/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PersonalId,Email,FirstName,LastName,Address,Phone,OpenDate,Status")] Employee employee)
+        public async Task<IActionResult> Create(Employee employee)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(employee);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                // Generate a random 4-digit number for the username
+                var randomNumbers = new Random().Next(1000, 9999).ToString();
+
+                // Generate username and password
+                var username = $"nexEmp{randomNumbers}";
+                var password = "nexemp";
+
+                var user = new InternetBankingUser { UserName = username, Email = employee.Email };
+                // Create an AspNetUser with the generated username and password
+                
+
+                var result = await _userManager.CreateAsync(user, password);
+
+                if (result.Succeeded)
+                {
+                    var emp = new Employee
+                    {
+                        Id = user.Id,
+                        FirstName = employee.FirstName,
+                        LastName = employee.LastName,
+                        Phone = employee.Phone,
+                        PersonalId = employee.PersonalId,
+                        Address = employee.Address,
+                        Status = false,
+                        CreateDate = DateTime.Now,
+                        Email = employee.Email,
+                        // Set other properties if needed
+                    };
+                    // Assign the "Employee" role to the user
+                    await _userManager.AddToRoleAsync(user, "Employee");
+                    _context.Employees.Add(emp);
+                    await _context.SaveChangesAsync();
+
+                    // Send confirmation email
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var callbackUrl = Url.Action(
+                        "ConfirmEmail",
+                        "Account",
+                        new { userId = user.Id, code },
+                        protocol: HttpContext.Request.Scheme);
+
+                    await _emailSender.SendEmailAsync(employee.Email, "Confirm your email",
+                        $"Please confirm your account by clicking this link: {callbackUrl}");
+
+                    // Your existing code for the confirmation message
+                    // ...
+
+                    return RedirectToAction("Index", "Home"); // Redirect to the desired page after successful registration
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
             }
-            ViewData["Id"] = new SelectList(_context.InternetBankingUsers, "Id", "Id", employee.Id);
+
+            // If ModelState is not valid, redisplay the registration form with errors
             return View(employee);
         }
-
-        // GET: Employees/Edit/5
-        public async Task<IActionResult> Edit(string id)
+    
+    // GET: Employees/Edit/5
+    public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.Employees == null)
             {

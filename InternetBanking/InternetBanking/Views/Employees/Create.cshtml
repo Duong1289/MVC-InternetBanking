@@ -1,0 +1,25 @@
+﻿@model InternetBanking.Models.Employee
+
+<h1>Create Employee</h1>
+
+<form asp-action="Create">
+    <!-- other form fields -->
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<div class="confirmation-message">
+    An email has been sent to confirm the account.
+</div>
+
+@section Scripts {
+    <script>
+        // Add any necessary scripts
+    </script>
+}
