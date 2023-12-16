@@ -104,9 +104,7 @@ namespace InternetBanking.Controllers
 
                     // Send confirmation email
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var callbackUrl = Url.Action(
-                        "ConfirmEmail",
-                        "Account",
+                    var callbackUrl = Url.Action("ConfirmEmail","Account",
                         values: new { area = "Identity", userId = user.Id, code = code, },
                         protocol: HttpContext.Request.Scheme);
 
