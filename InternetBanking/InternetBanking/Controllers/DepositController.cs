@@ -37,10 +37,14 @@ namespace InternetBanking.Controllers
                 ViewBag.Result = TempData["ResultFail"];
                 ViewBag.Color = "danger";
             }
+            else
+            {
+                ViewBag.Result = null;
+            }
             return View();
         }
 
-        public async Task<IActionResult> ProcessWithdraw(Deposit deposit)
+        public async Task<IActionResult> ProcessDeposit(Deposit deposit)
         {
             try
             {
@@ -54,7 +58,9 @@ namespace InternetBanking.Controllers
                 deposit.CustomerId = await service.getCustomerId(deposit.DepositAccountNumber);
                 deposit.IssueDate = DateTime.Now;
                 var currentUser = await _userManager.GetUserAsync(User);
+                if (currentUser == null) { return View(); }
 
+                ctx.Deposits!.Add(deposit);
                 if (await ctx.SaveChangesAsync() > 0)
                 {
                     bool res = await service.Deposit(deposit.DepositAccountNumber, deposit.Amount);

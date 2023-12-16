@@ -51,6 +51,10 @@ internal class Program
             options.SignIn.RequireConfirmedPhoneNumber = false;
             options.SignIn.RequireConfirmedAccount = true;
 
+            options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // Lockout duration
+            options.Lockout.MaxFailedAccessAttempts = 3; // Max number of failed attempts before lockout
+            options.Lockout.AllowedForNewUsers = true; // Lockout enabled for new users
+
         });
         builder.Services.AddOptions();
         var mailSettings = builder.Configuration.GetSection("MailSettings");

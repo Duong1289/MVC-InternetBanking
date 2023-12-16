@@ -38,6 +38,10 @@ namespace InternetBanking.Controllers
                 ViewBag.Result = TempData["ResultFail"];
                 ViewBag.Color = "danger";
             }
+            else
+            {
+                ViewBag.Result = null;
+            }
             return View();
         }
 

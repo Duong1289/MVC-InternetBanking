@@ -27,76 +27,119 @@ namespace InternetBanking.Controllers
         }
         
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
 
-            if (TempData["TransactionSuccess"] != null)
+            if (TempData["ResultSuccess"] != null)
             {
-                ViewBag.TransactionStatus = TempData["TransactionSuccess"];
+                ViewBag.TransactionStatus = TempData["ResultSuccess"];
+                ViewBag.Color = "success";
+            }
+            else if(TempData["ResultFail"] != null)
+            {
+                ViewBag.TransactionStatus = TempData["ResultFail"];
+                ViewBag.Color = "danger";
             }
             else
             {
-                ViewBag.TransactionStatus = TempData["TransactionError"];
+                ViewBag.TransactionStatus = null;
             }
+            var currentUser = await _userManager.GetUserAsync(User);
+            ViewBag.Accounts = await ctx.Accounts!.Where(a=>a.CustomerId==currentUser.Id).ToListAsync();
+            var accounts = await ctx.Accounts
+                .Where(a => a.CustomerId == currentUser.Id)
+                .ToListAsync();
+
+            // Retrieve transactions associated with the accounts
+            var transactions = await ctx.Transactions
+            .Where(t => accounts.Select(a => a.AccountNumber).Contains(t.SenderAccountNumber) || accounts.Select(a => a.AccountNumber).Contains(t.ReceiverAccountNumber)).OrderByDescending(t=>t.TransactionDate)
+            .ToListAsync();
+            ViewBag.History = transactions;
+            ViewBag.CurrentUserId = currentUser.Id;
             return View();
         }
 
         public async Task<IActionResult> ProcessTransaction(Transaction transac)
         {
-            
-            var currentUser = await _userManager.GetUserAsync(User);
-            var customer = await ctx.Customers.SingleOrDefaultAsync(c => c.Id == currentUser.Id);
             try
             {
+                // Retrieve the current user
+                var currentUser = await _userManager.GetUserAsync(User);
+                var customer = await ctx.Customers.SingleOrDefaultAsync(c => c.Id == currentUser.Id);
+
+                // Check if the receiver account exists
                 bool receiverExist = await transactionService.CheckReceiver(transac.ReceiverAccountNumber);
                 if (!receiverExist)
                 {
                     throw new InvalidOperationException("Invalid receiver account number!!");
                 }
+
+                // Check if there are sufficient funds in the sender's account
                 bool validFunds = await transactionService.CheckBalance(transac.Amount, transac.SenderAccountNumber);
                 if (!validFunds)
                 {
                     throw new InvalidOperationException("Insufficient funds to transfer!!");
                 }
+
+                // Retrieve sender and receiver account details
                 var sender = await transactionService.GetAccount(transac.SenderAccountNumber);
                 var receiver = await transactionService.GetAccount(transac.ReceiverAccountNumber);
 
+                // Check if the sender and receiver accounts are the same
+                if (transac.SenderAccountNumber == transac.ReceiverAccountNumber)
+                {
+                    throw new InvalidOperationException("Invalid receiver account number! Cannot make a transaction for your own account");
+                }
 
+                // Process the transaction
                 if (receiverExist && validFunds)
                 {
+                    // Save transaction details
                     bool processTransaction = await transactionService.SaveTransactionDeltail(transac);
+
                     if (processTransaction)
                     {
+                        // Update account balances
                         bool updateBalance = await transactionService.UpdateBalance(receiver, sender, transac.Amount);
+
                         if (updateBalance)
                         {
-                            await sendMailService.SendEmailTransaction(transac, currentUser.Email, (customer.FirstName+" "+customer.LastName));
+                            // Send email notification
+                            await sendMailService.SendEmailTransaction(transac, currentUser.Email, (customer.FirstName + " " + customer.LastName));
+
+                            // Set success message and redirect to Index
+                            TempData["ResultSuccess"] = "Transaction successfully!";
+                            return RedirectToAction("Index");
                         }
-                       else
+                        else
                         {
+                            // Handle balance update failure
                             string transactionId = await transactionService.SetStatusFalse(transac.Id);
                             throw new InvalidOperationException("Update balance failed! Please try again! Your transaction ID: " + transactionId);
                         }
                     }
                     else
                     {
+                        // Handle transaction save failure
                         throw new InvalidOperationException("Transaction failed! Please try again later");
                     }
                 }
-
-                return RedirectToAction("Index");
             }
             catch (InvalidOperationException ex)
             {
-                TempData["TransactionError"] = $"Transaction failed: {ex.Message}";
+                // Handle specific exceptions
+                TempData["ResultFail"] = $"Transaction failed: {ex.Message}";
             }
             catch (Exception ex)
             {
-                TempData["TransactionError"] = $"An unexpected error occurred: {ex.Message}";
+                // Handle unexpected exceptions
+                TempData["ResultFail"] = $"An unexpected error occurred: {ex.Message}";
             }
 
+            // Redirect to Index in case of any exception
             return RedirectToAction("Index");
         }
+
 
         [Route("Transaction/view-history")]
         public async Task<IActionResult> TransactionHistory()
