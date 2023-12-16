@@ -45,22 +45,22 @@ namespace InternetBanking.Controllers
         {
             try
             {
-                bool accExist = await service.ValidateAccount(withdraw.AccountNumber);
+                bool accExist = await service.ValidateAccount(withdraw.WithdrawAccountNumber);
 
                 if (!accExist)
                 {
                     throw new InvalidOperationException("Invalid account number!");
                 }
 
-                withdraw.CustomerId = await service.getCustomerId(withdraw.AccountNumber);
+                withdraw.CustomerId = await service.getCustomerId(withdraw.WithdrawAccountNumber);
                 withdraw.IssueDate = DateTime.Now;
                 var currentUser = await _userManager.GetUserAsync(User);
-                withdraw.EmployeeId = currentUser.Id;
+                if(currentUser == null) { return View(); }
 
-                ctx.Withdraws.Add(withdraw);
+                ctx.Withdraws!.Add(withdraw);
                 if (await ctx.SaveChangesAsync() > 0)
                 {
-                    bool res = await service.Withdraw(withdraw.AccountNumber, withdraw.Amount);
+                    bool res = await service.Withdraw(withdraw.WithdrawAccountNumber, withdraw.Amount);
 
                     if (res)
                     {
@@ -93,6 +93,12 @@ namespace InternetBanking.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> History()
+        {
+            var withdraws = await ctx.Withdraws!.ToListAsync();
+            return View(withdraws);
         }
 
 

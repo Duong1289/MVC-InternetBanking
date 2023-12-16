@@ -10,7 +10,7 @@ namespace InternetBanking.Models
     {
         [Key]
         [MaxLength(20)]
-        public required string AccountNumber { get; set; }
+        public string AccountNumber { get; set; }
 
         [ForeignKey("AccountTypes")]
         public required int AccountTypeId { get; set; }

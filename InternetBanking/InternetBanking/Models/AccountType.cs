@@ -7,7 +7,8 @@ namespace InternetBanking.Models
         [Key]
         public int Id { get; set; }
 
-        public required string TypeName { get; set; }
+        [Required]
+        public string TypeName { get; set; }
 
         public ICollection<Account>? Accounts { get; set; }
 

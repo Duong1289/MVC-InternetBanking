@@ -15,14 +15,9 @@ namespace InternetBanking.Models
 
         [Required]
         public double Amount { get; set; }
-
-        [ForeignKey("Employees")]
-        public string? EmployeeId { get; set; }
-
-        [ForeignKey("Accounts")]
+        
         [Required]
-        [MaxLength(20)]
-        public string AccountNumber { get; set; }
+        public string? WithdrawAccountNumber { get; set; }
 
         [ForeignKey("Customers")]
         public string? CustomerId { get; set; }
@@ -33,6 +28,6 @@ namespace InternetBanking.Models
 
         public Account Account { get; set; }
         public Customer Customer { get; set; }
-        public Employee Employee { get; set; }
+        
     }
 }

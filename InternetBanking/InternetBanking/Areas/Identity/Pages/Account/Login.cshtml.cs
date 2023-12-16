@@ -92,7 +92,7 @@ namespace InternetBanking.Areas.Identity.Pages.Account
                     if (user != null)
                     {
                         // Chuyển hướng đến trang chi tiết của khách hàng và truyền tham số id
-                        var redirectUrl = $"/Customers/Details/{user.Id}";
+                        var redirectUrl = $"/Customers/DetailsbyCustomer/{user.Id}";
                         return Redirect(redirectUrl);
                     }
                     return LocalRedirect(returnUrl);

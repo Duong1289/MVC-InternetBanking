@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using InternetBanking.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace InternetBanking.Controllers
 {
@@ -43,22 +44,20 @@ namespace InternetBanking.Controllers
         {
             try
             {
-                bool accExist = await service.ValidateAccount(deposit.AccountNumber);
+                bool accExist = await service.ValidateAccount(deposit.DepositAccountNumber);
 
                 if (!accExist)
                 {
                     throw new InvalidOperationException("Invalid account number!");
                 }
 
-                deposit.CustomerId = await service.getCustomerId(deposit.AccountNumber);
+                deposit.CustomerId = await service.getCustomerId(deposit.DepositAccountNumber);
                 deposit.IssueDate = DateTime.Now;
                 var currentUser = await _userManager.GetUserAsync(User);
-                deposit.EmployeeId = currentUser.Id;
-                ctx.Deposits.Add(deposit);
 
                 if (await ctx.SaveChangesAsync() > 0)
                 {
-                    bool res = await service.Deposit(deposit.AccountNumber, deposit.Amount);
+                    bool res = await service.Deposit(deposit.DepositAccountNumber, deposit.Amount);
 
                     if (res)
                     {
@@ -91,6 +90,12 @@ namespace InternetBanking.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> History()
+        {
+            var deposits = await ctx.Deposits!.ToListAsync();
+            return View(deposits);
         }
     }
 }
