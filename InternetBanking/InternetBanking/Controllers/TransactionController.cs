@@ -45,15 +45,18 @@ namespace InternetBanking.Controllers
                 ViewBag.TransactionStatus = null;
             }
             var currentUser = await _userManager.GetUserAsync(User);
-            ViewBag.Accounts = await ctx.Accounts!.Where(a=>a.CustomerId==currentUser.Id).ToListAsync();
             var accounts = await ctx.Accounts
                 .Where(a => a.CustomerId == currentUser.Id)
                 .ToListAsync();
+            ViewBag.Accounts = accounts;
 
             // Retrieve transactions associated with the accounts
+            var today = DateTime.Today;
             var transactions = await ctx.Transactions
-            .Where(t => accounts.Select(a => a.AccountNumber).Contains(t.SenderAccountNumber) || accounts.Select(a => a.AccountNumber).Contains(t.ReceiverAccountNumber)).OrderByDescending(t=>t.TransactionDate)
-            .ToListAsync();
+                .Where(t => (accounts.Select(a => a.AccountNumber).Contains(t.SenderAccountNumber) || accounts.Select(a => a.AccountNumber).Contains(t.ReceiverAccountNumber)) && t.TransactionDate.Date == today)
+                .OrderByDescending(t => t.TransactionDate)
+                .Take(5)
+                .ToListAsync();
             ViewBag.History = transactions;
             ViewBag.CurrentUserId = currentUser.Id;
             return View();
@@ -151,19 +154,23 @@ namespace InternetBanking.Controllers
                 .Where(a => a.CustomerId == currentUser.Id)
                 .ToListAsync();
 
-            // Retrieve transactions associated with the accounts
-            var transactions = await ctx.Transactions
-            .Where(t => accounts.Select(a => a.AccountNumber).Contains(t.SenderAccountNumber) || accounts.Select(a => a.AccountNumber).Contains(t.ReceiverAccountNumber))
-            .ToListAsync();
+            ViewBag.Accounts = accounts;
 
+          
+            ViewBag.Transaction = await ctx.Transactions!
+                .Where(t => accounts.Select(a => a.AccountNumber).Contains(t.SenderAccountNumber) || accounts.Select(a => a.AccountNumber).Contains(t.ReceiverAccountNumber))
+                .OrderByDescending(t => t.TransactionDate)
+                .ToListAsync();
 
-            // Pass the transactions to the view
-            
-
-            return View(transactions);
+            return View();
         }
 
+        public async Task<IActionResult> Detail(string id)
+        {
+            var transaction = await ctx.Transactions!.SingleOrDefaultAsync(t=>t.Id == id);
+            return View(transaction);
 
+        }
 
     }
 }
