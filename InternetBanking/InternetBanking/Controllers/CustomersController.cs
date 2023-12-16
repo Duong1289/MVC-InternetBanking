@@ -6,9 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InternetBanking.Models;
+using InternetBanking.Constants;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InternetBanking.Controllers
 {
+    [Authorize(Roles = "Admin, Employee,Customer")]
     public class CustomersController : Controller
     {
         private readonly InternetBankingContext _context;
@@ -17,6 +20,7 @@ namespace InternetBanking.Controllers
         {
             _context = context;
         }
+        [Authorize(Roles = "Customer")]
         public async Task<IActionResult> DetailsbyCustomer(string id)
         {
             if (id == null || _context.Customers == null)
@@ -39,6 +43,7 @@ namespace InternetBanking.Controllers
         }
 
         // GET: Customers
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Index()
         {
             var internetBankingContext = _context.Customers.Include(c => c.InternetBankingUser);
@@ -46,6 +51,7 @@ namespace InternetBanking.Controllers
         }
 
         // GET: Customers/Details/5
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.Customers == null)
@@ -71,6 +77,7 @@ namespace InternetBanking.Controllers
 
 
         // GET: Customers/Create
+        [Authorize(Roles = "Admin, Employee")]
         public IActionResult Create()
         {
             ViewData["Id"] = new SelectList(_context.InternetBankingUsers, "Id", "Id");
@@ -82,6 +89,7 @@ namespace InternetBanking.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Create([Bind("Id,PersonalId,Email,Phone,FirstName,LastName,Address,OpenDate,Status")] Customer customer)
         {
             if (ModelState.IsValid)
@@ -95,6 +103,7 @@ namespace InternetBanking.Controllers
         }
 
         // GET: Customers/Edit/5
+        [Authorize(Roles = "Admin, Employee,Customer")]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.Customers == null)
@@ -116,6 +125,7 @@ namespace InternetBanking.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Employee,Customer")]
         public async Task<IActionResult> Edit(string id, [Bind("Id,PersonalId,Email,Phone,FirstName,LastName,Address,OpenDate,Status")] Customer customer)
         {
             if (id != customer.Id)
@@ -148,6 +158,7 @@ namespace InternetBanking.Controllers
         }
 
         // GET: Customers/Delete/5
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.Customers == null)
@@ -169,6 +180,7 @@ namespace InternetBanking.Controllers
         // POST: Customers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             if (_context.Customers == null)
