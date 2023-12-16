@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using InternetBanking.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using System.Text.Encodings.Web;
 
 namespace InternetBanking.Controllers
 {
@@ -104,16 +105,24 @@ namespace InternetBanking.Controllers
                     var callbackUrl = Url.Action(
                         "ConfirmEmail",
                         "Account",
-                        new { userId = user.Id, code },
+                        values: new { area = "Identity", userId = user.Id, code = code,},
                         protocol: HttpContext.Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(employee.Email, "Confirm your email",
-                        $"Please confirm your account by clicking this link: {callbackUrl}");
+                    await _emailSender.SendEmailAsync(employee.Email, "Your NexBank Account", $"<p>Dear {employee.FirstName} {employee.LastName},</p>" +
+                            $"<p>Welcome to NexBank system. Here are your account details:</p>" +
+                            $"<ul>" +
+                            $"<li><strong>Username:</strong> nexEmp{randomNumbers}</li>" +
+                            $"<li><strong>Password:</strong> nexemp</li>" +
+                            $"</ul>" +
+                            $"<p>Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.</p>" +
+                            $"<p>Thank you for choosing NexBank!</p>"
+
+                    );
 
                     // Your existing code for the confirmation message
                     // ...
 
-                    return RedirectToAction("Index", "Home"); // Redirect to the desired page after successful registration
+                    return RedirectToAction(nameof(Index));
                 }
 
                 foreach (var error in result.Errors)
@@ -211,8 +220,10 @@ namespace InternetBanking.Controllers
             {
                 _context.Employees.Remove(employee);
             }
-            
+            var user = await _userManager.FindByIdAsync(id);
+            var result = await _userManager.DeleteAsync(user);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
