@@ -1,14 +1,14 @@
-﻿@model IEnumerable<InternetBanking.Models.Withdraw>
+﻿@model IEnumerable<InternetBanking.Models.Deposit>
 
 @{
-    ViewData["Title"] = "UserHistory";
-    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    ViewData["Title"] = "History";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <h2 class="text-center mb-4">Withdraw History</h2>
+            <h2 class="text-center mb-4">Deposit History</h2>
 
             <div class="table-responsive">
                 <table class="table table-bordered table-hover">
@@ -16,7 +16,7 @@
                         <tr>
                             <th>Account Number</th>
                             <th>Amount</th>
-                            <th>Withdraw Date</th>
+                            <th>Deposit Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -24,17 +24,21 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@Html.DisplayFor(modelItem => item.WithdrawAccountNumber)</td>
+                                <td>@Html.DisplayFor(modelItem => item.DepositAccountNumber)</td>
                                 <td>@Html.DisplayFor(modelItem => item.Amount)</td>
                                 <td>@Html.DisplayFor(modelItem => item.IssueDate)</td>
                                 <td>
-                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
+                                    <a asp-action="AdminDetails" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
                                 </td>
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
+            <div class="text-center mt-4">
+                <a asp-action="Index" class="btn btn-primary">Back to History</a>
+            </div>
         </div>
     </div>
 </div>
+

@@ -2,9 +2,8 @@
 
 @{
     ViewData["Title"] = "UserHistory";
-    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-8 offset-md-2">
@@ -28,12 +27,15 @@
                                 <td>@Html.DisplayFor(modelItem => item.Amount)</td>
                                 <td>@Html.DisplayFor(modelItem => item.IssueDate)</td>
                                 <td>
-                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
+                                    <a asp-action="AdminDetails" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
                                 </td>
                             </tr>
                         }
                     </tbody>
                 </table>
+            </div>
+            <div class="text-center mt-4">
+                <a asp-action="Index" class="btn btn-primary">Back to History</a>
             </div>
         </div>
     </div>

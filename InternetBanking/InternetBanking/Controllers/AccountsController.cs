@@ -6,11 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InternetBanking.Models;
+using InternetBanking.Constants;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InternetBanking.Controllers
 {
+    [Authorize(Roles = "Admin, Employee,Customer")]
     public class AccountsController : Controller
     {
+        
         private readonly InternetBankingContext _context;
 
         public AccountsController(InternetBankingContext context)
@@ -19,6 +23,7 @@ namespace InternetBanking.Controllers
         }
 
         // GET: Accounts
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Index()
         {
             var internetBankingContext = _context.Accounts.Include(a => a.AccountType).Include(a => a.Customer);
@@ -26,6 +31,7 @@ namespace InternetBanking.Controllers
         }
 
         // GET: Accounts/Details/5
+        [Authorize(Roles = "Admin, Employee,Customer")]
         public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.Accounts == null)
@@ -46,6 +52,7 @@ namespace InternetBanking.Controllers
         }
 
         // GET: Accounts/Create
+        [Authorize(Roles = "Admin, Employee,Customer")]
         public IActionResult Create()
         {
             ViewData["AccountTypeId"] = new SelectList(_context.AccountTypes, "Id", "TypeName");
@@ -58,6 +65,7 @@ namespace InternetBanking.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Customer,Admin, Employee")]
         public async Task<IActionResult> Create([Bind("AccountNumber,AccountTypeId,CustomerId,Balance,OpenDate,ExpireDate,Status")] Account account)
         {
             if (ModelState.IsValid)
@@ -72,6 +80,7 @@ namespace InternetBanking.Controllers
         }
 
         // GET: Accounts/Edit/5
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.Accounts == null)
@@ -94,6 +103,7 @@ namespace InternetBanking.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Edit(string id, [Bind("AccountNumber,AccountTypeId,CustomerId,Balance,OpenDate,ExpireDate,Status")] Account account)
         {
             if (id != account.AccountNumber)
@@ -127,6 +137,7 @@ namespace InternetBanking.Controllers
         }
 
         // GET: Accounts/Delete/5
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.Accounts == null)
@@ -149,6 +160,7 @@ namespace InternetBanking.Controllers
         // POST: Accounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             if (_context.Accounts == null)

@@ -187,7 +187,7 @@ namespace InternetBanking.Service.MailService
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(MailSetting.DisplayName, MailSetting.Mail));
-            message.To.Add(new MailboxAddress(cust.FirstName + " " + cust.LastName, cust.Email));
+            message.To.Add(new MailboxAddress((cust.FirstName + " " + cust.LastName), cust.Email));
             message.Subject = "NexBank's Deposit Receipt! Thank you for using our service";
 
             string htmlBody = GetEmailWithdrawBody(with,cust);

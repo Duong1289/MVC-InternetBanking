@@ -6,9 +6,11 @@ using System.ComponentModel.DataAnnotations;
 using InternetBanking.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InternetBanking.Controllers
 {
+    [Authorize]
     public class DepositController : Controller
     {
         InternetBankingContext ctx;
@@ -16,6 +18,7 @@ namespace InternetBanking.Controllers
         SendBankMailService mailService;
         UserManager<InternetBankingUser> _userManager;
 
+        
         public DepositController(InternetBankingContext ctx, ServiceService service, SendBankMailService mailService, UserManager<InternetBankingUser> _userManager)
         {
             this.ctx = ctx;
@@ -24,6 +27,7 @@ namespace InternetBanking.Controllers
             this._userManager = _userManager;
         }
 
+        [Authorize(Roles = "Admin,Employee")]
         public IActionResult Index()
         {
 
@@ -44,6 +48,8 @@ namespace InternetBanking.Controllers
             return View();
         }
 
+
+        [Authorize(Roles = "Admin,Employee")]
         public async Task<IActionResult> ProcessDeposit(Deposit deposit)
         {
             try
@@ -57,8 +63,8 @@ namespace InternetBanking.Controllers
 
                 deposit.CustomerId = await service.getCustomerId(deposit.DepositAccountNumber);
                 deposit.IssueDate = DateTime.Now;
-                var currentUser = await _userManager.GetUserAsync(User);
-                var customer = await ctx.Customers.SingleOrDefaultAsync(c => c.Id == currentUser.Id);
+                var customer = await ctx.Customers!.Where(c => c.Accounts
+             .Any(a => a.AccountNumber == deposit.DepositAccountNumber)).SingleOrDefaultAsync();
 
                 ctx.Deposits!.Add(deposit);
                 if (await ctx.SaveChangesAsync() > 0)
@@ -99,12 +105,14 @@ namespace InternetBanking.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Admin,Employee")]
         public async Task<IActionResult> History()
         {
             var deposits = await ctx.Deposits!.ToListAsync();
             return View(deposits);
         }
 
+        [Authorize(Roles = "Customer")]
         public async Task<IActionResult> UserHistory()
         {
             var currentUser = await _userManager.GetUserAsync(User);
@@ -124,7 +132,15 @@ namespace InternetBanking.Controllers
             return View(withdrawals);
         }
 
+        [Authorize(Roles = "Customer")]
         public async Task<IActionResult> Details(int id)
+        {
+            var withdraw = await ctx.Deposits!.SingleOrDefaultAsync(d => d.Id == id);
+            return View(withdraw);
+        }
+
+        [Authorize(Roles = "Admin,Employee")]
+        public async Task<IActionResult> AdminDetails(int id)
         {
             var withdraw = await ctx.Deposits!.SingleOrDefaultAsync(d => d.Id == id);
             return View(withdraw);
