@@ -131,7 +131,7 @@ namespace InternetBanking.Controllers
                             $"               <li><strong>Username:</strong> nexEmp{randomNumbers}</li>" +
                             $"               <li><strong>Password:</strong> nexemp</li>" +
                             $"           </ul>" +
-                            $"           <p>Please confirm your account by <a class='button' href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.</p>" +
+                            $"           <p>Please confirm your account by <a style='color:white' class='button' href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.</p>" +
                             $"           <p>Best regards,<br/>NexBank Team</p>" +
                             $"       </div>" +
                             $"   </div>" +
