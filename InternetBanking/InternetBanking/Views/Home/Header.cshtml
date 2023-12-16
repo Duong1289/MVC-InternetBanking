@@ -13,7 +13,7 @@
         <div class="row align-items-center">
           
           <div class="col-6 col-xl-2">
-            <h1 class="mb-0 site-logo"><a href="#" class="h2 mb-0">Nex Bank<span class="text-primary">.</span> </a></h1>
+                <h1 class="mb-0 site-logo"><a asp-controller="Home" asp-action="Index" class="h2 mb-0">Nex Bank<span class="text-primary">.</span> </a></h1>
           </div>
 
           <div class="col-12 col-md-10 d-none d-xl-block">
@@ -35,14 +35,17 @@
                             @if(User.IsInRole("Customer"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="Customers" asp-action="DetailsbyCustomer" title="Manage">Hello @User.Identity?.Name!</a>
+                                    <a class="nav-link text-dark" asp-controller="Transaction" asp-action="Index" title="Manage">Services</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Customers" asp-action="Details" title="Manage">Hello @User.Identity?.Name!</a>
                                 </li>
                             }
                             else
                             {
                                 <li><a href="Customers" class="nav-link">Dash Board</a></li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">MyAccount @User.Identity?.Name!</a>
+                                    <a class="nav-link text-dark" href="#" title="Manage">MyAccount @User.Identity?.Name!</a>
                                 </li>
                             }
 
