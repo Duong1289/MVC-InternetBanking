@@ -144,20 +144,20 @@ namespace InternetBanking.Areas.Identity.Pages.Account
                         protocol: Request.Scheme);
 
                     await _emailSender.SendEmailAsync(Input.Email, "Verify Your Email",
-                $"<!DOCTYPE html>" +
-                $"<html lang=\"en\">" +
-                $"<head>" +
-                $"<meta charset=\"UTF-8\">" +
-                $"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
-                $"<style>" +
-                $"   .button {{ display: inline-block; padding: 10px 20px; font-size: 16px; text-align: center; text-decoration: none; background-color: #007bff; color: #ffffff; border-radius: 5px; }}" +
-                $"</style>" +
-                $"</head>" +
-                $"<body>" +
-                $"   <p>Please confirm your account by clicking the button below:</p>" +
-                $"   <a href='{HtmlEncoder.Default.Encode(callbackUrl)}' class='button'>Confirm Your Email</a>" +
-                $"</body>" +
-                $"</html>");
+                        $"<!DOCTYPE html>" +
+                        $"<html lang=\"en\">" +
+                        $"<head>" +
+                        $"<meta charset=\"UTF-8\">" +
+                        $"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+                        $"<style>" +
+                        $"   .button {{ display: inline-block; padding: 10px 20px; font-size: 16px; text-align: center; text-decoration: none; background-color: #007bff; color: #ffffff; border-radius: 5px; }}" +
+                        $"</style>" +
+                        $"</head>" +
+                        $"<body>" +
+                        $"   <p>Please confirm your account by clicking the button below:</p>" +
+                        $"   <a href='{HtmlEncoder.Default.Encode(callbackUrl)}' class='button'>Confirm Your Email</a>" +
+                        $"</body>" +
+                        $"</html>");
 
 
 
