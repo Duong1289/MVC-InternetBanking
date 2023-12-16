@@ -58,7 +58,7 @@ namespace InternetBanking.Controllers
                 deposit.CustomerId = await service.getCustomerId(deposit.DepositAccountNumber);
                 deposit.IssueDate = DateTime.Now;
                 var currentUser = await _userManager.GetUserAsync(User);
-                if (currentUser == null) { return View(); }
+                var customer = await ctx.Customers.SingleOrDefaultAsync(c => c.Id == currentUser.Id);
 
                 ctx.Deposits!.Add(deposit);
                 if (await ctx.SaveChangesAsync() > 0)
@@ -67,6 +67,7 @@ namespace InternetBanking.Controllers
 
                     if (res)
                     {
+                        await mailService.SendEmailDeposit(customer, deposit);
                         TempData["ResultSucess"] = "Deposit Successful!";
                     }
                     else

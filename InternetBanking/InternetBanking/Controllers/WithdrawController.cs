@@ -59,7 +59,7 @@ namespace InternetBanking.Controllers
                 withdraw.CustomerId = await service.getCustomerId(withdraw.WithdrawAccountNumber);
                 withdraw.IssueDate = DateTime.Now;
                 var currentUser = await _userManager.GetUserAsync(User);
-                if(currentUser == null) { return View(); }
+                var customer = await ctx.Customers.SingleOrDefaultAsync(c => c.Id == currentUser.Id);
 
                 ctx.Withdraws!.Add(withdraw);
                 if (await ctx.SaveChangesAsync() > 0)
@@ -68,6 +68,7 @@ namespace InternetBanking.Controllers
 
                     if (res)
                     {
+                        await mailService.SendEmailWithedraw(customer, withdraw);
                         TempData["ResultSucess"] = "Withdraw Successful!";
                     }
                     else

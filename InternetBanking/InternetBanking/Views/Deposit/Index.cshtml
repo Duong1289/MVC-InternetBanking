@@ -4,9 +4,6 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<h1>Index</h1>
-
 <h4>Deposit</h4>
 <hr />
 @if (ViewBag.Result != null)
@@ -22,7 +19,6 @@
         }
     </div>
 }
-<h1>Deposit</h1>
 <hr />
 <form asp-action="ProcessDeposit" method="post">
     <label asp-for="DepositAccountNumber" class="form-label">Deposit Account Number</label>
@@ -50,10 +46,11 @@
 
         <!-- Display the result message with appropriate styling -->
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        setTimeout(function () {
+            document.getElementById('transactionAlert').style.display = 'none';
+        }, 20000);
+    </script>
 }
