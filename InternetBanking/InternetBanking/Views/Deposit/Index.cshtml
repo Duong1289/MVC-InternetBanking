@@ -4,7 +4,8 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<h4>Deposit</h4>
+<h1 style="text-align:center;">Deposit</h1>
+
 <hr />
 @if (ViewBag.Result != null)
 {
@@ -19,6 +20,9 @@
         }
     </div>
 }
+<a asp-action="History" class="btn bg-gradient-primary">
+    View Withdraw History
+</a>
 <hr />
 <form asp-action="ProcessDeposit" method="post">
     <label asp-for="DepositAccountNumber" class="form-label">Deposit Account Number</label>
