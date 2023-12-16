@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using InternetBanking.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using System.Text.Encodings.Web;
 
 namespace InternetBanking.Controllers
 {
@@ -104,16 +105,44 @@ namespace InternetBanking.Controllers
                     var callbackUrl = Url.Action(
                         "ConfirmEmail",
                         "Account",
-                        new { userId = user.Id, code },
+                        values: new { area = "Identity", userId = user.Id, code = code, },
                         protocol: HttpContext.Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(employee.Email, "Confirm your email",
-                        $"Please confirm your account by clicking this link: {callbackUrl}");
+                    await _emailSender.SendEmailAsync(employee.Email, "Your NexBank Account",
+                            $"<html>" +
+                            $"<head>" +
+                            $"<style>" +
+                            $"   body {{ font-family: 'Arial', sans-serif; }}" +
+                            $"   .container {{ max-width: 600px; margin: 0 auto; padding: 20px; }}" +
+                            $"   .header {{ background-color: #007bff; color: #fff; padding: 10px; text-align: center; }}" +
+                            $"   .content {{ padding: 20px; }}" +
+                            $"   .button {{ display: inline-block; padding: 10px 20px; font-size: 16px; text-align: center; text-decoration: none; background-color: #007bff; color: #ffffff; border-radius: 5px; }}" +
+                            $"</style>" +
+                            $"</head>" +
+                            $"<body>" +
+                            $"   <div class='container'>" +
+                            $"       <div class='header'>" +
+                            $"           <h2>Welcome to NexBank</h2>" +
+                            $"       </div>" +
+                            $"       <div class='content'>" +
+                            $"           <p>Dear {employee.FirstName} {employee.LastName},</p>" +
+                            $"           <p>Thank you for joining NexBank. Your account details are as follows:</p>" +
+                            $"           <ul>" +
+                            $"               <li><strong>Username:</strong> nexEmp{randomNumbers}</li>" +
+                            $"               <li><strong>Password:</strong> nexemp</li>" +
+                            $"           </ul>" +
+                            $"           <p>Please confirm your account by <a class='button' href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.</p>" +
+                            $"           <p>Best regards,<br/>NexBank Team</p>" +
+                            $"       </div>" +
+                            $"   </div>" +
+                            $"</body>" +
+                            $"</html>"
+                        );
 
                     // Your existing code for the confirmation message
                     // ...
 
-                    return RedirectToAction("Index", "Home"); // Redirect to the desired page after successful registration
+                    return RedirectToAction(nameof(Index));
                 }
 
                 foreach (var error in result.Errors)
@@ -211,8 +240,10 @@ namespace InternetBanking.Controllers
             {
                 _context.Employees.Remove(employee);
             }
-            
+            var user = await _userManager.FindByIdAsync(id);
+            var result = await _userManager.DeleteAsync(user);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
