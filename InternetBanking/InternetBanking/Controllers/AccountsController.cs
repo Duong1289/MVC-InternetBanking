@@ -65,7 +65,7 @@ namespace InternetBanking.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Customer")]
+        [Authorize(Roles = "Customer,Admin, Employee")]
         public async Task<IActionResult> Create([Bind("AccountNumber,AccountTypeId,CustomerId,Balance,OpenDate,ExpireDate,Status")] Account account)
         {
             if (ModelState.IsValid)
