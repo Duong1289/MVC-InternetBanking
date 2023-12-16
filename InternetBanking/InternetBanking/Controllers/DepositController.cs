@@ -104,5 +104,30 @@ namespace InternetBanking.Controllers
             var deposits = await ctx.Deposits!.ToListAsync();
             return View(deposits);
         }
+
+        public async Task<IActionResult> UserHistory()
+        {
+            var currentUser = await _userManager.GetUserAsync(User);
+
+            // Retrieve accounts belonging to the current user
+            var accounts = await ctx.Accounts!
+                .Where(a => a.CustomerId == currentUser.Id)
+                .ToListAsync();
+
+            // Retrieve withdrawal transactions associated with the user's accounts
+            var withdrawals = await ctx.Deposits!
+                .Where(w => accounts.Select(a => a.AccountNumber).Contains(w.DepositAccountNumber))
+                .ToListAsync();
+
+            // Additional logic for displaying or processing withdrawal transactions
+
+            return View(withdrawals);
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var withdraw = await ctx.Deposits!.SingleOrDefaultAsync(d => d.Id == id);
+            return View(withdraw);
+        }
     }
 }

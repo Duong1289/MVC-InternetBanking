@@ -1,5 +1,6 @@
 ﻿using InternetBanking.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 
 namespace InternetBanking.Service
 {
@@ -40,6 +41,19 @@ namespace InternetBanking.Service
             var account = await ctx.Accounts!.SingleOrDefaultAsync(a => a.AccountNumber == accountId);
             account.Balance += amount;
             return await ctx.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> CheckBalance(string accountNumber, double amount)
+        {
+            var account = await ctx.Accounts!.SingleOrDefaultAsync(a => a.AccountNumber == accountNumber);
+            if (account.Balance < amount)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
 

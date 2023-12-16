@@ -55,6 +55,10 @@ namespace InternetBanking.Controllers
                 {
                     throw new InvalidOperationException("Invalid account number!");
                 }
+                if (!await service.CheckBalance(withdraw.WithdrawAccountNumber, withdraw.Amount))
+                {
+                    throw new InvalidOperationException("Insufficient funds to withdraw!!");
+                }
 
                 withdraw.CustomerId = await service.getCustomerId(withdraw.WithdrawAccountNumber);
                 withdraw.IssueDate = DateTime.Now;
@@ -105,6 +109,32 @@ namespace InternetBanking.Controllers
             var withdraws = await ctx.Withdraws!.ToListAsync();
             return View(withdraws);
         }
+
+        public async Task<IActionResult> UserHistory()
+        {
+            var currentUser = await _userManager.GetUserAsync(User);
+
+            // Retrieve accounts belonging to the current user
+            var accounts = await ctx.Accounts!
+                .Where(a => a.CustomerId == currentUser.Id)
+                .ToListAsync();
+
+            // Retrieve withdrawal transactions associated with the user's accounts
+            var withdrawals = await ctx.Withdraws!
+                .Where(w => accounts.Select(a => a.AccountNumber).Contains(w.WithdrawAccountNumber))
+                .ToListAsync();
+
+            // Additional logic for displaying or processing withdrawal transactions
+
+            return View(withdrawals);
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var withdraw = await ctx.Withdraws!.SingleOrDefaultAsync(w=>w.Id== id);
+            return View(withdraw);  
+        }
+
 
 
 
