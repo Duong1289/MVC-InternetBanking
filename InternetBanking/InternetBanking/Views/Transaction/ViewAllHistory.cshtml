@@ -1,0 +1,36 @@
+﻿@model IEnumerable<InternetBanking.Models.Transaction>
+
+@{
+    ViewData["Title"] = "View All History";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Transaction History</h1>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Sender Account</th>
+                    <th>Receiver Account</th>
+                    <th>Amount</th>
+                    <th>Transaction Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.SenderAccountNumber)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ReceiverAccountNumber)</td>
+                        <td>$@Html.DisplayFor(modelItem => item.Amount)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TransactionDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

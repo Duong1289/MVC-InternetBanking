@@ -42,7 +42,6 @@
     <_ContentIncludedByDefault Remove="Views\HelpRequest\Create.cshtml" />
     <_ContentIncludedByDefault Remove="Views\HelpRequest\Delete.cshtml" />
     <_ContentIncludedByDefault Remove="Views\HelpRequest\Details.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\HelpRequest\Edit.cshtml" />
     <_ContentIncludedByDefault Remove="Views\HelpRequest\Index.cshtml" />
     <_ContentIncludedByDefault Remove="Views\HelpRequest\ProcessRequest.cshtml" />
   </ItemGroup>
@@ -1768,7 +1767,6 @@
     <UpToDateCheckInput Remove="Views\HelpRequest\Create.cshtml" />
     <UpToDateCheckInput Remove="Views\HelpRequest\Delete.cshtml" />
     <UpToDateCheckInput Remove="Views\HelpRequest\Details.cshtml" />
-    <UpToDateCheckInput Remove="Views\HelpRequest\Edit.cshtml" />
     <UpToDateCheckInput Remove="Views\HelpRequest\Index.cshtml" />
   </ItemGroup>
 

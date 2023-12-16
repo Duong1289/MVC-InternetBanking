@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InternetBanking.Controllers
 {
-    [Authorize(Roles ="Customer")]
+    [Authorize]
     public class TransactionController : Controller
     {
         TransactionService transactionService;
@@ -25,8 +25,8 @@ namespace InternetBanking.Controllers
             this.ctx = ctx;
             this._userManager = _userManager;
         }
-        
 
+        [Authorize(Roles = "Customer")]
         public async Task<IActionResult> Index()
         {
 
@@ -144,6 +144,7 @@ namespace InternetBanking.Controllers
         }
 
 
+        [Authorize(Roles = "Customer")]
         [Route("Transaction/view-history")]
         public async Task<IActionResult> TransactionHistory()
         {
@@ -165,11 +166,19 @@ namespace InternetBanking.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Customer")]
         public async Task<IActionResult> Detail(string id)
         {
             var transaction = await ctx.Transactions!.SingleOrDefaultAsync(t=>t.Id == id);
             return View(transaction);
 
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> ViewAllHistory()
+        {
+            var transaction = await ctx.Transactions!.ToListAsync();
+            return View(transaction);
         }
 
     }
