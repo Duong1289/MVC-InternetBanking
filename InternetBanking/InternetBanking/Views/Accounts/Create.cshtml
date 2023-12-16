@@ -1,0 +1,76 @@
+﻿@model InternetBanking.Models.Account
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                        <h6 class="text-white text-capitalize ps-3">Create Account</h6>
+                    </div>
+                </div>
+                <div class="card-body px-4 pb-2">
+                    <form asp-action="Create" class="multisteps-form__form">
+                        <div class="multisteps-form__panel border-radius-xl bg-white js-active" data-animation="FadeIn">
+                            <h5 class="font-weight-bolder mb-0">Create Account</h5>
+                            <p class="mb-0 text-sm">Account details</p>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="multisteps-form__content mt-3">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label asp-for="AccountNumber" class="form-label">Account Number</label>
+                                            <input asp-for="AccountNumber" class="multisteps-form__input form-control" />
+                                            <span asp-validation-for="AccountNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="AccountTypeId" class="form-label">Account Type</label>
+                                            <select asp-for="AccountTypeId" class="multisteps-form__input form-control" asp-items="ViewBag.AccountTypeId"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="CustomerId" class="form-label">Customer ID</label>
+                                            <select asp-for="CustomerId" class="multisteps-form__input form-control" asp-items="ViewBag.CustomerId"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label asp-for="Balance" class="form-label">Balance</label>
+                                            <input asp-for="Balance" class="multisteps-form__input form-control" value="0" hidden />
+                                            <span asp-validation-for="Balance" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-4">
+                                        <div class="form-group text-center">
+                                            <input type="submit" value="Create" class="btn btn-primary" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
