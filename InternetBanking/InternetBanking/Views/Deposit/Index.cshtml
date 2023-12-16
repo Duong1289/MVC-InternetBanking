@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <h1>Index</h1>
@@ -11,35 +11,44 @@
 <hr />
 @if (ViewBag.Result != null)
 {
-        <span class="text-@ViewBag.Color">@ViewBag.Result</span>
-}
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="ProcessWithdraw">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Content" class="control-label"></label>
-                <input asp-for="Content" class="form-control" />
-                <span asp-validation-for="Content" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Amount" class="control-label"></label>
-                <input asp-for="Amount" class="form-control" min="0" />
-                <span asp-validation-for="Amount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DepositAccountNumber" class="control-label"></label>
-                <input asp-for="DepositAccountNumber" class="form-control" />
-                <span asp-validation-for="DepositAccountNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-        <!-- Display the result message with appropriate styling -->
+    <div class="alert alert-@(ViewBag.Color) text-white" role="alert" id="transactionAlert">
+        @if (ViewBag.Color == "success")
+        {
+            <strong>Success!</strong> @ViewBag.Result
+        }
+        else
+        {
+            <strong>Error!</strong> @ViewBag.Result
+        }
     </div>
-</div>
+}
+<h1>Deposit</h1>
+<hr />
+<form asp-action="ProcessDeposit" method="post">
+    <label asp-for="DepositAccountNumber" class="form-label">Deposit Account Number</label>
+    <div class="input-group input-group-outline my-3">
+        <input asp-for="DepositAccountNumber" class="form-control form-control-lg" aria-describedby="basic-addon3" onfocus="focused(this)" onfocusout="defocused(this)" required>
+        <span asp-validation-for="DepositAccountNumber"></span>
+    </div>
+
+    <label asp-for="Amount">Amount</label>
+    <div class="input-group input-group-outline my-3">
+        <input asp-for="Amount" type="number" step="0.01" class="form-control form-control-lg" aria-describedby="basic-addon3" onfocus="focused(this)" onfocusout="defocused(this)" required min="0">
+        <span asp-validation-for="Amount"></span>
+    </div>
+
+    <label asp-for="Content">Deposit Reason/Content</label>
+    <div class="input-group input-group-outline my-3">
+        <textarea asp-for="Content" aria-describedby="basic-addon3" onfocus="focused(this)" onfocusout="defocused(this)" rows="3" class="form-control" required></textarea>
+        <span asp-validation-for="Content"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn bg-gradient-primary w-100">Deposit Money</button>
+    </div>
+</form>
+
+        <!-- Display the result message with appropriate styling -->
 
 <div>
     <a asp-action="Index">Back to List</a>
