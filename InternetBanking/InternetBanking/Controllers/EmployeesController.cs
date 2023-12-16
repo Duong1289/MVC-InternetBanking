@@ -14,6 +14,7 @@ using System.Text.Encodings.Web;
 
 namespace InternetBanking.Controllers
 {
+    [Authorize(Roles = "Admin, Employee")]
     public class EmployeesController : Controller
     {
         private readonly InternetBankingContext _context;
@@ -30,6 +31,7 @@ namespace InternetBanking.Controllers
         }
 
         // GET: Employees1
+
         public async Task<IActionResult> Index()
         {
             var internetBankingContext = _context.Employees.Include(e => e.InternetBankingUser);
