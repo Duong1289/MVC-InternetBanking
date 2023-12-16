@@ -27,7 +27,7 @@ namespace InternetBanking.Controllers
         }
         
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
 
             if (TempData["TransactionSuccess"] != null)
@@ -38,6 +38,18 @@ namespace InternetBanking.Controllers
             {
                 ViewBag.TransactionStatus = TempData["TransactionError"];
             }
+            var currentUser = await _userManager.GetUserAsync(User);
+            ViewBag.Accounts = await ctx.Accounts!.Where(a=>a.CustomerId==currentUser.Id).ToListAsync();
+            var accounts = await ctx.Accounts
+                .Where(a => a.CustomerId == currentUser.Id)
+                .ToListAsync();
+
+            // Retrieve transactions associated with the accounts
+            var transactions = await ctx.Transactions
+            .Where(t => accounts.Select(a => a.AccountNumber).Contains(t.SenderAccountNumber) || accounts.Select(a => a.AccountNumber).Contains(t.ReceiverAccountNumber)).OrderByDescending(t=>t.TransactionDate)
+            .ToListAsync();
+            ViewBag.History = transactions;
+            ViewBag.CurrentUserId = currentUser.Id;
             return View();
         }
 
@@ -60,7 +72,10 @@ namespace InternetBanking.Controllers
                 }
                 var sender = await transactionService.GetAccount(transac.SenderAccountNumber);
                 var receiver = await transactionService.GetAccount(transac.ReceiverAccountNumber);
-
+                if(transac.SenderAccountNumber ==transac.ReceiverAccountNumber)
+                {
+                    throw new InvalidOperationException("Invalid receiver account number! Can not make a transaction for your own account");
+                }
 
                 if (receiverExist && validFunds)
                 {
