@@ -9,10 +9,13 @@
   <component name="ChangeListManager">
     <list default="true" id="63a36561-732a-45d3-afb7-55125ac74dfb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Controllers/EmployeesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Controllers/EmployeesController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Create.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Home/Header.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Home/Header.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Create.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_SidebarAdmin.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_SidebarAdmin.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_SidebarUser.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_SidebarUser.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Statement/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Statement/Index.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +111,7 @@
       <workItem from="1702569034622" duration="7894000" />
       <workItem from="1702636866135" duration="8850000" />
       <workItem from="1702706221180" duration="2709000" />
-      <workItem from="1702722368987" duration="2872000" />
+      <workItem from="1702722368987" duration="3982000" />
     </task>
     <servers />
   </component>
