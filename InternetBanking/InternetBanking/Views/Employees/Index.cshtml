@@ -14,7 +14,7 @@
     <a asp-action="Create">Create New</a>
 </p>
 
-<table class="table" id="table1">
+<table class="table display" id="myTable2">
     <thead>
         <tr>
             <th>
@@ -89,7 +89,9 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 <!-- Initialize DataTable -->
 <script>
-    $(document).ready(function () {
-        $('#table1').DataTable();
-    });
+    $('#myTable2').DataTable();
 </script>
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="js/demo/datatables-demo.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
