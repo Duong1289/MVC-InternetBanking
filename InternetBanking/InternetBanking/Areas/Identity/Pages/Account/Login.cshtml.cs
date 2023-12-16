@@ -83,19 +83,24 @@ namespace InternetBanking.Areas.Identity.Pages.Account
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
-                
+
 
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    var user = await _userManager.FindByEmailAsync(Input.UserName);
+
+                    // Lấy thông tin người dùng hiện tại từ HttpContext
+                    var user = await _userManager.GetUserAsync(User);
+
                     if (user != null)
                     {
                         // Chuyển hướng đến trang chi tiết của khách hàng và truyền tham số id
                         var redirectUrl = $"/Customers/DetailsbyCustomer/{user.Id}";
                         return Redirect(redirectUrl);
                     }
-                    return LocalRedirect(returnUrl);
+
+                    // Nếu không tìm thấy người dùng, xử lý tương ứng hoặc chuyển hướng tới trang mặc định
+                    return RedirectToAction("Index", "Home");
                 }
                 if (result.RequiresTwoFactor)
                 {

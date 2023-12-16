@@ -70,7 +70,7 @@
                     </div>
                     <div class="col-md-6 d-flex justify-content-start justify-content-md-end align-items-center">
                         <i class="material-icons me-2 text-lg">date_range</i>
-                        <small>23 - 30 March 2020</small>
+                        <small>@DateTime.Now.ToString("dd/MM/yyyy")</small>
                     </div>
                 </div>
             </div>
@@ -130,6 +130,16 @@
                             </div>
                         </li>
                     }
+                    <li class="list-group-item border-0 d-flex justify-content-center mb-2 border-radius-lg">
+                        <div class="d-flex align-items-center">
+                            <div class="d-flex flex-column">
+                                <a asp-action="TransactionHistory" class="btn bg-gradient-primary">
+                                    View Transaction History
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
                 </ul>
             </div>
         </div>

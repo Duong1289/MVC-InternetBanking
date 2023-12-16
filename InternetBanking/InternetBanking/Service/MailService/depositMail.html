@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Receipt</title>
+</head>
+
+<body style="font-family: 'Arial', sans-serif;">
+
+    <div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px;">
+
+        <h2 style="text-align: center; color: #3498db;">Deposit Receipt</h2>
+
+        <p>Dear {{Fname}} {{Lname}},</p>
+
+        <p>Here is your deposit receipt. Below are the details:</p>
+
+        <ul>
+            <li><strong>Account Number:</strong> ${{Account}}</li>
+            <li><strong>Amount Deposited:</strong> ${{Amount}}</li>
+            <li><strong>Reason of Deposit:</strong> {{Reason}}</li>
+        </ul>
+
+        <p>Thank you for choosing NexBank. If you have any questions, feel free to contact our support team.</p>
+
+        <p>Best regards,<br>NexBank</p>
+
+    </div>
+
+</body>
+
+</html>
+

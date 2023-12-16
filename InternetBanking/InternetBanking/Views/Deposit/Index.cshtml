@@ -56,4 +56,9 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        setTimeout(function () {
+            document.getElementById('transactionAlert').style.display = 'none';
+        }, 20000);
+    </script>
 }

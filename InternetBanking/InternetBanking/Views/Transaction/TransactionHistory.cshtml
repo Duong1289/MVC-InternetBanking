@@ -1,0 +1,85 @@
+﻿@model IEnumerable<InternetBanking.Models.Transaction>
+
+@{
+    ViewData["Title"] = "TransactionHistory";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<div class="card h-100 mb-4">
+    <div class="card-header pb-0 px-3">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="mb-0">Transaction History</h1>
+                <a asp-action="index" class="btn bg-gradient-primary">
+                    Back to Transaction
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body pt-4 p-3">
+        <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Lastest</h6>
+        <ul class="list-group">
+            @foreach (var transaction in ViewBag.Transaction)
+            {
+                bool isDanger = false;
+                foreach (var account in ViewBag.Accounts)
+                {
+                    if (account.AccountNumber == transaction.SenderAccountNumber)
+                    {
+                        isDanger = true;
+                        break;
+                    }
+                }
+                string buttonStyle = isDanger ? "danger" : "success";
+                <a asp-action="Detail" asp-route-id="@transaction.Id">
+                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                    
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-icon-only btn-rounded btn-outline-@buttonStyle mb-0 me-3 p-3 btn-sm d-flex align-items-center justify-content-center">
+                            <i class="material-icons text-lg">
+                                @if (buttonStyle == "danger")
+                                {
+                                    <text>expand_more</text>
+                                }
+                                else
+                                {
+                                    <text>expand_less</text>
+                                }
+                            </i>
+                        </button>
+                        <div class="d-flex flex-column">
+                            <h6 class="mb-1 text-dark text-sm">
+                                @if (buttonStyle == "danger")
+                                {
+                                    <text>To: </text>
+                                }
+                                else
+                                {
+                                    <text>From: </text>
+                                }
+                                @transaction.ReceiverAccountNumber
+                            </h6>
+                            <span class="text-xs">@transaction.TransactionDate.ToString("dd MMMM yyyy, 'at' hh:mm tt")</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center text-@(buttonStyle) text-gradient text-sm font-weight-bold">
+                        @if (buttonStyle == "danger")
+                        {
+                            <text>- $ @Math.Abs(transaction.Amount)</text>
+                        }
+                        else
+                        {
+                            <text>+ $ @transaction.Amount</text>
+                        }
+                    </div>
+                   
+                </li>
+                </a>
+            }
+        </ul>
+    </div>
+</div>
+
+
+
+
+
