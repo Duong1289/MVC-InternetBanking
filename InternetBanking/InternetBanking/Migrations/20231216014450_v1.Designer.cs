@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InternetBanking.Migrations
 {
     [DbContext(typeof(InternetBankingContext))]
-    [Migration("20231215183642_v1")]
+    [Migration("20231216014450_v1")]
     partial class v1
     {
         /// <inheritdoc />
@@ -224,11 +224,6 @@ namespace InternetBanking.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AccountNumber")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("AccountNumber1")
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<double>("Amount")
@@ -242,19 +237,19 @@ namespace InternetBanking.Migrations
                     b.Property<string>("CustomerId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("EmployeeId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("DepositAccountNumber")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<DateTime>("IssueDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountNumber1");
+                    b.HasIndex("AccountNumber");
 
                     b.HasIndex("CustomerId");
-
-                    b.HasIndex("EmployeeId");
 
                     b.ToTable("Deposits");
                 });
@@ -508,11 +503,6 @@ namespace InternetBanking.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AccountNumber")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("AccountNumber1")
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<double>("Amount")
@@ -526,19 +516,18 @@ namespace InternetBanking.Migrations
                     b.Property<string>("CustomerId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("EmployeeId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("IssueDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("WithdrawAccountNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountNumber1");
+                    b.HasIndex("AccountNumber");
 
                     b.HasIndex("CustomerId");
-
-                    b.HasIndex("EmployeeId");
 
                     b.ToTable("Withdraws");
                 });
@@ -710,21 +699,15 @@ namespace InternetBanking.Migrations
                 {
                     b.HasOne("InternetBanking.Models.Account", "Account")
                         .WithMany("Deposits")
-                        .HasForeignKey("AccountNumber1");
+                        .HasForeignKey("AccountNumber");
 
                     b.HasOne("InternetBanking.Models.Customer", "Customer")
                         .WithMany("Deposits")
                         .HasForeignKey("CustomerId");
 
-                    b.HasOne("InternetBanking.Models.Employee", "Employee")
-                        .WithMany("Deposits")
-                        .HasForeignKey("EmployeeId");
-
                     b.Navigation("Account");
 
                     b.Navigation("Customer");
-
-                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("InternetBanking.Models.Employee", b =>
@@ -796,21 +779,15 @@ namespace InternetBanking.Migrations
                 {
                     b.HasOne("InternetBanking.Models.Account", "Account")
                         .WithMany("Withdraws")
-                        .HasForeignKey("AccountNumber1");
+                        .HasForeignKey("AccountNumber");
 
                     b.HasOne("InternetBanking.Models.Customer", "Customer")
                         .WithMany("Withdraws")
                         .HasForeignKey("CustomerId");
 
-                    b.HasOne("InternetBanking.Models.Employee", "Employee")
-                        .WithMany("Withdraws")
-                        .HasForeignKey("EmployeeId");
-
                     b.Navigation("Account");
 
                     b.Navigation("Customer");
-
-                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -902,13 +879,9 @@ namespace InternetBanking.Migrations
 
             modelBuilder.Entity("InternetBanking.Models.Employee", b =>
                 {
-                    b.Navigation("Deposits");
-
                     b.Navigation("HelpRequests");
 
                     b.Navigation("Images");
-
-                    b.Navigation("Withdraws");
                 });
 
             modelBuilder.Entity("InternetBanking.Models.FAQCategory", b =>

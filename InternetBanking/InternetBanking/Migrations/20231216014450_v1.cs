@@ -320,29 +320,23 @@ namespace InternetBanking.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Content = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false),
-                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    AccountNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    DepositAccountNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     IssueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AccountNumber1 = table.Column<string>(type: "nvarchar(20)", nullable: true)
+                    AccountNumber = table.Column<string>(type: "nvarchar(20)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Deposits", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Deposits_Accounts_AccountNumber1",
-                        column: x => x.AccountNumber1,
+                        name: "FK_Deposits_Accounts_AccountNumber",
+                        column: x => x.AccountNumber,
                         principalTable: "Accounts",
                         principalColumn: "AccountNumber");
                     table.ForeignKey(
                         name: "FK_Deposits_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Deposits_Employees_EmployeeId",
-                        column: x => x.EmployeeId,
-                        principalTable: "Employees",
                         principalColumn: "Id");
                 });
 
@@ -420,29 +414,23 @@ namespace InternetBanking.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Content = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false),
-                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    AccountNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    WithdrawAccountNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     IssueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AccountNumber1 = table.Column<string>(type: "nvarchar(20)", nullable: true)
+                    AccountNumber = table.Column<string>(type: "nvarchar(20)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Withdraws", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Withdraws_Accounts_AccountNumber1",
-                        column: x => x.AccountNumber1,
+                        name: "FK_Withdraws_Accounts_AccountNumber",
+                        column: x => x.AccountNumber,
                         principalTable: "Accounts",
                         principalColumn: "AccountNumber");
                     table.ForeignKey(
                         name: "FK_Withdraws_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Withdraws_Employees_EmployeeId",
-                        column: x => x.EmployeeId,
-                        principalTable: "Employees",
                         principalColumn: "Id");
                 });
 
@@ -528,19 +516,14 @@ namespace InternetBanking.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Deposits_AccountNumber1",
+                name: "IX_Deposits_AccountNumber",
                 table: "Deposits",
-                column: "AccountNumber1");
+                column: "AccountNumber");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Deposits_CustomerId",
                 table: "Deposits",
                 column: "CustomerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Deposits_EmployeeId",
-                table: "Deposits",
-                column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FAQ_FAQCategoryId",
@@ -588,19 +571,14 @@ namespace InternetBanking.Migrations
                 column: "AccountNumber");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Withdraws_AccountNumber1",
+                name: "IX_Withdraws_AccountNumber",
                 table: "Withdraws",
-                column: "AccountNumber1");
+                column: "AccountNumber");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Withdraws_CustomerId",
                 table: "Withdraws",
                 column: "CustomerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Withdraws_EmployeeId",
-                table: "Withdraws",
-                column: "EmployeeId");
         }
 
         /// <inheritdoc />
