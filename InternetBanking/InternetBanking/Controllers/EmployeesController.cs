@@ -36,7 +36,7 @@ namespace InternetBanking.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var internetBankingContext = _context.Employees.Include(e => e.InternetBankingUser);
+            var internetBankingContext = _context.Employees!.Include(e => e.InternetBankingUser);
             return View(await internetBankingContext.ToListAsync());
         }
 

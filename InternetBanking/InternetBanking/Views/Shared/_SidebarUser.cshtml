@@ -18,7 +18,6 @@
           <span class="nav-link-text ms-1">Account</span>
         </a>
       </li>
-      
       <li class="nav-item">
                 <a asp-area="" class="nav-link text-white " asp-controller="Customers">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -27,62 +26,33 @@
           <span class="nav-link-text ms-1">Customer</span>
         </a>
       </li>
-      
-
-
-      
-
-
-      <li class="nav-item">
-                <a asp-area="" class="nav-link text-white " asp-controller="Employees">
-          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="material-icons opacity-10">table_view</i>
-          </div>
-          <span class="nav-link-text ms-1">Employees</span>
-        </a>
-      </li>
-      <li class="nav-item">
-                <a asp-area="" class="nav-link text-white " asp-controller="Faq">
+        <li class="nav-item dropdown">
+            <a class="nav-link text-white dropdown-toggle" href="#" id="helpRequestDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                  <i class="material-icons opacity-10">table_view</i>
+                    <i class="material-icons opacity-10">table_view</i>
                 </div>
-                <span class="nav-link-text ms-1">FAQ</span>
-              </a>
-            </li>
-      
-      <li class="nav-item">
-                <a asp-area="" class="nav-link text-white " asp-controller="FaqCategory">
-          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="material-icons opacity-10">table_view</i>
-          </div>
-          <span class="nav-link-text ms-1">FAQ Category</span>
-        </a>
-      </li>
-      <li class="nav-item">
-                <a asp-area="" class="nav-link text-white " asp-controller="HelpRequest" asp-action="Index">
-          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="material-icons opacity-10">table_view</i>
-          </div>
-          <span class="nav-link-text ms-1">Help Request</span>
-        </a>
-      </li>
+                <span class="nav-link-text ms-1">Help Request</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="helpRequestDropdown">
+                <a class="dropdown-item" asp-area="" asp-controller="HelpRequest" asp-action="Index">Create Help Request</a>
+                <a class="dropdown-item" asp-area="" asp-controller="HelpRequest" asp-action="UserView">View Un-Answered Help Request</a>
+                <a class="dropdown-item" asp-area="" asp-controller="HelpRequest" asp-action="UserViewTrue">View Answered Help Request</a>
+            </div>
+        </li>
 
-      <li class="nav-item">
-                <a asp-area="" class="nav-link text-white " asp-controller="HelpRequestType" asp-action="Index">
-          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="material-icons opacity-10">table_view</i>
-          </div>
-          <span class="nav-link-text ms-1">Help Request Type</span>
-        </a>
-      </li>
-      <li class="nav-item">
-                <a asp-area="" class="nav-link text-white " asp-controller="Transaction" asp-action="Index">
-          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="material-icons opacity-10">table_view</i>
-          </div>
-          <span class="nav-link-text ms-1">Transaction</span>
-        </a>
-      </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link text-white dropdown-toggle" href="#" id="transactionDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">table_view</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Transaction</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="transactionDropdown">
+                    <a class="dropdown-item" asp-area="" asp-controller="Transaction" asp-action="Index">Make a Transaction</a>
+                    <a class="dropdown-item" asp-area="" asp-controller="Transaction" asp-action="TransactionHistory">View Transaction History</a>
+                </div>
+            </li>
+
       <li class="nav-item">
                 <a asp-area="" class="nav-link text-white " asp-controller="Withdraw" asp-action="UserHistory">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -100,7 +70,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white " asp-controller="Statement">
+                <a asp-area="" class="nav-link text-white " asp-controller="Statement" asp-action="Index">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10">dashboard</i>
           </div>

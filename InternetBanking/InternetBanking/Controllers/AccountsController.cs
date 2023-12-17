@@ -23,7 +23,7 @@ namespace InternetBanking.Controllers
         }
 
         // GET: Accounts
-        [Authorize(Roles = "Admin, Employee")]
+        //[Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Index()
         {
             var internetBankingContext = _context.Accounts.Include(a => a.AccountType).Include(a => a.Customer);

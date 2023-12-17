@@ -339,11 +339,8 @@ namespace InternetBanking.Migrations
 
             modelBuilder.Entity("InternetBanking.Models.HelpRequest", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AccountId")
                         .IsRequired()
@@ -429,8 +426,8 @@ namespace InternetBanking.Migrations
                     b.Property<string>("EmployeeId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("HelpRequestId")
-                        .HasColumnType("int");
+                    b.Property<string>("HelpRequestId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Path")
                         .IsRequired()
