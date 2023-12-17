@@ -1,0 +1,40 @@
+﻿@model InternetBanking.Models.HelpRequest
+
+@{
+    ViewData["Title"] = "DetailTrue";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="card md-6">
+    <div class="card-header">
+        <h1 class="card-title">Request Detail</h1>
+    </div>
+    <div class="card-body">
+        <h4 class="card-subtitle mb-2 text-muted">Help Request Details</h4>
+        <dl class="row">
+            <dt class="col-sm-2">Account Nummber</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.AccountId)</dd>
+
+            <dt class="col-sm-2">Customer</dt>
+            <dd class="col-sm-10">@ViewBag.Name</dd>
+
+            <dt class="col-sm-2">Subject</dt>
+            <dd class="col-sm-10">@ViewBag.Type</dd>
+
+            <dt class="col-sm-2">Content</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Content)</dd>
+
+            <dt class="col-sm-2">Created Date</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.CreatedDate)</dd>
+
+            <dt class="col-sm-2">Answer</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Answer)</dd>
+
+            <dt class="col-sm-2">Answered By</dt>
+            <dd class="col-sm-10">@ViewBag.EmpName</dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        <a asp-action="UserViewTrue" class="btn btn-secondary">Back to View</a>
+    </div>
+</div>
