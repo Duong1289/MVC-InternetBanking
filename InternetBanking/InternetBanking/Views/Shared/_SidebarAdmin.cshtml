@@ -60,14 +60,18 @@
           <span class="nav-link-text ms-1">FAQ Category</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a asp-area="" class="nav-link text-white " asp-controller="HelpRequest">
-          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="material-icons opacity-10">table_view</i>
-          </div>
-          <span class="nav-link-text ms-1">Help Request</span>
-        </a>
-      </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link text-white dropdown-toggle" href="#" id="helpRequestDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">table_view</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Help Request</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="helpRequestDropdown">
+                    <a class="dropdown-item" asp-area="" asp-controller="HelpRequest" asp-action="EmployeeView">View Un-Answered Request</a>
+                    <a class="dropdown-item" asp-area="" asp-controller="HelpRequest" asp-action="EmployeeViewTrue">View Answered Request</a>
+                </div>
+            </li>
       <li class="nav-item">
                 <a asp-area="" class="nav-link text-white " asp-controller="HelpRequestType">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">

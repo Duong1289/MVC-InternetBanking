@@ -344,8 +344,7 @@ namespace InternetBanking.Migrations
                 name: "HelpRequests",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     AccountId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
@@ -444,7 +443,7 @@ namespace InternetBanking.Migrations
                     RequestId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Path = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Avatar = table.Column<bool>(type: "bit", nullable: false),
-                    HelpRequestId = table.Column<int>(type: "int", nullable: true)
+                    HelpRequestId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {

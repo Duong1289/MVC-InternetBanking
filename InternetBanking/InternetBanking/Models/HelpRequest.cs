@@ -9,7 +9,7 @@ namespace InternetBanking.Models
     public class HelpRequest
     {
         [Key]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [ForeignKey("Accounts")]
         [MaxLength(20)]
