@@ -70,6 +70,16 @@ namespace InternetBanking.Controllers
         {
             if (ModelState.IsValid)
             {
+                
+                string generatedAccountNumber;
+                bool isUnique = false;
+                do
+                {
+                    generatedAccountNumber = GenerateUniqueAccountNumber();
+                    isUnique = !_context.Accounts.Any(a => a.AccountNumber == generatedAccountNumber);
+                } while (!isUnique);
+                account.AccountNumber = generatedAccountNumber;
+
                 _context.Add(account);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -78,7 +88,12 @@ namespace InternetBanking.Controllers
             ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Id", account.CustomerId);
             return View(account);
         }
-
+        private string GenerateUniqueAccountNumber()
+        {
+            Random random = new Random();
+            string accountNumber = "1903" + random.Next(10000000, 99999999).ToString();
+            return accountNumber;
+        }
         // GET: Accounts/Edit/5
         [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Edit(string id)
