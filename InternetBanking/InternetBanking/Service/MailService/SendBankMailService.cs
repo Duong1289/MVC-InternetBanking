@@ -94,21 +94,20 @@ namespace InternetBanking.Service.MailService
             }
         }
         
-        public string GetEmailHelpBody(HelpRequest helpRequest)
+        public string GetEmailHelpBody(HelpRequest helpRequest,string Name,string TypeName, string empName)
         {
             string templatePath = "Service/MailService/MailProcessRequest.html";
             string template = File.ReadAllText(templatePath);
 
             // Replace placeholders with actual content
-            template = template.Replace("{{Id}}", helpRequest.Id.ToString())
-                .Replace("{{AccountId}}", helpRequest.AccountId)
-                .Replace("{{CustomerPersonalId}}", helpRequest.CustomerId)
-                .Replace("{{EmployeeId}}", helpRequest.EmployeeId)
-                .Replace("{{RequestTypeId}}", helpRequest.RequestTypeId.ToString())
+            template = template.Replace("{{CustomerName}}", Name)
+                .Replace("{{RequestId}}", helpRequest.Id.ToString())
+                .Replace("{{RequestType}}", TypeName)
+                .Replace("{{AccountNumber}}", helpRequest.AccountId)
                 .Replace("{{Content}}", helpRequest.Content)
-                .Replace("{{CreatedDate}}", helpRequest.CreatedDate.ToString())
+                .Replace("{{Date}}", helpRequest.CreatedDate.ToString("dd/MM/yyyy"))
                 .Replace("{{Answer}}", helpRequest.Answer)
-                .Replace("{{Status}}", helpRequest.Status.ToString());
+                .Replace("{{EmployeeName}}", empName);
             return template;
         }
 
@@ -140,15 +139,20 @@ namespace InternetBanking.Service.MailService
             return template;
         }
 
-        public async Task SendEmailHelpRequest(string? id, HelpRequest helpRequest)
+        public async Task SendEmailHelpRequest(HelpRequest helpRequest)
         {
             var message = new MimeMessage();
-            var customer = _context.Customers!.SingleOrDefault(c => c.PersonalId == helpRequest.CustomerId);
+            var customer = _context.Customers!.SingleOrDefault(c => c.Id == helpRequest.CustomerId);
+            var customerName = customer.FirstName +" "+customer.LastName;
+            var request = _context.HelpRequestsTypes!.SingleOrDefault(c => c.RequestTypeId == helpRequest.RequestTypeId);
+            var requestName = request.ServiceName;
+            var emp = _context.Employees!.SingleOrDefault(c => c.Id==helpRequest.EmployeeId);
+            var empName = emp.FirstName +" "+emp.LastName;
             message.From.Add(new MailboxAddress(MailSetting.DisplayName, MailSetting.Mail));
-            message.To.Add(new MailboxAddress(customer.FirstName + " " + customer.LastName, customer.Email));
+            message.To.Add(new MailboxAddress(customer.FirstName + " " + customer.LastName, "anhtuan200745@gmail.com"));
             message.Subject = "NexBank's Process HelpRequest! Thank you for using our service";
 
-            string htmlBody = GetEmailHelpBody(helpRequest);
+            string htmlBody = GetEmailHelpBody(helpRequest, customerName, requestName, empName);
 
             var bodyBuilder = new BodyBuilder();
             bodyBuilder.HtmlBody = htmlBody;

@@ -18,13 +18,14 @@ namespace InternetBanking.Controllers
     public class HelpRequestController : Controller
     {
         private readonly InternetBankingContext _context;
-        private readonly SendBankMailService _sendMailServiceTransHelp;
+        private readonly SendBankMailService sendMailService;
         UserManager<InternetBankingUser> _userManager;
 
-        public HelpRequestController(InternetBankingContext context, SendBankMailService _sendMailServiceTransHelp, UserManager<InternetBankingUser> _userManager)
+        public HelpRequestController(InternetBankingContext context, SendBankMailService sendMailService, UserManager<InternetBankingUser> _userManager)
         {
             _context = context;
             this._userManager = _userManager;
+            this.sendMailService = sendMailService;
         }
 
         // GET: HelpRequest
@@ -147,52 +148,36 @@ namespace InternetBanking.Controllers
           return (_context.HelpRequests?.Any(e => e.Id == id)).GetValueOrDefault();
         }
         
-        // [HttpGet]
-        // public async Task<IActionResult> ProcessRequest(int? id)
-        // {
-        //     if (id == null || _context.HelpRequests == null)
-        //     {
-        //         return NotFound();
-        //     }
-        //
-        //     var helpRequest = await _context.HelpRequests.FindAsync(id);
-        //     if (helpRequest == null)
-        //     {
-        //         return NotFound();
-        //     }
-        //
-        //     return View(helpRequest);
-        // }
-        //
-        //POST: HelpRequest/ProcessRequest
-        [HttpPost]
-        public async Task<IActionResult> ProcessRequest(int? id, string answer)
+        
+        [Authorize(Roles = "Employee,Admin")]
+        public async Task<IActionResult> EmployeeView()
         {
-            if (id == null || _context.HelpRequests == null)
+            var helprequest = await _context.HelpRequests!.Where(r => r.Status == false).ToListAsync();
+            return View(helprequest);
+        }
+
+        public async Task<IActionResult> Answer(int id)
+        {
+            var request = await _context.HelpRequests!.SingleOrDefaultAsync(r => r.Id == id);
+            return View(request);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AnswerRequest(HelpRequest request)
+        {
+            var customer = await _context.Customers!.SingleOrDefaultAsync(c => c.Id == request.CustomerId);
+            var currentUser = await _userManager.GetUserAsync(User);
+            request.EmployeeId = currentUser.Id;
+            request.Status = true;
+            _context.Entry(request).State = EntityState.Modified;
+            bool res = await _context.SaveChangesAsync() >0;
+            if(res)
             {
-                return NotFound();
+               await sendMailService.SendEmailHelpRequest(request);
+                return RedirectToAction("EmployeeView");
             }
 
-            var helpRequest = await _context.HelpRequests.FindAsync(id);
-            if (helpRequest == null)
-            {
-                return NotFound();
-            }
-
-            helpRequest.Answer = answer;
-            helpRequest.Status = true;
-            
-            _context.Update(helpRequest);
-            await _context.SaveChangesAsync();
-            // Send email notification to the customer
-            var customer = await _context.Customers!.FindAsync(helpRequest.CustomerId);
-            
-            if (customer != null)
-            {
-                var emailBody = _sendMailServiceTransHelp.GetEmailHelpBody(helpRequest);
-                await _sendMailServiceTransHelp.SendEmailHelpRequest(customer.PersonalId,helpRequest);
-            }
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("EmployeeView");
         }
     }
 }
