@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Identity;
 using InternetBanking.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.WebUtilities;
+using System.Text;
 
 namespace InternetBanking.Controllers
 {
@@ -106,6 +108,7 @@ namespace InternetBanking.Controllers
 
                     // Send confirmation email
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Action(
                         "ConfirmEmail",
                         "Account",
