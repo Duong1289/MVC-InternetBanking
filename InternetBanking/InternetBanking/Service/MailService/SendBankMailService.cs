@@ -143,6 +143,12 @@ namespace InternetBanking.Service.MailService
         public async Task SendEmailHelpRequest(string? id, HelpRequest helpRequest)
         {
             var message = new MimeMessage();
+            var customer = _context.Customers!.SingleOrDefault(c => c.Id == helpRequest.CustomerId);
+            var customerName = customer.FirstName +" "+customer.LastName;
+            var request = _context.HelpRequestsTypes!.SingleOrDefault(c => c.RequestTypeId == helpRequest.RequestTypeId);
+            var requestName = request.ServiceName;
+            var emp = _context.Employees!.SingleOrDefault(c => c.Id==helpRequest.EmployeeId);
+            var empName = emp.FirstName +" "+emp.LastName;
             var customer = _context.Customers!.SingleOrDefault(c => c.PersonalId == helpRequest.CustomerId);
             message.From.Add(new MailboxAddress(MailSetting.DisplayName, MailSetting.Mail));
             message.To.Add(new MailboxAddress(customer.FirstName + " " + customer.LastName, customer.Email));
