@@ -98,7 +98,7 @@ namespace InternetBanking.Migrations
                 {
                     RequestTypeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ServiceName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    TypeName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false)
                 },
                 constraints: table =>
@@ -344,8 +344,7 @@ namespace InternetBanking.Migrations
                 name: "HelpRequests",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     AccountId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
@@ -354,8 +353,7 @@ namespace InternetBanking.Migrations
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Answer = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     HelpRequestImageId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Status = table.Column<bool>(type: "bit", nullable: false),
-                    HelpRequestTypeRequestTypeId = table.Column<int>(type: "int", nullable: true)
+                    Status = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -377,10 +375,11 @@ namespace InternetBanking.Migrations
                         principalTable: "Employees",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_HelpRequests_HelpRequestsTypes_HelpRequestTypeRequestTypeId",
-                        column: x => x.HelpRequestTypeRequestTypeId,
+                        name: "FK_HelpRequests_HelpRequestsTypes_RequestTypeId",
+                        column: x => x.RequestTypeId,
                         principalTable: "HelpRequestsTypes",
-                        principalColumn: "RequestTypeId");
+                        principalColumn: "RequestTypeId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -444,7 +443,7 @@ namespace InternetBanking.Migrations
                     RequestId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Path = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Avatar = table.Column<bool>(type: "bit", nullable: false),
-                    HelpRequestId = table.Column<int>(type: "int", nullable: true)
+                    HelpRequestId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -546,9 +545,9 @@ namespace InternetBanking.Migrations
                 column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HelpRequests_HelpRequestTypeRequestTypeId",
+                name: "IX_HelpRequests_RequestTypeId",
                 table: "HelpRequests",
-                column: "HelpRequestTypeRequestTypeId");
+                column: "RequestTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Images_CustomerId",
