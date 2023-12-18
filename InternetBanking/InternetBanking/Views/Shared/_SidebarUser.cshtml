@@ -2,9 +2,9 @@
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
   <div class="sidenav-header">
     <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-    <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
+    <a class="navbar-brand m-0" asp-controller="Home"  asp-action="index" target="_blank">
       <img src="~/assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
-      <span class="ms-1 font-weight-bold text-white">Admin Dashboard</span>
+      <span class="ms-1 font-weight-bold text-white">Home</span>
     </a>
   </div>
   <hr class="horizontal light mt-0 mb-2">
@@ -18,27 +18,28 @@
           <span class="nav-link-text ms-1">Account</span>
         </a>
       </li>
+      
       <li class="nav-item">
-                <a asp-area="" class="nav-link text-white " asp-controller="Customers">
+                <a asp-area="" class="nav-link text-white " asp-controller="Customers" asp-action="DetailsByCustomer">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10">table_view</i>
           </div>
           <span class="nav-link-text ms-1">Customer</span>
         </a>
       </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link text-white dropdown-toggle" href="#" id="helpRequestDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="material-icons opacity-10">table_view</i>
+            <li class="nav-item dropdown">
+                <a class="nav-link text-white dropdown-toggle" href="#" id="helpRequestDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">table_view</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Help Request</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="helpRequestDropdown">
+                    <a class="dropdown-item" asp-area="" asp-controller="HelpRequest" asp-action="Index">Create Help Request</a>
+                    <a class="dropdown-item" asp-area="" asp-controller="HelpRequest" asp-action="UserView">View Un-Answered Help Request</a>
+                    <a class="dropdown-item" asp-area="" asp-controller="HelpRequest" asp-action="UserViewTrue">View Answered Help Request</a>
                 </div>
-                <span class="nav-link-text ms-1">Help Request</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="helpRequestDropdown">
-                <a class="dropdown-item" asp-area="" asp-controller="HelpRequest" asp-action="Index">Create Help Request</a>
-                <a class="dropdown-item" asp-area="" asp-controller="HelpRequest" asp-action="UserView">View Un-Answered Help Request</a>
-                <a class="dropdown-item" asp-area="" asp-controller="HelpRequest" asp-action="UserViewTrue">View Answered Help Request</a>
-            </div>
-        </li>
+            </li>
 
             <li class="nav-item dropdown">
                 <a class="nav-link text-white dropdown-toggle" href="#" id="transactionDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,8 +52,9 @@
                     <a class="dropdown-item" asp-area="" asp-controller="Transaction" asp-action="Index">Make a Transaction</a>
                     <a class="dropdown-item" asp-area="" asp-controller="Transaction" asp-action="TransactionHistory">View Transaction History</a>
                 </div>
-            </li>
 
+      
+      
       <li class="nav-item">
                 <a asp-area="" class="nav-link text-white " asp-controller="Withdraw" asp-action="UserHistory">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -70,7 +72,7 @@
         </a>
       </li>
       <li class="nav-item">
-                <a asp-area="" class="nav-link text-white " asp-controller="Statement" asp-action="Index">
+        <a class="nav-link text-white " asp-controller="Statement">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10">dashboard</i>
           </div>
