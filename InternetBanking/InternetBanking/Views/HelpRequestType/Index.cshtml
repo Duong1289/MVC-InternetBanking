@@ -4,19 +4,15 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
-
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-<!-- Link to DataTables Bootstrap CSS (for styling) -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+}
 
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Create New</a>
+    <a asp-action="Create">Create New</a>
 </p>
-<div class="table-responsive container">
-    <table border="1" class="table display" id="myTable">
-        <thead>
+<table class="table">
+    <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.ServiceName)
@@ -26,6 +22,7 @@
             </th>
             <th></th>
         </tr>
+<<<<<<< HEAD
         </thead>
         <tbody>
         @foreach (var item in Model) {
@@ -63,3 +60,24 @@
     });
 </script>
 
+=======
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RequestTypeId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RequestTypeId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RequestTypeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+>>>>>>> parent of 9a8f2c0 (a)

@@ -88,7 +88,19 @@ namespace InternetBanking.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+
+                    // Lấy thông tin người dùng hiện tại từ HttpContext
+                    var user = await _userManager.GetUserAsync(User);
+
+                    if (user != null)
+                    {
+                        // Chuyển hướng đến trang chi tiết của khách hàng và truyền tham số id
+                        var redirectUrl = $"/Customers/DetailsbyCustomer/{user.Id}";
+                        return Redirect(redirectUrl);
+                    }
+
+                    // Nếu không tìm thấy người dùng, xử lý tương ứng hoặc chuyển hướng tới trang mặc định
+                    return RedirectToAction("Index", "Home");
                 }
                 if (result.RequiresTwoFactor)
                 {

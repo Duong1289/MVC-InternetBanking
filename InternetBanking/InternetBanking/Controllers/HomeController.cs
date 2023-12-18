@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using InternetBanking.Areas.Identity.Data;
 
 namespace InternetBanking.Controllers
 {
@@ -11,21 +13,41 @@ namespace InternetBanking.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly InternetBankingContext _context;
+        private readonly UserManager<InternetBankingUser> _userManager;
         
 
-        public HomeController(ILogger<HomeController> logger, InternetBankingContext context)
+        public HomeController(ILogger<HomeController> logger, InternetBankingContext context, UserManager<InternetBankingUser> userManager)
         {
             _logger = logger;
             _context = context;
+            _userManager = userManager;
         }
         
 
         public async Task<IActionResult> Index()
         {
-            var fAQ = await _context.FAQ.ToListAsync();
-            return View(fAQ);
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser != null)
+            {
+                var customer = await _context.Customers
+                    .Where(c => c.Id == currentUser.Id)
+                    .FirstOrDefaultAsync();
+
+                if (customer != null)
+                {
+                    ViewBag.UserName = $"{customer.FirstName} {customer.LastName}";
+
+                    var fAQ = await _context.FAQ.ToListAsync();
+                    ViewBag.FAQ = fAQ;
+
+                    return View(fAQ);
+                }
+            }
+            return RedirectToAction("Error"); // Redirect to an error page or another action
+
+
         }
-        
+
         public IActionResult Privacy()
         {
             return View();
