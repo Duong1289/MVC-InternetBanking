@@ -140,13 +140,11 @@ namespace InternetBanking.Service.MailService
             return template;
         }
 
-        public async Task SendEmailHelpRequest(string? id, HelpRequest helpRequest)
+        public async Task SendEmailHelpRequest(HelpRequest helpRequest)
         {
             var message = new MimeMessage();
-            var customer = _context.Customers!.SingleOrDefault(c => c.Id == helpRequest.CustomerId);
-            var customerName = customer.FirstName +" "+customer.LastName;
             var request = _context.HelpRequestsTypes!.SingleOrDefault(c => c.RequestTypeId == helpRequest.RequestTypeId);
-            var requestName = request.ServiceName;
+            var requestName = request.TypeName;
             var emp = _context.Employees!.SingleOrDefault(c => c.Id==helpRequest.EmployeeId);
             var empName = emp.FirstName +" "+emp.LastName;
             var customer = _context.Customers!.SingleOrDefault(c => c.PersonalId == helpRequest.CustomerId);

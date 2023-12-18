@@ -15,25 +15,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ServiceName)
+                @Html.DisplayNameFor(model => model.TypeName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th></th>
         </tr>
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> e52132e96ad9b5b13ec4bd5bbb26afde24226e54
         </thead>
         <tbody>
         @foreach (var item in Model) {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ServiceName)
+                    @Html.DisplayFor(modelItem => item.TypeName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
@@ -47,53 +41,3 @@
         }
         </tbody>
     </table>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<!-- Link to DataTables JS -->
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-<!-- Link to DataTables Bootstrap JS (for styling) -->
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-<!-- Initialize DataTable -->
-<script>
-    $(document).ready(function () {
-        $('#myTable').DataTable({
-            // Add your DataTables configurations here
-        });
-    });
-</script>
-
-<<<<<<< HEAD
-=======
-=======
-=======
->>>>>>> parent of 9a8f2c0 (a)
->>>>>>> e52132e96ad9b5b13ec4bd5bbb26afde24226e54
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TypeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.RequestTypeId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.RequestTypeId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.RequestTypeId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> parent of 9a8f2c0 (a)
-=======
->>>>>>> parent of 9a8f2c0 (a)
->>>>>>> e52132e96ad9b5b13ec4bd5bbb26afde24226e54

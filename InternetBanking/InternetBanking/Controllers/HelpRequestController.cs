@@ -25,37 +25,12 @@ namespace InternetBanking.Controllers
         {
             _context = context;
             this._userManager = _userManager;
+            this._sendMailServiceTransHelp = _sendMailServiceTransHelp;
         }
 
-        // GET: HelpRequest
-        public async Task<IActionResult> Index()
-        {
-              return _context.HelpRequests != null ? 
-                          View(await _context.HelpRequests.ToListAsync()) :
-                          Problem("Entity set 'InternetBankingContext.HelpRequests'  is null.");
-        }
-
-        // GET: HelpRequest/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.HelpRequests == null)
-            {
-                return NotFound();
-            }
-
-            var helpRequest = await _context.HelpRequests
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (helpRequest == null)
-            {
-                return NotFound();
-            }
-
-
-            return View(helpRequest);
-        }
 
         // GET: HelpRequest/Create
-        public async Task<IActionResult> Create()
+        public async Task<IActionResult> Index()
         {
             var currentUser = await _userManager.GetUserAsync(User);
             var accounts = await _context.Accounts!.Where(a => a.CustomerId == currentUser.Id).ToListAsync();
@@ -73,10 +48,11 @@ namespace InternetBanking.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(HelpRequest helpRequest)
         {
+            try { 
                 helpRequest.CreatedDate = DateTime.Now;
                 helpRequest.Status = false;
                 helpRequest.Answer = "";
-            helpRequest.HelpRequestImageId = "";
+                helpRequest.HelpRequestImageId = "";
                 _context.Add(helpRequest);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -159,7 +135,7 @@ namespace InternetBanking.Controllers
         {
             var request = await _context.HelpRequests!.SingleOrDefaultAsync(r => r.Id == id);
             var type = await _context.HelpRequestsTypes!.SingleOrDefaultAsync(r => r.RequestTypeId == request.RequestTypeId);
-            ViewBag.Type = type.ServiceName;
+            ViewBag.Type = type.TypeName;
             return View(request);
         }
 
@@ -169,41 +145,17 @@ namespace InternetBanking.Controllers
             var type = await _context.HelpRequestsTypes!.SingleOrDefaultAsync(r => r.RequestTypeId == request.RequestTypeId);
             var customer = await _context.Customers!.SingleOrDefaultAsync(r => r.Id == request.CustomerId);
             var employee = await _context.Employees!.SingleOrDefaultAsync(r => r.Id == request.EmployeeId);
-            ViewBag.Type = type.ServiceName;
+            ViewBag.Type = type.TypeName;
             ViewBag.Name = customer.FirstName + " " + customer.LastName;
             ViewBag.EmpName = employee.FirstName + " " + employee.LastName;
             return View(request);
         }
 
-        // POST: HelpRequest/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.HelpRequests == null)
-            {
-                return Problem("Entity set 'InternetBankingContext.HelpRequests'  is null.");
-            }
-            var helpRequest = await _context.HelpRequests.FindAsync(id);
-            if (helpRequest != null)
-            {
-                _context.HelpRequests.Remove(helpRequest);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+ 
 
-        private bool HelpRequestExists(int id)
+        private bool HelpRequestExists(string id)
         {
           return (_context.HelpRequests?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> ProcessRequest(int? id, string answer)
-        {
-            var helprequest = await _context.HelpRequests!.Where(r => r.Status == true).ToListAsync();
-            return View(helprequest);
         }
 
         [Authorize(Roles = "Employee,Admin")]
@@ -213,7 +165,9 @@ namespace InternetBanking.Controllers
             return View(request);
         }
 
-            var helpRequest = await _context.HelpRequests.FindAsync(id);
+        public async Task<IActionResult> AnswerRequest(HelpRequest request)
+        {
+            var helpRequest = await _context.HelpRequests!.SingleOrDefaultAsync(r=>r.Id == request.Id);
             if (helpRequest == null)
             {
                 return NotFound();
@@ -231,7 +185,7 @@ namespace InternetBanking.Controllers
                 await _context.SaveChangesAsync();
 
                 // Send email after saving changes
-                await sendMailService.SendEmailHelpRequest(request);
+                await _sendMailServiceTransHelp.SendEmailHelpRequest(request);
 
                 TempData["ResultSuccess"] = "Help request answered successfully!";
             }
@@ -250,7 +204,7 @@ namespace InternetBanking.Controllers
             var type = await _context.HelpRequestsTypes!.SingleOrDefaultAsync(r => r.RequestTypeId == request.RequestTypeId );
             var customer = await _context.Customers!.SingleOrDefaultAsync(r => r.Id == request.CustomerId);
             var employee = await _context.Employees!.SingleOrDefaultAsync(r => r.Id == request.EmployeeId);
-            ViewBag.Type = type.ServiceName;
+            ViewBag.Type = type.TypeName;
             ViewBag.Name = customer.FirstName+" "+customer.LastName;
             ViewBag.EmpName = employee.FirstName + " " + employee.LastName;
             return View(request);

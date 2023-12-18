@@ -23,7 +23,7 @@
                         <option value="">Select a request type</option>
                         @foreach (var helpRequestType in ViewBag.HelpRequestsTypes)
                         {
-                            <option value="@helpRequestType.RequestTypeId">@helpRequestType.ServiceName</option>
+                            <option value="@helpRequestType.RequestTypeId">@helpRequestType.TypeName</option>
                         }
                     </select>
                     <div class="invalid-feedback">Please select a request type.</div>
