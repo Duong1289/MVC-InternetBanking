@@ -29,6 +29,7 @@ namespace InternetBanking.Controllers
         }
 
 
+        [Authorize(Roles ="Customer")]
         // GET: HelpRequest/Create
         public async Task<IActionResult> Index()
         {
