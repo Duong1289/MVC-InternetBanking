@@ -28,24 +28,26 @@ namespace InternetBanking.Controllers
         }
 
         // GET: HelpRequest
-        
-
-        // GET: HelpRequest/Create
         public async Task<IActionResult> Index()
         {
-            if (TempData["ResultSuccess"] != null)
+              return _context.HelpRequests != null ? 
+                          View(await _context.HelpRequests.ToListAsync()) :
+                          Problem("Entity set 'InternetBankingContext.HelpRequests'  is null.");
+        }
+
+        // GET: HelpRequest/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null || _context.HelpRequests == null)
             {
-                ViewBag.TransactionStatus = TempData["ResultSuccess"];
-                ViewBag.Color = "success";
+                return NotFound();
             }
-            else if (TempData["ResultFail"] != null)
+
+            var helpRequest = await _context.HelpRequests
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (helpRequest == null)
             {
-                ViewBag.TransactionStatus = TempData["ResultFail"];
-                ViewBag.Color = "danger";
-            }
-            else
-            {
-                ViewBag.TransactionStatus = null;
+                return NotFound();
             }
 
 
@@ -71,53 +73,15 @@ namespace InternetBanking.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(HelpRequest helpRequest)
         {
-            try
-            {
-                var currentUser = await _userManager.GetUserAsync(User);
-                helpRequest.Id = GenerateTransactionCode();
                 helpRequest.CreatedDate = DateTime.Now;
                 helpRequest.Status = false;
                 helpRequest.Answer = "";
-                helpRequest.HelpRequestImageId = "";
-                helpRequest.CustomerId = currentUser.Id;
+            helpRequest.HelpRequestImageId = "";
                 _context.Add(helpRequest);
                 await _context.SaveChangesAsync();
-
-                TempData["ResultSuccess"] = "Help request created successfully.";
                 return RedirectToAction(nameof(Index));
-            }
-            catch (Exception ex)
-            {
-                // Log the exception or handle it accordingly
-                TempData["ResultFail"] = "Failed to create help request.";
-                return RedirectToAction(nameof(Index));
-            }
-        }
-
-
-        [Authorize(Roles = "Customer")]
-        public async Task<IActionResult> UserView()
-        {
-            if (TempData["ResultSuccess"] != null)
-            {
-                ViewBag.TransactionStatus = TempData["ResultSuccess"];
-                ViewBag.Color = "success";
-            }
-            else if (TempData["ResultFail"] != null)
-            {
-                ViewBag.TransactionStatus = TempData["ResultFail"];
-                ViewBag.Color = "danger";
-            }
-            else
-            {
-                ViewBag.TransactionStatus = null;
-            }
-            var currentUser = await _userManager.GetUserAsync(User);
-            var requests = await _context.HelpRequests!
-             .Where(r => r.CustomerId == currentUser.Id && r.Status == false)
-             .Include(r => r.HelpRequestTypes)  // Include the related HelpRequestType
-             .ToListAsync();
-            return View(requests);
+            
+            
         }
 
         public async Task<IActionResult> Update(int id)
