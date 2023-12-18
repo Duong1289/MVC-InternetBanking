@@ -106,8 +106,9 @@ namespace InternetBanking.Controllers
             }
             var currentUser = await _userManager.GetUserAsync(User);
             var requests = await _context.HelpRequests!
-            .Where(r => r.CustomerId == currentUser.Id && r.Status==false)
-            .ToListAsync();
+             .Where(r => r.CustomerId == currentUser.Id && r.Status == false)
+             .Include(r => r.HelpRequestTypes)  // Include the related HelpRequestType
+             .ToListAsync();
             return View(requests);
         }
 
@@ -124,13 +125,9 @@ namespace InternetBanking.Controllers
         [Authorize(Roles = "Customer")]
         public async Task<IActionResult> Update(string id)
         {
-            var currentUser = await _userManager.GetUserAsync(User);
-            var accounts = await _context.Accounts!.Where(a => a.CustomerId == currentUser.Id).ToListAsync();
+            var request = await _context.HelpRequests!.SingleOrDefaultAsync(r => r.Id == id);
             var helpRequestTypes = await _context.HelpRequestsTypes!.ToListAsync();
-            ViewBag.CustomerId = currentUser.Id;
-            ViewBag.UserAccounts = accounts;
             ViewBag.HelpRequestsTypes = helpRequestTypes;
-            var request = await _context.HelpRequests!.SingleOrDefaultAsync(r=>r.Id==id);
             return View(request);
         }
 
@@ -159,7 +156,7 @@ namespace InternetBanking.Controllers
         {
             var request = await _context.HelpRequests!.SingleOrDefaultAsync(r => r.Id == id);
             var type = await _context.HelpRequestsTypes!.SingleOrDefaultAsync(r => r.RequestTypeId == request.RequestTypeId);
-            ViewBag.Type = type.ServiceName;
+            ViewBag.Type = type.TypeName;
             return View(request);
         }
 
@@ -169,7 +166,7 @@ namespace InternetBanking.Controllers
             var type = await _context.HelpRequestsTypes!.SingleOrDefaultAsync(r => r.RequestTypeId == request.RequestTypeId);
             var customer = await _context.Customers!.SingleOrDefaultAsync(r => r.Id == request.CustomerId);
             var employee = await _context.Employees!.SingleOrDefaultAsync(r => r.Id == request.EmployeeId);
-            ViewBag.Type = type.ServiceName;
+            ViewBag.Type = type.TypeName;
             ViewBag.Name = customer.FirstName + " " + customer.LastName;
             ViewBag.EmpName = employee.FirstName + " " + employee.LastName;
             return View(request);
@@ -249,6 +246,10 @@ namespace InternetBanking.Controllers
         public async Task<IActionResult> Answer(string id)
         {
             var request = await _context.HelpRequests!.SingleOrDefaultAsync(r => r.Id == id);
+            var type = await _context.HelpRequestsTypes!.SingleOrDefaultAsync(r => r.RequestTypeId == request.RequestTypeId);
+            var customer = await _context.Customers!.SingleOrDefaultAsync(r => r.Id == request.CustomerId);
+            ViewBag.Type = type.TypeName;
+            ViewBag.Name = customer.FirstName + " " + customer.LastName;
             return View(request);
         }
 
@@ -296,7 +297,7 @@ namespace InternetBanking.Controllers
             var type = await _context.HelpRequestsTypes!.SingleOrDefaultAsync(r => r.RequestTypeId == request.RequestTypeId );
             var customer = await _context.Customers!.SingleOrDefaultAsync(r => r.Id == request.CustomerId);
             var employee = await _context.Employees!.SingleOrDefaultAsync(r => r.Id == request.EmployeeId);
-            ViewBag.Type = type.ServiceName;
+            ViewBag.Type = type.TypeName;
             ViewBag.Name = customer.FirstName+" "+customer.LastName;
             ViewBag.EmpName = employee.FirstName + " " + employee.LastName;
             return View(request);

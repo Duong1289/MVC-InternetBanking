@@ -43,5 +43,6 @@ namespace InternetBanking.Models
         public bool Status { get; set; }
 
         public ICollection<Image>? Images { get; set; }
+        public HelpRequestType? HelpRequestTypes { get; set; }
     }
 }

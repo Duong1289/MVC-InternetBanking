@@ -26,7 +26,7 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>Account Number</th>
-                        <th>@Html.DisplayNameFor(model => model.RequestTypeId)</th>
+                        <th>Subject</th>
                         <th>@Html.DisplayNameFor(model => model.CreatedDate)</th>
                         <th>Actions</th>
                     </tr>
@@ -36,7 +36,7 @@
                     {
                         <tr>
                             <td>@Html.DisplayFor(modelItem => item.AccountId)</td>
-                            <td>@Html.DisplayFor(modelItem => item.RequestTypeId)</td>
+                            <td>@Html.DisplayFor(modelItem => item.HelpRequestTypes.TypeName)</td>
                             <td>@Html.DisplayFor(modelItem => item.CreatedDate)</td>
                             <td>
                                 <a class="btn btn-info btn-sm" asp-action="Detail" asp-route-id="@item.Id">Details</a>
