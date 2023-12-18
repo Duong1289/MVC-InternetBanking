@@ -2,21 +2,16 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "_LayoutAdmin";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-<!-- Link to DataTables Bootstrap CSS (for styling) -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 
-
-<h1>All Help Request</h1>
+<h1>Index</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Create New Help Request</a>
+    <a asp-action="Create">Create New</a>
 </p>
-<div class="table-responsive container">
-    <table border="1" class="table display" id="myTable">
-        <thead>
+<table class="table">
+    <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.RequestTypeId)
@@ -32,45 +27,28 @@
             </th>
             <th></th>
         </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RequestTypeId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Content)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Update</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
-                </td>
-            </tr>
-        }
-        </tbody>
-    </table>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<!-- Link to DataTables JS -->
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-<!-- Link to DataTables Bootstrap JS (for styling) -->
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-<!-- Initialize DataTable -->
-<script>
-    $(document).ready(function () {
-        $('#myTable').DataTable({
-            // Add your DataTables configurations here
-        });
-    });
-</script>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestTypeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a asp-action="Update" asp-route-id="@item.Id">Update</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
