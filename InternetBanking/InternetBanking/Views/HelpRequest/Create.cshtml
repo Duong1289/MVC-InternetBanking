@@ -1,21 +1,31 @@
-﻿@model InternetBanking.Models.HelpRequest
+@model InternetBanking.Models.HelpRequest
 
 @{
-    ViewData["Title"] = "Update";
-    Layout = "~/Views/Shared/_LayoutUser.cshtml";
-}
+    ViewData["Title"] = "Create";
+    Layout = "_LayoutUser";
 }
 
-<h1>Update</h1>
+<h1>Create A Help Request</h1>
 
-<h4>HelpRequest</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Update">
+    <div class="col-md-6">
+        <form asp-action="Create" class="needs-validation" novalidate>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <input type="hidden" asp-for="AccountId" />
+
+            <div class="form-group">
+                <label asp-for="AccountId" class="form-label">Account Number</label>
+                <div class="input-group input-group-outline my-3">
+                    <select asp-for="AccountId" class="form-control" required>
+                        <option value="">Select an account</option>
+                        @foreach (var account in ViewBag.UserAccounts)
+                        {
+                            <option value="@account.AccountNumber">@account.AccountNumber</option>
+                        }
+                    </select>
+                    <div class="invalid-feedback">Please select an account.</div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label asp-for="RequestTypeId" class="form-label">Request Type</label>
                 <div class="input-group input-group-outline my-3">
@@ -37,18 +47,24 @@
                     <span asp-validation-for="Content" class="text-danger"></span>
                     <div class="invalid-feedback">Please provide content for the request.</div>
                 </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary w-100">Create</button>
             </div>
         </form>
+
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        // Add any custom scripts here
+    </script>
 }
+
+

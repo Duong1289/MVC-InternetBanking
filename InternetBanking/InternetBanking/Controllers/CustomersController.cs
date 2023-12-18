@@ -8,9 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using InternetBanking.Models;
 using InternetBanking.Constants;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using InternetBanking.Areas.Identity.Data;
-using InternetBanking.Service.MailService;
 
 namespace InternetBanking.Controllers
 {
@@ -18,25 +15,25 @@ namespace InternetBanking.Controllers
     public class CustomersController : Controller
     {
         private readonly InternetBankingContext _context;
-        private readonly SendBankMailService sendMailService;
-        UserManager<InternetBankingUser> _userManager;
 
-        public CustomersController(InternetBankingContext context, SendBankMailService sendMailService, UserManager<InternetBankingUser> userManager)
+        public CustomersController(InternetBankingContext context)
         {
             _context = context;
-            this.sendMailService = sendMailService;
-            _userManager = userManager;
         }
         [Authorize(Roles = "Customer")]
-        public async Task<IActionResult> DetailsbyCustomer()
+        public async Task<IActionResult> DetailsbyCustomer(string id)
         {
-            var currentUser = await _userManager.GetUserAsync(User);
+            if (id == null || _context.Customers == null)
+            {
+                return NotFound();
+            }
+
             var customer = await _context.Customers
                 .Include(c => c.InternetBankingUser)
                 .Include(c => c.Accounts)
                 .Include(c => c.HelpRequests)
                 
-                .FirstOrDefaultAsync(m => m.Id == currentUser.Id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (customer == null)
             {
                 return NotFound();

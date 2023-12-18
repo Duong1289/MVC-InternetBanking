@@ -339,8 +339,11 @@ namespace InternetBanking.Migrations
 
             modelBuilder.Entity("InternetBanking.Models.HelpRequest", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AccountId")
                         .IsRequired()
@@ -367,6 +370,9 @@ namespace InternetBanking.Migrations
                     b.Property<string>("HelpRequestImageId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("HelpRequestTypeRequestTypeId")
+                        .HasColumnType("int");
+
                     b.Property<int>("RequestTypeId")
                         .HasColumnType("int");
 
@@ -381,7 +387,7 @@ namespace InternetBanking.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.HasIndex("RequestTypeId");
+                    b.HasIndex("HelpRequestTypeRequestTypeId");
 
                     b.ToTable("HelpRequests");
                 });
@@ -399,7 +405,7 @@ namespace InternetBanking.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<string>("TypeName")
+                    b.Property<string>("ServiceName")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -423,8 +429,8 @@ namespace InternetBanking.Migrations
                     b.Property<string>("EmployeeId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("HelpRequestId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("HelpRequestId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Path")
                         .IsRequired()
@@ -739,13 +745,9 @@ namespace InternetBanking.Migrations
                         .WithMany("HelpRequests")
                         .HasForeignKey("EmployeeId");
 
-                    b.HasOne("InternetBanking.Models.HelpRequestType", "HelpRequestTypes")
+                    b.HasOne("InternetBanking.Models.HelpRequestType", null)
                         .WithMany("HelpRequests")
-                        .HasForeignKey("RequestTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("HelpRequestTypes");
+                        .HasForeignKey("HelpRequestTypeRequestTypeId");
                 });
 
             modelBuilder.Entity("InternetBanking.Models.Image", b =>
