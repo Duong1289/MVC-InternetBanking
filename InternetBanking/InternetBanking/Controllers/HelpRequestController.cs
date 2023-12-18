@@ -31,7 +31,6 @@ namespace InternetBanking.Controllers
         // GET: HelpRequest
         
 
-        [Authorize(Roles ="Customer")]
         // GET: HelpRequest/Create
         public async Task<IActionResult> Index()
         {
@@ -58,7 +57,13 @@ namespace InternetBanking.Controllers
             return View();
         }
 
+<<<<<<< HEAD
         [Authorize(Roles = "Customer")]
+=======
+        // POST: HelpRequest/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+>>>>>>> parent of 9a8f2c0 (a)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(HelpRequest helpRequest)

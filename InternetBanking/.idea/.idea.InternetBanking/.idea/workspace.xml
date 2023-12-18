@@ -9,13 +9,11 @@
   <component name="ChangeListManager">
     <list default="true" id="63a36561-732a-45d3-afb7-55125ac74dfb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternetBanking/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Create.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequest/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Create.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/HelpRequestType/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Account/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Account/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_HeaderAdmin.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_HeaderAdmin.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_HeaderUser.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_HeaderUser.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_SidebarAdmin.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_SidebarAdmin.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Shared/_SidebarUser.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Shared/_SidebarUser.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternetBanking/Views/Statement/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/InternetBanking/Views/Statement/Index.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +31,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Users/KEN/Downloads/FPT APTECH/Project Term 3/MVC-InternetBanking/InternetBanking/InternetBanking/Views/Shared/_SidebarUser.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/KEN/Downloads/FPT APTECH/Project Term 3/MVC-InternetBanking/InternetBanking/InternetBanking/Views/Shared/_SidebarUser.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/349375d06f3745f68d82860b9f9ab3a42f400/a6/7dc2affd/SignInManager`1.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -48,30 +44,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.Run.executor": "Run",
-    ".NET Launch Settings Profile.Unnamed.executor": "Run",
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "HotReloadSettingsPage",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.Run.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.smartKeys_rider&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache",
-      "/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache",
-      "/Users/KEN/.local/share/Symbols/src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,
+      &quot;/Users/KEN/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,
+      &quot;/Users/KEN/.local/share/Symbols/src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Run" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/InternetBanking/InternetBanking.csproj" />
@@ -110,8 +106,7 @@
       <workItem from="1702478617804" duration="18496000" />
       <workItem from="1702569034622" duration="7894000" />
       <workItem from="1702636866135" duration="8850000" />
-      <workItem from="1702706221180" duration="2709000" />
-      <workItem from="1702722368987" duration="3982000" />
+      <workItem from="1702706221180" duration="2152000" />
     </task>
     <servers />
   </component>

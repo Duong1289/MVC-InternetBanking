@@ -62,7 +62,6 @@ namespace InternetBanking.Controllers
         // GET: Employees1/Create
         public IActionResult Create()
         {
-
             ViewData["Id"] = new SelectList(_context.InternetBankingUsers, "Id", "Id");
             return View();
         }
@@ -70,9 +69,8 @@ namespace InternetBanking.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PersonalId,Email,FirstName,LastName,Address,Phone,CreateDate,Status")] Employee employee, string returnUrl = null)
+        public async Task<IActionResult> Create([Bind("Id,PersonalId,Email,FirstName,LastName,Address,Phone,CreateDate,Status")] Employee employee)
         {
-            returnUrl ??= Url.Content("~/");
             if (ModelState.IsValid)
             {
                 // Generate a random 4-digit number for the username
@@ -112,7 +110,7 @@ namespace InternetBanking.Controllers
                     var callbackUrl = Url.Action(
                         "ConfirmEmail",
                         "Account",
-                        values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
+                        values: new { area = "Identity", userId = user.Id, code = code, },
                         protocol: HttpContext.Request.Scheme);
 
                     await _emailSender.SendEmailAsync(employee.Email, "Your NexBank Account",
@@ -138,7 +136,7 @@ namespace InternetBanking.Controllers
                             $"               <li><strong>Username:</strong> nexEmp{randomNumbers}</li>" +
                             $"               <li><strong>Password:</strong> nexemp</li>" +
                             $"           </ul>" +
-                            $"           <p>Please confirm your account by <a style='color:white' class='button' href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.</p>" +
+                            $"           <p>Please confirm your account by <a class='button' href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.</p>" +
                             $"           <p>Best regards,<br/>NexBank Team</p>" +
                             $"       </div>" +
                             $"   </div>" +

@@ -2,8 +2,19 @@
 
 @{
     ViewData["Title"] = "Index";
+<<<<<<< HEAD
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 
+=======
+    @if (User.IsInRole("Customer"))
+    {
+        Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+>>>>>>> parent of 9a8f2c0 (a)
     
 }
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
