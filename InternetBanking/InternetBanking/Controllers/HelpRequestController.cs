@@ -152,7 +152,27 @@ namespace InternetBanking.Controllers
                 TempData["ResultFail"] = "Failed to update help request.";
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("UserView");
+        }
+
+        public async Task<IActionResult> Detail(string id)
+        {
+            var request = await _context.HelpRequests!.SingleOrDefaultAsync(r => r.Id == id);
+            var type = await _context.HelpRequestsTypes!.SingleOrDefaultAsync(r => r.RequestTypeId == request.RequestTypeId);
+            ViewBag.Type = type.ServiceName;
+            return View(request);
+        }
+
+        public async Task<IActionResult> DetailTrue(string id)
+        {
+            var request = await _context.HelpRequests!.SingleOrDefaultAsync(r => r.Id == id);
+            var type = await _context.HelpRequestsTypes!.SingleOrDefaultAsync(r => r.RequestTypeId == request.RequestTypeId);
+            var customer = await _context.Customers!.SingleOrDefaultAsync(r => r.Id == request.CustomerId);
+            var employee = await _context.Employees!.SingleOrDefaultAsync(r => r.Id == request.EmployeeId);
+            ViewBag.Type = type.ServiceName;
+            ViewBag.Name = customer.FirstName + " " + customer.LastName;
+            ViewBag.EmpName = employee.FirstName + " " + employee.LastName;
+            return View(request);
         }
 
 
@@ -200,6 +220,20 @@ namespace InternetBanking.Controllers
         [Authorize(Roles = "Employee,Admin")]
         public async Task<IActionResult> EmployeeView()
         {
+            if (TempData["ResultSuccess"] != null)
+            {
+                ViewBag.TransactionStatus = TempData["ResultSuccess"];
+                ViewBag.Color = "success";
+            }
+            else if (TempData["ResultFail"] != null)
+            {
+                ViewBag.TransactionStatus = TempData["ResultFail"];
+                ViewBag.Color = "danger";
+            }
+            else
+            {
+                ViewBag.TransactionStatus = null;
+            }
             var helprequest = await _context.HelpRequests!.Where(r => r.Status == false).ToListAsync();
             return View(helprequest);
         }
@@ -254,6 +288,18 @@ namespace InternetBanking.Controllers
             }
 
             return RedirectToAction("EmployeeView");
+        }
+
+        public async Task<IActionResult> EmployeeDetail(string id)
+        {
+            var request = await _context.HelpRequests!.SingleOrDefaultAsync(r=>r.Id == id);
+            var type = await _context.HelpRequestsTypes!.SingleOrDefaultAsync(r => r.RequestTypeId == request.RequestTypeId );
+            var customer = await _context.Customers!.SingleOrDefaultAsync(r => r.Id == request.CustomerId);
+            var employee = await _context.Employees!.SingleOrDefaultAsync(r => r.Id == request.EmployeeId);
+            ViewBag.Type = type.ServiceName;
+            ViewBag.Name = customer.FirstName+" "+customer.LastName;
+            ViewBag.EmpName = employee.FirstName + " " + employee.LastName;
+            return View(request);
         }
 
 
