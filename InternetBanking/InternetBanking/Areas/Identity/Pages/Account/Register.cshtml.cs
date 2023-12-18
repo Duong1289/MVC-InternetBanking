@@ -165,7 +165,7 @@ namespace InternetBanking.Areas.Identity.Pages.Account
                             $"       <div class='content'>" +
                             $"           <p>Dear {customer.FirstName} {customer.LastName},</p>" +
                         $"   <p>Please confirm your account by clicking the button below:</p>" +
-                        $"   <a style='color:white' href='{HtmlEncoder.Default.Encode(callbackUrl)}' class='button'>Confirm Your Email</a>" +
+                        $"   <a href='{HtmlEncoder.Default.Encode(callbackUrl)}' class='button'>Confirm Your Email</a>" +
                         $"</body>" +
                         $"</html>");
 

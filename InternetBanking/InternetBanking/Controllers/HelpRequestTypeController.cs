@@ -57,7 +57,7 @@ namespace InternetBanking.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(HelpRequestType helpRequestType)
+        public async Task<IActionResult> Create([Bind("RequestTypeId,ServiceName,Description")] HelpRequestType helpRequestType)
         {
             if (ModelState.IsValid)
             {

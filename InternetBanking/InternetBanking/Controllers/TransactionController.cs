@@ -174,7 +174,7 @@ namespace InternetBanking.Controllers
 
         }
 
-        [Authorize(Roles = "Admin,Employee")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ViewAllHistory()
         {
             var transaction = await ctx.Transactions!.ToListAsync();

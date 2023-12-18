@@ -1,68 +1,18 @@
-@model InternetBanking.Models.HelpRequest
+@model IEnumerable<InternetBanking.Models.HelpRequest>
 
 @{
+<<<<<<< HEAD
     ViewData["Title"] = "Create";
     Layout = "_LayoutUser";
+=======
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+>>>>>>> e52132e96ad9b5b13ec4bd5bbb26afde24226e54
 }
 
-<h1 class="text-center">Create A Help Request</h1>
+<h1>Index</h1>
 
-@if (ViewBag.TransactionStatus != null)
-{
-    <div class="alert alert-@(ViewBag.Color) text-white" role="alert" id="transactionAlert">
-        @if (ViewBag.Color == "success")
-        {
-            <strong>Success!</strong> @ViewBag.TransactionStatus
-        }
-        else
-        {
-            <strong>Error!</strong> @ViewBag.TransactionStatus
-        }
-    </div>
-}
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <form asp-action="Create" class="needs-validation" novalidate>
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="form-group">
-                <label asp-for="AccountId" class="form-label">Account Number</label>
-                <div class="input-group input-group-outline my-3">
-                    <select asp-for="AccountId" class="form-control" required>
-                        <option value="">Select an account</option>
-                        @foreach (var account in ViewBag.UserAccounts)
-                        {
-                            <option value="@account.AccountNumber">@account.AccountNumber</option>
-                        }
-                    </select>
-                    <div class="invalid-feedback">Please select an account.</div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="RequestTypeId" class="form-label">Request Type</label>
-                <div class="input-group input-group-outline my-3">
-                    <select asp-for="RequestTypeId" class="form-control" required>
-                        <option value="">Select a request type</option>
-                        @foreach (var helpRequestType in ViewBag.HelpRequestsTypes)
-                        {
-                            <option value="@helpRequestType.RequestTypeId">@helpRequestType.TypeName</option>
-                        }
-                    </select>
-                    <div class="invalid-feedback">Please select a request type.</div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Content" class="form-label">Content</label>
-                <div class="input-group input-group-outline my-3">
-                    <textarea asp-for="Content" class="form-control" required>
-                        </textarea>
-                    <span asp-validation-for="Content" class="text-danger"></span>
-                    <div class="invalid-feedback">Please provide content for the request.</div>
-                </div>
-            </div>
-
+<<<<<<< HEAD
             <div class="form-group">
                 <button type="submit" class="btn btn-primary w-100">Create</button>
             </div>
@@ -76,3 +26,50 @@
         }, 20000);
     </script>
 }
+=======
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RequestTypeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestTypeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a asp-action="Update" asp-route-id="@item.Id">Update</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+>>>>>>> e52132e96ad9b5b13ec4bd5bbb26afde24226e54

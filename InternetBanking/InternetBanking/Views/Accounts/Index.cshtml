@@ -3,6 +3,14 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    @if (User.IsInRole("Customer"))
+    {
+        Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
     
 }
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
@@ -33,28 +41,6 @@
             </tbody>
         </table>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $('#myTable').DataTable({
-                // Add your DataTables configurations here
-            });
-        });
-    </script>
-}
-else
-{
-    <p class="text-center">No accounts found. Create a new account by clicking the button below.</p>
-    <p class="text-center">
-        <a asp-action="Create" class="btn btn-primary">Create New</a>
-    </p>
-}
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

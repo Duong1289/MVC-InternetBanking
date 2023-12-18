@@ -30,8 +30,6 @@
                                 <a href="#about-section" class="nav-link">About Us</a>
                                 <ul class="dropdown">
                                     <li><a href="#faq-section" class="nav-link">FAQ</a></li>
-                                    <li><a href="#testimonials-section" class="nav-link">Customers Feedback</a></li>
-                                    <li><a asp-controller="HelpRequest" asp-action="Create" class="nav-link">Send Request</a></li>
                                 </ul>
                             </li>
                             @if(User.IsInRole("Customer"))
@@ -40,14 +38,26 @@
                                     <a class="nav-link text-dark" asp-controller="Transaction" asp-action="Index" title="Manage">Services</a>
                                 </li>
                                 <li class="nav-item">
+<<<<<<< HEAD
                                     <a class="nav-link text-dark" asp-controller="Customers" asp-action="DetailsbyCustomer" title="Manage">Hello @ViewBag.UserName!</a>
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                    <a class="nav-link text-dark" asp-controller="Customers" asp-action="DetailsbyCustomer" title="Manage">Hello @ViewBag.UserName!</a>
+=======
+                                    <a class="nav-link text-dark" asp-controller="Customers" asp-action="Details" title="Manage">Hello @User.Identity?.Name!</a>
+>>>>>>> parent of 9a8f2c0 (a)
+=======
+                                    <a class="nav-link text-dark" asp-controller="Customers" asp-action="Details" title="Manage">Hello @User.Identity?.Name!</a>
+>>>>>>> parent of 9a8f2c0 (a)
+>>>>>>> e52132e96ad9b5b13ec4bd5bbb26afde24226e54
                                 </li>
                             }
                             else
                             {
                                 <li><a href="Customers" class="nav-link">Dash Board</a></li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" href="#" title="Manage"> @User.Identity?.Name!</a>
+                                    <a class="nav-link text-dark" href="#" title="Manage">MyAccount @User.Identity?.Name!</a>
                                 </li>
                             }
 
