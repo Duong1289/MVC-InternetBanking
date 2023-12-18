@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using InternetBanking.Models;
 using InternetBanking.Constants;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using InternetBanking.Areas.Identity.Data;
 
 namespace InternetBanking.Controllers
 {
@@ -16,18 +18,22 @@ namespace InternetBanking.Controllers
     {
         
         private readonly InternetBankingContext _context;
+        private readonly UserManager<InternetBankingUser> _userManager;
 
-        public AccountsController(InternetBankingContext context)
+        public AccountsController(InternetBankingContext context, UserManager<InternetBankingUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Accounts
         //[Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Index()
         {
-            var internetBankingContext = _context.Accounts.Include(a => a.AccountType).Include(a => a.Customer);
-            return View(await internetBankingContext.ToListAsync());
+            var currentUser = await _userManager.GetUserAsync(User);
+            var myAccount = await _context.Accounts.Include(a => a.AccountType).FirstOrDefaultAsync(a => a.CustomerId == currentUser.Id);
+
+            return View(myAccount);
         }
 
         // GET: Accounts/Details/5
