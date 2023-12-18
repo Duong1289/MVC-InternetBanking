@@ -22,7 +22,7 @@
             </th>
             <th></th>
         </tr>
-<<<<<<< HEAD
+
         </thead>
         <tbody>
         @foreach (var item in Model) {
@@ -60,13 +60,12 @@
     });
 </script>
 
-=======
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ServiceName)
+                @Html.DisplayFor(modelItem => item.TypeName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
@@ -80,4 +79,3 @@
 }
     </tbody>
 </table>
->>>>>>> parent of 9a8f2c0 (a)
