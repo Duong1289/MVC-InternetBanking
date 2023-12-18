@@ -80,11 +80,51 @@ namespace InternetBanking.Controllers
                 _context.Add(helpRequest);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            
-            
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it accordingly
+                TempData["ResultFail"] = "Failed to create help request.";
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+
+        [Authorize(Roles = "Customer")]
+        public async Task<IActionResult> UserView()
+        {
+            if (TempData["ResultSuccess"] != null)
+            {
+                ViewBag.TransactionStatus = TempData["ResultSuccess"];
+                ViewBag.Color = "success";
+            }
+            else if (TempData["ResultFail"] != null)
+            {
+                ViewBag.TransactionStatus = TempData["ResultFail"];
+                ViewBag.Color = "danger";
+            }
+            else
+            {
+                ViewBag.TransactionStatus = null;
+            }
+            var currentUser = await _userManager.GetUserAsync(User);
+            var requests = await _context.HelpRequests!
+            .Where(r => r.CustomerId == currentUser.Id && r.Status==false)
+            .ToListAsync();
+            return View(requests);
         }
 
         public async Task<IActionResult> Update(int id)
+        {
+            var currentUser = await _userManager.GetUserAsync(User);
+            var requests = await _context.HelpRequests!
+            .Where(r => r.CustomerId == currentUser.Id && r.Status == true)
+            .ToListAsync();
+            return View(requests);
+        }
+
+        [Authorize(Roles = "Customer")]
+        public async Task<IActionResult> Update(string id)
         {
             var currentUser = await _userManager.GetUserAsync(User);
             var accounts = await _context.Accounts!.Where(a => a.CustomerId == currentUser.Id).ToListAsync();
@@ -112,14 +152,27 @@ namespace InternetBanking.Controllers
                 return NotFound();
             }
 
-            var helpRequest = await _context.HelpRequests
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (helpRequest == null)
-            {
-                return NotFound();
-            }
+            return RedirectToAction("UserView");
+        }
 
-            return View(helpRequest);
+        public async Task<IActionResult> Detail(string id)
+        {
+            var request = await _context.HelpRequests!.SingleOrDefaultAsync(r => r.Id == id);
+            var type = await _context.HelpRequestsTypes!.SingleOrDefaultAsync(r => r.RequestTypeId == request.RequestTypeId);
+            ViewBag.Type = type.ServiceName;
+            return View(request);
+        }
+
+        public async Task<IActionResult> DetailTrue(string id)
+        {
+            var request = await _context.HelpRequests!.SingleOrDefaultAsync(r => r.Id == id);
+            var type = await _context.HelpRequestsTypes!.SingleOrDefaultAsync(r => r.RequestTypeId == request.RequestTypeId);
+            var customer = await _context.Customers!.SingleOrDefaultAsync(r => r.Id == request.CustomerId);
+            var employee = await _context.Employees!.SingleOrDefaultAsync(r => r.Id == request.EmployeeId);
+            ViewBag.Type = type.ServiceName;
+            ViewBag.Name = customer.FirstName + " " + customer.LastName;
+            ViewBag.EmpName = employee.FirstName + " " + employee.LastName;
+            return View(request);
         }
 
         // POST: HelpRequest/Delete/5
@@ -149,10 +202,16 @@ namespace InternetBanking.Controllers
         [HttpPost]
         public async Task<IActionResult> ProcessRequest(int? id, string answer)
         {
-            if (id == null || _context.HelpRequests == null)
-            {
-                return NotFound();
-            }
+            var helprequest = await _context.HelpRequests!.Where(r => r.Status == true).ToListAsync();
+            return View(helprequest);
+        }
+
+        [Authorize(Roles = "Employee,Admin")]
+        public async Task<IActionResult> Answer(string id)
+        {
+            var request = await _context.HelpRequests!.SingleOrDefaultAsync(r => r.Id == id);
+            return View(request);
+        }
 
             var helpRequest = await _context.HelpRequests.FindAsync(id);
             if (helpRequest == null)
@@ -160,20 +219,58 @@ namespace InternetBanking.Controllers
                 return NotFound();
             }
 
-            helpRequest.Answer = answer;
-            helpRequest.Status = true;
-            
-            _context.Update(helpRequest);
-            await _context.SaveChangesAsync();
-            // Send email notification to the customer
-            var customer = await _context.Customers!.FindAsync(helpRequest.CustomerId);
-            
-            if (customer != null)
+            var currentUser = await _userManager.GetUserAsync(User);
+
+            request.EmployeeId = currentUser.Id;
+            request.Status = true;
+
+            _context.Entry(request).State = EntityState.Modified;
+
+            try
             {
-                var emailBody = _sendMailServiceTransHelp.GetEmailHelpBody(helpRequest);
-                await _sendMailServiceTransHelp.SendEmailHelpRequest(customer.PersonalId,helpRequest);
+                await _context.SaveChangesAsync();
+
+                // Send email after saving changes
+                await sendMailService.SendEmailHelpRequest(request);
+
+                TempData["ResultSuccess"] = "Help request answered successfully!";
             }
-            return RedirectToAction(nameof(Index));
+            catch (Exception ex)
+            {
+                // Log the exception or handle it accordingly
+                TempData["ResultFail"] = "Failed to answer help request!";
+            }
+
+            return RedirectToAction("EmployeeView");
+        }
+
+        public async Task<IActionResult> EmployeeDetail(string id)
+        {
+            var request = await _context.HelpRequests!.SingleOrDefaultAsync(r=>r.Id == id);
+            var type = await _context.HelpRequestsTypes!.SingleOrDefaultAsync(r => r.RequestTypeId == request.RequestTypeId );
+            var customer = await _context.Customers!.SingleOrDefaultAsync(r => r.Id == request.CustomerId);
+            var employee = await _context.Employees!.SingleOrDefaultAsync(r => r.Id == request.EmployeeId);
+            ViewBag.Type = type.ServiceName;
+            ViewBag.Name = customer.FirstName+" "+customer.LastName;
+            ViewBag.EmpName = employee.FirstName + " " + employee.LastName;
+            return View(request);
+        }
+
+
+
+        public string GenerateTransactionCode()
+        {
+            string part1 = DateTime.Now.ToString("yy");
+            string part2 = DateTime.Now.ToString("MMdd");
+            string part3 = DateTime.Now.ToString("HHmmfff");
+            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890" + part1 + part2 + part3;
+            Random random = new Random();
+
+            // Generating a random string by selecting characters from the set
+            string randomString = new string(Enumerable.Repeat(chars, 10)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+
+            return randomString;
         }
     }
 }

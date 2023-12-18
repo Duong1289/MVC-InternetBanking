@@ -14,6 +14,44 @@
 
 <<<<<<< HEAD
             <div class="form-group">
+                <label asp-for="AccountId" class="form-label">Account Number</label>
+                <div class="input-group input-group-outline my-3">
+                    <select asp-for="AccountId" class="form-control" required>
+                        <option value="">Select an account</option>
+                        @foreach (var account in ViewBag.UserAccounts)
+                        {
+                            <option value="@account.AccountNumber">@account.AccountNumber</option>
+                        }
+                    </select>
+                    <div class="invalid-feedback">Please select an account.</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RequestTypeId" class="form-label">Request Type</label>
+                <div class="input-group input-group-outline my-3">
+                    <select asp-for="RequestTypeId" class="form-control" required>
+                        <option value="">Select a request type</option>
+                        @foreach (var helpRequestType in ViewBag.HelpRequestsTypes)
+                        {
+                            <option value="@helpRequestType.RequestTypeId">@helpRequestType.ServiceName</option>
+                        }
+                    </select>
+                    <div class="invalid-feedback">Please select a request type.</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Content" class="form-label">Content</label>
+                <div class="input-group input-group-outline my-3">
+                    <textarea asp-for="Content" class="form-control" required>
+                        </textarea>
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                    <div class="invalid-feedback">Please provide content for the request.</div>
+                </div>
+            </div>
+
+            <div class="form-group">
                 <button type="submit" class="btn btn-primary w-100">Create</button>
             </div>
         </form>
