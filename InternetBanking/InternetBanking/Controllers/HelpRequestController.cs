@@ -148,6 +148,20 @@ namespace InternetBanking.Controllers
         }
 
         [Authorize(Roles = "Employee,Admin")]
+        public async Task<IActionResult> EmployeeView()
+        {
+            var helprequest = await _context.HelpRequests!.Where(r => r.Status == false).ToListAsync();
+            return View(helprequest);
+        }
+
+        [Authorize(Roles = "Employee,Admin")]
+        public async Task<IActionResult> EmployeeViewTrue()
+        {
+            var helprequest = await _context.HelpRequests!.Where(r => r.Status == true).ToListAsync();
+            return View(helprequest);
+        }
+
+        [Authorize(Roles = "Employee,Admin")]
         public async Task<IActionResult> Answer(string id)
         {
             var request = await _context.HelpRequests!.SingleOrDefaultAsync(r => r.Id == id);

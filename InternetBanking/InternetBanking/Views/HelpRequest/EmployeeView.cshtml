@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<InternetBanking.Models.HelpRequest>
 
 @{
-    ViewData["Title"] = "UserView";
-    Layout = "_LayoutUser";
+    ViewData["Title"] = "EmployeeView";
+    Layout = "_LayoutAdmin";
 }
 
 <div class="container">
-    <h1 class="text-center mb-4">Un-Answered Help Request</h1>
+    <h1 class="text-center mb-4">Unfinished Help Request</h1>
     @if (ViewBag.TransactionStatus != null)
     {
         <div class="alert alert-@(ViewBag.Color) text-white" role="alert" id="transactionAlert">
@@ -39,8 +39,7 @@
                             <td>@Html.DisplayFor(modelItem => item.RequestTypeId)</td>
                             <td>@Html.DisplayFor(modelItem => item.CreatedDate)</td>
                             <td>
-                                <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                                <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                <a class="btn btn-warning btn-sm" asp-action="Answer" asp-route-id="@item.Id">Edit</a>
                                 <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                             </td>
                         </tr>

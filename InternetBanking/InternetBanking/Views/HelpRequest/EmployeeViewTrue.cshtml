@@ -1,25 +1,13 @@
 ﻿@model IEnumerable<InternetBanking.Models.HelpRequest>
 
 @{
-    ViewData["Title"] = "UserView";
-    Layout = "_LayoutUser";
+    ViewData["Title"] = "EmployeeViewTrue";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div class="container">
-    <h1 class="text-center mb-4">Un-Answered Help Request</h1>
-    @if (ViewBag.TransactionStatus != null)
-    {
-        <div class="alert alert-@(ViewBag.Color) text-white" role="alert" id="transactionAlert">
-            @if (ViewBag.Color == "success")
-            {
-                <strong>Success!</strong> @ViewBag.TransactionStatus
-            }
-            else
-            {
-                <strong>Error!</strong> @ViewBag.TransactionStatus
-            }
-        </div>
-    }
+    <h1 class="text-center mb-4">Finish Help Request</h1>
+
     <div class="row justify-content-center">
         <div class="col-md-10">
             <table class="table table-bordered table-hover">
@@ -40,8 +28,6 @@
                             <td>@Html.DisplayFor(modelItem => item.CreatedDate)</td>
                             <td>
                                 <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                                <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                             </td>
                         </tr>
                     }
@@ -50,11 +36,4 @@
         </div>
     </div>
 </div>
-@section Scripts {
-    <script>
-        setTimeout(function () {
-            document.getElementById('transactionAlert').style.display = 'none';
-        }, 20000);
-    </script>
-}
 
