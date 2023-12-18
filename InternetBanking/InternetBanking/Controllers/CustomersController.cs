@@ -31,7 +31,7 @@ namespace InternetBanking.Controllers
         public async Task<IActionResult> DetailsbyCustomer()
         {
             var currentUser = await _userManager.GetUserAsync(User);
-            var customer = await _context.Customers
+            var customer = await _context.Customers!
                 .Include(c => c.InternetBankingUser)
                 .Include(c => c.Accounts)
                 .Include(c => c.HelpRequests)
@@ -49,7 +49,7 @@ namespace InternetBanking.Controllers
         [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Index()
         {
-            var internetBankingContext = _context.Customers.Include(c => c.InternetBankingUser);
+            var internetBankingContext = _context.Customers!.Include(c => c.InternetBankingUser);
             return View(await internetBankingContext.ToListAsync());
         }
 

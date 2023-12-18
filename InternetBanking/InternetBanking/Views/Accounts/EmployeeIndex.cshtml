@@ -1,0 +1,63 @@
+﻿@model IEnumerable<InternetBanking.Models.Account>
+
+    @{
+    ViewData["Title"] = "Account Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <!-- Link to DataTables Bootstrap CSS (for styling) -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+
+    <div class="container mt-4">
+        <h2 class="mb-4">Account Information</h2>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover" id="myTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Account Number</th>
+                        <th>Account Type</th>
+                        <th>Open Date</th>
+                        <th>Expire Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.AccountNumber)</td>
+                        <td>@Html.DisplayFor(modelItem => item.AccountType.TypeName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.OpenDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ExpireDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+
+                        <td>
+                            <a asp-action="EmployeeDetail" asp-route-id="@item.AccountNumber" class="btn btn-info btn-sm">Details</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @section scripts {
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <!-- Link to DataTables JS -->
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+        <!-- Link to DataTables Bootstrap JS (for styling) -->
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+        <!-- Initialize DataTable -->
+        <script>
+            $(document).ready(function () {
+                $('#myTable').DataTable({
+                    // Add your DataTables configurations here
+                });
+            });
+        </script>
+    }
