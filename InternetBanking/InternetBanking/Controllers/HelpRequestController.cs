@@ -42,10 +42,7 @@ namespace InternetBanking.Controllers
         }
 
         [Authorize(Roles = "Customer")]
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(HelpRequest helpRequest)
         {
             try { 
@@ -55,6 +52,7 @@ namespace InternetBanking.Controllers
                 helpRequest.HelpRequestImageId = "";
                 _context.Add(helpRequest);
                 await _context.SaveChangesAsync();
+                TempData["ResultSucces"] = "Create request Successfully";
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -86,15 +84,6 @@ namespace InternetBanking.Controllers
             var currentUser = await _userManager.GetUserAsync(User);
             var requests = await _context.HelpRequests!
             .Where(r => r.CustomerId == currentUser.Id && r.Status==false)
-            .ToListAsync();
-            return View(requests);
-        }
-
-        public async Task<IActionResult> Update(int id)
-        {
-            var currentUser = await _userManager.GetUserAsync(User);
-            var requests = await _context.HelpRequests!
-            .Where(r => r.CustomerId == currentUser.Id && r.Status == true)
             .ToListAsync();
             return View(requests);
         }
