@@ -1,40 +1,21 @@
-@model InternetBanking.Models.HelpRequest
+﻿@model InternetBanking.Models.HelpRequest
 
 @{
-    ViewData["Title"] = "Create";
-    Layout = "_LayoutUser";
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
-<h1 class="text-center">Create A Help Request</h1>
-
-@if (ViewBag.TransactionStatus != null)
-{
-    <div class="alert alert-@(ViewBag.Color) text-white" role="alert" id="transactionAlert">
-        @if (ViewBag.Color == "success")
-        {
-            <strong>Success!</strong> @ViewBag.TransactionStatus
-        }
-        else
-        {
-            <strong>Error!</strong> @ViewBag.TransactionStatus
-        }
-    </div>
-}
+<h4>HelpRequest Update</h4>
+<hr />
 <div class="row justify-content-center">
     <div class="col-md-6">
-        <form asp-action="Create" class="needs-validation" novalidate>
+        <form asp-action="Update" class="needs-validation" method="post" novalidate>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+             <input asp-for="CustomerId" type="hidden" />
             <div class="form-group">
                 <label asp-for="AccountId" class="form-label">Account Number</label>
                 <div class="input-group input-group-outline my-3">
-                    <select asp-for="AccountId" class="form-control" required>
-                        <option value="">Select an account</option>
-                        @foreach (var account in ViewBag.UserAccounts)
-                        {
-                            <option value="@account.AccountNumber">@account.AccountNumber</option>
-                        }
-                    </select>
+                    <input asp-for="AccountId" class="form-control" readonly />
                     <div class="invalid-feedback">Please select an account.</div>
                 </div>
             </div>
@@ -69,10 +50,11 @@
         </form>
     </div>
 </div>
+
+<div>
+    <a asp-action="UserView">Back to View</a>
+</div>
+
 @section Scripts {
-    <script>
-        setTimeout(function () {
-            document.getElementById('transactionAlert').style.display = 'none';
-        }, 20000);
-    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

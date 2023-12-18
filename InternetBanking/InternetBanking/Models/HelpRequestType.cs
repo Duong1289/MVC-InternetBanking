@@ -9,7 +9,7 @@ namespace InternetBanking.Models
 
         [Required]
         [MaxLength(50)]
-        public string? ServiceName { get; set; }
+        public string? TypeName { get; set; }
 
         [Required]
         [MaxLength(500)]

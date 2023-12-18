@@ -145,7 +145,7 @@ namespace InternetBanking.Service.MailService
             var customer = _context.Customers!.SingleOrDefault(c => c.Id == helpRequest.CustomerId);
             var customerName = customer.FirstName +" "+customer.LastName;
             var request = _context.HelpRequestsTypes!.SingleOrDefault(c => c.RequestTypeId == helpRequest.RequestTypeId);
-            var requestName = request.ServiceName;
+            var requestName = request.TypeName;
             var emp = _context.Employees!.SingleOrDefault(c => c.Id==helpRequest.EmployeeId);
             var empName = emp.FirstName +" "+emp.LastName;
             message.From.Add(new MailboxAddress(MailSetting.DisplayName, MailSetting.Mail));
